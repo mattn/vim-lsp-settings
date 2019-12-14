@@ -1,72 +1,90 @@
 {
-  "typescript": {
-    "typescript-language-server": {
+  "typescript": [
+    {
+      "command": "typescript-language-server",
       "requires": [
         "npm"
       ]
     }
-  },
-  "javascript": {
-    "javascript-typescript-langserver": {
+  ],
+  "javascript": [
+    {
+      "command": "javascript-typescript-langserver",
       "requires": [
         "npm"
       ]
     },
-    "typescript-language-server": {
+    {
+      "command": "typescript-language-server",
       "requires": [
         "npm"
       ]
     }
-  },
-  "python": {
-    "pyls": {
+  ],
+  "python": [
+    {
+      "command": "pyls",
       "requires": [
         "pip"
       ]
     }
-  },
-  "rust": {
-    "rls": {
+  ],
+  "rust": [
+    {
+      "command": "rls",
       "requires": [
         "rustup"
       ]
     }
-  },
-  "go": {
-    "gopls": {
+  ],
+  "go": [
+    {
+      "command": "gopls",
       "requires": [
         "go"
       ]
     }
-  },
-  "ruby": {
-    "solargraph": {
+  ],
+  "ruby": [
+    {
+      "command": "solargraph",
       "requires": [
         "gem"
       ]
     }
-  },
-  "php": {
-    "intelephense-server": {
+  ],
+  "php": [
+    {
+      "command": "intelephense-server",
       "requires": [
         "npm"
       ]
     }
-  },
-  "java": {
-    "eclipse-jdt-ls": {}
-  },
-  "kotlin": {
-    "kotlin-language-server": {}
-  },
-  "lua": {
-    "emmylua-ls": {}
-  },
-  "vim": {
-    "vim-language-server": {
+  ],
+  "java": [
+    {
+      "command": "eclipse-jdt-ls",
+      "requires": []
+    }
+  ],
+  "kotlin": [
+    {
+      "command": "kotlin-language-server",
+      "requires": []
+    }
+  ],
+  "lua": [
+    {
+      "command": "emmylua-ls",
+      "requires": []
+    }
+  ],
+  "vim": [
+    {
+      "command": "vim-language-server",
       "requires": [
         "npm"
       ]
     }
-  }
+  ]
 }
