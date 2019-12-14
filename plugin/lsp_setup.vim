@@ -2,9 +2,9 @@ let s:setting_dir = expand('<sfile>:h:h').'/setting'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json'), "\n"))
 
-function! s:vimlsp_install_server() abort
+function! s:vimlsp_installer()
   if empty(s:setting[&filetype])
-    return
+    return ''
   endif
   let l:command = printf('%s/install-%s', s:installer_dir, s:setting[&filetype][0].command)
   if has('win32')
@@ -12,10 +12,21 @@ function! s:vimlsp_install_server() abort
   else
     let l:command = substitute(l:command, '/', '\', 'g') . '.sh'
   endif
+  if !executable(l:command)
+    return ''
+  endif
+  return l:command
+endfunction
+
+function! s:vimlsp_install_server() abort
+  let l:command = s:vimlsp_installer()
   exe 'terminal' l:command
 endfunction
 
 function! s:vimlsp_settings_suggest() abort
+  if empty(s:vimlsp_installer())
+    return
+  endif
   echomsg printf("If you want to enable Language Server, please do :LspInstallServer")
   command -buffer LspInstallServer call s:vimlsp_install_server()
 endfunction
