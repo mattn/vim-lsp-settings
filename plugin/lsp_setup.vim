@@ -10,7 +10,7 @@ function! s:vimlsp_installer()
   if has('win32')
     let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
   else
-    let l:command = substitute(l:command, '/', '\', 'g') . '.sh'
+    let l:command = l:command . '.sh'
   endif
   if !executable(l:command)
     return ''
