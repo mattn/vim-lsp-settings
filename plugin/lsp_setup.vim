@@ -45,10 +45,10 @@ function! s:vimlsp_setting() abort
       endif
     endfor
     if l:found == 0
-	  exe printf('augroup vimlsp_suggest_%s', l:ft)
-	    au!
-	    exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
-	  augroup END
+      exe printf('augroup vimlsp_suggest_%s', l:ft)
+        au!
+        exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
+      augroup END
     endif
   endfor
 endfunction
