@@ -1,8 +1,23 @@
 let s:setting_dir = expand('<sfile>:h:h').'/setting'
+let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json'), "\n"))
 
-function! s:vimlsp_settings_suggest(cmd) abort
-  echomsg "Do you install " . a:cmd
+function! s:vimlsp_install_server() abort
+  if empty(s:setting[&filetype])
+    return
+  endif
+  let l:command = printf('%s/install-%s', s:installer_dir, s:setting[&filetype][0].command)
+  if has('win32')
+    let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+  else
+    let l:command = substitute(l:command, '/', '\', 'g') . '.sh'
+  endif
+  exe 'terminal' l:command
+endfunction
+
+function! s:vimlsp_settings_suggest() abort
+  echomsg printf("If you want to enable Language Server, please do :LspInstallServer")
+  command -buffer LspInstallServer call s:vimlsp_install_server()
 endfunction
 
 function! s:vimlsp_setting() abort
@@ -21,7 +36,7 @@ function! s:vimlsp_setting() abort
     if l:found == 0
 	  exe printf('augroup vimlsp_suggest_%s', l:ft)
 	    au!
-	    exe printf('autocmd FileType %s call s:vimlsp_settings_suggest(%s)', l:ft, string(s:setting[l:ft][0].command))
+	    exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
 	  augroup END
     endif
   endfor
