@@ -1,0 +1,72 @@
+{
+  "typescript": {
+    "typescript-language-server": {
+      "requires": [
+        "npm"
+      ]
+    }
+  },
+  "javascript": {
+    "javascript-typescript-langserver": {
+      "requires": [
+        "npm"
+      ]
+    },
+    "typescript-language-server": {
+      "requires": [
+        "npm"
+      ]
+    }
+  },
+  "python": {
+    "pyls": {
+      "requires": [
+        "pip"
+      ]
+    }
+  },
+  "rust": {
+    "rls": {
+      "requires": [
+        "rustup"
+      ]
+    }
+  },
+  "go": {
+    "gopls": {
+      "requires": [
+        "go"
+      ]
+    }
+  },
+  "ruby": {
+    "solargraph": {
+      "requires": [
+        "gem"
+      ]
+    }
+  },
+  "php": {
+    "intelephense-server": {
+      "requires": [
+        "npm"
+      ]
+    }
+  },
+  "java": {
+    "eclipse-jdt-ls": {}
+  },
+  "kotlin": {
+    "kotlin-language-server": {}
+  },
+  "lua": {
+    "emmylua-ls": {}
+  },
+  "vim": {
+    "vim-language-server": {
+      "requires": [
+        "npm"
+      ]
+    }
+  }
+}
