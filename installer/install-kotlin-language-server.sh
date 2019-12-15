@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -e
 
 cd $(dirname $0)
 [ -d ../servers/kotlin-language-server ] && rm -rf ../servers/kotlin-language-server

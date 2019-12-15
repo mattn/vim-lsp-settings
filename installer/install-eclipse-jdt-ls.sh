@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd $(dirname $0)
 [ -d ../servers/eclipse-jdt-ls ] && rm -rf ../servers/eclipse-jdt-ls
 mkdir ../servers/eclipse-jdt-ls
