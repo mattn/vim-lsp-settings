@@ -6,7 +6,6 @@ md "..\servers\eclipse-jdt-ls"
 cd "..\servers\eclipse-jdt-ls"
 curl -o "jdt-language-server-latest.tar.gz" "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz"
 curl -o "lombok.jar" "https://projectlombok.org/downloads/lombok.jar"
-copy ..\..\installer\jdt-language-server-latest.tar.gz > NUL
 tar xvf jdt-language-server-latest.tar.gz
 del jdt-language-server-latest.tar.gz
 
