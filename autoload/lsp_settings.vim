@@ -1,5 +1,5 @@
 function! lsp_settings#get(name, key, default) abort
-  let l:config = get(g:, 'lsp_settings_extra_paths', {})
+  let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
     if !has_key(l:config, '*')
       return a:default
@@ -18,7 +18,7 @@ function! lsp_settings#exec_path(cmd) abort
   if executable(a:cmd)
     return a:cmd
   endif
-  let l:paths = get(g:, 'lsp_settings_paths', '')
+  let l:paths = get(g:, 'lsp_settings_extra_paths', '')
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
@@ -36,4 +36,3 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   return ''
 endfunction
-
