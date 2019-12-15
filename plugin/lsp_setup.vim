@@ -1,5 +1,6 @@
 let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
+let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
 
 function! s:executable(cmd) abort
@@ -10,6 +11,7 @@ function! s:executable(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
   endif
+  let l:paths .= ',' . s:servers_dir . '/' . a:cmd
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
