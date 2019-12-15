@@ -1,3 +1,5 @@
+let s:servers_dir = expand('<sfile>:h:h').'/servers'
+
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
