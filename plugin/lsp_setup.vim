@@ -3,10 +3,28 @@ let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json'), "\n"))
 
 function! s:vimlsp_installer()
-  if empty(s:setting[&filetype])
+  let l:setting = s:setting[&filetype]
+  if empty(l:setting)
     return ''
   endif
-  let l:command = printf('%s/install-%s', s:installer_dir, s:setting[&filetype][0].command)
+  let l:found = {}
+  for l:conf in l:setting
+    let l:missing = 0
+    for l:require in l:conf.requires
+      if !executable(l:require)
+        let l:missing = 1
+        break
+      endif
+    endfor
+    if l:missing == 0
+      let l:found = l:conf
+      break
+    endif
+  endfor
+  if empty(l:found)
+    return ''
+  endif
+  let l:command = printf('%s/install-%s', s:installer_dir, l:setting[0].command)
   if has('win32')
     let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
   else

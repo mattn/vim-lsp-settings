@@ -83,7 +83,7 @@
     {
       "command": "vim-language-server",
       "requires": [
-        "npm"
+        "yarn"
       ]
     }
   ]
