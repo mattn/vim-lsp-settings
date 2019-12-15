@@ -2,7 +2,27 @@ let s:setting_dir = expand('<sfile>:h:h').'/setting'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json'), "\n"))
 
-function! s:vimlsp_installer()
+function! s:executable(cmd) abort
+  if executable(a:cmd)
+    return a:cmd
+  endif
+  let l:paths = get(g:, 'lsp_settings_extra_paths', '')
+  if !has('win32')
+    return !empty(globpath(l:paths, a:cmd))
+  endif
+  if !empty(globpath(l:paths, a:cmd . '.exe'))
+    return 1
+  endif
+  if !empty(globpath(l:paths, a:cmd . '.cmd'))
+    return 1
+  endif
+  if !empty(globpath(l:paths, a:cmd . '.bat'))
+    return 1
+  endif
+  return 0
+endfunction
+
+function! s:vimlsp_installer() abort
   let l:setting = s:setting[&filetype]
   if empty(l:setting)
     return ''
@@ -11,12 +31,12 @@ function! s:vimlsp_installer()
   for l:conf in l:setting
     let l:missing = 0
     for l:require in l:conf.requires
-      if !executable(l:require)
+      if !s:executable(l:require)
         let l:missing = 1
         break
       endif
     endfor
-    if l:missing == 0
+    if l:missing ==# 0
       let l:found = l:conf
       break
     endif
@@ -30,7 +50,7 @@ function! s:vimlsp_installer()
   else
     let l:command = l:command . '.sh'
   endif
-  if !executable(l:command)
+  if !s:executable(l:command)
     return ''
   endif
   return l:command
@@ -56,13 +76,13 @@ function! s:vimlsp_setting() abort
       continue
     endif
     for l:server in s:setting[l:ft]
-      if executable(l:server.command)
+      if s:executable(l:server.command)
         exe 'source' printf('%s/%s.vim', s:setting_dir, l:server.command)
         let l:found += 1
         break
       endif
     endfor
-    if l:found == 0
+    if l:found ==# 0
       exe printf('augroup vimlsp_suggest_%s', l:ft)
         au!
         exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
