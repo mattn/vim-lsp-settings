@@ -16,6 +16,13 @@ function! lsp_settings#get(name, key, default) abort
   return l:config[a:key]
 endfunction
 
+function! s:first_one(cmd) abort
+  if empty(a:cmd)
+    return ''
+  endif
+  return fnamemodify(split(a:cmd, "\n")[0], ':p')
+endfunction
+
 function! lsp_settings#exec_path(cmd) abort
   if executable(a:cmd)
     return a:cmd
@@ -26,7 +33,7 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   let l:paths .= ',' . s:servers_dir . '/' . a:cmd
   if !has('win32')
-    return globpath(l:paths, a:cmd)
+    return s:first_one(globpath(l:paths, a:cmd))
   endif
   let l:path = globpath(l:paths, a:cmd . '.exe')
   if !empty(l:path)
