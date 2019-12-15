@@ -2,8 +2,11 @@ augroup vimlsp_settings_gopls
   au!
   autocmd User lsp_setup call lsp#register_server({
       \ 'name': 'gopls',
-      \ 'cmd': {server_info->['gopls']},
-      \ 'initialization_options': {"diagnostics": "false"},
-      \ 'whitelist': ['go'],
+      \ 'cmd': lsp_settings#get('gopls', 'cmd', {server_info->['gopls']}),
+      \ 'initialization_options': lsp_settings#get('gopls', 'initialization_options', {"diagnostics": "true"}),
+      \ 'whitelist': lsp_settings#get('gopls', 'whitelist', ['go']),
+      \ 'blacklist': lsp_settings#get('gopls', 'blacklist', []),
+      \ 'config': lsp_settings#get('gopls', 'config', {}),
+      \ 'workspace_config': lsp_settings#get('gopls', 'workspace_config', {}),
       \ })
 augroup END
