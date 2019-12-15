@@ -1,6 +1,6 @@
-let s:setting_dir = expand('<sfile>:h:h').'/setting'
+let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
-let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json'), "\n"))
+let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
 
 function! s:executable(cmd) abort
   if executable(a:cmd)
@@ -26,7 +26,7 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vimlsp_installer() abort
-  let l:setting = s:setting[&filetype]
+  let l:setting = s:settings[&filetype]
   if empty(l:setting)
     return ''
   endif
@@ -73,14 +73,14 @@ function! s:vimlsp_settings_suggest() abort
 endfunction
 
 function! s:vimlsp_setting() abort
-  for l:ft in keys(s:setting)
+  for l:ft in keys(s:settings)
     let l:found = 0
-    if empty(s:setting[l:ft])
+    if empty(s:settings[l:ft])
       continue
     endif
-    for l:server in s:setting[l:ft]
+    for l:server in s:settings[l:ft]
       if s:executable(l:server.command)
-        exe 'source' printf('%s/%s.vim', s:setting_dir, l:server.command)
+        exe 'source' printf('%s/%s.vim', s:settings_dir, l:server.command)
         let l:found += 1
         break
       endif
