@@ -4,7 +4,7 @@ let s:setting = json_decode(join(readfile(expand('<sfile>:h:h').'/setting.json')
 
 function! s:executable(cmd) abort
   if executable(a:cmd)
-    return a:cmd
+    return 1
   endif
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
   if type(l:paths) == type([])
@@ -79,6 +79,7 @@ function! s:vimlsp_setting() abort
       continue
     endif
     for l:server in s:setting[l:ft]
+		  echomsg l:server.command
       if s:executable(l:server.command)
         exe 'source' printf('%s/%s.vim', s:setting_dir, l:server.command)
         let l:found += 1

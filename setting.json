@@ -1,4 +1,16 @@
 {
+  "c": [
+    {
+      "command": "clangd",
+      "requires": []
+    }
+  ],
+  "cpp": [
+    {
+      "command": "clangd",
+      "requires": []
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
