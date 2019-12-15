@@ -14,7 +14,7 @@ cat <<EOF > intelephense-server
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
-node \$DIR/node_modules/.bin/intelephense --stdio
+\$DIR/node_modules/.bin/intelephense --stdio
 EOF
 
 chmod +x intelephense-server
