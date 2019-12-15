@@ -15,7 +15,7 @@ setlocal enabledelayedexpansion ^
 
 cd %%~dp0 ^
 
-for %%%%F in (plugins/org.eclipse.equinox.launcher*.jar) do ( ^
+for %%%%F in (plugins/org.eclipse.equinox.launcher*win32*.jar) do ( ^
 
   set launcher=plugins/%%%%F ^
 
