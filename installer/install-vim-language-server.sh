@@ -14,7 +14,7 @@ cat <<EOF > vim-language-server
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
-node bin/index.js --stdio
+node \$DIR/bin/index.js --stdio
 EOF
 
 chmod +x vim-language-server
