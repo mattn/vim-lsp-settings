@@ -17,4 +17,4 @@ DIR=\$(cd \$(dirname \$0); pwd)
 node \$DIR/node_modules/.bin/intelephense --stdio
 EOF
 
-chmod +x vim-language-server
+chmod +x intelephense-server
