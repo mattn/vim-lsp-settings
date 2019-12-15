@@ -79,7 +79,6 @@ function! s:vimlsp_setting() abort
       continue
     endif
     for l:server in s:setting[l:ft]
-		  echomsg l:server.command
       if s:executable(l:server.command)
         exe 'source' printf('%s/%s.vim', s:setting_dir, l:server.command)
         let l:found += 1
