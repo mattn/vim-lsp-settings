@@ -19,6 +19,9 @@ function! lsp_settings#exec_path(cmd) abort
     return a:cmd
   endif
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
+  if type(l:paths) == type([])
+    let l:paths = join(l:paths, ',')
+  endif
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
