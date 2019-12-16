@@ -24,9 +24,25 @@ function! s:first_one(cmd) abort
 endfunction
 
 function! lsp_settings#exec_path(cmd) abort
-  if executable(a:cmd)
-    return a:cmd
+  let l:paths = split($PATH, has('win32') ? ';' : ':')
+  let l:paths = join(l:paths, ',')
+  let l:path = globpath(l:paths, a:cmd)
+  if !has('win32')
+    return s:first_one(globpath(l:paths, a:cmd))
   endif
+  let l:path = globpath(l:paths, a:cmd . '.exe')
+  if !empty(l:path)
+    return s:first_one(l:path)
+  endif
+  let l:path = globpath(l:paths, a:cmd . '.cmd')
+  if !empty(l:path)
+    return s:first_one(l:path)
+  endif
+  let l:path = globpath(l:paths, a:cmd . '.bat')
+  if !empty(l:path)
+    return s:first_one(l:path)
+  endif
+
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
@@ -37,15 +53,15 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   let l:path = globpath(l:paths, a:cmd . '.exe')
   if !empty(l:path)
-    return l:path
+    return s:first_one(l:path)
   endif
   let l:path = globpath(l:paths, a:cmd . '.cmd')
   if !empty(l:path)
-    return l:path
+    return s:first_one(l:path)
   endif
   let l:path = globpath(l:paths, a:cmd . '.bat')
   if !empty(l:path)
-    return l:path
+    return s:first_one(l:path)
   endif
   return ''
 endfunction
