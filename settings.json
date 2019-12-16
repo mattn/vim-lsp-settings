@@ -11,6 +11,12 @@
       "requires": []
     }
   ],
+  "clojure": [
+    {
+      "command": "clojure-lsp",
+      "requires": []
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
