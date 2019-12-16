@@ -18,6 +18,14 @@ let g:lsp_settings = {
 \}
 ```
 
+Overridable keys are:
+
+* initialization_options
+* whitelist
+* blacklist
+* config
+* workspace_config
+
 If you install ruby but not solargraph, you can install solargraph with following command.
 
 ```
