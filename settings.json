@@ -118,5 +118,13 @@
         "npm"
       ]
     }
+  ],
+  "css": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
   ]
 }
