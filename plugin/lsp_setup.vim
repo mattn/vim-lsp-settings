@@ -31,12 +31,12 @@ function! s:vimlsp_installer() abort
   if !has_key(s:settings, &filetype)
     return ''
   endif
-  let l:setting = s:settings[&filetype]
-  if empty(l:setting)
+  let l:server = s:settings[&filetype]
+  if empty(l:server)
     return ''
   endif
   let l:found = {}
-  for l:conf in l:setting
+  for l:conf in l:server
     let l:missing = 0
     for l:require in l:conf.requires
       if !s:executable(l:require)
@@ -52,20 +52,22 @@ function! s:vimlsp_installer() abort
   if empty(l:found)
     return ''
   endif
-  let l:command = s:vimlsp_settings_get(l:setting[0].command, 'cmd', l:setting[0].command)
-  if type(l:command) == type([])
-    let l:command = l:command[0]
-  endif
-  let l:command = printf('%s/install-%s', s:installer_dir, l:command)
-  if has('win32')
-    let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
-  else
-    let l:command = l:command . '.sh'
-  endif
-  if !s:executable(l:command)
-    return ''
-  endif
-  return l:command
+  for l:conf in l:server
+    let l:command = s:vimlsp_settings_get(l:conf.command, 'cmd', l:conf.command)
+    if type(l:command) == type([])
+      let l:command = l:command[0]
+    endif
+    let l:command = printf('%s/install-%s', s:installer_dir, l:command)
+    if has('win32')
+      let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+    else
+      let l:command = l:command . '.sh'
+    endif
+    if s:executable(l:command)
+      return l:command
+    endif
+  endfor
+  return ''
 endfunction
 
 function! s:vimlsp_install_server() abort
@@ -77,7 +79,7 @@ function! s:vimlsp_settings_suggest() abort
   if empty(s:vimlsp_installer())
     return
   endif
-  echomsg printf("If you want to enable Language Server, please do :LspInstallServer")
+  echomsg printf('If you want to enable Language Server, please do :LspInstallServer')
   command! -buffer LspInstallServer call s:vimlsp_install_server()
 endfunction
 
