@@ -20,11 +20,12 @@ let g:lsp_settings = {
 
 Overridable keys are:
 
-* initialization_options
-* whitelist
-* blacklist
-* config
-* workspace_config
+* cmd (List ex: `['clangd-6.0', '-enable-snippets']`)
+* initialization_options (Dictionary)
+* whitelist (List)
+* blacklist (List)
+* config (Dictionary)
+* workspace_config (Dictionary)
 
 If you install ruby but not solargraph, you can install solargraph with following command.
 
