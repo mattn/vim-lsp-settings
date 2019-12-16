@@ -1,6 +1,10 @@
 # vim-lsp-settings
 
-NOTE: This is very experimental project.
+Auto configurations for Language Server for vim-lsp
+
+## Instroduction
+
+Language Servers is not easily to install.
 
 ## License
 
