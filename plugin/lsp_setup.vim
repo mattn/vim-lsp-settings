@@ -28,6 +28,9 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vimlsp_installer() abort
+  if !has_key(s:settings, &filetype)
+    return ''
+  endif
   let l:setting = s:settings[&filetype]
   if empty(l:setting)
     return ''
@@ -49,7 +52,8 @@ function! s:vimlsp_installer() abort
   if empty(l:found)
     return ''
   endif
-  let l:command = printf('%s/install-%s', s:installer_dir, l:setting[0].command)
+  let l:command = s:vimlsp_settings_get(l:setting[0].command, 'cmd', l:setting[0].command)
+  let l:command = printf('%s/install-%s', s:installer_dir, l:command)
   if has('win32')
     let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
   else
@@ -74,6 +78,22 @@ function! s:vimlsp_settings_suggest() abort
   command! -buffer LspInstallServer call s:vimlsp_install_server()
 endfunction
 
+function! s:vimlsp_settings_get(name, key, default) abort
+  let l:config = get(g:, 'lsp_settings', {})
+  if !has_key(l:config, a:name)
+    if !has_key(l:config, '*')
+      return a:default
+    endif
+    let l:config = l:config['*']
+  else
+    let l:config = l:config[a:name]
+  endif
+  if !has_key(l:config, a:key)
+    return a:default
+  endif
+  return l:config[a:key]
+endfunction
+
 function! s:vimlsp_setting() abort
   for l:ft in keys(s:settings)
     let l:found = 0
@@ -81,7 +101,7 @@ function! s:vimlsp_setting() abort
       continue
     endif
     for l:server in s:settings[l:ft]
-      if s:executable(l:server.command)
+      if s:executable(s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command))
         let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
         if filereadable(l:script)
           exe 'source' l:script
@@ -95,7 +115,7 @@ function! s:vimlsp_setting() abort
         au!
         exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
       augroup END
-    else
+    elseif !empty(s:vimlsp_installer())
       command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endfor
