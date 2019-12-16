@@ -95,6 +95,8 @@ function! s:vimlsp_setting() abort
         au!
         exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
       augroup END
+    else
+      command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endfor
 endfunction
