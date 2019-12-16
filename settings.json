@@ -126,5 +126,13 @@
         "npm"
       ]
     }
+  ],
+  "cs": [
+    {
+      "command": "omnisharp-node-client",
+      "requires": [
+        "npm"
+      ]
+    }
   ]
 }
