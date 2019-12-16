@@ -1,4 +1,4 @@
-@echo off
+#!/bin/bash
 
 set -e
 
