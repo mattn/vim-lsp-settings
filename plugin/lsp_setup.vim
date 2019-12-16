@@ -82,9 +82,12 @@ function! s:vimlsp_setting() abort
     endif
     for l:server in s:settings[l:ft]
       if s:executable(l:server.command)
-        exe 'source' printf('%s/%s.vim', s:settings_dir, l:server.command)
-        let l:found += 1
-        break
+        let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
+        if filereadable(l:script)
+          exe 'source' l:script
+          let l:found += 1
+          break
+        endif
       endif
     endfor
     if l:found ==# 0
