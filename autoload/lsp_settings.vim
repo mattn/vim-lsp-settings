@@ -28,19 +28,22 @@ function! lsp_settings#exec_path(cmd) abort
   let l:paths = join(l:paths, ',')
   let l:path = globpath(l:paths, a:cmd)
   if !has('win32')
-    return s:first_one(globpath(l:paths, a:cmd))
-  endif
-  let l:path = globpath(l:paths, a:cmd . '.exe')
-  if !empty(l:path)
-    return s:first_one(l:path)
-  endif
-  let l:path = globpath(l:paths, a:cmd . '.cmd')
-  if !empty(l:path)
-    return s:first_one(l:path)
-  endif
-  let l:path = globpath(l:paths, a:cmd . '.bat')
-  if !empty(l:path)
-    return s:first_one(l:path)
+    if !empty(l:path)
+      return s:first_one(l:path)
+    endif
+  else
+    let l:path = globpath(l:paths, a:cmd . '.exe')
+    if !empty(l:path)
+      return s:first_one(l:path)
+    endif
+    let l:path = globpath(l:paths, a:cmd . '.cmd')
+    if !empty(l:path)
+      return s:first_one(l:path)
+    endif
+    let l:path = globpath(l:paths, a:cmd . '.bat')
+    if !empty(l:path)
+      return s:first_one(l:path)
+    endif
   endif
 
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
