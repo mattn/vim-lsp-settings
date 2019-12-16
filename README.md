@@ -10,7 +10,7 @@ provide same feature on Vim.
 
 ## Usage
 
-If you install clangd always, you can use clangd for C/C++. But if you install clang with named clangd-6.0, you can replace executable like below:
+If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
 
 ```vim
 let g:lsp_settings = {
