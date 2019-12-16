@@ -24,6 +24,21 @@ If you install ruby but not solargraph, you can install solargraph with followin
 :LspInstallServer
 ```
 
+## Supported Languages
+
+* C/C++ (clangd)
+* Clojure (clojure-lsp)
+* TypeScript (typescript-language-server)
+* JavaScript (javascript-typescript-langserver/typescript-language-server)
+* Python (pyls)
+* Rust (rls)
+* Go (gopls)
+* Ruby (solargraph)
+* PHP (intelephense-server)
+* Java (eclipse-jdt-ls)
+* Lua (emmylua-ls)
+* Vim (vim-language-server)
+
 ## License
 
 MIT
