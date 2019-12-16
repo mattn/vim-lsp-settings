@@ -53,6 +53,9 @@ function! s:vimlsp_installer() abort
     return ''
   endif
   let l:command = s:vimlsp_settings_get(l:setting[0].command, 'cmd', l:setting[0].command)
+  if type(l:command) == type([])
+    let l:command = l:command[0]
+  endif
   let l:command = printf('%s/install-%s', s:installer_dir, l:command)
   if has('win32')
     let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
@@ -101,7 +104,11 @@ function! s:vimlsp_setting() abort
       continue
     endif
     for l:server in s:settings[l:ft]
-      if s:executable(s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command))
+      let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
+      if type(l:command) == type([])
+        let l:command = l:command[0]
+      endif
+      if s:executable(l:command)
         let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
         if filereadable(l:script)
           exe 'source' l:script
