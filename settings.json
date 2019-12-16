@@ -104,5 +104,13 @@
         "yarn"
       ]
     }
+  ],
+  "html": [
+    {
+      "command": "html-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
   ]
 }

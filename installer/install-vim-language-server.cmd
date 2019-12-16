@@ -6,7 +6,6 @@ md "..\servers\vim-language-server"
 cd "..\servers\vim-language-server"
 git clone https://github.com/iamcco/vim-language-server .
 call yarn
-call yarn build
 
 echo @echo off ^
 
