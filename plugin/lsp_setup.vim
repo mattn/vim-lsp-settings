@@ -101,6 +101,9 @@ endfunction
 
 function! s:vimlsp_setting() abort
   for l:ft in keys(s:settings)
+    if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1
+      continue
+    endif
     let l:found = 0
     if empty(s:settings[l:ft])
       continue
