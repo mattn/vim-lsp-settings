@@ -4,9 +4,7 @@ Auto configurations for Language Server for vim-lsp
 
 ## Instroduction
 
-Language Servers is not easily to install. Visual Studio Code provide easy way
-to install/update Language Server and Language Server Client. This plugin
-provide same feature on Vim.
+Language Servers is not easily to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
 
 ## Usage
 
@@ -33,10 +31,12 @@ If you install ruby but not solargraph, you can install solargraph with followin
 :LspInstallServer
 ```
 
+Currently, no way to uninstall/update server. Run this command again, newer version will be installed.
+
 ## Supported Languages
 
 |Language  |Language Server                                            |Local Install|
-|----------|-----------------------------------------------------------|-------------|
+|----------|-----------------------------------------------------------|:-----------:|
 |C/C++     |clangd                                                     |No           |
 |Clojure   |clojure-lsp                                                |Yes          |
 |TypeScript|typescript-language-server                                 |Yes          |
