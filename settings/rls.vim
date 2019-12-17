@@ -8,5 +8,6 @@ augroup vimlsp_settings_rls
       \ 'blacklist': lsp_settings#get('rls', 'blacklist', []),
       \ 'config': lsp_settings#get('rls', 'config', {}),
       \ 'workspace_config': lsp_settings#get('rls', 'workspace_config', {}),
+      \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
       \ })
 augroup END
