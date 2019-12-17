@@ -35,18 +35,20 @@ If you install ruby but not solargraph, you can install solargraph with followin
 
 ## Supported Languages
 
-* C/C++ (clangd)
-* Clojure (clojure-lsp)
-* TypeScript (typescript-language-server)
-* JavaScript (javascript-typescript-langserver/typescript-language-server)
-* Python (pyls)
-* Rust (rls)
-* Go (gopls)
-* Ruby (solargraph)
-* PHP (intelephense-server)
-* Java (eclipse-jdt-ls)
-* Lua (emmylua-ls)
-* Vim (vim-language-server)
+|Language  |Language Server                                            |Local Install|
+|----------|-----------------------------------------------------------|-------------|
+|C/C++     |clangd                                                     |No           |
+|Clojure   |clojure-lsp                                                |Yes          |
+|TypeScript|typescript-language-server                                 |Yes          |
+|JavaScript|javascript-typescript-langserver/typescript-language-server|Yes          |
+|Python    |pyls                                                       |No           |
+|Rust      |rls                                                        |Yes          |
+|Go        |gopls                                                      |Yes          |
+|Ruby      |solargraph                                                 |Yes          |
+|PHP       |intelephense-server                                        |Yes          |
+|Java      |eclipse-jdt-ls                                             |Yes          |
+|Lua       |emmylua-ls                                                 |Yes          |
+|Vim       |vim-language-server                                        |Yes          |
 
 ## License
 
