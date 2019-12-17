@@ -35,20 +35,23 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 
 ## Supported Languages
 
-|Language  |Language Server                                            |Local Install|
-|----------|-----------------------------------------------------------|:-----------:|
-|C/C++     |clangd                                                     |No           |
-|Clojure   |clojure-lsp                                                |Yes          |
-|TypeScript|typescript-language-server                                 |Yes          |
-|JavaScript|javascript-typescript-langserver/typescript-language-server|Yes          |
-|Python    |pyls                                                       |No           |
-|Rust      |rls                                                        |Yes          |
-|Go        |gopls                                                      |Yes          |
-|Ruby      |solargraph                                                 |Yes          |
-|PHP       |intelephense-server                                        |Yes          |
-|Java      |eclipse-jdt-ls                                             |Yes          |
-|Lua       |emmylua-ls                                                 |Yes          |
-|Vim       |vim-language-server                                        |Yes          |
+| Language   | Language Server                                             | Local Install |
+|------------|-------------------------------------------------------------|:-------------:|
+| C/C++      | clangd                                                      | No            |
+| Clojure    | clojure-lsp                                                 | Yes           |
+| TypeScript | typescript-language-server                                  | Yes           |
+| JavaScript | javascript-typescript-langserver/typescript-language-server | Yes           |
+| Python     | pyls                                                        | Yes           |
+| Rust       | rls                                                         | Yes           |
+| Go         | gopls                                                       | Yes           |
+| Ruby       | solargraph                                                  | Yes           |
+| PHP        | intelephense-server                                         | Yes           |
+| Java       | eclipse-jdt-ls                                              | Yes           |
+| Lua        | emmylua-ls                                                  | Yes           |
+| Vim        | vim-language-server                                         | Yes           |
+| Bash       | bash-language-server                                        | Yes           |
+| Terraform  | terraform-lsp                                               | Yes           |
+| Dockerfile | dockerfile-language-server-nodejs                           | Yes           |
 
 ## License
 
