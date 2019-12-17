@@ -43,7 +43,7 @@
     {
       "command": "pyls",
       "requires": [
-        "pip"
+        "python3"
       ]
     }
   ],
@@ -130,6 +130,28 @@
   "cs": [
     {
       "command": "omnisharp-node-client",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "terraform": [
+    {
+      "command": "terraform-lsp",
+      "requires": []
+    }
+  ],
+  "dockerfile": [
+    {
+      "command": "docker-langserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "sh": [
+    {
+      "command": "bash-language-server",
       "requires": [
         "npm"
       ]
