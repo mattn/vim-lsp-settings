@@ -59,6 +59,8 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Bash       | bash-language-server                                        | Yes           |
 | Terraform  | terraform-lsp                                               | Yes           |
 | Dockerfile | dockerfile-language-server-nodejs                           | Yes           |
+| YAML       | yaml-language-server                                        | Yes           |
+| XML        | lsp4xml                                                     | Yes           |
 
 ## License
 

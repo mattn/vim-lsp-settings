@@ -156,5 +156,21 @@
         "npm"
       ]
     }
+  ],
+  "yaml": [
+    {
+      "command": "yaml-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "xml": [
+    {
+      "command": "lsp4xml",
+      "requires": [
+        "java"
+      ]
+    }
   ]
 }
