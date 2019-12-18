@@ -29,11 +29,11 @@ endfunction
 
 function! s:vimlsp_installer() abort
   if !has_key(s:settings, &filetype)
-    return ''
+    return []
   endif
   let l:server = s:settings[&filetype]
   if empty(l:server)
-    return ''
+    return []
   endif
   let l:found = {}
   for l:conf in l:server
@@ -50,7 +50,7 @@ function! s:vimlsp_installer() abort
     endif
   endfor
   if empty(l:found)
-    return ''
+    return []
   endif
   for l:conf in l:server
     let l:command = s:vimlsp_settings_get(l:conf.command, 'cmd', l:conf.command)
@@ -64,15 +64,33 @@ function! s:vimlsp_installer() abort
       let l:command = l:command . '.sh'
     endif
     if s:executable(l:command)
-      return l:command
+      return [l:conf.command, l:command]
     endif
   endfor
-  return ''
+  return []
+endfunction
+
+function! s:vimlsp_install_server_post(command, job, code) abort
+  if a:code != 0
+    return
+  endif
+  if s:executable(a:command)
+    let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
+    echomsg l:script
+    if filereadable(l:script)
+      exe 'source' l:script
+      doautocmd User lsp_setup
+    endif
+  endif
 endfunction
 
 function! s:vimlsp_install_server() abort
-  let l:command = s:vimlsp_installer()
-  exe 'terminal' l:command
+  let l:entry = s:vimlsp_installer()
+  exe 'terminal' l:entry[1]
+  let l:job = term_getjob(bufnr('%'))
+  if l:job != v:null
+    call job_setoptions(l:job, {'exit_cb': function('s:vimlsp_install_server_post', [l:entry[0]])})
+  endif
 endfunction
 
 function! s:vimlsp_settings_suggest() abort
@@ -125,7 +143,7 @@ function! s:vimlsp_setting() abort
     if l:found ==# 0
       exe printf('augroup vimlsp_suggest_%s', l:ft)
         au!
-        exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
+        exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
       augroup END
     elseif !empty(s:vimlsp_installer())
       command! -buffer LspInstallServer call s:vimlsp_install_server()
