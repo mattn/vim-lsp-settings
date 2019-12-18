@@ -6,6 +6,12 @@ Auto configurations for Language Server for vim-lsp
 
 Language Servers is not easily to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
 
+## Installation instruction
+
+```viml
+Plug 'mattn/vim-lsp-settings.vim'
+```
+
 ## Usage
 
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
