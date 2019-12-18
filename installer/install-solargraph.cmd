@@ -5,6 +5,7 @@ if exist "..\servers\solargraph" rd /S /Q  "..\servers\solargraph"
 md "..\servers\solargraph"
 cd "..\servers\solargraph"
 git clone "https://github.com/castwide/solargraph" .
+
 call bundle install --path vendor/bundle
 
 echo @echo off ^

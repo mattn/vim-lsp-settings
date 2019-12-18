@@ -1,6 +1,6 @@
 augroup vimlsp_settings_pyls
   au!
-  autocmd User lsp_setup call lsp#register_server({
+  autocmd User lsp_setup ++once call lsp#register_server({
       \ 'name': 'pyls',
       \ 'cmd': {server_info->lsp_settings#get('pyls', 'cmd', [lsp_settings#exec_path('pyls')])},
       \ 'initialization_options': lsp_settings#get('pyls', 'initialization_options', v:null),

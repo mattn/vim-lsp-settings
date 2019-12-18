@@ -1,6 +1,6 @@
 augroup vimlsp_settings_rls
   au!
-  autocmd User lsp_setup call lsp#register_server({
+  autocmd User lsp_setup ++once call lsp#register_server({
       \ 'name': 'rls',
       \ 'cmd': {server_info->lsp_settings#get('rls', 'cmd', [lsp_settings#exec_path('rls')])},
       \ 'initialization_options': lsp_settings#get('rls', 'initialization_options', v:null),

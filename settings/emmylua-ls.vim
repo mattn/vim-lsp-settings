@@ -1,6 +1,6 @@
 augroup vimlsp_settings_emmylua_ls
   au!
-  autocmd User lsp_setup call lsp#register_server({
+  autocmd User lsp_setup ++once call lsp#register_server({
       \ 'name': 'emmylua-ls',
       \ 'cmd': {server_info->lsp_settings#get('emmylua-ls', 'cmd', [lsp_settings#exec_path('emmylua-ls')])},
       \ 'initialization_options': lsp_settings#get('emmylua-ls', 'initialization_options', v:null),

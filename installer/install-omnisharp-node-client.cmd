@@ -5,6 +5,7 @@ if exist "..\servers\omnisharp-node-client" rd /S /Q  "..\servers\omnisharp-node
 md "..\servers\omnisharp-node-client"
 cd "..\servers\omnisharp-node-client"
 git clone https://github.com/OmniSharp/omnisharp-node-client .
+
 call npm install
 call npm build
 

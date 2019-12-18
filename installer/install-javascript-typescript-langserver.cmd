@@ -5,8 +5,9 @@ if exist "..\servers\javascript-typescript-langserver" rd /S /Q  "..\servers\jav
 md "..\servers\javascript-typescript-langserver"
 cd "..\servers\javascript-typescript-langserver"
 git clone https://github.com/sourcegraph/javascript-typescript-langserver .
-npm install
-npm build
+
+call npm install
+call npm build
 
 echo @echo off ^
 

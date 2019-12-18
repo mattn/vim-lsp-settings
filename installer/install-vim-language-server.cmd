@@ -5,6 +5,7 @@ if exist "..\servers\vim-language-server" rd /S /Q  "..\servers\vim-language-ser
 md "..\servers\vim-language-server"
 cd "..\servers\vim-language-server"
 git clone https://github.com/iamcco/vim-language-server .
+
 call yarn
 
 echo @echo off ^

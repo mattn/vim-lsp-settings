@@ -1,6 +1,6 @@
 augroup vimlsp_settings_html_languageserver
   au!
-  autocmd User lsp_setup call lsp#register_server({
+  autocmd User lsp_setup ++once call lsp#register_server({
       \ 'name': 'html-languageserver',
       \ 'cmd': {server_info->lsp_settings#get('html-languageserver', 'cmd', [lsp_settings#exec_path('html-languageserver'), '--stdio'])},
       \ 'initialization_options': lsp_settings#get('html-languageserver', 'initialization_options', v:null),

@@ -1,6 +1,6 @@
 augroup vimlsp_settings_clojure_lsp
   au!
-  autocmd User lsp_setup call lsp#register_server({
+  autocmd User lsp_setup ++once call lsp#register_server({
       \ 'name': 'clojure-lsp',
       \ 'cmd': {server_info->lsp_settings#get('clojure-lsp', 'cmd', [lsp_settings#exec_path('clojure-lsp')])},
       \ 'initialization_options': lsp_settings#get('clojure-lsp', 'initialization_options', v:null),
