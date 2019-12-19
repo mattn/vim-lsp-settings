@@ -1,6 +1,6 @@
 augroup vimlsp_settings_rls
   au!
-  autocmd User lsp_setup ++once call lsp#register_server({
+  let settings = {
       \ 'name': 'rls',
       \ 'cmd': {server_info->lsp_settings#get('rls', 'cmd', [lsp_settings#exec_path('rls')])},
       \ 'initialization_options': lsp_settings#get('rls', 'initialization_options', v:null),
@@ -9,5 +9,10 @@ augroup vimlsp_settings_rls
       \ 'config': lsp_settings#get('rls', 'config', {}),
       \ 'workspace_config': lsp_settings#get('rls', 'workspace_config', {}),
       \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
-      \ })
+      \ }
+  if has('patch-8.1.000')
+    autocmd User lsp_setup ++once call lsp#register_server(settings)
+  else
+    autocmd User lsp_setup call lsp#register_server(settings)
+  endif
 augroup END

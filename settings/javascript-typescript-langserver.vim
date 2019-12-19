@@ -1,6 +1,6 @@
 augroup vimlsp_settings_javascript_typescript_langserver
   au!
-  autocmd User lsp_setup ++once call lsp#register_server({
+  let settings = {
       \ 'name': 'javascript-typescript-langserver',
       \ 'cmd': {server_info->lsp_settings#get('javascript-typescript-langserver', 'cmd', [lsp_settings#exec_path('javascript-typescript-langserver')])},
       \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
@@ -9,5 +9,10 @@ augroup vimlsp_settings_javascript_typescript_langserver
       \ 'blacklist': lsp_settings#get('javascript-typescript-langserver', 'blacklist', []),
       \ 'config': lsp_settings#get('javascript-typescript-langserver', 'config', {}),
       \ 'workspace_config': lsp_settings#get('javascript-typescript-langserver', 'workspace_config', {}),
-      \ })
+      \ }
+  if has('patch-8.1.000')
+    autocmd User lsp_setup ++once call lsp#register_server(settings)
+  else
+    autocmd User lsp_setup call lsp#register_server(settings)
+  endif
 augroup END
