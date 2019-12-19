@@ -10,11 +10,11 @@ curl -L -o omnisharp-linux-x64.zip https://github.com/OmniSharp/omnisharp-roslyn
 unzip omnisharp-linux-x64.zip
 rm omnisharp-linux-x64.zip
 
-cat <<EOF > omnisharp
+cat <<EOF > omnisharp-run
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/run \$*
 EOF
 
-chmod +x omnisharp
+chmod +x omnisharp-run
