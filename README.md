@@ -8,8 +8,10 @@ Language Servers is not easily to install. Visual Studio Code provide easy way t
 
 ## Installation instruction
 
+For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
+
 ```viml
-Plug 'mattn/vim-lsp-settings.vim'
+Plug 'mattn/vim-lsp-settings'
 ```
 
 ## Usage
