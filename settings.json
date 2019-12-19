@@ -129,7 +129,7 @@
   ],
   "cs": [
     {
-      "command": "omnisharp-run",
+      "command": "omnisharp-lsp",
       "requires": [
         "npm"
       ]
