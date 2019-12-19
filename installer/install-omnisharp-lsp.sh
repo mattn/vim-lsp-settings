@@ -10,6 +10,8 @@ curl -L -o omnisharp-linux-x64.zip https://github.com/OmniSharp/omnisharp-roslyn
 unzip omnisharp-linux-x64.zip
 rm omnisharp-linux-x64.zip
 
+chmod +x run
+
 cat <<EOF > omnisharp-lsp
 #!/bin/sh
 
