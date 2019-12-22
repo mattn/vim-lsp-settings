@@ -7,13 +7,13 @@ cd $(dirname $0)
 mkdir ../servers/solargraph
 cd ../servers/solargraph
 git clone "https://github.com/castwide/solargraph" .
-call bundle install --path vendor/bundle
+bundle install --path vendor/bundle
 
 cat <<EOF > solargraph
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
-bundle exec ruby \$DIR/bin/solargraph stdio
+cd $DIR && bundle exec ruby \$DIR/bin/solargraph stdio
 EOF
 
 chmod +x solargraph
