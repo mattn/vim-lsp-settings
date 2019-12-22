@@ -70,10 +70,10 @@ function! lsp_settings#exec_path(cmd) abort
 endfunction
 
 function! lsp_settings#register_server_settings(settings) abort
-  let settings = a:settings
+  let s:settings = a:settings
   if has('patch-8.1.000')
-    autocmd User lsp_setup ++once call lsp#register_server(settings)
+    autocmd User lsp_setup ++once call lsp#register_server(s:settings)
   else
-    autocmd User lsp_setup call lsp#register_server(settings)
+    autocmd User lsp_setup call lsp#register_server(s:settings)
   endif
 endfunction
