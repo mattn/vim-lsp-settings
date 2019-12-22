@@ -143,7 +143,11 @@ function! s:vimlsp_setting() abort
     if l:found ==# 0
       exe printf('augroup vimlsp_suggest_%s', l:ft)
         au!
-        exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
+        if has('patch-8.1.000')
+          exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
+        else
+          exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
+      endif
       augroup END
     elseif !empty(s:vimlsp_installer())
       command! -buffer LspInstallServer call s:vimlsp_install_server()

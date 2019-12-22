@@ -8,9 +8,5 @@ augroup vimlsp_settings_dockerfile_language_server_nodejs
       \ 'config': lsp_settings#get('docker-langserver', 'config', {}),
       \ 'workspace_config': lsp_settings#get('docker-langserver', 'workspace_config', {}),
       \ }
-  if has('patch-8.1.000')
-    autocmd User lsp_setup ++once call lsp#register_server(settings)
-  else
-    autocmd User lsp_setup call lsp#register_server(settings)
-  endif
+  call lsp_settings#register_server_settings(settings)
 augroup END

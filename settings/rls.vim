@@ -10,9 +10,5 @@ augroup vimlsp_settings_rls
       \ 'workspace_config': lsp_settings#get('rls', 'workspace_config', {}),
       \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
       \ }
-  if has('patch-8.1.000')
-    autocmd User lsp_setup ++once call lsp#register_server(settings)
-  else
-    autocmd User lsp_setup call lsp#register_server(settings)
-  endif
+  call lsp_settings#register_server_settings(settings)
 augroup END

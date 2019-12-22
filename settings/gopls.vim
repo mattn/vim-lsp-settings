@@ -9,9 +9,5 @@ augroup vimlsp_settings_gopls
       \ 'config': lsp_settings#get('gopls', 'config', {}),
       \ 'workspace_config': lsp_settings#get('gopls', 'workspace_config', {}),
       \ }
-  if has('patch-8.1.000')
-    autocmd User lsp_setup ++once call lsp#register_server(settings)
-  else
-    autocmd User lsp_setup call lsp#register_server(settings)
-  endif
+  call lsp_settings#register_server_settings(settings)
 augroup END

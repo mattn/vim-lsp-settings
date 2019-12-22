@@ -9,9 +9,5 @@ augroup vimlsp_settings_css_languageserver
       \ 'config': lsp_settings#get('css-languageserver', 'config', v:null),
       \ 'workspace_config': lsp_settings#get('css-languageserver', 'workspace_config', {'css-languageserver': {'css.lint.validProperties': [], 'less.lint.validProperties': [], 'scss.lint.validProperties': []}}),
       \ }
-  if has('patch-8.1.000')
-    autocmd User lsp_setup ++once call lsp#register_server(settings)
-  else
-    autocmd User lsp_setup call lsp#register_server(settings)
-  endif
+  call lsp_settings#register_server_settings(settings)
 augroup END
