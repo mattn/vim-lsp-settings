@@ -63,6 +63,8 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Dockerfile | dockerfile-language-server-nodejs                           | Yes           |
 | YAML       | yaml-language-server                                        | Yes           |
 | XML        | lsp4xml                                                     | Yes           |
+| Fortran    | fortls                                                      | Yes           |
+| Scala      | Metals                                                      | Yes           |
 
 ## License
 
