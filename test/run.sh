@@ -4,7 +4,7 @@ set -e
 
 usage() {
   cat <<USAGE
-Usage: $0 [pattern] [args...]
+Usage: $0 [pattern] [args]
 Examples 
 $0 pyls
 $0 "pyls|kotlin"
