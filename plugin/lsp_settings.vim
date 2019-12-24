@@ -1,3 +1,8 @@
+if exists('g:loaded_lsp_settings')
+  finish
+endif
+let g:loaded_lsp_settings= 1
+
 let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
