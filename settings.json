@@ -188,5 +188,21 @@
         "java"
       ]
     }
+  ],
+  "elm": [
+    {
+      "command": "elm-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "json": [
+    {
+      "command": "json-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
   ]
 }
