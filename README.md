@@ -2,7 +2,7 @@
 
 Auto configurations for Language Server for vim-lsp
 
-## Instroduction
+## Introduction
 
 Language Servers is not easily to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
 
