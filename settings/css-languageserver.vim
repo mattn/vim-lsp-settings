@@ -7,7 +7,7 @@ augroup vimlsp_settings_css_languageserver
       \ 'initialization_options': lsp_settings#get('css-languageserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('css-languageserver', 'whitelist', ['css']),
       \ 'blacklist': lsp_settings#get('css-languageserver', 'blacklist', []),
-      \ 'config': lsp_settings#get('css-languageserver', 'config', v:null),
-      \ 'workspace_config': lsp_settings#get('css-languageserver', 'workspace_config', {'css-languageserver': {'css.lint.validProperties': [], 'less.lint.validProperties': [], 'scss.lint.validProperties': []}}),
+      \ 'config': lsp_settings#get('css-languageserver', 'config', {}),
+      \ 'workspace_config': lsp_settings#get('css-languageserver', 'workspace_config', {'css': {'lint': {'validProperties': []}}}),
       \ }
 augroup END
