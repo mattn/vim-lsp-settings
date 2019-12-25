@@ -1,7 +1,11 @@
 @echo off
 
+setlocal
+
 cd %~dp0
-if exist "..\servers\clojure-lsp" rd /S /Q  "..\servers\clojure-lsp"
-md "..\servers\clojure-lsp"
-cd "..\servers\clojure-lsp"
+
+set server_dir="..\servers\clojure-lsp"
+if exist %server_dir% rd /Q /S "%server_dir%"
+md "%server_dir%"
+cd "%server_dir%"
 curl -L -o clojure-lsp.cmd https://github.com/snoe/clojure-lsp/releases/download/release-20191202T142318/clojure-lsp
