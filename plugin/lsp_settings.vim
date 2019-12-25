@@ -81,7 +81,6 @@ function! s:vimlsp_install_server_post(command, job, code) abort
   endif
   if s:executable(a:command)
     let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
-    echomsg l:script
     if filereadable(l:script)
       if has('patch-8.1.1113')
         command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp#register_server(<args>)
