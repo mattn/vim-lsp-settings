@@ -50,9 +50,7 @@
   "rust": [
     {
       "command": "rls",
-      "requires": [
-        "rustup"
-      ]
+      "requires": []
     }
   ],
   "go": [

@@ -24,6 +24,8 @@ But when rebuild the cache, any merging plugin manager erases old cached files(i
 
 ## Usage
 
+If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
+
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
 
 ```vim
@@ -59,7 +61,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | TypeScript | typescript-language-server                                  | Yes           |
 | JavaScript | javascript-typescript-langserver/typescript-language-server | Yes           |
 | Python     | pyls                                                        | Yes           |
-| Rust       | rls                                                         | Yes           |
+| Rust       | rls                                                         | No            |
 | Go         | gopls                                                       | Yes           |
 | Ruby       | solargraph                                                  | Yes           |
 | PHP        | intelephense                                                | Yes           |
