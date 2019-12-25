@@ -51,7 +51,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | TypeScript | typescript-language-server                                  | Yes           |
 | JavaScript | javascript-typescript-langserver/typescript-language-server | Yes           |
 | Python     | pyls                                                        | Yes           |
-| Rust       | rls                                                         | Yes           |
+| Rust       | rls                                                         | No            |
 | Go         | gopls                                                       | Yes           |
 | Ruby       | solargraph                                                  | Yes           |
 | PHP        | intelephense                                                | Yes           |
