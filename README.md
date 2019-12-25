@@ -54,7 +54,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Rust       | rls                                                         | Yes           |
 | Go         | gopls                                                       | Yes           |
 | Ruby       | solargraph                                                  | Yes           |
-| PHP        | intelephense-server                                         | Yes           |
+| PHP        | intelephense                                                | Yes           |
 | Java       | eclipse-jdt-ls                                              | Yes           |
 | Lua        | emmylua-ls                                                  | Yes           |
 | Vim        | vim-language-server                                         | Yes           |
