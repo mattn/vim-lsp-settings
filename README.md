@@ -14,6 +14,14 @@ For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 Plug 'mattn/vim-lsp-settings'
 ```
 
+### Notice
+
+If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0).
+
+*reason*:
+Servers are installed in ./servers directory at the caching area.
+But when rebuild the cache, any merging plugin manager erases old cached files(include ./servers and server execute files) before install.
+
 ## Usage
 
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
