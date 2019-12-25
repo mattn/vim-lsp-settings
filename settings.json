@@ -107,7 +107,7 @@
     {
       "command": "vim-language-server",
       "requires": [
-        "yarn"
+        "npm"
       ]
     }
   ],
@@ -168,6 +168,22 @@
   "xml": [
     {
       "command": "lsp4xml",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
+  "fortran": [
+    {
+      "command": "fortls",
+      "requires": [
+        "python3"
+      ]
+    }
+  ],
+  "scala": [
+    {
+      "command": "metals",
       "requires": [
         "java"
       ]
