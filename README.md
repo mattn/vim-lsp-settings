@@ -77,6 +77,8 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Scala      | Metals                                                      | Yes           |
 | Elm        | elm-language-server                                         | Yes           |
 | JSON       | json-languageserver                                         | Yes           |
+| Swift      | sourcekit-lsp                                               | No            |
+| COBOL      | cobol-language-support                                      | Yes           |
 
 ## License
 

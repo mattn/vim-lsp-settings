@@ -202,5 +202,21 @@
         "npm"
       ]
     }
+  ],
+  "swift": [
+    {
+      "command": "sourcekit-lsp",
+      "requires": [
+        "sourcekit-lsp"
+      ]
+    }
+  ],
+  "cobol": [
+    {
+      "command": "cobol-language-support",
+      "requires": [
+        "java"
+      ]
+    }
   ]
 }
