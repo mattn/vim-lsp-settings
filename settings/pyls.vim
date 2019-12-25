@@ -1,6 +1,6 @@
 augroup vimlsp_settings_pyls
   au!
-  autocmd User lsp_setup ++once call lsp#register_server({
+  LspRegisterServer {
       \ 'name': 'pyls',
       \ 'cmd': {server_info->lsp_settings#get('pyls', 'cmd', [lsp_settings#exec_path('pyls')])},
       \ 'root_uri':{server_info->lsp_settings#get('pyls', 'root_uri', lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), ['.git/'])))},
@@ -9,5 +9,5 @@ augroup vimlsp_settings_pyls
       \ 'blacklist': lsp_settings#get('pyls', 'blacklist', []),
       \ 'config': lsp_settings#get('pyls', 'config', {}),
       \ 'workspace_config': lsp_settings#get('pyls', 'workspace_config', {}),
-      \ })
+      \ }
 augroup END
