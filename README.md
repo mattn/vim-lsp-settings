@@ -65,6 +65,8 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | XML        | lsp4xml                                                     | Yes           |
 | Fortran    | fortls                                                      | Yes           |
 | Scala      | Metals                                                      | Yes           |
+| Elm        | elm-language-server                                         | Yes           |
+| JSON       | json-languageserver                                         | Yes           |
 
 ## License
 
