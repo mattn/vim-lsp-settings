@@ -1,6 +1,6 @@
 augroup vimlsp_settings_solargraph
   au!
-  autocmd User lsp_setup ++once call lsp#register_server({
+  LspRegisterServer {
       \ 'name': 'solargraph',
       \ 'cmd': {server_info->lsp_settings#get('solargraph', 'cmd', [lsp_settings#exec_path('solargraph'), 'stdio'])},
       \ 'root_uri':{server_info->lsp_settings#get('solargraph', 'root_uri', lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), ['.git/'])))},
@@ -9,5 +9,5 @@ augroup vimlsp_settings_solargraph
       \ 'blacklist': lsp_settings#get('solargraph', 'blacklist', []),
       \ 'config': lsp_settings#get('solargraph', 'config', {}),
       \ 'workspace_config': lsp_settings#get('solargraph', 'workspace_config', {}),
-      \ })
+      \ }
 augroup END

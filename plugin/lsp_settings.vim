@@ -102,8 +102,10 @@ function! s:vimlsp_settings_suggest() abort
   if empty(s:vimlsp_installer())
     return
   endif
-  echomsg 'If you want to enable Language Server, please do :LspInstallServer'
-  command! -buffer LspInstallServer call s:vimlsp_install_server()
+  if !exists(':LspInstallServer')
+    echomsg 'If you want to enable Language Server, please do :LspInstallServer'
+    command! -buffer LspInstallServer call s:vimlsp_install_server()
+  endif
 endfunction
 
 function! s:vimlsp_settings_get(name, key, default) abort
@@ -123,6 +125,12 @@ function! s:vimlsp_settings_get(name, key, default) abort
 endfunction
 
 function! s:vimlsp_setting() abort
+  if has('patch-8.1.1113')
+    command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp#register_server(<args>)
+  else
+    command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
+  endif
+
   for l:ft in keys(s:settings)
     if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1
       continue
@@ -148,12 +156,18 @@ function! s:vimlsp_setting() abort
     if l:found ==# 0
       exe printf('augroup vimlsp_suggest_%s', l:ft)
         au!
-        exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
+        if has('patch-8.1.1113')
+          exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
+        else
+          exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
+        endif
       augroup END
     elseif !empty(s:vimlsp_installer())
       command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endfor
+
+  delcommand LspRegisterServer
 endfunction
 
 call s:vimlsp_setting()

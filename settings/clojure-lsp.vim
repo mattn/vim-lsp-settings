@@ -1,6 +1,6 @@
 augroup vimlsp_settings_clojure_lsp
   au!
-  autocmd User lsp_setup ++once call lsp#register_server({
+  LspRegisterServer {
       \ 'name': 'clojure-lsp',
       \ 'cmd': {server_info->lsp_settings#get('clojure-lsp', 'cmd', [lsp_settings#exec_path('clojure-lsp')])},
       \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), ['.git/']))},
@@ -9,5 +9,5 @@ augroup vimlsp_settings_clojure_lsp
       \ 'blacklist': lsp_settings#get('clojure-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('clojure-lsp', 'config', {}),
       \ 'workspace_config': lsp_settings#get('clojure-lsp', 'workspace_config', {}),
-      \ })
+      \ }
 augroup END
