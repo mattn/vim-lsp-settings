@@ -97,7 +97,7 @@ function! s:vimlsp_settings_suggest() abort
   if empty(s:vimlsp_installer())
     return
   endif
-  echomsg printf('If you want to enable Language Server, please do :LspInstallServer')
+  echomsg 'If you want to enable Language Server, please do :LspInstallServer'
   command! -buffer LspInstallServer call s:vimlsp_install_server()
 endfunction
 
