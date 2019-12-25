@@ -16,6 +16,8 @@ Plug 'mattn/vim-lsp-settings'
 
 ## Usage
 
+If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
+
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
 
 ```vim
