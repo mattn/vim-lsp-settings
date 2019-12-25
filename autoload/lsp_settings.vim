@@ -68,3 +68,11 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   return ''
 endfunction
+
+function! lsp_settings#root_uri(pattern) abort
+  let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:pattern)
+  if empty(l:dir)
+    return lsp#utils#get_default_root_uri()
+  endif
+  return lsp#utils#path_to_uri(l:dir)
+endfunction
