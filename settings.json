@@ -5,23 +5,87 @@
       "requires": []
     }
   ],
-  "cpp": [
-    {
-      "command": "clangd",
-      "requires": []
-    }
-  ],
   "clojure": [
     {
       "command": "clojure-lsp",
       "requires": []
     }
   ],
-  "typescript": [
+  "cobol": [
     {
-      "command": "typescript-language-server",
+      "command": "cobol-language-support",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
+  "cpp": [
+    {
+      "command": "clangd",
+      "requires": []
+    }
+  ],
+  "cs": [
+    {
+      "command": "omnisharp-lsp",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "css": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "dockerfile": [
+    {
+      "command": "docker-langserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "elm": [
+    {
+      "command": "elm-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "fortran": [
+    {
+      "command": "fortls",
+      "requires": [
+        "python3"
+      ]
+    }
+  ],
+  "go": [
+    {
+      "command": "gopls",
+      "requires": [
+        "go"
+      ]
+    }
+  ],
+  "html": [
+    {
+      "command": "html-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "java": [
+    {
+      "command": "eclipse-jdt-ls",
+      "requires": [
+        "java"
       ]
     }
   ],
@@ -39,49 +103,11 @@
       ]
     }
   ],
-  "python": [
+  "json": [
     {
-      "command": "pyls",
-      "requires": [
-        "python3"
-      ]
-    }
-  ],
-  "rust": [
-    {
-      "command": "rls",
-      "requires": []
-    }
-  ],
-  "go": [
-    {
-      "command": "gopls",
-      "requires": [
-        "go"
-      ]
-    }
-  ],
-  "ruby": [
-    {
-      "command": "solargraph",
-      "requires": [
-        "gem"
-      ]
-    }
-  ],
-  "php": [
-    {
-      "command": "intelephense",
+      "command": "json-languageserver",
       "requires": [
         "npm"
-      ]
-    }
-  ],
-  "java": [
-    {
-      "command": "eclipse-jdt-ls",
-      "requires": [
-        "java"
       ]
     }
   ],
@@ -93,38 +119,6 @@
       ]
     }
   ],
-  "lua": [
-    {
-      "command": "emmylua-ls",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "vim": [
-    {
-      "command": "vim-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "html": [
-    {
-      "command": "html-languageserver",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "css": [
-    {
-      "command": "css-languageserver",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
   "less": [
     {
       "command": "css-languageserver",
@@ -133,65 +127,49 @@
       ]
     }
   ],
-  "sass": [
+  "lua": [
     {
-      "command": "css-languageserver",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "cs": [
-    {
-      "command": "omnisharp-lsp",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "terraform": [
-    {
-      "command": "terraform-lsp",
-      "requires": []
-    }
-  ],
-  "dockerfile": [
-    {
-      "command": "docker-langserver",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "sh": [
-    {
-      "command": "bash-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "yaml": [
-    {
-      "command": "yaml-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "xml": [
-    {
-      "command": "lsp4xml",
+      "command": "emmylua-ls",
       "requires": [
         "java"
       ]
     }
   ],
-  "fortran": [
+  "php": [
     {
-      "command": "fortls",
+      "command": "intelephense",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "python": [
+    {
+      "command": "pyls",
       "requires": [
         "python3"
+      ]
+    }
+  ],
+  "ruby": [
+    {
+      "command": "solargraph",
+      "requires": [
+        "gem"
+      ]
+    }
+  ],
+  "rust": [
+    {
+      "command": "rls",
+      "requires": []
+    }
+  ],
+  "sass": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
       ]
     }
   ],
@@ -203,17 +181,9 @@
       ]
     }
   ],
-  "elm": [
+  "sh": [
     {
-      "command": "elm-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "json": [
-    {
-      "command": "json-languageserver",
+      "command": "bash-language-server",
       "requires": [
         "npm"
       ]
@@ -227,11 +197,41 @@
       ]
     }
   ],
-  "cobol": [
+  "terraform": [
     {
-      "command": "cobol-language-support",
+      "command": "terraform-lsp",
+      "requires": []
+    }
+  ],
+  "typescript": [
+    {
+      "command": "typescript-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "vim": [
+    {
+      "command": "vim-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "xml": [
+    {
+      "command": "lsp4xml",
       "requires": [
         "java"
+      ]
+    }
+  ],
+  "yaml": [
+    {
+      "command": "yaml-language-server",
+      "requires": [
+        "npm"
       ]
     }
   ]
