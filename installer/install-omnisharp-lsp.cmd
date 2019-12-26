@@ -1,5 +1,11 @@
 @echo off
 
+where unzip1 2>NUL
+if %ERRORLEVEL% neq 0 (
+    echo unzip command required
+    exit /b 1
+)
+
 setlocal
 
 cd /d %~dp0
@@ -18,3 +24,4 @@ echo @echo off ^
 %%~dp0\omnisharp.exe %%* ^
 
 > omnisharp-lsp.cmd
+
