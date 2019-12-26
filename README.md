@@ -11,14 +11,21 @@ Language Servers is not easily to install. Visual Studio Code provide easy way t
 For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 
 ```viml
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 ```
+
+You need to install both vim-lsp and its accompanying plugins and vim-lsp-settings.
 
 ### Notice
 
 If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0).
 
-*reason*:
+_reason_:
+
 Servers are installed in ./servers directory at the caching area.
 But when rebuild the cache, any merging plugin manager erases old cached files(include ./servers and server execute files) before install.
 
