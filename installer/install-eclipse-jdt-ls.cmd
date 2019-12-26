@@ -1,9 +1,14 @@
 @echo off
 
-cd %~dp0
-if exist "..\servers\eclipse-jdt-ls" rd /S /Q  "..\servers\eclipse-jdt-ls"
-md "..\servers\eclipse-jdt-ls"
-cd "..\servers\eclipse-jdt-ls"
+setlocal
+
+cd /d %~dp0
+
+set server_dir=..\servers\eclipse-jdt-ls
+if exist %server_dir% rd /Q /S "%server_dir%"
+md "%server_dir%"
+cd /d "%server_dir%"
+
 curl -o "jdt-language-server-latest.tar.gz" "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz"
 curl -o "lombok.jar" "https://projectlombok.org/downloads/lombok.jar"
 tar xvf jdt-language-server-latest.tar.gz

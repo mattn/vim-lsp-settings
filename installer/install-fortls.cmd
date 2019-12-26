@@ -1,6 +1,6 @@
 @echo off
 
-cd %~dp0
+cd /d %~dp0
 
 call pip_install fortls fortran-language-server
 

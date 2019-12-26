@@ -2,12 +2,12 @@
 
 setlocal
 
-cd %~dp0
+cd /d %~dp0
 
-set server_dir="..\servers\metals"
-rd /Q /S %server_dir%
-md %server_dir%
-cd "%server_dir%"
+set server_dir=..\servers\metals
+if exist %server_dir% rd /Q /S "%server_dir%"
+md "%server_dir%"
+cd /d "%server_dir%"
 
 curl -Lo coursier https://git.io/coursier-cli
 curl -Lo coursier.bat https://git.io/coursier-bat
