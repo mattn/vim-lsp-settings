@@ -1,6 +1,6 @@
 # vim-lsp-settings
 
-Auto configurations for Language Server for vim-lsp
+Auto configurations for Language Server for [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 
 ## Introduction
 
@@ -18,7 +18,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 ```
 
-You need to install both vim-lsp and its accompanying plugins and vim-lsp-settings.
+You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
 
 ### Notice
 
