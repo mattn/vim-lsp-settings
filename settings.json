@@ -125,6 +125,22 @@
       ]
     }
   ],
+  "less": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "sass": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "cs": [
     {
       "command": "omnisharp-lsp",
