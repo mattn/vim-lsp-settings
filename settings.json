@@ -151,6 +151,12 @@
       ]
     }
   ],
+  "reason": [
+    {
+      "command": "reason-language-server",
+      "requires": []
+    }
+  ],
   "ruby": [
     {
       "command": "solargraph",
