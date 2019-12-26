@@ -86,6 +86,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | JSON       | json-languageserver                                         | Yes           |
 | Swift      | sourcekit-lsp                                               | No            |
 | COBOL      | cobol-language-support                                      | Yes           |
+| Reason     | reason-language-server                                      | Yes           |
 
 ## License
 
