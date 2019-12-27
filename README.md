@@ -87,6 +87,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Swift      | sourcekit-lsp                                               | No            |
 | COBOL      | cobol-language-support                                      | Yes           |
 | Reason     | reason-language-server                                      | Yes           |
+| TeX        | digestif                                                    | No            |
 
 ## License
 
