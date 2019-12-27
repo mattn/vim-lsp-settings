@@ -130,49 +130,61 @@ function! s:vimlsp_settings_get(name, key, default) abort
 endfunction
 
 function! s:vimlsp_setting() abort
+  for l:ft in keys(s:settings)
+    if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1 || empty(s:settings[l:ft])
+      continue
+    endif
+    exe 'augroup' s:load_or_suggest_group_name(l:ft)
+      au!
+      exe 'autocmd FileType' l:ft 'call s:vimlsp_load_or_suggest(' string(l:ft) ')'
+    augroup END
+  endfor
+endfunction
+
+function! s:vimlsp_load_or_suggest(ft) abort
+  let l:group_name = s:load_or_suggest_group_name(a:ft)
+  exe 'augroup' l:group_name
+    au!
+  augroup END
+  exe 'augroup!' l:group_name
+
   if has('patch-8.1.1113')
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp#register_server(<args>)
   else
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
   endif
 
-  for l:ft in keys(s:settings)
-    if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1
-      continue
+  let l:found = 0
+
+  for l:server in s:settings[a:ft]
+    let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
+    if type(l:command) == type([])
+      let l:command = l:command[0]
     endif
-    let l:found = 0
-    if empty(s:settings[l:ft])
-      continue
-    endif
-    for l:server in s:settings[l:ft]
-      let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
-      if type(l:command) == type([])
-        let l:command = l:command[0]
+    if s:executable(l:command)
+      let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
+      if filereadable(l:script)
+        exe 'source' l:script
+        let l:found += 1
+        break
       endif
-      if s:executable(l:command)
-        let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
-        if filereadable(l:script)
-          exe 'source' l:script
-          let l:found += 1
-          break
-        endif
-      endif
-    endfor
-    if l:found ==# 0
-      exe printf('augroup vimlsp_suggest_%s', l:ft)
-        au!
-        if has('patch-8.1.1113')
-          exe printf('autocmd FileType %s ++once call s:vimlsp_settings_suggest()', l:ft)
-        else
-          exe printf('autocmd FileType %s call s:vimlsp_settings_suggest()', l:ft)
-        endif
-      augroup END
-    elseif !exists(':LspInstallServer')
-      command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endfor
 
+  if l:found ==# 0
+    call s:vimlsp_settings_suggest()
+  else
+    doautocmd User lsp_setup
+    if !exists(':LspInstallServer')
+      command! -buffer LspInstallServer call s:vimlsp_install_server()
+    endif
+  endif
+
   delcommand LspRegisterServer
+endfunction
+
+function! s:load_or_suggest_group_name(ft) abort
+  return printf('vimlsp_suggest_%s', a:ft)
 endfunction
 
 call s:vimlsp_setting()
