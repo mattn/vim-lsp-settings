@@ -8,8 +8,14 @@ if exist "%server_dir%" rd /Q /S "%server_dir%"
 md "%server_dir%"
 cd /d "%server_dir%"
 
-python3 -m venv ./venv
-venv\bin\pip3 install %2
+where python3 2>NUL
+if %ERRORLEVEL% neq 0 (
+  python3 -m venv ./venv
+  venv\bin\pip3 install %2
+) else (
+  python -m venv ./venv
+  venv\bin\pip install %2
+)
 
 echo @echo off ^
 
