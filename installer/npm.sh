@@ -8,7 +8,7 @@ set -e
 npm_install() {
   server_dir="../servers/$1"
   [ -d "$server_dir" ] && rm -rf "$server_dir"
-  mkdir "$server_dir" && cd "$server_dir"
+  mkdir "$server_dir" && pushd . > /dev/null && cd "$server_dir"
 
   npm init -y
 
@@ -20,4 +20,6 @@ EOF
 
   npm install "$2"
   ln -s "./node_modules/.bin/$1" .
+
+  popd > /dev/null
 }

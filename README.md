@@ -1,6 +1,6 @@
 # vim-lsp-settings
 
-Auto configurations for Language Server for vim-lsp
+Auto configurations for Language Server for [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 
 ## Introduction
 
@@ -11,10 +11,27 @@ Language Servers is not easily to install. Visual Studio Code provide easy way t
 For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 
 ```viml
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 ```
 
+You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
+
+### Notice
+
+If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0).
+
+_reason_:
+
+Servers are installed in ./servers directory at the caching area.
+But when rebuild the cache, any merging plugin manager erases old cached files(include ./servers and server execute files) before install.
+
 ## Usage
+
+If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
 
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
 
@@ -51,7 +68,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | TypeScript | typescript-language-server                                  | Yes           |
 | JavaScript | javascript-typescript-langserver/typescript-language-server | Yes           |
 | Python     | pyls                                                        | Yes           |
-| Rust       | rls                                                         | Yes           |
+| Rust       | rls                                                         | No            |
 | Go         | gopls                                                       | Yes           |
 | Ruby       | solargraph                                                  | Yes           |
 | PHP        | intelephense                                                | Yes           |
@@ -67,6 +84,9 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Scala      | Metals                                                      | Yes           |
 | Elm        | elm-language-server                                         | Yes           |
 | JSON       | json-languageserver                                         | Yes           |
+| Swift      | sourcekit-lsp                                               | No            |
+| COBOL      | cobol-language-support                                      | Yes           |
+| Reason     | reason-language-server                                      | Yes           |
 
 ## License
 

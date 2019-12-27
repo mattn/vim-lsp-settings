@@ -5,23 +5,87 @@
       "requires": []
     }
   ],
-  "cpp": [
-    {
-      "command": "clangd",
-      "requires": []
-    }
-  ],
   "clojure": [
     {
       "command": "clojure-lsp",
       "requires": []
     }
   ],
-  "typescript": [
+  "cobol": [
     {
-      "command": "typescript-language-server",
+      "command": "cobol-language-support",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
+  "cpp": [
+    {
+      "command": "clangd",
+      "requires": []
+    }
+  ],
+  "cs": [
+    {
+      "command": "omnisharp-lsp",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "css": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "dockerfile": [
+    {
+      "command": "docker-langserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "elm": [
+    {
+      "command": "elm-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "fortran": [
+    {
+      "command": "fortls",
+      "requires": [
+        "python3"
+      ]
+    }
+  ],
+  "go": [
+    {
+      "command": "gopls",
+      "requires": [
+        "go"
+      ]
+    }
+  ],
+  "html": [
+    {
+      "command": "html-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "java": [
+    {
+      "command": "eclipse-jdt-ls",
+      "requires": [
+        "java"
       ]
     }
   ],
@@ -34,6 +98,46 @@
     },
     {
       "command": "typescript-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "json": [
+    {
+      "command": "json-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "kotlin": [
+    {
+      "command": "kotlin-language-server",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
+  "less": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "lua": [
+    {
+      "command": "emmylua-ls",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
+  "php": [
+    {
+      "command": "intelephense",
       "requires": [
         "npm"
       ]
@@ -53,20 +157,10 @@
       ]
     }
   ],
-  "rust": [
+  "reason": [
     {
-      "command": "rls",
-      "requires": [
-        "rustup"
-      ]
-    }
-  ],
-  "go": [
-    {
-      "command": "gopls",
-      "requires": [
-        "go"
-      ]
+      "command": "reason-language-server",
+      "requires": []
     }
   ],
   "ruby": [
@@ -77,55 +171,13 @@
       ]
     }
   ],
-  "php": [
+  "rust": [
     {
-      "command": "intelephense",
-      "requires": [
-        "npm"
-      ]
+      "command": "rls",
+      "requires": []
     }
   ],
-  "java": [
-    {
-      "command": "eclipse-jdt-ls",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "kotlin": [
-    {
-      "command": "kotlin-language-server",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "lua": [
-    {
-      "command": "emmylua-ls",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "vim": [
-    {
-      "command": "vim-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "html": [
-    {
-      "command": "html-languageserver",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "css": [
+  "sass": [
     {
       "command": "css-languageserver",
       "requires": [
@@ -133,25 +185,11 @@
       ]
     }
   ],
-  "cs": [
+  "scala": [
     {
-      "command": "omnisharp-lsp",
+      "command": "metals",
       "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "terraform": [
-    {
-      "command": "terraform-lsp",
-      "requires": []
-    }
-  ],
-  "dockerfile": [
-    {
-      "command": "docker-langserver",
-      "requires": [
-        "npm"
+        "java"
       ]
     }
   ],
@@ -163,9 +201,31 @@
       ]
     }
   ],
-  "yaml": [
+  "swift": [
     {
-      "command": "yaml-language-server",
+      "command": "sourcekit-lsp",
+      "requires": [
+        "sourcekit-lsp"
+      ]
+    }
+  ],
+  "terraform": [
+    {
+      "command": "terraform-lsp",
+      "requires": []
+    }
+  ],
+  "typescript": [
+    {
+      "command": "typescript-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "vim": [
+    {
+      "command": "vim-language-server",
       "requires": [
         "npm"
       ]
@@ -179,33 +239,9 @@
       ]
     }
   ],
-  "fortran": [
+  "yaml": [
     {
-      "command": "fortls",
-      "requires": [
-        "python3"
-      ]
-    }
-  ],
-  "scala": [
-    {
-      "command": "metals",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "elm": [
-    {
-      "command": "elm-language-server",
-      "requires": [
-        "npm"
-      ]
-    }
-  ],
-  "json": [
-    {
-      "command": "json-languageserver",
+      "command": "yaml-language-server",
       "requires": [
         "npm"
       ]
