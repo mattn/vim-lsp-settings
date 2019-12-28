@@ -66,7 +66,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | C#         | omnisharp                                              | Yes           |
 | Clojure    | clojure-lsp                                            | Yes           |
 | TypeScript | typescript-language-server                             | Yes           |
-| JavaScript | javascript-typescript-stdio/typescript-language-server | Yes           |
+| JavaScript | typescript-language-server/javascript-typescript-stdio | Yes           |
 | Python     | pyls                                                   | Yes           |
 | Rust       | rls                                                    | No            |
 | Go         | gopls                                                  | Yes           |
