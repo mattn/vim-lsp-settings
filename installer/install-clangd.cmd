@@ -21,3 +21,4 @@ LLVM-9.0.0-win64.exe /S /D=%cd%\tmp
 copy tmp\bin\clangd.exe clangd.exe
 del LLVM-9.0.0-win64.exe
 rd /Q /S %cd%\tmp
+.\clangd.exe --version
