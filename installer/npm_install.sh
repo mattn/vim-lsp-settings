@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Usage
-# $ . npm.sh
 # $ npm_install [EXECUTABLE_NAME] [NPM_NAME]
 
 set -e

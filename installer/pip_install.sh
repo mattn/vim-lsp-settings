@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Usage
-# $ . pip3.sh
 # $ pip_install [EXECUTABLE_NAME] [PYPI_NAME]
 
 set -e
