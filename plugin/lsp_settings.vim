@@ -33,10 +33,11 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vimlsp_installer() abort
-  if !has_key(s:settings, &filetype)
+  let l:ft = split(&filetype, '\.')[0]
+  if !has_key(s:settings, l:ft)
     return []
   endif
-  let l:server = s:settings[&filetype]
+  let l:server = s:settings[l:ft]
   if empty(l:server)
     return []
   endif
