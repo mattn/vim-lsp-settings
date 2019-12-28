@@ -143,6 +143,18 @@
       ]
     }
   ],
+  "plaintex": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
   "python": [
     {
       "command": "pyls",
@@ -209,6 +221,18 @@
       "requires": []
     }
   ],
+  "tex": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
@@ -238,22 +262,6 @@
       "command": "yaml-language-server",
       "requires": [
         "npm"
-      ]
-    }
-  ],
-  "plaintex": [
-    {
-      "command": "digestif",
-      "requires": [
-        "luarocks"
-      ]
-    }
-  ],
-  "tex": [
-    {
-      "command": "digestif",
-      "requires": [
-        "luarocks"
       ]
     }
   ]
