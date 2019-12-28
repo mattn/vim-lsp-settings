@@ -41,6 +41,14 @@
       ]
     }
   ],
+  "d": [
+    {
+      "command": "dls",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "dockerfile": [
     {
       "command": "docker-langserver",
