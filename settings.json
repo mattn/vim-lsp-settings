@@ -246,5 +246,21 @@
         "npm"
       ]
     }
+  ],
+  "plaintex": [
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
+  "tex": [
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
   ]
 }
