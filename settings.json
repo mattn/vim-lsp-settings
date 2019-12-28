@@ -91,7 +91,7 @@
   ],
   "javascript": [
     {
-      "command": "javascript-typescript-langserver",
+      "command": "javascript-typescript-stdio",
       "requires": [
         "npm"
       ]
