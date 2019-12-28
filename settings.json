@@ -91,13 +91,13 @@
   ],
   "javascript": [
     {
-      "command": "javascript-typescript-stdio",
+      "command": "typescript-language-server",
       "requires": [
         "npm"
       ]
     },
     {
-      "command": "typescript-language-server",
+      "command": "javascript-typescript-stdio",
       "requires": [
         "npm"
       ]
