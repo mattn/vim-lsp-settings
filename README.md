@@ -92,6 +92,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | TeX        | digestif                                               | No            |
 | Nim        | nimls                                                  | No            |
 | D          | dls                                                    | No            |
+| Elixir     | elixir-ls                                              | Yes           |
 
 ## License
 
