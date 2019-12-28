@@ -3,12 +3,29 @@
 set -e
 
 cd $(dirname $0)
-[ -d ../servers/omnisharp-lsp ] && rm -rf ../servers/omnisharp-lsp
-mkdir ../servers/omnisharp-lsp
-cd ../servers/omnisharp-lsp
-curl -L -o omnisharp-linux-x64.zip https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.34.9/omnisharp-linux-x64.zip
-unzip omnisharp-linux-x64.zip
-rm omnisharp-linux-x64.zip
+
+server_dir="../servers/omnisharp-lsp"
+[ -d $server_dir ] && rm -rf $server_dir
+mkdir $server_dir && cd $server_dir
+
+os=$(uname -s | tr "[:upper:]" "[:lower:]")
+
+case $os in
+linux) ;;
+darwin)
+  os="osx"
+  ;;
+*)
+  printf "%s doesn't supported by bash installer" "$os"
+  exit 1
+  ;;
+esac
+
+version="v1.34.9"
+url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os-x64.tar.gz"
+curl -LO "$url"
+tar xzvf omnisharp-$os-x64.tar.gz
+rm omnisharp-$os-x64.tar.gz
 
 chmod +x run
 
