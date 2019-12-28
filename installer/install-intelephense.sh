@@ -4,4 +4,4 @@ set -e
 
 cd $(dirname $0)
 
-./npm_install intelephense intelephense
+./npm_install.sh intelephense intelephense

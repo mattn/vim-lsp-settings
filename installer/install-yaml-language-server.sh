@@ -4,4 +4,4 @@ set -e
 
 cd $(dirname $0)
 
-./npm_install yaml-language-server yaml-language-server
+./npm_install.sh yaml-language-server yaml-language-server

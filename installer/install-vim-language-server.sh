@@ -4,4 +4,4 @@ set -e
 
 cd $(dirname $0)
 
-./npm_install vim-language-server vim-language-server
+./npm_install.sh vim-language-server vim-language-server

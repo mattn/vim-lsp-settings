@@ -4,4 +4,4 @@ set -e
 
 cd $(dirname $0)
 
-./npm_install css-languageserver vscode-css-languageserver-bin
+./npm_install.sh css-languageserver vscode-css-languageserver-bin
