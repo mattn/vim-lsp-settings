@@ -184,7 +184,9 @@ function! s:vimlsp_load_or_suggest(ft) abort
     endif
   endif
 
-  delcommand LspRegisterServer
+  if !exists(':LspRegisterServer')
+    delcommand LspRegisterServer
+  endif
 endfunction
 
 function! s:load_or_suggest_group_name(ft) abort
