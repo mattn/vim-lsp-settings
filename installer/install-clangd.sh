@@ -33,6 +33,7 @@ url="http://releases.llvm.org/9.0.0/$filename.tar.xz"
 echo "Downloading clangd and LLVM..."
 curl -LO "$url"
 echo "Extracting archive..."
-tar xvf $filename.tar.xz --strip-components=2 $filename/bin/clangd
-rm -fr clang+llvm-9.0.0*
+tar xvf $filename.tar.xz --strip-components=1 $filename/
+rm $filename.tar.xz
+ln -sf bin/clangd
 ./clangd --version
