@@ -90,6 +90,8 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Reason     | reason-language-server                                 | Yes           |
 | TeX        | texlab                                                 | Yes           |
 | TeX        | digestif                                               | No            |
+| Nim        | nimls                                                  | No            |
+| D          | dls                                                    | No            |
 
 ## License
 
