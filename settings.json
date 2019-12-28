@@ -135,6 +135,12 @@
       ]
     }
   ],
+  "nim": [
+    {
+      "command": "nimlsp",
+      "requires": []
+    }
+  ],
   "php": [
     {
       "command": "intelephense",
