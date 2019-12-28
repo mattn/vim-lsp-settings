@@ -57,6 +57,14 @@
       ]
     }
   ],
+  "elixir": [
+    {
+      "command": "elixir-ls",
+      "requires": [
+        "elixir"
+      ]
+    }
+  ],
   "elm": [
     {
       "command": "elm-language-server",
