@@ -2,4 +2,4 @@
 
 cd /d %~dp0
 
-call npm_install javascript-typescript-langserver javascript-typescript-langserver
+call npm_install javascript-typescript-stdio javascript-typescript-langserver

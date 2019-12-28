@@ -4,5 +4,4 @@ set -e
 
 cd $(dirname $0)
 
-. ./npm.sh
-npm_install javascript-typescript-langserver javascript-typescript-langserver
+./npm_install javascript-typescript-stdio javascript-typescript-langserver
