@@ -77,6 +77,12 @@
     {
       "command": "fortls",
       "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "fortls",
+      "requires": [
         "python3"
       ]
     }
