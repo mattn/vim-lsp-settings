@@ -39,12 +39,12 @@ goto :install
 
 :install
 
-REM 1. pip command path check (env var set just path&&... need)
+REM pip command path check (env var set just path&&... need)
 where venv\bin\:pip3     && set PIPPATH=venv\bin&&     goto :generate
 where venv\Scripts\:pip3 && set PIPPATH=venv\Scripts&& goto :generate
 goto :EOF
 
-REM 2. pyls exec cmd generate
+REM pyls exec cmd generate
 :generate
 %PIPPATH%\pip3 install %2
 
