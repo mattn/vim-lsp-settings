@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8 ff=unix
+
+# git system files
+.gitattributes eol=lf
+.gitignore     eol=lf
+.editorconfig  eol=lf
+
+*.sh           text eol=lf
+*.cmd          -text
+
+# EOF
