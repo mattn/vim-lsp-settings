@@ -1,7 +1,10 @@
 if exists('g:loaded_lsp_settings')
   finish
 endif
-let g:loaded_lsp_settings= 1
+let g:loaded_lsp_settings = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
@@ -194,3 +197,6 @@ function! s:load_or_suggest_group_name(ft) abort
 endfunction
 
 call s:vimlsp_setting()
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
