@@ -181,6 +181,12 @@
     {
       "command": "pyls",
       "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "pyls",
+      "requires": [
         "python3"
       ]
     }
