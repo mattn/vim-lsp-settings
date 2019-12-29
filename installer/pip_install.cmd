@@ -4,20 +4,20 @@ if "x%1" equ "x" goto :EOF
 if "x%2" equ "x" goto :EOF
 
 set server_dir=..\servers\%1
-rd /Q /S "%server_dir%" 2>NUL
+if exist "%server_dir%" rd /Q /S "%server_dir%"
 md "%server_dir%"
-cd "%server_dir%"
+cd /d "%server_dir%"
 
 REM python(ver 3.x) or python3 check
-where python  && goto :python
+where python  2>NUL && goto :python
 :python_fail
-where python3 && goto :python3
+where python3 2>NUL && goto :python3
 :python3_fail
 goto :EOF
 
 :python
 REM python is 2 or 3 check(python3 version at python3 grammar)
-python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)"
+python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
 if errorlevel 1 goto :python_fail
 
 REM python support slash path split?
@@ -28,7 +28,7 @@ goto :install
 
 :python3
 REM python3 always python 3.x :-)
-REM python3 -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)"
+REM python3 -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
 REM if errorlevel 1 goto :python3_fail
 
 REM python3 support slash path split?
@@ -40,8 +40,8 @@ goto :install
 :install
 
 REM pip command path check (env var set just path&&... need)
-where venv\bin\:pip3     && set PIPPATH=venv\bin&&     goto :generate
-where venv\Scripts\:pip3 && set PIPPATH=venv\Scripts&& goto :generate
+where venv\bin\:pip3     2>NUL && set PIPPATH=venv\bin&&     goto :generate
+where venv\Scripts\:pip3 2>NUL && set PIPPATH=venv\Scripts&& goto :generate
 goto :EOF
 
 REM pyls exec cmd generate
