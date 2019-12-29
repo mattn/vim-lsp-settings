@@ -33,10 +33,11 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vimlsp_installer() abort
-  if !has_key(s:settings, &filetype)
+  let l:ft = split(&filetype, '\.')[0]
+  if !has_key(s:settings, l:ft)
     return []
   endif
-  let l:server = s:settings[&filetype]
+  let l:server = s:settings[l:ft]
   if empty(l:server)
     return []
   endif
@@ -108,7 +109,10 @@ function! s:vimlsp_settings_suggest() abort
     return
   endif
   if !exists(':LspInstallServer')
+    redraw
+    echohl Directory
     echomsg 'If you want to enable Language Server, please do :LspInstallServer'
+    echohl None
     command! -buffer LspInstallServer call s:vimlsp_install_server()
   endif
 endfunction
@@ -180,7 +184,9 @@ function! s:vimlsp_load_or_suggest(ft) abort
     endif
   endif
 
-  delcommand LspRegisterServer
+  if !exists(':LspRegisterServer')
+    delcommand LspRegisterServer
+  endif
 endfunction
 
 function! s:load_or_suggest_group_name(ft) abort

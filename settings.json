@@ -41,11 +41,27 @@
       ]
     }
   ],
+  "d": [
+    {
+      "command": "dls",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "dockerfile": [
     {
       "command": "docker-langserver",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "elixir": [
+    {
+      "command": "elixir-ls",
+      "requires": [
+        "elixir"
       ]
     }
   ],
@@ -91,13 +107,13 @@
   ],
   "javascript": [
     {
-      "command": "javascript-typescript-langserver",
+      "command": "typescript-language-server",
       "requires": [
         "npm"
       ]
     },
     {
-      "command": "typescript-language-server",
+      "command": "javascript-typescript-stdio",
       "requires": [
         "npm"
       ]
@@ -135,11 +151,29 @@
       ]
     }
   ],
+  "nim": [
+    {
+      "command": "nimlsp",
+      "requires": []
+    }
+  ],
   "php": [
     {
       "command": "intelephense",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "plaintex": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
       ]
     }
   ],
@@ -215,6 +249,18 @@
       "requires": []
     }
   ],
+  "tex": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
@@ -244,22 +290,6 @@
       "command": "yaml-language-server",
       "requires": [
         "npm"
-      ]
-    }
-  ],
-  "plaintex": [
-    {
-      "command": "digestif",
-      "requires": [
-        "luarocks"
-      ]
-    }
-  ],
-  "tex": [
-    {
-      "command": "digestif",
-      "requires": [
-        "luarocks"
       ]
     }
   ]

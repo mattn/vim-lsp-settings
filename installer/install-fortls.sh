@@ -2,5 +2,4 @@
 
 cd $(dirname $0)
 
-. ./pip3.sh
-pip_install fortls fortran-language-server
+./pip_install.sh fortls fortran-language-server
