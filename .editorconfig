@@ -1,0 +1,14 @@
+root = true
+
+# All
+[*]
+charset = utf-8
+
+# Extension
+[*.sh]
+end_of_line = lf
+
+[*.cmd]
+end_of_line = crlf
+
+# EOF
