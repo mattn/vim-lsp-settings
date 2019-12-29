@@ -291,6 +291,14 @@
       ]
     }
   ],
+  "groovy": [
+    {
+      "command": "groovy-language-server",
+      "requires": [
+        "java"
+      ]
+    }
+  ],
   "yaml": [
     {
       "command": "yaml-language-server",
