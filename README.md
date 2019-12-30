@@ -93,6 +93,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Nim        | nimls                                                  | No            |
 | D          | dls                                                    | No            |
 | Elixir     | elixir-ls                                              | Yes           |
+| Groovy     | groovy-language-server                                 | Yes           |
 
 ## License
 
