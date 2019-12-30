@@ -125,6 +125,20 @@
       ]
     }
   ],
+  "javascriptreact": [
+    {
+      "command": "typescript-language-server",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
+      "command": "javascript-typescript-stdio",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "json": [
     {
       "command": "json-languageserver",
@@ -268,6 +282,14 @@
     }
   ],
   "typescript": [
+    {
+      "command": "typescript-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
+  "typescriptreact": [
     {
       "command": "typescript-language-server",
       "requires": [
