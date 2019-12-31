@@ -5,11 +5,6 @@
 
 set -e
 
-server_dir="../servers/$1"
-[ -d "$server_dir" ] && rm -rf "$server_dir"
-mkdir "$server_dir"
-cd "$server_dir"
-
 npm init -y
 
 # Avoid the problem of not being able to install the same package as name in package.json.

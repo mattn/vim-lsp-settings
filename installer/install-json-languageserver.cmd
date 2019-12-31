@@ -1,5 +1,3 @@
 @echo off
 
-cd /d %~dp0
-
-call npm_install json-languageserver vscode-json-languageserver-bin
+call "%~dp0\npm_install.cmd" json-languageserver vscode-json-languageserver-bin

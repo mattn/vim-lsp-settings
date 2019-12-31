@@ -3,11 +3,6 @@
 if "x%1" equ "x" goto :EOF
 if "x%2" equ "x" goto :EOF
 
-set server_dir=..\servers\%1
-if exist "%server_dir%" rd /Q /S "%server_dir%"
-md "%server_dir%"
-cd /d "%server_dir%"
-
 REM python(ver 3.x) or python3 check
 where python  2>NUL && goto :python
 :python_fail

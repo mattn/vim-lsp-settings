@@ -1,5 +1,3 @@
 @echo off
 
-cd /d %~dp0
-
-call pip_install pyls python-language-server
+call "%~dp0\pip_install.cmd" pyls python-language-server
