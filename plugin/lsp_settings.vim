@@ -97,8 +97,13 @@ endfunction
 
 function! s:vimlsp_install_server() abort
   let l:entry = s:vimlsp_installer()
-  exe 'terminal' l:entry[1]
-  let l:job = term_getjob(bufnr('%'))
+  let l:server_install_dir = s:servers_dir . '/' . l:entry[0]
+  if isdirectory(l:server_install_dir)
+    call delete(l:server_install_dir, 'rf')
+  endif
+  call mkdir(l:server_install_dir, 'p')
+  let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
+  let l:job = term_getjob(l:bufnr)
   if l:job != v:null
     call job_setoptions(l:job, {'exit_cb': function('s:vimlsp_install_server_post', [l:entry[0]])})
   endif

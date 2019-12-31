@@ -2,10 +2,6 @@
 
 set -e
 
-cd $(dirname $0)
-[ -d ../servers/solargraph ] && rm -rf ../servers/solargraph
-mkdir ../servers/solargraph
-cd ../servers/solargraph
 git clone "https://github.com/castwide/solargraph" .
 bundle install --path vendor/bundle
 

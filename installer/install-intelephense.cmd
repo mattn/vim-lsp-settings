@@ -1,5 +1,3 @@
 @echo off
 
-cd /d %~dp0
-
-call npm_install intelephense intelephense
+call "%~dp0\npm_install" intelephense intelephense

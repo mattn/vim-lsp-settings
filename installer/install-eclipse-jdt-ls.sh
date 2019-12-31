@@ -2,10 +2,6 @@
 
 set -e
 
-cd $(dirname $0)
-[ -d ../servers/eclipse-jdt-ls ] && rm -rf ../servers/eclipse-jdt-ls
-mkdir ../servers/eclipse-jdt-ls
-cd ../servers/eclipse-jdt-ls
 curl -o jdt-language-server-latest.tar.gz 'http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz'
 curl -o lombok.jar 'https://projectlombok.org/downloads/lombok.jar'
 tar xvf jdt-language-server-latest.tar.gz

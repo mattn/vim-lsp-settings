@@ -4,11 +4,6 @@ set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 version="0.0.9"
-server_dir="../servers/terraform-lsp"
-
-cd $(dirname $0)
-[ -d $server_dir ] && rm -rf $server_dir
-mkdir $server_dir && cd $server_dir
 
 case $os in
 darwin | linux)

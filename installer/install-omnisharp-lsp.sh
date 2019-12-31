@@ -2,12 +2,6 @@
 
 set -e
 
-cd $(dirname $0)
-
-server_dir="../servers/omnisharp-lsp"
-[ -d $server_dir ] && rm -rf $server_dir
-mkdir $server_dir && cd $server_dir
-
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 case $os in
