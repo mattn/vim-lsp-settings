@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install" bash-language-server bash-language-server
+call "%~dp0\npm_install.cmd" bash-language-server bash-language-server

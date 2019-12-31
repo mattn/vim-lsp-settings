@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install" css-languageserver vscode-css-languageserver-bin
+call "%~dp0\npm_install.cmd" css-languageserver vscode-css-languageserver-bin

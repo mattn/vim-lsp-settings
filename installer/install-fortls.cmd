@@ -1,4 +1,4 @@
 @echo off
 
-call "%~dp0\pip_install" fortls fortran-language-server
+call "%~dp0\pip_install.cmd" fortls fortran-language-server
 

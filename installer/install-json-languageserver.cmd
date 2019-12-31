@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install" json-languageserver vscode-json-languageserver-bin
+call "%~dp0\npm_install.cmd" json-languageserver vscode-json-languageserver-bin

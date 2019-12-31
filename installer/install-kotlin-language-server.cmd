@@ -1,7 +1,7 @@
 @echo off
 
 curl -L -o server.zip "https://github.com/fwcd/kotlin-language-server/releases/download/0.5.2/server.zip"
-call "%~dp0\run_unzip" server.zip
+call "%~dp0\run_unzip.cmd" server.zip
 del server.zip
 
 echo @echo off ^

@@ -5,7 +5,7 @@ setlocal
 set version=0.9.1
 set url=https://github.com/eclipse/che-che4z-lsp-for-cobol/releases/download/%version%/cobol-language-support-%version%.vsix
 curl -LO "%url%"
-call "%~dp0\run_unzip" "cobol-language-support-%version%.vsix"
+call "%~dp0\run_unzip.cmd" "cobol-language-support-%version%.vsix"
 
 echo @echo off ^
 

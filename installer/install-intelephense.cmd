@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install" intelephense intelephense
+call "%~dp0\npm_install.cmd" intelephense intelephense
