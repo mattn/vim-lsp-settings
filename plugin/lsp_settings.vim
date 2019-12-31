@@ -16,7 +16,8 @@ function! s:executable(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
   endif
-  let l:paths .= ',' . s:servers_dir . '/' . a:cmd
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:paths .= ',' . l:servers_dir . '/' . a:cmd
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
@@ -97,7 +98,8 @@ endfunction
 
 function! s:vimlsp_install_server() abort
   let l:entry = s:vimlsp_installer()
-  let l:server_install_dir = s:servers_dir . '/' . l:entry[0]
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:server_install_dir = l:servers_dir . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
     call delete(l:server_install_dir, 'rf')
   endif

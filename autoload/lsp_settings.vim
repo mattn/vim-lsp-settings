@@ -50,7 +50,8 @@ function! lsp_settings#exec_path(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',') . ','
   endif
-  let l:paths .= s:servers_dir . '/' . a:cmd
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:paths .= l:servers_dir . '/' . a:cmd
   if !has('win32')
     return s:first_one(globpath(l:paths, a:cmd))
   endif
