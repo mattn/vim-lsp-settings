@@ -15,7 +15,7 @@ darwin)
   ;;
 esac
 
-version="1.7.4"
+version="1.7.5"
 url="https://github.com/jaredly/reason-language-server/releases/download/$version/rls-$os.zip"
 curl -LO "$url"
 unzip "rls-$os.zip"
