@@ -77,6 +77,7 @@ function! s:vimlsp_installer() abort
   return []
 endfunction
 
+" neovim passes third argument as 'exit' while vim passes only 2 arguments
 function! s:vimlsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
     return
