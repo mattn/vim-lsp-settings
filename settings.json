@@ -49,6 +49,20 @@
       ]
     }
   ],
+  "dart": [
+    {
+      "command": "dart-analysis-server",
+      "requires": [
+        "dart"
+      ]
+    },
+    {
+      "command": "dart-analysis-server",
+      "requires": [
+        "flutter"
+      ]
+    }
+  ],
   "dockerfile": [
     {
       "command": "docker-langserver",
