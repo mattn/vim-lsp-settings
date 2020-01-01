@@ -63,7 +63,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 
 | Language   | Language Server                                        | Local Install |
 |------------|--------------------------------------------------------|:-------------:|
-| C/C++      | clangd                                                 | No            |
+| C/C++      | clangd                                                 | Yes           |
 | C#         | omnisharp                                              | Yes           |
 | Clojure    | clojure-lsp                                            | Yes           |
 | TypeScript | typescript-language-server                             | Yes           |
