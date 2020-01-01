@@ -115,7 +115,7 @@ function! s:vimlsp_settings_suggest() abort
   if empty(s:vimlsp_installer())
     return
   endif
-  if !exists(':LspInstallServer')
+  if exists(':LspInstallServer') !=# 2
     redraw
     echohl Directory
     echomsg 'If you want to enable Language Server, please do :LspInstallServer'
@@ -186,12 +186,12 @@ function! s:vimlsp_load_or_suggest(ft) abort
     call s:vimlsp_settings_suggest()
   else
     doautocmd User lsp_setup
-    if !exists(':LspInstallServer')
+    if exists(':LspInstallServer') !=# 2
       command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endif
 
-  if !exists(':LspRegisterServer')
+  if exists(':LspRegisterServer') !=# 2
     delcommand LspRegisterServer
   endif
 endfunction
