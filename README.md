@@ -95,6 +95,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | D          | dls                                                    | No            |
 | Elixir     | elixir-ls                                              | Yes           |
 | Groovy     | groovy-language-server                                 | Yes           |
+| Dart       | analysis-server-dart-snapshot                          | Yes           |
 
 ## License
 
