@@ -24,23 +24,27 @@ function! s:first_one(cmd) abort
 endfunction
 
 function! lsp_settings#exec_path(cmd) abort
+  let l:s = split(a:cmd, ':')
+  let l:dir = len(l:s) >= 1 ? l:s[0] : ''
+  let l:cmd = len(l:s) >= 2 ? l:s[1] : l:s[0]
+
   let l:paths = split($PATH, has('win32') ? ';' : ':')
   let l:paths = join(l:paths, ',')
-  let l:path = globpath(l:paths, a:cmd)
+  let l:path = globpath(l:paths, l:cmd)
   if !has('win32')
     if !empty(l:path)
       return s:first_one(l:path)
     endif
   else
-    let l:path = globpath(l:paths, a:cmd . '.exe')
+    let l:path = globpath(l:paths, l:cmd . '.exe')
     if !empty(l:path)
       return s:first_one(l:path)
     endif
-    let l:path = globpath(l:paths, a:cmd . '.cmd')
+    let l:path = globpath(l:paths, l:cmd . '.cmd')
     if !empty(l:path)
       return s:first_one(l:path)
     endif
-    let l:path = globpath(l:paths, a:cmd . '.bat')
+    let l:path = globpath(l:paths, l:cmd . '.bat')
     if !empty(l:path)
       return s:first_one(l:path)
     endif
@@ -50,19 +54,20 @@ function! lsp_settings#exec_path(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',') . ','
   endif
-  let l:paths .= s:servers_dir . '/' . a:cmd
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:paths .= l:servers_dir . '/' . l:dir
   if !has('win32')
-    return s:first_one(globpath(l:paths, a:cmd))
+    return s:first_one(globpath(l:paths, l:cmd))
   endif
-  let l:path = globpath(l:paths, a:cmd . '.exe')
+  let l:path = globpath(l:paths, l:cmd . '.exe')
   if !empty(l:path)
     return s:first_one(l:path)
   endif
-  let l:path = globpath(l:paths, a:cmd . '.cmd')
+  let l:path = globpath(l:paths, l:cmd . '.cmd')
   if !empty(l:path)
     return s:first_one(l:path)
   endif
-  let l:path = globpath(l:paths, a:cmd . '.bat')
+  let l:path = globpath(l:paths, l:cmd . '.bat')
   if !empty(l:path)
     return s:first_one(l:path)
   endif

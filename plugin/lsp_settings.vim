@@ -16,7 +16,8 @@ function! s:executable(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
   endif
-  let l:paths .= ',' . s:servers_dir . '/' . a:cmd
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:paths .= ',' . l:servers_dir . '/' . a:cmd
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
@@ -33,7 +34,7 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vimlsp_installer() abort
-  let l:ft = split(&filetype, '\.')[0]
+  let l:ft = tolower(split(&filetype, '\.')[0])
   if !has_key(s:settings, l:ft)
     return []
   endif
@@ -76,7 +77,8 @@ function! s:vimlsp_installer() abort
   return []
 endfunction
 
-function! s:vimlsp_install_server_post(command, job, code) abort
+" neovim passes third argument as 'exit' while vim passes only 2 arguments
+function! s:vimlsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
     return
   endif
@@ -97,10 +99,21 @@ endfunction
 
 function! s:vimlsp_install_server() abort
   let l:entry = s:vimlsp_installer()
-  exe 'terminal' l:entry[1]
-  let l:job = term_getjob(bufnr('%'))
-  if l:job != v:null
-    call job_setoptions(l:job, {'exit_cb': function('s:vimlsp_install_server_post', [l:entry[0]])})
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:server_install_dir = l:servers_dir . '/' . l:entry[0]
+  if isdirectory(l:server_install_dir)
+    call delete(l:server_install_dir, 'rf')
+  endif
+  call mkdir(l:server_install_dir, 'p')
+  if has('nvim')
+    split new
+    call termopen(l:entry[1], {'cwd': l:server_install_dir, 'on_exit': function('s:vimlsp_install_server_post', [l:entry[0]])}) | startinsert
+  else
+    let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
+    let l:job = term_getjob(l:bufnr)
+    if l:job != v:null
+      call job_setoptions(l:job, {'exit_cb': function('s:vimlsp_install_server_post', [l:entry[0]])})
+    endif
   endif
 endfunction
 
@@ -108,7 +121,7 @@ function! s:vimlsp_settings_suggest() abort
   if empty(s:vimlsp_installer())
     return
   endif
-  if !exists(':LspInstallServer')
+  if exists(':LspInstallServer') !=# 2
     redraw
     echohl Directory
     echomsg 'If you want to enable Language Server, please do :LspInstallServer'
@@ -179,12 +192,12 @@ function! s:vimlsp_load_or_suggest(ft) abort
     call s:vimlsp_settings_suggest()
   else
     doautocmd User lsp_setup
-    if !exists(':LspInstallServer')
+    if exists(':LspInstallServer') !=# 2
       command! -buffer LspInstallServer call s:vimlsp_install_server()
     endif
   endif
 
-  if !exists(':LspRegisterServer')
+  if exists(':LspRegisterServer') !=# 2
     delcommand LspRegisterServer
   endif
 endfunction

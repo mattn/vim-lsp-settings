@@ -5,18 +5,14 @@
 
 set -e
 
-server_dir="../servers/$1"
-[ -d "$server_dir" ] && rm -rf "$server_dir"
-mkdir "$server_dir"
-cd "$server_dir"
-
-npm init -y
-
-# Avoid the problem of not being able to install the same package as name in package.json.
-# Create an empty package.json.
-cat <<EOF >package.json
-{"name": ""}
-EOF
+# Supporting multiple npm packages(e.g. typescript-language-server uses typescript-language-server and tsserver).
+# If package.json exists, skip calling npm init.
+if [ ! -f package.json ]; then
+  # Avoid the problem of not being able to install the same package as name in package.json.
+  # Create an empty package.json.
+  npm init -y
+  echo '{"name": ""}' >package.json
+fi
 
 npm install "$2"
 ln -s "./node_modules/.bin/$1" .

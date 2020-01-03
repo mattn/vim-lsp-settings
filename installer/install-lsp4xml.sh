@@ -2,12 +2,6 @@
 
 set -e
 
-cd $(dirname $0)
-
-server_dir="../servers/lsp4xml"
-[ -d $server_dir ] && rm -rf $server_dir
-mkdir $server_dir && cd $server_dir
-
 version="0.9.1"
 url=https://dl.bintray.com/lsp4xml/releases/org/lsp4xml/org.eclipse.lsp4xml/${version}/org.eclipse.lsp4xml-${version}-uber.jar
 

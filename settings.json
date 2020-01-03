@@ -49,6 +49,12 @@
       ]
     }
   ],
+  "dart": [
+    {
+      "command": "analysis-server-dart-snapshot",
+      "requires": []
+    }
+  ],
   "dockerfile": [
     {
       "command": "docker-langserver",
@@ -92,6 +98,14 @@
       "command": "gopls",
       "requires": [
         "go"
+      ]
+    }
+  ],
+  "groovy": [
+    {
+      "command": "groovy-language-server",
+      "requires": [
+        "java"
       ]
     }
   ],
@@ -308,14 +322,6 @@
   "xml": [
     {
       "command": "lsp4xml",
-      "requires": [
-        "java"
-      ]
-    }
-  ],
-  "groovy": [
-    {
-      "command": "groovy-language-server",
       "requires": [
         "java"
       ]

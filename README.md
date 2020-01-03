@@ -22,12 +22,13 @@ You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) an
 
 ### Notice
 
-If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0).
+If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
 
 _reason_:
 
-Servers are installed in ./servers directory at the caching area.
-But when rebuild the cache, any merging plugin manager erases old cached files(include ./servers and server execute files) before install.
+Servers are installed in `./servers` directory at the caching area in default.
+But when rebuild the cache, any merging plugin manager erases old cached files(include `./servers` and server execute files) before install.
+You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
 
 ## Usage
 
@@ -62,7 +63,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 
 | Language   | Language Server                                        | Local Install |
 |------------|--------------------------------------------------------|:-------------:|
-| C/C++      | clangd                                                 | No            |
+| C/C++      | clangd                                                 | Yes           |
 | C#         | omnisharp                                              | Yes           |
 | Clojure    | clojure-lsp                                            | Yes           |
 | TypeScript | typescript-language-server                             | Yes           |
@@ -94,6 +95,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | D          | dls                                                    | No            |
 | Elixir     | elixir-ls                                              | Yes           |
 | Groovy     | groovy-language-server                                 | Yes           |
+| Dart       | analysis-server-dart-snapshot                          | Yes           |
 
 ## License
 

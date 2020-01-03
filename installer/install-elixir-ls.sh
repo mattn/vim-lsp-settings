@@ -2,12 +2,6 @@
 
 set -e
 
-cd $(dirname $0)
-
-server_dir="../servers/elixir-ls"
-[ -d $server_dir ] && rm -rf $server_dir
-mkdir $server_dir && cd $server_dir
-
 version="v0.2.25"
 url="https://github.com/JakeBecker/elixir-ls/releases/download/$version/elixir-ls.zip"
 curl -LO "$url"
