@@ -24,7 +24,7 @@ function! s:first_one(cmd) abort
 endfunction
 
 function! lsp_settings#exec_path(cmd) abort
-  let l:s= split(a:cmd, '/')
+  let l:s = split(a:cmd, ':')
   let l:dir = len(l:s) >= 1 ? l:s[0] : ''
   let l:cmd = len(l:s) >= 2 ? l:s[1] : l:s[0]
 

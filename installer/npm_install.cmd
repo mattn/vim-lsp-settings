@@ -4,7 +4,6 @@ if "x%1" equ "x" goto :EOF
 if "x%2" equ "x" goto :EOF
 
 if not exist package.json (
-
 	call npm init -y
 
 	echo {"name":""}>package.json
