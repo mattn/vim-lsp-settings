@@ -79,6 +79,15 @@
       ]
     }
   ],
+  "erlang": [
+    {
+      "command": "erlang-ls",
+      "requires": [
+        "make",
+        "rebar3"
+      ]
+    }
+  ],
   "fortran": [
     {
       "command": "fortls",
