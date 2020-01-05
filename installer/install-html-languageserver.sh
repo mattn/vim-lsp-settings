@@ -4,7 +4,7 @@ set -e
 
 cd $(dirname $0)
 
-git clone https://github.com/vscode-langservers/vscode-html-languageserver ../servers/html-languageserver
+git clone --depth=1 https://github.com/vscode-langservers/vscode-html-languageserver ../servers/html-languageserver
 cd ../servers/html-languageserver
 npm install
 npm install --save typescript
