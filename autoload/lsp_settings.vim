@@ -28,8 +28,19 @@ function! lsp_settings#exec_path(cmd) abort
   let l:dir = len(l:s) >= 1 ? l:s[0] : ''
   let l:cmd = len(l:s) >= 2 ? l:s[1] : l:s[0]
 
-  let l:paths = split($PATH, has('win32') ? ';' : ':')
-  let l:paths = join(l:paths, ',')
+  let l:paths = []
+  if has('win32')
+    for l:path in split($PATH, ';')
+      if l:path[len(l:path) - 1:] == "\\"
+        call add(l:paths, l:path[:len(l:path)-2])
+      elseif !empty(l:path)
+        call add(l:paths, l:path)
+      endif
+    endfor
+  else
+    let l:path = split($PATH, ':')
+  endif
+  let l:paths = join(l:paths, ",")
   let l:path = globpath(l:paths, l:cmd)
   if !has('win32')
     if !empty(l:path)
