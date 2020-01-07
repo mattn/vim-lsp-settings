@@ -99,6 +99,9 @@ endfunction
 
 function! s:vimlsp_install_server() abort
   let l:entry = s:vimlsp_installer()
+  if empty(l:entry)
+    return
+  endif
   let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
   let l:server_install_dir = l:servers_dir . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
