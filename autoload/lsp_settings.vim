@@ -38,9 +38,9 @@ function! lsp_settings#exec_path(cmd) abort
       endif
     endfor
   else
-    let l:path = split($PATH, ':')
+    let l:paths = split($PATH, ':')
   endif
-  let l:paths = join(l:paths, ",")
+  let l:paths = join(l:paths, ',')
   let l:path = globpath(l:paths, l:cmd)
   if !has('win32')
     if !empty(l:path)
