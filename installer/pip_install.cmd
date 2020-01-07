@@ -41,6 +41,7 @@ goto :EOF
 
 REM pyls exec cmd generate
 :generate
+%PIPPATH%\pip3 install -U pip
 %PIPPATH%\pip3 install %2
 
 echo @echo off ^
