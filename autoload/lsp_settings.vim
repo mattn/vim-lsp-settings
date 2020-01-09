@@ -47,18 +47,12 @@ function! lsp_settings#exec_path(cmd) abort
       return s:first_one(l:path)
     endif
   else
-    let l:path = globpath(l:paths, l:cmd . '.exe')
-    if !empty(l:path)
-      return s:first_one(l:path)
-    endif
-    let l:path = globpath(l:paths, l:cmd . '.cmd')
-    if !empty(l:path)
-      return s:first_one(l:path)
-    endif
-    let l:path = globpath(l:paths, l:cmd . '.bat')
-    if !empty(l:path)
-      return s:first_one(l:path)
-    endif
+    for l:ext in ['.exe', '.cmd', '.bat']
+      let l:path = globpath(l:paths, l:cmd . l:ext)
+      if !empty(l:path)
+        return s:first_one(l:path)
+      endif
+    endfor
   endif
 
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
@@ -70,18 +64,12 @@ function! lsp_settings#exec_path(cmd) abort
   if !has('win32')
     return s:first_one(globpath(l:paths, l:cmd))
   endif
-  let l:path = globpath(l:paths, l:cmd . '.exe')
-  if !empty(l:path)
-    return s:first_one(l:path)
-  endif
-  let l:path = globpath(l:paths, l:cmd . '.cmd')
-  if !empty(l:path)
-    return s:first_one(l:path)
-  endif
-  let l:path = globpath(l:paths, l:cmd . '.bat')
-  if !empty(l:path)
-    return s:first_one(l:path)
-  endif
+  for l:ext in ['.exe', '.cmd', '.bat']
+    let l:path = globpath(l:paths, l:cmd . l:ext)
+    if !empty(l:path)
+      return s:first_one(l:path)
+    endif
+  endfor
   return ''
 endfunction
 

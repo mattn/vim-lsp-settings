@@ -21,15 +21,11 @@ function! s:executable(cmd) abort
   if !has('win32')
     return !empty(globpath(l:paths, a:cmd))
   endif
-  if !empty(globpath(l:paths, a:cmd . '.exe'))
-    return 1
-  endif
-  if !empty(globpath(l:paths, a:cmd . '.cmd'))
-    return 1
-  endif
-  if !empty(globpath(l:paths, a:cmd . '.bat'))
-    return 1
-  endif
+  for l:ext in ['.exe', '.cmd', '.bat']
+    if !empty(globpath(l:paths, a:cmd . l:ext))
+      return 1
+    endif
+  endfor
   return 0
 endfunction
 
