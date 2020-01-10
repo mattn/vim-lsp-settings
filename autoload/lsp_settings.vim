@@ -80,3 +80,9 @@ function! lsp_settings#root_uri(pattern) abort
   endif
   return lsp#utils#path_to_uri(l:dir)
 endfunction
+
+function! lsp_settings#find_tsserver() abort
+  let l:root_uri = lsp_settings#root_uri(['tsconfig.json'])[7:] " remove file://
+  let l:project_tsserver = l:root_uri . '/node_modules/.bin/tsserver'
+  return executable(l:project_tsserver) ? l:project_tsserver : ''
+endfunction
