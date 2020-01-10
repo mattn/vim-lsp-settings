@@ -2,5 +2,5 @@
 
 set -e
 
-GOPATH=$(pwd) GOBIN=$(pwd) go get -v -u golang.org/x/tools/gopls
+GOPATH=$(pwd) GOBIN=$(pwd) go get -v golang.org/x/tools/gopls
 rm -rf src
