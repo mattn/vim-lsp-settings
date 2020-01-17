@@ -76,3 +76,18 @@ function! lsp_settings#root_uri(pattern) abort
   endif
   return lsp#utils#path_to_uri(l:dir)
 endfunction
+
+function! lsp_settings#autocd(server_info) abort
+  if !has_key(a:server_info, 'root_uri')
+    return
+  endif
+  if type(a:server_info['root_uri']) ==# v:t_func
+    let l:root_uri = a:server_info['root_uri'](a:server_info)
+  else
+    let l:root_uri = a:server_info['root_uri']
+  endif
+  let l:path = lsp#utils#uri_to_path(l:root_uri)
+  if isdirectory(l:path)
+    exe 'cd' l:path
+  endif
+endfunction

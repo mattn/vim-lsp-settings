@@ -97,6 +97,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Groovy     | groovy-language-server                                 | Yes           |
 | Dart       | analysis-server-dart-snapshot                          | Yes           |
 | Erlang     | erlang-ls                                              | Yes           |
+| F#         | fsharp-language-server                                 | Yes           |
 
 ## License
 
