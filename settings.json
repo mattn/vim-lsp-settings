@@ -102,6 +102,14 @@
       ]
     }
   ],
+  "fsharp": [
+    {
+      "command": "fsharp-language-server",
+      "requires": [
+        "dotnet"
+      ]
+    }
+  ],
   "go": [
     {
       "command": "gopls",
