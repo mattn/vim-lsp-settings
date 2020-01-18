@@ -8,6 +8,6 @@ augroup vimlsp_settings_yaml_language_server
       \ 'whitelist': lsp_settings#get('yaml-language-server', 'whitelist', ['yaml']),
       \ 'blacklist': lsp_settings#get('yaml-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('yaml-language-server', 'config', {}),
-      \ 'workspace_config': lsp_settings#get('yaml-language-server', 'workspace_config', {}),
+      \ 'workspace_config': lsp_settings#get('yaml-language-server', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': json_decode(join(readfile(expand('<sfile>:h:h') . '/data/catalog.json'), "\n"))['schemas']}}}),
       \ }
 augroup END
