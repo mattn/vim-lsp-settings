@@ -5,7 +5,7 @@ function! lsp_settings#get(name, key, default) abort
   if !has_key(l:config, a:name)
     if !has_key(l:config, '*')
       if type(a:default) ==# v:t_func
-        return a:default()
+        return a:default(a:name, a:key)
       endif
       return a:default
     endif
@@ -15,7 +15,7 @@ function! lsp_settings#get(name, key, default) abort
   endif
   if !has_key(l:config, a:key)
     if type(a:default) ==# v:t_func
-      return a:default()
+      return a:default(a:name, a:key)
     endif
     return a:default
   endif
