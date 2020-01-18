@@ -4,6 +4,9 @@ function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
     if !has_key(l:config, '*')
+      if type(a:default) ==# v:t_func
+        return a:default()
+      endif
       return a:default
     endif
     let l:config = l:config['*']
@@ -11,6 +14,9 @@ function! lsp_settings#get(name, key, default) abort
     let l:config = l:config[a:name]
   endif
   if !has_key(l:config, a:key)
+    if type(a:default) ==# v:t_func
+      return a:default()
+    endif
     return a:default
   endif
   return l:config[a:key]
