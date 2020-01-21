@@ -66,6 +66,13 @@
   "elixir": [
     {
       "command": "elixir-ls",
+      "vim-plugin": {
+        "name": "elixir-editors/vim-elixir",
+        "extensions": [
+          "ex",
+          "exs"
+        ]
+      },
       "requires": [
         "elixir"
       ]
@@ -74,6 +81,12 @@
   "elm": [
     {
       "command": "elm-language-server",
+      "vim-plugin": {
+        "name": "ElmCast/elm-vim",
+        "extensions": [
+          "elm"
+        ]
+      },
       "requires": [
         "npm"
       ]
@@ -82,6 +95,12 @@
   "erlang": [
     {
       "command": "erlang-ls",
+      "vim-plugin": {
+        "name": "vim-erlang/vim-erlang-runtime",
+        "extensions": [
+          "erl"
+        ]
+      },
       "requires": [
         "make",
         "rebar3"
@@ -181,6 +200,12 @@
   "kotlin": [
     {
       "command": "kotlin-language-server",
+      "vim-plugin": {
+        "name": "udalov/kotlin-vim",
+        "extensions": [
+          "kt"
+        ]
+      },
       "requires": [
         "java"
       ]
@@ -205,6 +230,12 @@
   "nim": [
     {
       "command": "nimlsp",
+      "vim-plugin": {
+        "name": "zah/nim.vim",
+        "extensions": [
+          "nim"
+        ]
+      },
       "requires": []
     }
   ],
@@ -245,6 +276,13 @@
   "reason": [
     {
       "command": "reason-language-server",
+      "vim-plugin": {
+        "name": "reasonml-editor/vim-reason-plus",
+        "extensions": [
+          "re",
+          "rei"
+        ]
+      },
       "requires": []
     }
   ],
@@ -289,6 +327,12 @@
   "swift": [
     {
       "command": "sourcekit-lsp",
+      "vim-plugin": {
+        "name": "keith/swift.vim",
+        "extensions": [
+          "swift"
+        ]
+      },
       "requires": [
         "sourcekit-lsp"
       ]
@@ -297,6 +341,13 @@
   "terraform": [
     {
       "command": "terraform-lsp",
+      "vim-plugin": {
+        "name": "hashivim/vim-terraform",
+        "extensions": [
+          "tf",
+          "tfvars"
+        ]
+      },
       "requires": []
     }
   ],
@@ -339,6 +390,12 @@
   "vue": [
     {
       "command": "vls",
+      "vim-plugin": {
+        "name": "posva/vim-vue",
+        "extensions": [
+          "vue"
+        ]
+      },
       "requires": [
         "npm"
       ]
