@@ -416,5 +416,13 @@
         "npm"
       ]
     }
+  ],
+  "graphql": [
+    {
+      "command": "gql-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
   ]
 }
