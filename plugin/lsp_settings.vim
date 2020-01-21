@@ -123,7 +123,7 @@ function! s:vimlsp_settings_suggest() abort
   if exists(':LspInstallServer') !=# 2
     redraw
     echohl Directory
-    echomsg 'If you want to enable Language Server, please do :LspInstallServer'
+    echomsg 'If enable Language Server, please do :LspInstallServer'
     echohl None
     command! -buffer LspInstallServer call s:vimlsp_install_server()
   endif
@@ -154,6 +154,32 @@ function! s:vimlsp_setting() abort
       au!
       exe 'autocmd FileType' l:ft 'call s:vimlsp_load_or_suggest(' string(l:ft) ')'
     augroup END
+  endfor
+  augroup vimlsp_suggest
+    au!
+    autocmd BufNewFile,BufRead * call s:vimlsp_suggest_plugin()
+  augroup END
+endfunction
+
+function! s:vimlsp_suggest_plugin() abort
+  if &ft != ''
+    return
+  endif
+  let l:ext = expand('%:e')
+  for l:ft in keys(s:settings)
+    for l:server in s:settings[l:ft]
+      if !has_key(l:server, 'vim-plugin')
+        continue
+      endif
+      if index(l:server['vim-plugin']['extensions'], l:ext) == -1
+        continue
+      endif
+      redraw
+      echohl Directory
+      echomsg printf('If enable Language Server, please install vim-plugin "%s"', l:server['vim-plugin']['name'])
+      echohl None
+      return
+    endfor
   endfor
 endfunction
 
