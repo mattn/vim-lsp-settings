@@ -98,6 +98,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Dart       | analysis-server-dart-snapshot                          | Yes           |
 | Erlang     | erlang-ls                                              | Yes           |
 | F#         | fsharp-language-server                                 | Yes           |
+| GraphQL    | gql-language-server                                    | Yes           |
 
 ## License
 
