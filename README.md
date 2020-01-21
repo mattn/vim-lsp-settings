@@ -100,6 +100,24 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | F#         | fsharp-language-server                                 | Yes           |
 | GraphQL    | gql-language-server                                    | Yes           |
 
+## Notes
+
+### clangd
+
+There is a Linux OS/version that does not run locally installed clangd due to zlib version mismatch. If you want to use clangd, please install clangd on your system.
+
+### gql-language-server
+
+To use gql-language-server, `.gqlconfig` have to be located on the top of project directory. And schema must be pointed to the schema file correctly.
+
+```json5
+{
+  schema: {
+    files: 'path/to/schema.graphql'
+  }
+}
+```
+
 ## License
 
 MIT
