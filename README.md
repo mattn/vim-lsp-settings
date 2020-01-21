@@ -118,6 +118,12 @@ To use gql-language-server, `.gqlconfig` have to be located on the top of projec
 }
 ```
 
+Finally, you have to install `@playlyfe/gql` into your project.
+
+```
+$ npm install @playlyfe/gql --save-dev
+```
+
 ## License
 
 MIT
