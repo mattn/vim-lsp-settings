@@ -336,6 +336,14 @@
       ]
     }
   ],
+  "vue": [
+    {
+      "command": "vls",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "xml": [
     {
       "command": "lsp4xml",
