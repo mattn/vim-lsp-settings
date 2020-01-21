@@ -421,7 +421,8 @@
     {
       "command": "gql-language-server",
       "requires": [
-        "npm"
+        "npm",
+        "watchman"
       ]
     }
   ]
