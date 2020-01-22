@@ -32,8 +32,6 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 
 ## Usage
 
-If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
-
 If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
 
 ```vim
@@ -102,11 +100,15 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 
 ## Notes
 
-### clangd
+### clangd (C/C++)
 
 There is a Linux OS/version that does not run locally installed clangd due to zlib version mismatch. If you want to use clangd, please install clangd on your system.
 
-### gql-language-server
+### rls (Rust)
+
+If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
+
+### gql-language-server (GraphQL)
 
 To use gql-language-server, `.gqlconfig` have to be located on the top of project directory. And schema must be pointed to the schema file correctly.
 
