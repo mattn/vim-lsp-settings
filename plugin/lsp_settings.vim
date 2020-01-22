@@ -206,18 +206,21 @@ function! s:vimlsp_load_or_suggest(ft) abort
     endif
     if !s:executable(l:command)
       let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
-      if !filereadable(l:script) || get(l:server, 'disabled', 0) == 1
+      if !filereadable(l:script) || has_key(l:server, 'fallback')
         continue
       endif
+      let l:server['fallback'] = ''
       try
         exe 'source' l:script
         let l:command = LspCheckCommand()
+        let l:server['fallback'] = l:command
       catch
-        continue
       finally
-        let l:server['disabled'] = 1
         if exists('*LspCheckCommand')
           delfunction LspCheckCommand
+        endif
+        if empty(l:server['fallback'])
+          continue
         endif
       endtry
     endif
