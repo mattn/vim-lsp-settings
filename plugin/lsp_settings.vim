@@ -200,6 +200,9 @@ function! s:vimlsp_load_or_suggest(ft) abort
   let l:found = 0
 
   for l:server in s:settings[a:ft]
+    if s:vimlsp_settings_get(l:server.command, 'disabled', 0)
+      continue
+    endif
     let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
     if type(l:command) == type([])
       let l:command = l:command[0]

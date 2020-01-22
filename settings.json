@@ -426,6 +426,14 @@
       ]
     }
   ],
+  "perl": [
+    {
+      "command": "perl-languageserver",
+      "requires": [
+        "cpanm"
+      ]
+    }
+  ],
   "yaml": [
     {
       "command": "yaml-language-server",
