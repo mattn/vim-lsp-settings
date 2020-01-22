@@ -232,7 +232,7 @@
     {
       "command": "cl-lsp",
       "requires": [
-        "npm"
+        "ros"
       ]
     }
   ],
