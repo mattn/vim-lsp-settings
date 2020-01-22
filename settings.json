@@ -66,45 +66,45 @@
   "elixir": [
     {
       "command": "elixir-ls",
+      "requires": [
+        "elixir"
+      ],
       "vim-plugin": {
-        "name": "elixir-editors/vim-elixir",
         "extensions": [
           "ex",
           "exs"
-        ]
-      },
-      "requires": [
-        "elixir"
-      ]
+        ],
+        "name": "elixir-editors/vim-elixir"
+      }
     }
   ],
   "elm": [
     {
       "command": "elm-language-server",
-      "vim-plugin": {
-        "name": "ElmCast/elm-vim",
-        "extensions": [
-          "elm"
-        ]
-      },
       "requires": [
         "npm"
-      ]
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "elm"
+        ],
+        "name": "ElmCast/elm-vim"
+      }
     }
   ],
   "erlang": [
     {
       "command": "erlang-ls",
-      "vim-plugin": {
-        "name": "vim-erlang/vim-erlang-runtime",
-        "extensions": [
-          "erl"
-        ]
-      },
       "requires": [
         "make",
         "rebar3"
-      ]
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "erl"
+        ],
+        "name": "vim-erlang/vim-erlang-runtime"
+      }
     }
   ],
   "fortran": [
@@ -134,6 +134,15 @@
       "command": "gopls",
       "requires": [
         "go"
+      ]
+    }
+  ],
+  "graphql": [
+    {
+      "command": "gql-language-server",
+      "requires": [
+        "npm",
+        "watchman"
       ]
     }
   ],
@@ -200,15 +209,15 @@
   "kotlin": [
     {
       "command": "kotlin-language-server",
-      "vim-plugin": {
-        "name": "udalov/kotlin-vim",
-        "extensions": [
-          "kt"
-        ]
-      },
       "requires": [
         "java"
-      ]
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "kt"
+        ],
+        "name": "udalov/kotlin-vim"
+      }
     }
   ],
   "less": [
@@ -216,6 +225,14 @@
       "command": "css-languageserver",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "lisp": [
+    {
+      "command": "cl-lsp",
+      "requires": [
+        "ros"
       ]
     }
   ],
@@ -230,13 +247,13 @@
   "nim": [
     {
       "command": "nimlsp",
+      "requires": [],
       "vim-plugin": {
-        "name": "zah/nim.vim",
         "extensions": [
           "nim"
-        ]
-      },
-      "requires": []
+        ],
+        "name": "zah/nim.vim"
+      }
     }
   ],
   "php": [
@@ -276,14 +293,14 @@
   "reason": [
     {
       "command": "reason-language-server",
+      "requires": [],
       "vim-plugin": {
-        "name": "reasonml-editor/vim-reason-plus",
         "extensions": [
           "re",
           "rei"
-        ]
-      },
-      "requires": []
+        ],
+        "name": "reasonml-editor/vim-reason-plus"
+      }
     }
   ],
   "ruby": [
@@ -327,28 +344,28 @@
   "swift": [
     {
       "command": "sourcekit-lsp",
-      "vim-plugin": {
-        "name": "keith/swift.vim",
-        "extensions": [
-          "swift"
-        ]
-      },
       "requires": [
         "sourcekit-lsp"
-      ]
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "swift"
+        ],
+        "name": "keith/swift.vim"
+      }
     }
   ],
   "terraform": [
     {
       "command": "terraform-lsp",
+      "requires": [],
       "vim-plugin": {
-        "name": "hashivim/vim-terraform",
         "extensions": [
           "tf",
           "tfvars"
-        ]
-      },
-      "requires": []
+        ],
+        "name": "hashivim/vim-terraform"
+      }
     }
   ],
   "tex": [
@@ -390,15 +407,15 @@
   "vue": [
     {
       "command": "vls",
-      "vim-plugin": {
-        "name": "posva/vim-vue",
-        "extensions": [
-          "vue"
-        ]
-      },
       "requires": [
         "npm"
-      ]
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "vue"
+        ],
+        "name": "posva/vim-vue"
+      }
     }
   ],
   "xml": [
@@ -414,15 +431,6 @@
       "command": "yaml-language-server",
       "requires": [
         "npm"
-      ]
-    }
-  ],
-  "graphql": [
-    {
-      "command": "gql-language-server",
-      "requires": [
-        "npm",
-        "watchman"
       ]
     }
   ]
