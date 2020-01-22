@@ -4,6 +4,7 @@ endif
 let g:loaded_lsp_settings= 1
 
 let s:settings_dir = expand('<sfile>:h:h').'/settings'
+let s:checkers_dir = expand('<sfile>:h:h').'/checkers'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
@@ -203,13 +204,28 @@ function! s:vimlsp_load_or_suggest(ft) abort
     if type(l:command) == type([])
       let l:command = l:command[0]
     endif
-    if s:executable(l:command)
-      let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
-      if filereadable(l:script)
-        exe 'source' l:script
-        let l:found += 1
-        break
+    if !s:executable(l:command)
+      let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
+      if !filereadable(l:script) || get(l:server, 'disabled', 0) == 1
+        continue
       endif
+      try
+        exe 'source' l:script
+        let l:command = LspCheckCommand()
+      catch
+        continue
+      finally
+        let l:server['disabled'] = 1
+        if exists('*LspCheckCommand')
+          delfunction LspCheckCommand
+        endif
+      endtry
+    endif
+    let l:script = printf('%s/%s.vim', s:settings_dir, l:server.command)
+    if filereadable(l:script)
+      exe 'source' l:script
+      let l:found += 1
+      break
     endif
   endfor
 
