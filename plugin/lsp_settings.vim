@@ -20,7 +20,8 @@ function! s:executable(cmd) abort
   let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
   let l:paths .= ',' . l:servers_dir . '/' . a:cmd
   if !has('win32')
-    return !empty(globpath(l:paths, a:cmd))
+    let l:found = globpath(l:paths, a:cmd)
+    return !empty(l:found) && executable(l:found)
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
     if !empty(globpath(l:paths, a:cmd . l:ext))
