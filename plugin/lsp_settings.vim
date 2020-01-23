@@ -204,6 +204,10 @@ function! s:vimlsp_load_or_suggest(ft) abort
     if s:vimlsp_settings_get(l:server.command, 'disabled', 0)
       continue
     endif
+    let l:default = get(g:, 'lsp_settings_' . a:ft, '')
+    if !empty(l:default) && l:default != l:server.command
+      continue
+    endif
     let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
     if type(l:command) == type([])
       let l:command = l:command[0]

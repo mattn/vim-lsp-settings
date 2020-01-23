@@ -428,6 +428,18 @@
   ],
   "perl": [
     {
+      "command": "slp",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "monastery",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
       "command": "perl-languageserver",
       "requires": [
         "cpanm"
