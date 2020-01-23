@@ -3,7 +3,7 @@ augroup vimlsp_settings_cobol_language_support
   LspRegisterServer {
       \ 'name': 'cobol-language-support',
       \ 'cmd': {server_info->lsp_settings#get('cobol-language-support', 'cmd', [lsp_settings#exec_path('cobol-language-support')])},
-      \ 'root_uri':{server_info->lsp_settings#get('cobol-language-server', 'root_uri', lsp_settings#root_uri(['.git/']))},
+      \ 'root_uri':{server_info->lsp_settings#get('cobol-language-server', 'root_uri', lsp_settings#root_uri(g:lsp_settings_root_markers))},
       \ 'initialization_options': lsp_settings#get('cobol-language-support', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('cobol-language-support', 'whitelist', ['cobol']),
       \ 'blacklist': lsp_settings#get('cobol-language-support', 'blacklist', []),

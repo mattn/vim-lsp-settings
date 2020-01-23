@@ -3,6 +3,13 @@ if exists('g:loaded_lsp_settings') || !exists('*json_encode') || !has('lambda')
 endif
 let g:loaded_lsp_settings= 1
 
+let g:lsp_settings_root_markers = get(g:, 'lsp_settings_root_markers', [
+      \ '.git/',
+      \ '.svn/',
+      \ '.hg/',
+      \ '.bzr/'
+      \ ])
+
 let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:checkers_dir = expand('<sfile>:h:h').'/checkers'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
