@@ -21,7 +21,7 @@ function! s:executable(cmd) abort
   let l:paths .= ',' . l:servers_dir . '/' . a:cmd
   if !has('win32')
     let l:found = globpath(l:paths, a:cmd)
-    return !empty(l:found) && executable(l:found)
+    return !empty(l:found)
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
     if !empty(globpath(l:paths, a:cmd . l:ext))
