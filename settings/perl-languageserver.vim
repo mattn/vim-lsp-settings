@@ -2,7 +2,7 @@ augroup vimlsp_settings_perl_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'perl-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('perl-languageserver', 'cmd', [lsp_settings#exec_path('perl-languageserver')])},
+      \ 'cmd': {server_info->lsp_settings#get('perl-languageserver', 'cmd', ['perl', '-MPerl::LanguageServer', '-e', 'Perl::LanguageServer->run'])},
       \ 'root_uri':{server_info->lsp_settings#get('perl-languageserver', 'root_uri', lsp_settings#root_uri(['.git/']))},
       \ 'initialization_options': lsp_settings#get('perl-languageserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('perl-languageserver', 'whitelist', ['perl']),
