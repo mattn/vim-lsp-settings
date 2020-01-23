@@ -15,4 +15,5 @@ DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/language_server.sh \$*
 EOF
 
+chmod +x language_server.sh
 chmod +x elixir-ls
