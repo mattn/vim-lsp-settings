@@ -9,9 +9,9 @@
     },
     "^([a-z0-9_-]+)+$": {
       "type": "array",
-      "title": "filetype name",
+      "description": "filetype name",
       "items": {
-        "title": "define command description",
+        "description": "define command description",
         "type": "object",
         "additionalProperties": false,
         "required": [
@@ -20,19 +20,19 @@
         ],
         "properties": {
           "command": {
-            "title": "define name of language server",
+            "description": "define name of language server",
             "type": "string"
           },
           "requires": {
-            "title": "define commands to install this language server",
+            "description": "define commands to install this language server",
             "type": "array",
             "items": {
               "type": "string",
-              "title": "executable command name"
+              "description": "executable command name"
             }
           },
           "vim-plugin": {
-            "title": "define suggestion for vim-plugin",
+            "description": "define suggestion for vim-plugin",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -40,12 +40,12 @@
                 "type": "array",
                 "items": {
                   "type": "string",
-                  "title": "file extensions"
+                  "description": "file extensions"
                 }
               },
               "name": {
                 "type": "string",
-                "title": "plugin identify user/repo"
+                "description": "plugin identify user/repo"
               }
             }
           }
