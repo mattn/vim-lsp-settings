@@ -41,7 +41,7 @@ function! s:executable(cmd) abort
   return 0
 endfunction
 
-function! s:vimlsp_installer() abort
+function! s:vim_lsp_installer() abort
   let l:ft = tolower(split(&filetype, '\.')[0])
   if !has_key(s:settings, l:ft)
     return []
@@ -68,7 +68,7 @@ function! s:vimlsp_installer() abort
     return []
   endif
   for l:conf in l:server
-    let l:command = s:vimlsp_settings_get(l:conf.command, 'cmd', l:conf.command)
+    let l:command = s:vim_lsp_settings_get(l:conf.command, 'cmd', l:conf.command)
     if type(l:command) == type([])
       let l:command = l:command[0]
     endif
@@ -86,7 +86,7 @@ function! s:vimlsp_installer() abort
 endfunction
 
 " neovim passes third argument as 'exit' while vim passes only 2 arguments
-function! s:vimlsp_install_server_post(command, job, code, ...) abort
+function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
     return
   endif
@@ -105,8 +105,8 @@ function! s:vimlsp_install_server_post(command, job, code, ...) abort
   endif
 endfunction
 
-function! s:vimlsp_install_server() abort
-  let l:entry = s:vimlsp_installer()
+function! s:vim_lsp_install_server() abort
+  let l:entry = s:vim_lsp_installer()
   if empty(l:entry)
     return
   endif
@@ -118,18 +118,18 @@ function! s:vimlsp_install_server() abort
   call mkdir(l:server_install_dir, 'p')
   if has('nvim')
     split new
-    call termopen(l:entry[1], {'cwd': l:server_install_dir, 'on_exit': function('s:vimlsp_install_server_post', [l:entry[0]])}) | startinsert
+    call termopen(l:entry[1], {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
   else
     let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
     let l:job = term_getjob(l:bufnr)
     if l:job != v:null
-      call job_setoptions(l:job, {'exit_cb': function('s:vimlsp_install_server_post', [l:entry[0]])})
+      call job_setoptions(l:job, {'exit_cb': function('s:vim_lsp_install_server_post', [l:entry[0]])})
     endif
   endif
 endfunction
 
-function! s:vimlsp_settings_suggest() abort
-  if empty(s:vimlsp_installer())
+function! s:vim_lsp_settings_suggest() abort
+  if empty(s:vim_lsp_installer())
     return
   endif
   if exists(':LspInstallServer') !=# 2
@@ -137,11 +137,11 @@ function! s:vimlsp_settings_suggest() abort
     echohl Directory
     echomsg 'Please do :LspInstallServer to enable Language Server'
     echohl None
-    command! -buffer LspInstallServer call s:vimlsp_install_server()
+    command! -buffer LspInstallServer call s:vim_lsp_install_server()
   endif
 endfunction
 
-function! s:vimlsp_settings_get(name, key, default) abort
+function! s:vim_lsp_settings_get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
     if !has_key(l:config, '*')
@@ -157,23 +157,23 @@ function! s:vimlsp_settings_get(name, key, default) abort
   return l:config[a:key]
 endfunction
 
-function! s:vimlsp_setting() abort
+function! s:vim_lsp_settings() abort
   for l:ft in keys(s:settings)
     if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1 || empty(s:settings[l:ft])
       continue
     endif
     exe 'augroup' s:load_or_suggest_group_name(l:ft)
-      au!
-      exe 'autocmd FileType' l:ft 'call s:vimlsp_load_or_suggest(' string(l:ft) ')'
+      autocmd!
+      exe 'autocmd FileType' l:ft 'call s:vim_lsp_load_or_suggest(' string(l:ft) ')'
     augroup END
   endfor
-  augroup vimlsp_suggest
-    au!
-    autocmd BufNewFile,BufRead * call s:vimlsp_suggest_plugin()
+  augroup vim_lsp_suggest
+    autocmd!
+    autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
   augroup END
 endfunction
 
-function! s:vimlsp_suggest_plugin() abort
+function! s:vim_lsp_suggest_plugin() abort
   if &ft != ''
     return
   endif
@@ -195,13 +195,13 @@ function! s:vimlsp_suggest_plugin() abort
   endfor
 endfunction
 
-function! s:vimlsp_load_or_suggest(ft) abort
+function! s:vim_lsp_load_or_suggest(ft) abort
   if get(s:ftmap, a:ft, 0)
     return
   endif
   let l:group_name = s:load_or_suggest_group_name(a:ft)
   exe 'augroup' l:group_name
-    au!
+    autocmd!
   augroup END
   exe 'augroup!' l:group_name
 
@@ -214,14 +214,14 @@ function! s:vimlsp_load_or_suggest(ft) abort
   let l:found = 0
 
   for l:server in s:settings[a:ft]
-    if s:vimlsp_settings_get(l:server.command, 'disabled', 0)
+    if s:vim_lsp_settings_get(l:server.command, 'disabled', 0)
       continue
     endif
     let l:default = get(g:, 'lsp_settings_' . a:ft, '')
     if !empty(l:default) && l:default != l:server.command
       continue
     endif
-    let l:command = s:vimlsp_settings_get(l:server.command, 'cmd', l:server.command)
+    let l:command = s:vim_lsp_settings_get(l:server.command, 'cmd', l:server.command)
     if type(l:command) == type([])
       let l:command = l:command[0]
     endif
@@ -255,11 +255,11 @@ function! s:vimlsp_load_or_suggest(ft) abort
   endfor
 
   if l:found ==# 0
-    call s:vimlsp_settings_suggest()
+    call s:vim_lsp_settings_suggest()
   else
     doautocmd User lsp_setup
     if exists(':LspInstallServer') !=# 2
-      command! -buffer LspInstallServer call s:vimlsp_install_server()
+      command! -buffer LspInstallServer call s:vim_lsp_install_server()
     endif
   endif
 
@@ -269,7 +269,10 @@ function! s:vimlsp_load_or_suggest(ft) abort
 endfunction
 
 function! s:load_or_suggest_group_name(ft) abort
-  return printf('vimlsp_suggest_%s', a:ft)
+  return printf('vim_lsp_suggest_%s', a:ft)
 endfunction
 
-call s:vimlsp_setting()
+augroup vim_lsp_settings
+  autocmd!
+  autocmd User lsp_setup call s:vim_lsp_settings() | autocmd! vim_lsp_settings
+augroup END
