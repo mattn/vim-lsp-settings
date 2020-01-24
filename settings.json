@@ -1,4 +1,5 @@
 {
+  "$schema": "./schema.json",
   "_": [
     {
       "command": "efm-langserver",
@@ -210,6 +211,20 @@
       "requires": [
         "npm"
       ]
+    }
+  ],
+  "jsonc": [
+    {
+      "command": "json-languageserver",
+      "requires": [
+        "npm"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "cjson"
+        ],
+        "name": "neoclide/jsonc.vim"
+      }
     }
   ],
   "kotlin": [

@@ -17,6 +17,8 @@ let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
 let s:ftmap = {}
 
+call remove(s:settings, '$schema')
+
 function! s:executable(cmd) abort
   if executable(a:cmd)
     return 1
@@ -133,7 +135,7 @@ function! s:vimlsp_settings_suggest(ft) abort
   if exists(':LspInstallServer') !=# 2
     redraw
     echohl Directory
-    echomsg 'If enable Language Server, please do :LspInstallServer'
+    echomsg 'Please do :LspInstallServer to enable Language Server'
     echohl None
     command! -buffer LspInstallServer call s:vimlsp_install_server(&l:filetype)
   endif
@@ -186,7 +188,7 @@ function! s:vimlsp_suggest_plugin() abort
       endif
       redraw
       echohl Directory
-      echomsg printf('If enable Language Server, please install vim-plugin "%s"', l:server['vim-plugin']['name'])
+      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim-plugin']['name'])
       echohl None
       return
     endfor
