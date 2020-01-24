@@ -133,7 +133,7 @@ function! s:vimlsp_settings_suggest() abort
   if exists(':LspInstallServer') !=# 2
     redraw
     echohl Directory
-    echomsg 'If enable Language Server, please do :LspInstallServer'
+    echomsg 'Please do :LspInstallServer to enable Language Server'
     echohl None
     command! -buffer LspInstallServer call s:vimlsp_install_server()
   endif
@@ -186,7 +186,7 @@ function! s:vimlsp_suggest_plugin() abort
       endif
       redraw
       echohl Directory
-      echomsg printf('If enable Language Server, please install vim-plugin "%s"', l:server['vim-plugin']['name'])
+      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim-plugin']['name'])
       echohl None
       return
     endfor
