@@ -8,6 +8,7 @@ let s:checkers_dir = expand('<sfile>:h:h').'/checkers'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
+let s:ftmap = {}
 
 function! s:executable(cmd) abort
   if executable(a:cmd)
@@ -186,6 +187,9 @@ function! s:vimlsp_suggest_plugin() abort
 endfunction
 
 function! s:vimlsp_load_or_suggest(ft) abort
+  if get(s:ftmap, a:ft, 0)
+    return
+  endif
   let l:group_name = s:load_or_suggest_group_name(a:ft)
   exe 'augroup' l:group_name
     au!
@@ -236,6 +240,7 @@ function! s:vimlsp_load_or_suggest(ft) abort
     if filereadable(l:script)
       exe 'source' l:script
       let l:found += 1
+      let s:ftmap[a:ft] = 1
       break
     endif
   endfor
