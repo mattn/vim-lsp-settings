@@ -3,7 +3,7 @@ augroup vimlsp_settings_intelephense_server
   LspRegisterServer {
       \ 'name': 'intelephense',
       \ 'cmd': {server_info->lsp_settings#get('intelephense', 'cmd', [lsp_settings#exec_path('intelephense'), '--stdio'])},
-      \ 'root_uri':{server_info->lsp_settings#get('intelephense', 'root_uri', lsp_settings#root_uri(['.git/']))},
+      \ 'root_uri':{server_info->lsp_settings#get('intelephense', 'root_uri', lsp_settings#root_uri(g:lsp_settings_root_markers))},
       \ 'initialization_options': lsp_settings#get('intelephense', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('intelephense', 'whitelist', ['php']),
       \ 'blacklist': lsp_settings#get('intelephense', 'blacklist', []),

@@ -3,7 +3,7 @@ augroup vimlsp_settings_dls
   LspRegisterServer {
       \ 'name': 'dls',
       \ 'cmd': {server_info->lsp_settings#get('dls', 'cmd', [lsp_settings#exec_path('dls')])},
-      \ 'root_uri':{server_info->lsp_settings#get('dls', 'root_uri', lsp_settings#root_uri(['.git/']))},
+      \ 'root_uri':{server_info->lsp_settings#get('dls', 'root_uri', lsp_settings#root_uri(g:lsp_settings_root_markers))},
       \ 'initialization_options': lsp_settings#get('dls', 'initialization_options', {"diagnostics": "true"}),
       \ 'whitelist': lsp_settings#get('dls', 'whitelist', ['d']),
       \ 'blacklist': lsp_settings#get('dls', 'blacklist', []),
