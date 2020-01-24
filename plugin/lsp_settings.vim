@@ -17,6 +17,8 @@ let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
 let s:ftmap = {}
 
+call remove(s:settings, '$schema')
+
 function! s:executable(cmd) abort
   if executable(a:cmd)
     return 1
