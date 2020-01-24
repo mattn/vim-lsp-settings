@@ -206,6 +206,20 @@
       ]
     }
   ],
+  "jsonc": [
+    {
+      "command": "json-languageserver",
+      "requires": [
+        "npm"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "cjson"
+        ],
+        "name": "neoclide/jsonc.vim"
+      }
+    }
+  ],
   "kotlin": [
     {
       "command": "kotlin-language-server",
@@ -254,6 +268,26 @@
         ],
         "name": "zah/nim.vim"
       }
+    }
+  ],
+  "perl": [
+    {
+      "command": "slp",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "monastery",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "perl-languageserver",
+      "requires": [
+        "cpanm"
+      ]
     }
   ],
   "php": [
@@ -423,26 +457,6 @@
       "command": "lsp4xml",
       "requires": [
         "java"
-      ]
-    }
-  ],
-  "perl": [
-    {
-      "command": "slp",
-      "requires": [
-        "cpanm"
-      ]
-    },
-    {
-      "command": "monastery",
-      "requires": [
-        "cpanm"
-      ]
-    },
-    {
-      "command": "perl-languageserver",
-      "requires": [
-        "cpanm"
       ]
     }
   ],
