@@ -1,4 +1,10 @@
 {
+  "_": [
+    {
+      "command": "efm-langserver",
+      "requires": []
+    }
+  ],
   "c": [
     {
       "command": "clangd",
@@ -256,6 +262,26 @@
       }
     }
   ],
+  "perl": [
+    {
+      "command": "slp",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "monastery",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "perl-languageserver",
+      "requires": [
+        "cpanm"
+      ]
+    }
+  ],
   "php": [
     {
       "command": "intelephense",
@@ -423,26 +449,6 @@
       "command": "lsp4xml",
       "requires": [
         "java"
-      ]
-    }
-  ],
-  "perl": [
-    {
-      "command": "slp",
-      "requires": [
-        "cpanm"
-      ]
-    },
-    {
-      "command": "monastery",
-      "requires": [
-        "cpanm"
-      ]
-    },
-    {
-      "command": "perl-languageserver",
-      "requires": [
-        "cpanm"
       ]
     }
   ],

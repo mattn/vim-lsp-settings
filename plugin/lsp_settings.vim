@@ -32,8 +32,8 @@ function! s:executable(cmd) abort
   return 0
 endfunction
 
-function! s:vimlsp_installer() abort
-  let l:ft = tolower(split(&filetype, '\.')[0])
+function! s:vimlsp_installer(ft) abort
+  let l:ft = tolower(split(a:ft, '\.')[0])
   if !has_key(s:settings, l:ft)
     return []
   endif
@@ -96,8 +96,8 @@ function! s:vimlsp_install_server_post(command, job, code, ...) abort
   endif
 endfunction
 
-function! s:vimlsp_install_server() abort
-  let l:entry = s:vimlsp_installer()
+function! s:vimlsp_install_server(ft) abort
+  let l:entry = s:vimlsp_installer(a:ft)
   if empty(l:entry)
     return
   endif
@@ -119,8 +119,8 @@ function! s:vimlsp_install_server() abort
   endif
 endfunction
 
-function! s:vimlsp_settings_suggest() abort
-  if empty(s:vimlsp_installer())
+function! s:vimlsp_settings_suggest(ft) abort
+  if empty(s:vimlsp_installer(a:ft))
     return
   endif
   if exists(':LspInstallServer') !=# 2
@@ -128,7 +128,7 @@ function! s:vimlsp_settings_suggest() abort
     echohl Directory
     echomsg 'If enable Language Server, please do :LspInstallServer'
     echohl None
-    command! -buffer LspInstallServer call s:vimlsp_install_server()
+    command! -buffer LspInstallServer call s:vimlsp_install_server(&l:filetype)
   endif
 endfunction
 
@@ -246,11 +246,11 @@ function! s:vimlsp_load_or_suggest(ft) abort
   endfor
 
   if l:found ==# 0
-    call s:vimlsp_settings_suggest()
+    call s:vimlsp_settings_suggest(a:ft)
   else
     doautocmd User lsp_setup
     if exists(':LspInstallServer') !=# 2
-      command! -buffer LspInstallServer call s:vimlsp_install_server()
+      command! -buffer LspInstallServer call s:vimlsp_install_server(&l:filetype)
     endif
   endif
 
@@ -264,3 +264,4 @@ function! s:load_or_suggest_group_name(ft) abort
 endfunction
 
 call s:vimlsp_setting()
+call s:vimlsp_load_or_suggest('_')
