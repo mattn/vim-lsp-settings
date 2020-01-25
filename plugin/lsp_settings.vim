@@ -272,7 +272,4 @@ function! s:load_or_suggest_group_name(ft) abort
   return printf('vim_lsp_suggest_%s', a:ft)
 endfunction
 
-augroup vim_lsp_settings
-  autocmd!
-  autocmd User lsp_setup call s:vim_lsp_settings() | autocmd! vim_lsp_settings
-augroup END
+call s:vim_lsp_settings()
