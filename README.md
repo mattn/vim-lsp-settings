@@ -32,25 +32,6 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 
 ## Usage
 
-If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
-
-```vim
-let g:lsp_settings = {
-\  'clangd': {'cmd': ['clangd-6.0']}
-\}
-```
-
-Overridable keys are:
-
-* cmd (List ex: `['clangd-6.0', '-enable-snippets']`)
-* initialization_options (Dictionary)
-* whitelist (List)
-* blacklist (List)
-* config (Dictionary)
-* workspace_config (Dictionary)
-
-If you install ruby but not solargraph, you can install solargraph with following command.
-
 ```
 :LspInstallServer
 ```
@@ -124,6 +105,45 @@ Finally, you have to install `@playlyfe/gql` into your project.
 
 ```
 $ npm install @playlyfe/gql --save-dev
+```
+
+## Configurations
+
+Most of configurations are not required.
+
+If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
+
+```vim
+let g:lsp_settings = {
+\  'clangd': {'cmd': ['clangd-6.0']}
+\}
+```
+
+Overridable keys are:
+
+* cmd (List ex: `['clangd-6.0', '-enable-snippets']`)
+* initialization_options (Dictionary)
+* whitelist (List)
+* blacklist (List)
+* config (Dictionary)
+* workspace_config (Dictionary)
+
+If you install ruby but not solargraph, you can install solargraph with following command.
+
+If you have some Language Servers and want to use specified the server:
+
+```vim
+let g:lsp_settings_perl = 'slp'
+```
+
+If you want to disable Language Server:
+
+```vim
+let g:lsp_settings = {
+\  'perl-languageserver': {
+\    'disabled': 0,
+\   }
+\}
 ```
 
 ## License
