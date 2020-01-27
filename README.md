@@ -78,6 +78,9 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Erlang     | erlang-ls                                              | Yes           |
 | F#         | fsharp-language-server                                 | Yes           |
 | GraphQL    | gql-language-server                                    | Yes           |
+| Vue        | vue-language-server                                    | Yes           |
+| SQL        | sql-language-server                                    | Yes           |
+| Lisp       | cl-lsp                                                 | Yes           |
 
 ## Notes
 
