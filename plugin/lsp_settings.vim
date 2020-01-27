@@ -41,14 +41,18 @@ function! s:executable(cmd) abort
   return 0
 endfunction
 
-function! s:vim_lsp_installer() abort
-  let l:ft = tolower(split(&filetype, '\.')[0])
+function! s:vim_lsp_installer(ft, ...) abort
+  let l:ft = tolower(split(a:ft, '\.')[0])
   if !has_key(s:settings, l:ft)
     return []
   endif
   let l:server = s:settings[l:ft]
   if empty(l:server)
     return []
+  endif
+  let l:name = get(a:000, 0, '')
+  if !empty(l:name)
+    return filter(copy(l:server), 'l:conf.command ==# l:name')
   endif
   let l:found = {}
   for l:conf in l:server
@@ -105,8 +109,8 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   endif
 endfunction
 
-function! s:vim_lsp_install_server() abort
-  let l:entry = s:vim_lsp_installer()
+function! s:vim_lsp_install_server(ft, name) abort
+  let l:entry = s:vim_lsp_installer(a:ft, a:name)
   if empty(l:entry)
     return
   endif
@@ -128,8 +132,8 @@ function! s:vim_lsp_install_server() abort
   endif
 endfunction
 
-function! s:vim_lsp_settings_suggest() abort
-  if empty(s:vim_lsp_installer())
+function! s:vim_lsp_settings_suggest(ft) abort
+  if empty(s:vim_lsp_installer(a:ft))
     return
   endif
   if exists(':LspInstallServer') !=# 2
@@ -137,7 +141,7 @@ function! s:vim_lsp_settings_suggest() abort
     echohl Directory
     echomsg 'Please do :LspInstallServer to enable Language Server'
     echohl None
-    command! -buffer LspInstallServer call s:vim_lsp_install_server()
+    command! -nargs=? -buffer LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
   endif
 endfunction
 
@@ -214,7 +218,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   let l:found = 0
 
   for l:server in s:settings[a:ft]
-    if s:vim_lsp_settings_get(l:server.command, 'disabled', 0)
+    if get(l:server, 'disabled', 0) || s:vim_lsp_settings_get(l:server.command, 'disabled', 0)
       continue
     endif
     let l:default = get(g:, 'lsp_settings_' . a:ft, '')
@@ -255,11 +259,11 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endfor
 
   if l:found ==# 0
-    call s:vim_lsp_settings_suggest()
+    call s:vim_lsp_settings_suggest(a:ft)
   else
     doautocmd User lsp_setup
     if exists(':LspInstallServer') !=# 2
-      command! -buffer LspInstallServer call s:vim_lsp_install_server()
+      command! -nargs=? -buffer LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
     endif
   endif
 
@@ -273,3 +277,4 @@ function! s:load_or_suggest_group_name(ft) abort
 endfunction
 
 call s:vim_lsp_settings()
+call s:vim_lsp_load_or_suggest('_')

@@ -1,5 +1,12 @@
 {
   "$schema": "https://mattn.github.io/vim-lsp-settings/schema.json",
+  "_": [
+    {
+      "command": "efm-langserver",
+      "disabled": true,
+      "requires": []
+    }
+  ],
   "c": [
     {
       "command": "clangd",
