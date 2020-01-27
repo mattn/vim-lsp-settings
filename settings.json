@@ -3,6 +3,7 @@
   "_": [
     {
       "command": "efm-langserver",
+      "disabled": true,
       "requires": []
     }
   ],

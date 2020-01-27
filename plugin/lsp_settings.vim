@@ -214,7 +214,7 @@ function! s:vimlsp_load_or_suggest(ft) abort
   let l:found = 0
 
   for l:server in s:settings[a:ft]
-    if s:vimlsp_settings_get(l:server.command, 'disabled', 0)
+    if get(l:server, 'disabled', 0) || s:vimlsp_settings_get(l:server.command, 'disabled', 0)
       continue
     endif
     let l:default = get(g:, 'lsp_settings_' . a:ft, '')

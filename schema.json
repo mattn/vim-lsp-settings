@@ -23,6 +23,10 @@
             "description": "define name of language server",
             "type": "string"
           },
+          "diabled": {
+            "description": "disable this server",
+            "type": "boolean"
+          },
           "requires": {
             "description": "define commands to install this language server",
             "type": "array",
