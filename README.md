@@ -80,7 +80,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | GraphQL    | gql-language-server                                    | Yes           |
 | Vue        | vue-language-server                                    | Yes           |
 | SQL        | sql-language-server                                    | Yes           |
-| Lisp       | cl-lsp                                                 | Yes           |
+| Lisp       | cl-lsp                                                 | No            |
 
 ## Notes
 
