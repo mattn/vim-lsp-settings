@@ -14,7 +14,7 @@ let s:settings_dir = expand('<sfile>:h:h').'/settings'
 let s:checkers_dir = expand('<sfile>:h:h').'/checkers'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
-let s:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
+let s:settings = json_decode(join(readfile(expand('<sfile>:h:h') . '/settings.json'), "\n"))
 let s:ftmap = {}
 
 call remove(s:settings, '$schema')

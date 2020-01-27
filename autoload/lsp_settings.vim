@@ -1,5 +1,6 @@
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
 let s:installer_dir = expand('<sfile>:h:h').'/installer'
+let s:root_dir = expand('<sfile>:h:h')
 
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
@@ -100,7 +101,7 @@ function! lsp_settings#autocd(server_info) abort
 endfunction
 
 function! lsp_settings#complete_installer(arglead, cmdline, cursorpos) abort
-  let l:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
+  let l:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
   call remove(l:settings, '$schema')
 
   let l:ft = tolower(get(split(&filetype, '\.'), 0, ''))
