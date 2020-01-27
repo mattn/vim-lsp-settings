@@ -1,5 +1,5 @@
 {
-  "$schema": "./schema.json",
+  "$schema": "https://mattn.github.io/vim-lsp-settings/schema.json",
   "_": [
     {
       "command": "efm-langserver",
@@ -380,6 +380,14 @@
       "command": "bash-language-server",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "sql": [
+    {
+      "command": "sqls",
+      "requires": [
+        "go"
       ]
     }
   ],
