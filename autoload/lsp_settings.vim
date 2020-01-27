@@ -1,4 +1,5 @@
 let s:servers_dir = expand('<sfile>:h:h').'/servers'
+let s:installer_dir = expand('<sfile>:h:h').'/installer'
 
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
@@ -96,4 +97,41 @@ function! lsp_settings#autocd(server_info) abort
   if isdirectory(l:path)
     exe 'cd' l:path
   endif
+endfunction
+
+function! lsp_settings#complete_installer(arglead, cmdline, cursorpos) abort
+  let l:settings = json_decode(join(readfile(expand('<sfile>:h:h').'/settings.json'), "\n"))
+  call remove(l:settings, '$schema')
+
+  let l:ft = tolower(get(split(&filetype, '\.'), 0, ''))
+  if !has_key(l:settings, l:ft)
+    return []
+  endif
+  let l:server = l:settings[l:ft]
+  if empty(l:server)
+    return []
+  endif
+  let l:installers = []
+  for l:conf in l:server
+    let l:missing = 0
+    for l:require in l:conf.requires
+      if !executable(l:require)
+        let l:missing = 1
+        break
+      endif
+    endfor
+    if l:missing !=# 0
+      continue
+    endif
+    let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
+    if has('win32')
+      let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+    else
+      let l:command = l:command . '.sh'
+    endif
+    if executable(l:command)
+      call add(l:installers, l:conf.command)
+    endif
+  endfor
+  return filter(l:installers, 'stridx(v:val, a:arglead) == 0')
 endfunction

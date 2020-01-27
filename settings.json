@@ -385,6 +385,12 @@
   ],
   "sql": [
     {
+      "command": "sql-language-server",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "sqls",
       "requires": [
         "go"
