@@ -23,7 +23,7 @@
             "description": "define name of language server",
             "type": "string"
           },
-          "diabled": {
+          "disabled": {
             "description": "disable this server",
             "type": "boolean"
           },
