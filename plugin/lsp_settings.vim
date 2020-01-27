@@ -272,5 +272,5 @@ function! s:load_or_suggest_group_name(ft) abort
   return printf('vim_lsp_suggest_%s', a:ft)
 endfunction
 
-call s:vimlsp_setting()
-call s:vimlsp_load_or_suggest('_')
+call s:vim_lsp_settings()
+call s:vim_lsp_load_or_suggest('_')
