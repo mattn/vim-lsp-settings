@@ -144,7 +144,7 @@ If you want to disable Language Server:
 ```vim
 let g:lsp_settings = {
 \  'perl-languageserver': {
-\    'disabled': 0,
+\    'disabled': 1,
 \   }
 \}
 ```
