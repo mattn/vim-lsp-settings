@@ -85,6 +85,30 @@ function! s:vim_lsp_installer(ft, ...) abort
   return []
 endfunction
 
+function! s:error(msg) abort
+  echohl Error
+  echomsg a:msg
+  echohl None
+endfunction
+
+function! s:valid_name(name) abort
+  return a:name =~# '^[a-zA-Z0-9_-]\+$'
+endfunction
+
+function! s:vim_lsp_uninstall_server(name) abort
+  if !s:valid_name(a:name)
+    call s:error('invalid server name')
+    return
+  endif
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:server_install_dir = l:servers_dir . '/' . a:name
+  if !isdirectory(l:server_install_dir)
+    call s:error('server not found')
+    return
+  endif
+  call delete(l:server_install_dir, 'rf')
+endfunction
+
 " neovim passes third argument as 'exit' while vim passes only 2 arguments
 function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
@@ -106,8 +130,13 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
 endfunction
 
 function! s:vim_lsp_install_server(ft, name) abort
+  if !s:valid_name(a:name)
+    call s:error('invalid server name')
+    return
+  endif
   let l:entry = s:vim_lsp_installer(a:ft, a:name)
   if empty(l:entry)
+    call s:error('server not found')
     return
   endif
   let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
@@ -137,7 +166,7 @@ function! s:vim_lsp_settings_suggest(ft) abort
     echohl Directory
     echomsg 'Please do :LspInstallServer to enable Language Server'
     echohl None
-    command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_installer LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
+    command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
   endif
 endfunction
 
@@ -171,6 +200,7 @@ function! s:vim_lsp_settings() abort
     autocmd!
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
   augroup END
+  command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
 endfunction
 
 function! s:vim_lsp_suggest_plugin() abort
@@ -259,7 +289,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   else
     doautocmd User lsp_setup
     if exists(':LspInstallServer') !=# 2
-      command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_installer LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
+      command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
     endif
   endif
 

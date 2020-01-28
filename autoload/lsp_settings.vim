@@ -100,7 +100,24 @@ function! lsp_settings#autocd(server_info) abort
   endif
 endfunction
 
-function! lsp_settings#complete_installer(arglead, cmdline, cursorpos) abort
+function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
+  let l:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
+  call remove(l:settings, '$schema')
+
+  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:installers = []
+  for l:ft in keys(l:settings)
+    for l:conf in l:settings[l:ft]
+      if !isdirectory(l:servers_dir . '/' . l:conf.command)
+        continue
+      endif
+      call add(l:installers, l:conf.command)
+    endfor
+  endfor
+  return filter(l:installers, 'stridx(v:val, a:arglead) == 0')
+endfunction
+
+function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
   let l:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
   call remove(l:settings, '$schema')
 
