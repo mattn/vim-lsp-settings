@@ -85,28 +85,37 @@ function! s:vim_lsp_installer(ft, ...) abort
   return []
 endfunction
 
+function! s:msg(msg) abort
+  redraw
+  echohl Comment
+  echo a:msg
+  echohl None
+endfunction
+
 function! s:error(msg) abort
   echohl Error
   echomsg a:msg
   echohl None
 endfunction
 
-function! s:valid_name(name) abort
-  return a:name =~# '^[a-zA-Z0-9_-]\+$'
+function! s:valid_name(command) abort
+  return a:command =~# '^[a-zA-Z0-9_-]\+$'
 endfunction
 
-function! s:vim_lsp_uninstall_server(name) abort
-  if !s:valid_name(a:name)
+function! s:vim_lsp_uninstall_server(command) abort
+  if !s:valid_name(a:command)
     call s:error('invalid server name')
     return
   endif
+  call s:msg('Uninstalling ' . a:command)
   let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
-  let l:server_install_dir = l:servers_dir . '/' . a:name
+  let l:server_install_dir = l:servers_dir . '/' . a:command
   if !isdirectory(l:server_install_dir)
     call s:error('server not found')
     return
   endif
   call delete(l:server_install_dir, 'rf')
+  call s:msg('Uninstalled ' . a:command)
 endfunction
 
 " neovim passes third argument as 'exit' while vim passes only 2 arguments
@@ -127,14 +136,15 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
       doautocmd User lsp_setup
     endif
   endif
+  call s:msg('Installed ' . a:command)
 endfunction
 
-function! s:vim_lsp_install_server(ft, name) abort
-  if !s:valid_name(a:name)
+function! s:vim_lsp_install_server(ft, command) abort
+  if !empty(a:command) && !s:valid_name(a:command)
     call s:error('invalid server name')
     return
   endif
-  let l:entry = s:vim_lsp_installer(a:ft, a:name)
+  let l:entry = s:vim_lsp_installer(a:ft, a:command)
   if empty(l:entry)
     call s:error('server not found')
     return
@@ -145,6 +155,7 @@ function! s:vim_lsp_install_server(ft, name) abort
     call delete(l:server_install_dir, 'rf')
   endif
   call mkdir(l:server_install_dir, 'p')
+  call s:msg('Installing ' . l:entry[0])
   if has('nvim')
     split new
     call termopen(l:entry[1], {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
