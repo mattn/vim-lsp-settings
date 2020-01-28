@@ -357,6 +357,10 @@
     {
       "command": "rls",
       "requires": []
+    },
+    {
+      "command": "ra_lsp_server",
+      "requires": []
     }
   ],
   "sass": [
