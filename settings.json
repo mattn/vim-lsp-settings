@@ -131,6 +131,10 @@
   ],
   "fsharp": [
     {
+      "command": "fsautocomplete",
+      "requires": []
+    },
+    {
       "command": "fsharp-language-server",
       "requires": [
         "dotnet"
