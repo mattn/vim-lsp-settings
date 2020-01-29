@@ -27,7 +27,7 @@ Describe lsp_settings
 
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')
-                call mkdir(l:servers_dir . '/foo-bar')
+                call mkdir(l:servers_dir . '/foo-bar', 'p')
                 call writefile(['echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar.cmd')
                 Assert Equals(lsp_settings#executable('foo-bar'), 1)
             finally
