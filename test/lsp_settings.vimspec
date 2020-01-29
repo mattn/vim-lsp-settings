@@ -28,7 +28,12 @@ Describe lsp_settings
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')
                 call mkdir(l:servers_dir . '/foo-bar', 'p')
-                call writefile(['echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar.cmd')
+                if has('win32')
+                    call writefile(['@echo off', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar.cmd')
+                else
+                    call writefile(['#!/bin/sh', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar')
+                    call setfperm(l:servers_dir . '/foo-bar/foo-bar', 'rwxr-xr-x')
+                endif
                 Assert Equals(lsp_settings#executable('foo-bar'), 1)
             finally
                 call delete(l:servers_dir . '/foo-bar', 'rf')
