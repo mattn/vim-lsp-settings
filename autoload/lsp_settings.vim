@@ -10,7 +10,11 @@ call remove(s:settings, '$schema')
 let s:ftmap = {}
 
 function! lsp_settings#servers_dir() abort
-  return get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+  let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
+  if has('win32')
+     let l:path = substitute(l:path, '/', '\', 'g')
+  endif
+  return substitute(l:path, '[\/]$', '', '')
 endfunction
 
 function! lsp_settings#executable(cmd) abort

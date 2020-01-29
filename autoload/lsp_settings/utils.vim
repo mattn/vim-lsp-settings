@@ -24,5 +24,9 @@ function! lsp_settings#utils#first_one(lines) abort
   if empty(a:lines)
     return ''
   endif
-  return fnamemodify(split(a:lines, "\n")[0], ':p')
+  let l:path = fnamemodify(split(a:lines, "\n")[0], ':p')
+  if has('win32')
+     let l:path = substitute(l:path, '/', '\', 'g')
+  endif
+  return l:path
 endfunction
