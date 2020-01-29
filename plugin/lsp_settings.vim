@@ -256,9 +256,11 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endif
 
   let l:found = 0
+  let l:disabled = 0
 
   for l:server in s:settings[a:ft]
     if s:vim_lsp_settings_get(l:server.command, 'disabled', get(l:server, 'disabled', 0))
+      let l:disabled += 1
       continue
     endif
     let l:default = get(g:, 'lsp_settings_' . a:ft, '')
@@ -298,7 +300,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     endif
   endfor
 
-  if l:found ==# 0
+  if l:disabled == 0 && l:found ==# 0
     call s:vim_lsp_settings_suggest(a:ft)
   else
     doautocmd User lsp_setup
