@@ -10,9 +10,9 @@ augroup vimlsp_settings_pyls_ms
       \   'displayOptions': {},
       \   'interpreter': {
       \      'properties': {
-	  \        'InterpreterPath': 'python', 
+	  \        'InterpreterPath': split(system('where python'), "\n")[0],
       \        'UseDefaultDatabase': v:true,
-      \        'Version': '3.8.1'
+      \        'Version': matchstr(system('python -V'), '\s\zs\S\+'),
       \      },
       \    },
 	  \  }),

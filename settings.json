@@ -334,7 +334,7 @@
     {
       "command": "pyls-ms",
       "requires": [
-        "py"
+        "python"
       ]
     }
   ],
