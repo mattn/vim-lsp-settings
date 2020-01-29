@@ -4,7 +4,9 @@
     {
       "command": "efm-langserver",
       "disabled": true,
-      "requires": []
+      "requires": [
+        "go"
+      ]
     }
   ],
   "c": [
