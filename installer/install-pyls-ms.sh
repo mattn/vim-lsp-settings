@@ -4,7 +4,7 @@ set -e
 
 # REF https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp/pyls_ms.lua
 
-server_dir="../servers/pyls_ms"
+server_dir="../servers/pyls-ms"
 
 cd $(dirname $0)
 [ -d $server_dir ] && rm -rf $server_dir
@@ -30,11 +30,11 @@ nupkg="./pyls.nupkg"
 curl -L "$url" -o "$nupkg"
 unzip "$nupkg"
 
-cat <<EOF >pyls_ms
+cat <<EOF >pyls-ms
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/.dotnet/dotnet exec \$DIR/Microsoft.Python.LanguageServer.dll
 EOF
 
-chmod +x pyls_ms
+chmod +x pyls-ms
