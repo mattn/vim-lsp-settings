@@ -1,0 +1,14 @@
+Describe lsp_settings
+    Describe lsp_settings#get
+        It should return configuration value from key and name
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'bad')
+            let g:lsp_settings = {'pyls': {'cmd': 'good'}}
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'good')
+            unlet g:lsp_settings
+        End
+
+        It should return default value with lambda
+            Assert Equals(lsp_settings#get('pyls', 'cmd', {key, name-> 'good'}), 'good')
+        End
+    End
+End
