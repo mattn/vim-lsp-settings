@@ -4,12 +4,6 @@ set -e
 
 # REF https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp/pyls_ms.lua
 
-server_dir="../servers/pyls-ms"
-
-cd $(dirname $0)
-[ -d $server_dir ] && rm -rf $server_dir
-mkdir $server_dir && cd $server_dir
-
 curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- -i "./.dotnet"
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
