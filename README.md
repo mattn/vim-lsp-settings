@@ -49,6 +49,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | JavaScript | typescript-language-server                             | Yes           |
 | JavaScript | javascript-typescript-stdio                            | Yes           |
 | Python     | pyls                                                   | Yes           |
+| Python     | pyls-ms (Microsoft Version)                            | Yes           |
 | Rust       | rls                                                    | No            |
 | Go         | gopls                                                  | Yes           |
 | Ruby       | solargraph                                             | Yes           |
