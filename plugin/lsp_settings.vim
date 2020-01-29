@@ -42,7 +42,8 @@ function! s:executable(cmd) abort
 endfunction
 
 function! s:vim_lsp_installer(ft, ...) abort
-  let l:ft = tolower(split(a:ft, '\.')[0])
+  let l:ft = tolower(get(split(a:ft, '\.'), 0, ''))
+  let l:ft = empty(l:ft) ? '_' : l:ft
   if !has_key(s:settings, l:ft)
     return []
   endif

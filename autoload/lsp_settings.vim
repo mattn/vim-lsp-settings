@@ -122,6 +122,7 @@ function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
   call remove(l:settings, '$schema')
 
   let l:ft = tolower(get(split(&filetype, '\.'), 0, ''))
+  let l:ft = empty(l:ft) ? '_' : l:ft
   if !has_key(l:settings, l:ft)
     return []
   endif
