@@ -169,7 +169,7 @@ function! s:vim_lsp_install_server(ft, command) abort
 endfunction
 
 function! s:vim_lsp_settings_suggest(ft) abort
-  let l:entry = empty(s:vim_lsp_installer(a:ft))
+  let l:entry = s:vim_lsp_installer(a:ft)
   if empty(l:entry)
     return
   endif
