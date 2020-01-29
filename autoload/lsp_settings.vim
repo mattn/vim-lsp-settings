@@ -114,7 +114,7 @@ function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
       call add(l:installers, l:conf.command)
     endfor
   endfor
-  return filter(l:installers, 'stridx(v:val, a:arglead) == 0')
+  return filter(uniq(l:installers), 'stridx(v:val, a:arglead) == 0')
 endfunction
 
 function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
@@ -151,5 +151,5 @@ function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
       call add(l:installers, l:conf.command)
     endif
   endfor
-  return filter(l:installers, 'stridx(v:val, a:arglead) == 0')
+  return filter(uniq(l:installers), 'stridx(v:val, a:arglead) == 0')
 endfunction
