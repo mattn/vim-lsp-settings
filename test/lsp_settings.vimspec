@@ -23,7 +23,7 @@ Describe lsp_settings
         End
 
         It should return command is executable in server/foo-bar/foo-bar
-			let l:servers_dir = fnamemodify(expand('<sfile>:h:h').'/servers', ':p')
+			let l:servers_dir = lsp_settings#servers_dir()
 
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')

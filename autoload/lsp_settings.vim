@@ -9,6 +9,10 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
+function! lsp_settings#servers_dir() abort
+  return get(g:, 'lsp_settings_servers_dir', s:servers_dir)
+endfunction
+
 function! lsp_settings#executable(cmd) abort
   if executable(a:cmd)
     return 1
@@ -17,8 +21,7 @@ function! lsp_settings#executable(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
   endif
-  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
-  let l:paths .= ',' . l:servers_dir . '/' . a:cmd
+  let l:paths .= ',' . lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
     let l:found = globpath(l:paths, a:cmd)
     return !empty(l:found)
@@ -130,8 +133,7 @@ function! lsp_settings#exec_path(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',') . ','
   endif
-  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
-  let l:paths .= l:servers_dir . '/' . a:cmd
+  let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
     return lsp_settings#utils#first_one(globpath(l:paths, a:cmd))
   endif
@@ -168,11 +170,10 @@ function! lsp_settings#autocd(server_info) abort
 endfunction
 
 function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
-  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
   let l:installers = []
   for l:ft in keys(s:settings)
     for l:conf in s:settings[l:ft]
-      if !isdirectory(l:servers_dir . '/' . l:conf.command)
+      if !isdirectory(lsp_settings#servers_dir() . '/' . l:conf.command)
         continue
       endif
       call add(l:installers, l:conf.command)
@@ -222,8 +223,7 @@ function! s:vim_lsp_uninstall_server(command) abort
     return
   endif
   call lsp_settings#utils#msg('Uninstalling ' . a:command)
-  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
-  let l:server_install_dir = l:servers_dir . '/' . a:command
+  let l:server_install_dir = lsp_settings#servers_dir() . '/' . a:command
   if !isdirectory(l:server_install_dir)
     call lsp_settings#utils#error('Server not found')
     return
@@ -263,8 +263,7 @@ function! s:vim_lsp_install_server(ft, command) abort
     call lsp_settings#utils#error('Server not found')
     return
   endif
-  let l:servers_dir = get(g:, 'lsp_settings_servers_dir', s:servers_dir)
-  let l:server_install_dir = l:servers_dir . '/' . l:entry[0]
+  let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
     call delete(l:server_install_dir, 'rf')
   endif
