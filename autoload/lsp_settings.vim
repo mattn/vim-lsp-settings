@@ -1,7 +1,7 @@
-let s:settings_dir = expand('<sfile>:h:h').'/settings'
-let s:checkers_dir = expand('<sfile>:h:h').'/checkers'
-let s:servers_dir = expand('<sfile>:h:h').'/servers'
-let s:installer_dir = expand('<sfile>:h:h').'/installer'
+let s:settings_dir = expand('<sfile>:h:h') . '/settings'
+let s:checkers_dir = expand('<sfile>:h:h') . '/checkers'
+let s:servers_dir = expand('<sfile>:h:h') . '/servers'
+let s:installer_dir = expand('<sfile>:h:h') . '/installer'
 let s:root_dir = expand('<sfile>:h:h')
 
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h') . '/settings.json'), "\n"))
@@ -9,7 +9,7 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
-function! s:executable(cmd) abort
+function! lsp_settings#executable(cmd) abort
   if executable(a:cmd)
     return 1
   endif
@@ -45,7 +45,7 @@ function! s:vim_lsp_installer(ft, ...) abort
   for l:conf in l:server
     let l:missing = 0
     for l:require in l:conf.requires
-      if !s:executable(l:require)
+      if !lsp_settings#executable(l:require)
         let l:missing = 1
         break
       endif
@@ -69,7 +69,7 @@ function! s:vim_lsp_installer(ft, ...) abort
     else
       let l:command = l:command . '.sh'
     endif
-    if s:executable(l:command)
+    if lsp_settings#executable(l:command)
       return [l:conf.command, l:command]
     endif
   endfor
@@ -237,7 +237,7 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
     return
   endif
-  if s:executable(a:command)
+  if lsp_settings#executable(a:command)
     let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
     if filereadable(l:script)
       if has('patch-8.1.1113')
@@ -350,7 +350,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     if type(l:command) == type([])
       let l:command = l:command[0]
     endif
-    if !s:executable(l:command)
+    if !lsp_settings#executable(l:command)
       let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
       if !filereadable(l:script) || has_key(l:server, 'fallback')
         continue
