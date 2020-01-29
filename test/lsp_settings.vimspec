@@ -22,7 +22,19 @@ Describe lsp_settings
             Assert Equals(lsp_settings#executable('unknown-command'), 0)
         End
 
-        It should return command is executable in server/foo-bar/foo-bar
+        It should return 0 when command is not in server/foo-bar/foo-bar
+			let l:servers_dir = lsp_settings#servers_dir()
+
+            try
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+                call mkdir(l:servers_dir . '/foo-bar', 'p')
+                Assert Equals(lsp_settings#executable('foo-bar'), 0)
+            finally
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+            endtry
+        End
+
+        It should return 1 when command is executable in server/foo-bar/foo-bar
 			let l:servers_dir = lsp_settings#servers_dir()
 
             try
