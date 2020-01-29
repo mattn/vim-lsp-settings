@@ -28,7 +28,7 @@ cat <<EOF >pyls-ms
 #!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
-\$DIR/.dotnet/dotnet exec \$DIR/Microsoft.Python.LanguageServer.dll
+\$DIR/.dotnet/dotnet \$DIR/Microsoft.Python.LanguageServer.dll
 EOF
 
 chmod +x pyls-ms
