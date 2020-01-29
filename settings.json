@@ -330,6 +330,12 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "pyls-ms",
+      "requires": [
+        "py"
+      ]
     }
   ],
   "reason": [
