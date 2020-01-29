@@ -212,7 +212,7 @@ function! s:vim_lsp_settings() abort
   augroup vim_lsp_suggest
     autocmd!
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
-    autocmd VimEnter * call s:vim_lsp_load_or_suggest('_')
+    call s:vim_lsp_load_or_suggest('_')
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
 endfunction
