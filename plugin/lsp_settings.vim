@@ -169,13 +169,14 @@ function! s:vim_lsp_install_server(ft, command) abort
 endfunction
 
 function! s:vim_lsp_settings_suggest(ft) abort
-  if empty(s:vim_lsp_installer(a:ft))
+  let l:entry = empty(s:vim_lsp_installer(a:ft))
+  if empty(l:entry)
     return
   endif
   if exists(':LspInstallServer') !=# 2
-    redraw
+    redraw!
     echohl Directory
-    echomsg 'Please do :LspInstallServer to enable Language Server'
+    echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
     echohl None
     command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
   endif
@@ -210,6 +211,7 @@ function! s:vim_lsp_settings() abort
   augroup vim_lsp_suggest
     autocmd!
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
+    autocmd VimEnter * call s:vim_lsp_load_or_suggest('_')
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
 endfunction
@@ -314,4 +316,3 @@ function! s:load_or_suggest_group_name(ft) abort
 endfunction
 
 call s:vim_lsp_settings()
-call s:vim_lsp_load_or_suggest('_')
