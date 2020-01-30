@@ -5,5 +5,5 @@
 
 set -e
 
-GOPATH=$(pwd) GOBIN=$(pwd) GO111MODULE=on go get -v -up $1
+GOPATH=$(pwd) GOBIN=$(pwd) GO111MODULE=on go get -v -u $1
 rm -rf src
