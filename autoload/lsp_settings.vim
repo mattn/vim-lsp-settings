@@ -412,4 +412,6 @@ function! lsp_settings#init() abort
     autocmd VimEnter * call s:vim_lsp_load_or_suggest('_')
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
+  call s:vim_lsp_load_or_suggest('_')
+
 endfunction
