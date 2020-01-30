@@ -1,5 +1,7 @@
 # vim-lsp-settings
 
+[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/linux_vim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
+
 Auto configurations for Language Server for [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 
 ## Introduction
