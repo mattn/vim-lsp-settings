@@ -89,6 +89,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | Vue        | vue-language-server                                    | Yes           |
 | SQL        | sql-language-server                                    | Yes           |
 | Lisp       | cl-lsp                                                 | No            |
+| Kotlin     | kotlin-language-server                                 | Yes           |
 | *          | efm-langserver                                         | Yes           |
 
 ## Notes
