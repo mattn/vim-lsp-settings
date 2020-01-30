@@ -386,7 +386,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   if l:disabled == 0 && l:found ==# 0
     call s:vim_lsp_settings_suggest(a:ft)
   else
-    if exists('#lsp_setup') !=# 0
+    if exists('#User#lsp_setup') !=# 0
       doautocmd User lsp_setup
     endif
     if exists(':LspInstallServer') !=# 2
