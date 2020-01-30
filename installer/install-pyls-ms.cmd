@@ -14,6 +14,6 @@ call "%~dp0\run_unzip.cmd" %nupkg%
 
 echo @echo off ^
 
-%%~dp0\Microsoft.Python.LanguageServer.exe %%* ^
+%%~dp0\dotnet.exe Microsoft.Python.LanguageServer.dll %%* ^
 
 > pyls-ms.cmd
