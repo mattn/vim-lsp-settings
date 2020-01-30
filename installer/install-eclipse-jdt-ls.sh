@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -8,7 +8,7 @@ tar xvf jdt-language-server-latest.tar.gz
 rm jdt-language-server-latest.tar.gz
 
 cat <<EOF > eclipse-jdt-ls
-#!/bin/sh
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 LAUNCHER=\$(ls \$DIR/plugins/org.eclipse.equinox.launcher_*.jar)

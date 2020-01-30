@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -9,7 +9,7 @@ unzip elixir-ls.zip
 rm elixir-ls.zip
 
 cat <<EOF > elixir-ls
-#!/bin/sh
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/language_server.sh \$*
