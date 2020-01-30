@@ -5,7 +5,7 @@ set -e
 git clone "https://github.com/castwide/solargraph" .
 bundle install --path vendor/bundle
 
-cat <<EOF > solargraph
+cat <<EOF >solargraph
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)

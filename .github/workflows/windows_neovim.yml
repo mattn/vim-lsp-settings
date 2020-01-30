@@ -26,7 +26,7 @@ jobs:
             neovim_arch: win64
     runs-on: ${{matrix.os}}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Download neovim
         shell: PowerShell
         run: Invoke-WebRequest -Uri https://github.com/neovim/neovim/releases/download/${{matrix.neovim_version}}/nvim-${{matrix.neovim_arch}}.zip -OutFile neovim.zip

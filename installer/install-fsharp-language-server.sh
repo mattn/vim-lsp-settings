@@ -6,7 +6,7 @@ git clone https://github.com/fsprojects/fsharp-language-server .
 npm install
 dotnet build -c Release
 
-cat <<EOF > fsharp-language-server
+cat <<EOF >fsharp-language-server
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)

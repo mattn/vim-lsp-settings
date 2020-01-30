@@ -6,7 +6,7 @@ curl -o "dartsdk-linux-x64-release.zip" "https://storage.googleapis.com/dart-arc
 unzip "dartsdk-linux-x64-release.zip"
 rm "dartsdk-linux-x64-release.zip"
 
-cat <<EOF > analysis-server-dart-snapshot
+cat <<EOF >analysis-server-dart-snapshot
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)

@@ -19,13 +19,11 @@ esac
 
 version="v1.34.9"
 url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os$arch.tar.gz"
-curl -LO "$url"
-tar xzvf omnisharp-$os$arch.tar.gz
-rm omnisharp-$os$arch.tar.gz
+curl -L "$url" | tar xz
 
 chmod +x run
 
-cat <<EOF > omnisharp-lsp
+cat <<EOF >omnisharp-lsp
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
