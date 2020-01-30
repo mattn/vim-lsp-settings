@@ -13,6 +13,6 @@ call "%~dp0\run_unzip.cmd" %zip%
 
 echo @echo off ^
 
-%%~dp0\dotnet.exe fsautocomplete.dll %%* ^
+%%~dp0\dotnet.exe %%~dp0\fsautocomplete.dll %%* ^
 
 > fsautocomplete.cmd
