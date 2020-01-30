@@ -8,7 +8,7 @@ curl -LO "$url"
 unzip elixir-ls.zip
 rm elixir-ls.zip
 
-cat <<EOF > elixir-ls
+cat <<EOF >elixir-ls
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)

@@ -2,19 +2,17 @@
 
 set -e
 
-curl -o jdt-language-server-latest.tar.gz 'http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz'
+curl -L "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zx
 curl -o lombok.jar 'https://projectlombok.org/downloads/lombok.jar'
-tar xvf jdt-language-server-latest.tar.gz
-rm jdt-language-server-latest.tar.gz
 
-osType="\$(uname -s)"
-case "\${osType}" in
-    Darwin*)    configDir=config_mac;;
-    Linux*)     configDir=config_linux;;
-    *)          configDir=config_linux
+osType="$(uname -s)"
+case "${osType}" in
+Darwin*) configDir=config_mac ;;
+Linux*) configDir=config_linux ;;
+*) configDir=config_linux ;;
 esac
 
-cat <<EOF > eclipse-jdt-ls
+cat <<EOF >eclipse-jdt-ls
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
