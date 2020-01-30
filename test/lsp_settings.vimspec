@@ -4,6 +4,8 @@ Describe lsp_settings
             Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'bad')
             let g:lsp_settings = {'pyls': {'cmd': 'good'}}
             Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'good')
+            let g:lsp_settings = {'pyls': {'cmd': {key,name->'good'}}}
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'good')
             unlet g:lsp_settings
         End
 

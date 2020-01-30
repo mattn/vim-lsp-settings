@@ -102,6 +102,9 @@ function! lsp_settings#get(name, key, default) abort
     endif
     return a:default
   endif
+  if type(l:config[a:key]) == v:t_func
+    return l:config[a:key](a:name, a:key)
+  endif
   return l:config[a:key]
 endfunction
 
