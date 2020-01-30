@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage
 # $ pip_install [EXECUTABLE_NAME] [PYPI_NAME]

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -25,7 +25,7 @@ curl -L "$url" -o "$nupkg"
 unzip "$nupkg"
 
 cat <<EOF >pyls-ms
-#!/bin/sh
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/.dotnet/dotnet \$DIR/Microsoft.Python.LanguageServer.dll

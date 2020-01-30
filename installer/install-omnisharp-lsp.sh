@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -26,7 +26,7 @@ rm omnisharp-$os$arch.tar.gz
 chmod +x run
 
 cat <<EOF > omnisharp-lsp
-#!/bin/sh
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/run \$*
