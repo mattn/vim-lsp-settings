@@ -385,7 +385,9 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   if l:disabled == 0 && l:found ==# 0
     call s:vim_lsp_settings_suggest(a:ft)
   else
-    doautocmd User lsp_setup
+    if exists('#lsp_settings') !=# 0
+      doautocmd User lsp_setup
+    endif
     if exists(':LspInstallServer') !=# 2
       command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
     endif
@@ -409,9 +411,7 @@ function! lsp_settings#init() abort
   augroup vim_lsp_suggest
     autocmd!
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
-    autocmd VimEnter * call s:vim_lsp_load_or_suggest('_')
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
   call s:vim_lsp_load_or_suggest('_')
-
 endfunction
