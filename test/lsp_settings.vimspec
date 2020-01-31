@@ -84,7 +84,7 @@ Describe lsp_settings
         End
     End
 
-    Describe lsp_settings#exec_path
+    Describe lsp_settings#init
         It should setup commands and autocmds.
             call lsp_settings#init()
             autocmd vim_lsp_suggest_python
