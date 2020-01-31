@@ -344,6 +344,14 @@
       ]
     }
   ],
+  "r": [
+    {
+      "command": "r-languageserver",
+      "requires": [
+        "R"
+      ]
+    }
+  ],
   "reason": [
     {
       "command": "reason-language-server",
