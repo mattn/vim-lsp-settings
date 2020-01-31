@@ -352,11 +352,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     if !empty(l:default) && l:default != l:server.command
       continue
     endif
-    let l:command = lsp_settings#get(l:server.command, 'cmd', l:server.command)
-    if type(l:command) == type([])
-      let l:command = l:command[0]
-    endif
-    if !lsp_settings#executable(l:command)
+    let l:command = lsp_settings#get(l:server.command, 'cmd', [])
+    if empty(l:command) && !lsp_settings#executable(l:server.command)
       let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
       if !filereadable(l:script) || has_key(l:server, 'fallback')
         continue
