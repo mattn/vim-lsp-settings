@@ -398,6 +398,10 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endif
 endfunction
 
+function! lsp_settings#clear() abort
+  let s:ftmap = {}
+endfunction
+
 function! lsp_settings#init() abort
   for l:ft in keys(s:settings)
     if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1 || empty(s:settings[l:ft])
