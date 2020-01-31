@@ -9,6 +9,24 @@
       ]
     }
   ],
+  "apex": [
+    {
+      "command": "apex-jorje-lsp",
+      "requires": [
+        "java"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "apxc",
+          "apxt",
+          "cls",
+          "trigger",
+          "tgr"
+        ],
+        "name": "ejholmes/vim-forcedotcom"
+      }
+    }
+  ],
   "c": [
     {
       "command": "clangd",
@@ -488,6 +506,21 @@
       "requires": [
         "npm"
       ]
+    }
+  ],
+  "visualforce": [
+    {
+      "command": "apex-jorje-lsp",
+      "requires": [
+        "java"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "vfp",
+          "vfc"
+        ],
+        "name": "ejholmes/vim-forcedotcom"
+      }
     }
   ],
   "vue": [
