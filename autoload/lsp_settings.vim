@@ -352,11 +352,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     if !empty(l:default) && l:default != l:server.command
       continue
     endif
-    let l:command = lsp_settings#get(l:server.command, 'cmd', l:server.command)
-    if type(l:command) == type([])
-      let l:command = l:command[0]
-    endif
-    if !lsp_settings#executable(l:command)
+    let l:command = lsp_settings#get(l:server.command, 'cmd', [])
+    if empty(l:command) && !lsp_settings#executable(l:server.command)
       let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
       if !filereadable(l:script) || has_key(l:server, 'fallback')
         continue
@@ -401,6 +398,10 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endif
 endfunction
 
+function! lsp_settings#clear() abort
+  let s:ftmap = {}
+endfunction
+
 function! lsp_settings#init() abort
   for l:ft in keys(s:settings)
     if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1 || empty(s:settings[l:ft])
@@ -408,7 +409,7 @@ function! lsp_settings#init() abort
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft 'call s:vim_lsp_load_or_suggest(' string(l:ft) ')'
+      exe 'autocmd FileType' l:ft printf("call s:vim_lsp_load_or_suggest('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest

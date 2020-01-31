@@ -20,12 +20,12 @@ Describe lsp_settings
                 Assert Equals(lsp_settings#executable('cmd'), 1)
             else
                 Assert Equals(lsp_settings#executable('sh'), 1)
-			endif
+            endif
             Assert Equals(lsp_settings#executable('unknown-command'), 0)
         End
 
         It should return 0 when command is not in server/foo-bar/foo-bar
-			let l:servers_dir = lsp_settings#servers_dir()
+            let l:servers_dir = lsp_settings#servers_dir()
 
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')
@@ -37,7 +37,7 @@ Describe lsp_settings
         End
 
         It should return 1 when command is executable in server/foo-bar/foo-bar
-			let l:servers_dir = lsp_settings#servers_dir()
+            let l:servers_dir = lsp_settings#servers_dir()
 
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')
@@ -61,11 +61,11 @@ Describe lsp_settings
                 Assert Equals(empty(lsp_settings#exec_path('cmd')), 0)
             else
                 Assert Equals(empty(lsp_settings#exec_path('sh')), 0)
-			endif
+            endif
         End
 
         It should return 1 when command is executable in server/foo-bar/foo-bar
-			let l:servers_dir = lsp_settings#servers_dir()
+            let l:servers_dir = lsp_settings#servers_dir()
 
             try
                 call delete(l:servers_dir . '/foo-bar', 'rf')
@@ -81,6 +81,40 @@ Describe lsp_settings
             finally
                 call delete(l:servers_dir . '/foo-bar', 'rf')
             endtry
+        End
+    End
+
+    Describe lsp_settings#init
+        It should setup commands and autocmds.
+            call lsp_settings#clear()
+            call lsp_settings#init()
+            autocmd vim_lsp_suggest_python
+            Assert exists(':LspInstallServer')
+            delcommand LspInstallServer
+            Assert !exists('#vim_lsp_suggest_efm_langserver')
+            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_"')
+                exe 'augroup ' . v
+                  autocmd!
+                augroup END
+                exe 'augroup! ' . v
+            endfor
+            bw!
+        End
+
+        It should setup commands and autocmds with python.
+            call lsp_settings#clear()
+            call lsp_settings#init()
+            new
+            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar']}}
+            Throw /E117/ :setfiletype python
+            bw!
+            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
+                exe 'augroup ' . v
+                  autocmd!
+                augroup END
+                exe 'augroup! ' . v
+            endfor
+            unlet g:lsp_settings
         End
     End
 End
