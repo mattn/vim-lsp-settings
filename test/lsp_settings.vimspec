@@ -83,4 +83,16 @@ Describe lsp_settings
             endtry
         End
     End
+
+    Describe lsp_settings#exec_path
+        It should setup commands and autocmds.
+            call lsp_settings#init()
+            autocmd vim_lsp_suggest_python
+            Assert exists(':LspInstallServer')
+            delcommand LspInstallServer
+            for v in map(filter(split(execute('autocmd'), '\n'), 'v:val=~"^vim_lsp_"'), 'split(v:val, " ")[0]')
+                exe 'autocmd!' v
+            endfor
+        End
+    End
 End

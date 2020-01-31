@@ -405,7 +405,7 @@ function! lsp_settings#init() abort
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft 'call s:vim_lsp_load_or_suggest(' string(l:ft) ')'
+      exe 'autocmd FileType' l:ft printf("call s:vim_lsp_load_or_suggest('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest
