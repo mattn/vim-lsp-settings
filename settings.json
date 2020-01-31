@@ -508,21 +508,6 @@
       ]
     }
   ],
-  "visualforce": [
-    {
-      "command": "apex-jorje-lsp",
-      "requires": [
-        "java"
-      ],
-      "vim-plugin": {
-        "extensions": [
-          "vfp",
-          "vfc"
-        ],
-        "name": "ejholmes/vim-forcedotcom"
-      }
-    }
-  ],
   "vue": [
     {
       "command": "vls",
