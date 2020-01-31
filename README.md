@@ -90,6 +90,7 @@ Currently, no way to uninstall/update server. Run this command again, newer vers
 | SQL        | sql-language-server                                    | Yes           |
 | Lisp       | cl-lsp                                                 | No            |
 | Kotlin     | kotlin-language-server                                 | Yes           |
+| R          | languageserver                                         | No            |
 | *          | efm-langserver                                         | Yes           |
 
 ## Notes
