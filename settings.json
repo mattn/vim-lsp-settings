@@ -252,6 +252,20 @@
       }
     }
   ],
+  "julia": [
+    {
+      "command": "julia-language-server",
+      "requires": [
+        "julia"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "jl"
+        ],
+        "name": "ajpaulson/julia-syntax.vim"
+      }
+    }
+  ],
   "kotlin": [
     {
       "command": "kotlin-language-server",
