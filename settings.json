@@ -435,6 +435,12 @@
       }
     }
   ],
+  "systemverilog": [
+    {
+      "command": "svls",
+      "requires": []
+    }
+  ],
   "terraform": [
     {
       "command": "terraform-lsp",
