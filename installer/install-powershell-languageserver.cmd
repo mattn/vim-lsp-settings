@@ -1,8 +1,9 @@
 @echo off
 
-curl -o PowerShellEditorServices.zip "https://github.com/PowerShell/PowerShellEditorServices/releases/download/2.0.0-preview.8/PowerShellEditorServices.zip"
+curl -L -o PowerShellEditorServices.zip "https://github.com/PowerShell/PowerShellEditorServices/releases/download/2.0.0-preview.8/PowerShellEditorServices.zip"
 call "%~dp0\run_unzip.cmd" PowerShellEditorServices.zip
 del PowerShellEditorServices.zip
+mkdir %~dp0session
 
 echo @echo off ^
 

@@ -346,7 +346,7 @@
     {
       "command": "powershell-languageserver",
       "requires": [
-        "powershell"
+        "pwsh"
       ],
       "vim-plugin": {
         "extensions": [
