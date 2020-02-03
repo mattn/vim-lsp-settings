@@ -342,6 +342,20 @@
       ]
     }
   ],
+  "ps1": [
+    {
+      "command": "powershell-languageserver",
+      "requires": [
+        "pwsh"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "ps1"
+        ],
+        "name": "PProvost/vim-ps1"
+      }
+    }
+  ],
   "python": [
     {
       "command": "pyls",
