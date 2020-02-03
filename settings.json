@@ -342,6 +342,14 @@
       ]
     }
   ],
+  "ps1": [
+    {
+      "command": "powershell-languageserver",
+      "requires": [
+        "powershell"
+      ]
+    }
+  ],
   "python": [
     {
       "command": "pyls",
