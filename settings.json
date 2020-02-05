@@ -345,7 +345,6 @@
   ],
   "ps1": [
     {
-      "refresh_pattern": "\\(\\$\\k*\\|\\k\\+\\)$",
       "command": "powershell-languageserver",
       "requires": [
         "pwsh"
@@ -401,7 +400,6 @@
   ],
   "ruby": [
     {
-      "refresh_pattern": "\\(\\$\\k*\\|\\k\\+\\)$",
       "command": "solargraph",
       "requires": [
         "gem"
