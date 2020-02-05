@@ -162,6 +162,27 @@
       ]
     }
   ],
+  "glsl": [
+    {
+      "command": "glslls",
+      "requires": [
+        "cmake",
+        "git",
+        "make"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "vert",
+          "tesc",
+          "tese",
+          "glsl",
+          "geom",
+          "frag"
+        ],
+        "name": "tikhomirov/vim-glsl"
+      }
+    }
+  ],
   "go": [
     {
       "command": "gopls",
