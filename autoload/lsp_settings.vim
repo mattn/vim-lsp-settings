@@ -331,9 +331,9 @@ function! s:vim_lsp_load_or_suggest(ft) abort
 
   if get(g:, 'lsp_loaded', 0)
     for l:server in s:settings[a:ft]
-      let l:pattern = get(l:server, 'asyncomplete-refresh-pattern', '')
-      if !empty(l:pattern)
-        let b:asyncomplete_refresh_pattern = l:pattern
+      let l:refresh_pattern = get(l:server, 'refresh_pattern', '')
+      if !empty(l:refresh_pattern)
+        let b:asyncomplete_refresh_pattern = l:refresh_pattern
       endif
     endfor
   endif

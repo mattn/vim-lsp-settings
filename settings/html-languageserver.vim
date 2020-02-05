@@ -7,7 +7,7 @@ augroup vimlsp_settings_html_languageserver
       \ 'initialization_options': lsp_settings#get('html-languageserver', 'initialization_options', {'embeddedLanguages': {'css': v:true, 'javascript': v:true}}),
       \ 'whitelist': lsp_settings#get('html-languageserver', 'whitelist', ['html']),
       \ 'blacklist': lsp_settings#get('html-languageserver', 'blacklist', []),
-      \ 'config': lsp_settings#get('html-languageserver', 'config', {}),
+      \ 'config': lsp_settings#get('html-languageserver', 'config', {'typed_pattern': '/$\|\k\+$'}),
       \ 'workspace_config': lsp_settings#get('html-languageserver', 'workspace_config', {}),
       \ }
 augroup END
