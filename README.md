@@ -25,6 +25,13 @@ Plug 'mattn/vim-lsp-settings'
 
 You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
 
+If you want to use autocompletion plugin, you can use followings.
+
+```viml
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+```
+
 ### Notice
 
 If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
