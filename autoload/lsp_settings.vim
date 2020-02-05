@@ -325,6 +325,19 @@ function! s:vim_lsp_suggest_plugin() abort
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
+  if !has_key(s:settings, a:ft)
+    return
+  endif
+
+  if get(g:, 'lsp_loaded', 0)
+    for l:server in s:settings[a:ft]
+      let l:pattern = get(l:server, 'asyncomplete-refresh-pattern', '')
+      if !empty(l:pattern)
+        let b:asyncomplete_refresh_pattern = l:pattern
+      endif
+    endfor
+  endif
+
   if get(s:ftmap, a:ft, 0)
     return
   endif
