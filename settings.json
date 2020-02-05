@@ -63,7 +63,7 @@
   ],
   "css": [
     {
-      "refresh_pattern": "\\(-\\?[a-zA-Z_]\\+[_a-zA-Z0-9-]*$\\|\\k\\+$\\)",
+      "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$",
       "command": "css-languageserver",
       "requires": [
         "npm"
@@ -189,7 +189,6 @@
   ],
   "html": [
     {
-      "refresh_pattern": "\\(\\k\\+\\)$",
       "command": "html-languageserver",
       "requires": [
         "npm"
@@ -346,7 +345,7 @@
   ],
   "ps1": [
     {
-      "refresh_pattern": "\\(\\$\\k*$\\|\\k\\+$\\)",
+      "refresh_pattern": "\\(\\$\\k*\\|\\k\\+\\)$",
       "command": "powershell-languageserver",
       "requires": [
         "pwsh"
@@ -402,7 +401,7 @@
   ],
   "ruby": [
     {
-      "refresh_pattern": "\\(\\$\\k*$\\|\\k\\+$\\)",
+      "refresh_pattern": "\\(\\$\\k*\\|\\k\\+\\)$",
       "command": "solargraph",
       "requires": [
         "gem"
