@@ -7,7 +7,7 @@ augroup vimlsp_settings_powershell_languageserver
       \ 'initialization_options': lsp_settings#get('powershell-languageserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('powershell-languageserver', 'whitelist', ['ps1']),
       \ 'blacklist': lsp_settings#get('powershell-languageserver', 'blacklist', []),
-      \ 'config': lsp_settings#get('powershell-languageserver', 'config', {}),
+      \ 'config': lsp_settings#get('solargraph', 'config', {'typed_pattern': '\(\$[a-zA-Z0-9_:]*\|\k\+\)$'}),
       \ 'workspace_config': lsp_settings#get('powershell-languageserver', 'workspace_config', {}),
       \ }
 augroup END
