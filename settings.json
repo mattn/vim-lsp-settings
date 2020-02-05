@@ -400,6 +400,7 @@
   ],
   "ruby": [
     {
+      "asyncomplete-refresh-pattern": "\\(\\$\\k*$\\|\\k\\+$\\)",
       "command": "solargraph",
       "requires": [
         "gem"
