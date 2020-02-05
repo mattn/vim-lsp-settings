@@ -63,6 +63,7 @@
   ],
   "css": [
     {
+      "asyncomplete-refresh-pattern": "\\(-\\?[a-zA-Z_]\\+[_a-zA-Z0-9-]*$\\|\\k\\+$\\)",
       "command": "css-languageserver",
       "requires": [
         "npm"
