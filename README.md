@@ -27,9 +27,16 @@ You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) an
 
 If you want to use autocompletion plugin, you can use followings.
 
+#### asyncomplete.vim
 ```viml
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+```
+
+#### deoplete.nvim
+```viml
+Plug 'Shougo/deoplete.nvim'
+Plug 'lighttiger2505/deoplete-vim-lsp'
 ```
 
 ### Notice
