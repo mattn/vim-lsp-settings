@@ -254,6 +254,7 @@
   ],
   "json": [
     {
+      "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$",
       "command": "json-languageserver",
       "requires": [
         "npm"
