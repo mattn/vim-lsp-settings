@@ -50,6 +50,7 @@ But when rebuild the cache, any merging plugin manager erases old cached files(i
 You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
 
 ## Usage
+While editing a file with a supported filetype:
 
 ```
 :LspInstallServer
