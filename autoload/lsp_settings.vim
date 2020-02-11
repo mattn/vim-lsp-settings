@@ -9,6 +9,10 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
+function! lsp_settings#installer_dir() abort
+  return s:installer_dir
+endfunction
+
 function! lsp_settings#servers_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
   if has('win32')
@@ -176,9 +180,13 @@ function! lsp_settings#autocd(server_info) abort
   endif
 endfunction
 
+function! lsp_settings#settings() abort
+  return s:settings
+endfunction
+
 function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
   let l:installers = []
-  for l:ft in keys(s:settings)
+  for l:ft in sort(keys(s:settings))
     for l:conf in s:settings[l:ft]
       if !isdirectory(lsp_settings#servers_dir() . '/' . l:conf.command)
         continue
@@ -272,6 +280,7 @@ function! s:vim_lsp_install_server(ft, command) abort
   endif
   let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
+    call lsp_settings#utils#msg('Uninstalling ' . l:entry[0])
     call delete(l:server_install_dir, 'rf')
   endif
   call mkdir(l:server_install_dir, 'p')
