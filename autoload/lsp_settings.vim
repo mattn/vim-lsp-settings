@@ -334,11 +334,14 @@ function! s:vim_lsp_suggest_plugin() abort
 endfunction
 
 function! s:vim_lsp_load_or_suggest_delay(ft) abort
+  if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
+    return s:vim_lsp_load_or_suggest(a:ft)
+  endif
   call timer_start(0, {timer -> s:vim_lsp_load_or_suggest(a:ft)})
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
-  if &filetype !=# a:ft || !has_key(s:settings, a:ft)
+  if (a:ft != '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
     return
   endif
 

@@ -88,6 +88,7 @@ Describe lsp_settings
         It should setup commands and autocmds.
             call lsp_settings#clear()
             call lsp_settings#init()
+            let g:vim_lsp_settings_filetype_no_delays = 1
             autocmd vim_lsp_suggest_python
             Assert exists(':LspInstallServer')
             delcommand LspInstallServer
@@ -99,6 +100,7 @@ Describe lsp_settings
                 exe 'augroup! ' . v
             endfor
             bw!
+            unlet g:vim_lsp_settings_filetype_no_delays
         End
 
         It should setup commands and autocmds with python.
@@ -106,6 +108,7 @@ Describe lsp_settings
             call lsp_settings#init()
             new
             let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar']}}
+            let g:vim_lsp_settings_filetype_no_delays = 1
             Throw /E117/ :setfiletype python
             bw!
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
@@ -115,6 +118,7 @@ Describe lsp_settings
                 exe 'augroup! ' . v
             endfor
             unlet g:lsp_settings
+            unlet g:vim_lsp_settings_filetype_no_delays
         End
     End
 End
