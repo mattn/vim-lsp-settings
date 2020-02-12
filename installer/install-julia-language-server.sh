@@ -10,7 +10,6 @@ cat <<EOF >languageserver.jl
 import LanguageServer
 import Pkg
 import SymbolServer
-
 envpath = dirname(Pkg.Types.Context().env.project_file)
 server = LanguageServer.LanguageServerInstance(stdin, stdout, false, envpath)
 server.runlinter = true
