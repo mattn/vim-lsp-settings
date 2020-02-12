@@ -302,11 +302,12 @@ function! s:vim_lsp_settings_suggest(ft) abort
   if empty(l:entry)
     return
   endif
+
+  redraw!
+  echohl Directory
+  echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
+  echohl None
   if exists(':LspInstallServer') !=# 2
-    redraw!
-    echohl Directory
-    echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
-    echohl None
     command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
   endif
 endfunction
@@ -337,7 +338,7 @@ function! s:vim_lsp_load_or_suggest_delay(ft) abort
   if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
     return s:vim_lsp_load_or_suggest(a:ft)
   endif
-  call timer_start(0, {timer -> s:vim_lsp_load_or_suggest(a:ft)})
+  call timer_start(0, {timer -> [s:vim_lsp_load_or_suggest(a:ft), execute('doautocmd BufReadPost')]})
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
