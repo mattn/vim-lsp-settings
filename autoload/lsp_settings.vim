@@ -9,6 +9,10 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
+function! lsp_settings#installer_dir() abort
+  return s:installer_dir
+endfunction
+
 function! lsp_settings#servers_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
   if has('win32')
@@ -176,9 +180,13 @@ function! lsp_settings#autocd(server_info) abort
   endif
 endfunction
 
+function! lsp_settings#settings() abort
+  return s:settings
+endfunction
+
 function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
   let l:installers = []
-  for l:ft in keys(s:settings)
+  for l:ft in sort(keys(s:settings))
     for l:conf in s:settings[l:ft]
       if !isdirectory(lsp_settings#servers_dir() . '/' . l:conf.command)
         continue
@@ -272,6 +280,7 @@ function! s:vim_lsp_install_server(ft, command) abort
   endif
   let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
+    call lsp_settings#utils#msg('Uninstalling ' . l:entry[0])
     call delete(l:server_install_dir, 'rf')
   endif
   call mkdir(l:server_install_dir, 'p')
@@ -293,11 +302,12 @@ function! s:vim_lsp_settings_suggest(ft) abort
   if empty(l:entry)
     return
   endif
+
+  redraw!
+  echohl Directory
+  echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
+  echohl None
   if exists(':LspInstallServer') !=# 2
-    redraw!
-    echohl Directory
-    echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
-    echohl None
     command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
   endif
 endfunction
@@ -324,8 +334,16 @@ function! s:vim_lsp_suggest_plugin() abort
   endfor
 endfunction
 
+function! s:vim_lsp_load_or_suggest_delay(ft) abort
+  call s:vim_lsp_load_or_suggest(a:ft)
+  "if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
+  "  return s:vim_lsp_load_or_suggest(a:ft)
+  "endif
+  "call timer_start(0, {timer -> [s:vim_lsp_load_or_suggest(a:ft), execute('doautocmd BufReadPost')]})
+endfunction
+
 function! s:vim_lsp_load_or_suggest(ft) abort
-  if !has_key(s:settings, a:ft)
+  if (a:ft !=# '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
     return
   endif
 
@@ -422,7 +440,7 @@ function! lsp_settings#init() abort
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft printf("call s:vim_lsp_load_or_suggest('%s')", l:ft)
+      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest_delay('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest
