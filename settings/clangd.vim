@@ -81,5 +81,12 @@ function! s:switch_source_header() abort
   echo 'Switching between source/header ...'
 endfunction
 
-command! LspSwitchSourceHeader call <SID>switch_source_header()
-nnoremap <plug>(lsp-switch-source-header) :<c-u>call <SID>switch_source_header()<cr>
+function! s:on_lsp_buffer_enabled() abort
+  command! LspSwitchSourceHeader call <SID>switch_source_header()
+  nnoremap <plug>(lsp-switch-source-header) :<c-u>call <SID>switch_source_header()<cr>
+endfunction
+
+augroup lsp_install_clangd
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
