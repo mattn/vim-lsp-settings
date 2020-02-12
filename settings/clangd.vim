@@ -12,7 +12,7 @@ augroup vimlsp_settings_clangd
       \ }
 augroup END
 
-function! s:handle_switch_source_header(ctx, server, type, has_extension, data) abort "ctx = {counter, list, last_command_id}
+function! s:handle_document_switch_source_header(ctx, server, type, has_extension, data) abort "ctx = {counter, list, last_command_id}
   if a:ctx['last_command_id'] != lsp#_last_command()
     return
   endif
@@ -45,7 +45,7 @@ function! s:handle_switch_source_header(ctx, server, type, has_extension, data) 
   endif
 endfunction
 
-function! s:switch_source_header() abort
+function! s:document_switch_source_header() abort
   let l:servers = lsp#get_whitelisted_servers()
 
   let l:has_extension = 0
@@ -74,7 +74,7 @@ function! s:switch_source_header() abort
       \ 'params': {
       \   'uri': lsp#utils#get_buffer_uri(),
       \ },
-      \ 'on_notification': function('s:handle_switch_source_header', [l:ctx, l:server, 'header/source', l:has_extension]),
+      \ 'on_notification': function('s:handle_document_switch_source_header', [l:ctx, l:server, 'header/source', l:has_extension]),
       \ })
   endfor
 
@@ -82,8 +82,8 @@ function! s:switch_source_header() abort
 endfunction
 
 function! s:on_lsp_buffer_enabled() abort
-  command! LspSwitchSourceHeader call <SID>switch_source_header()
-  nnoremap <plug>(lsp-switch-source-header) :<c-u>call <SID>switch_source_header()<cr>
+  command! LspDocumentSwitchSourceHeader call <SID>document_switch_source_header()
+  nnoremap <plug>(lsp-switch-source-header) :<c-u>call <SID>document_switch_source_header()<cr>
 endfunction
 
 augroup lsp_install_clangd
