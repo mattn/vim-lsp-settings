@@ -333,8 +333,12 @@ function! s:vim_lsp_suggest_plugin() abort
   endfor
 endfunction
 
+function! s:vim_lsp_load_or_suggest_delay(ft) abort
+  call timer_start(0, {timer -> s:vim_lsp_load_or_suggest(a:ft)})
+endfunction
+
 function! s:vim_lsp_load_or_suggest(ft) abort
-  if !has_key(s:settings, a:ft)
+  if &filetype !=# a:ft || !has_key(s:settings, a:ft)
     return
   endif
 
@@ -431,7 +435,7 @@ function! lsp_settings#init() abort
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft printf("call s:vim_lsp_load_or_suggest('%s')", l:ft)
+      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest_delay('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest
