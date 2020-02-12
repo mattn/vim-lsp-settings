@@ -341,7 +341,7 @@ function! s:vim_lsp_load_or_suggest_delay(ft) abort
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
-  if (a:ft != '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
+  if (a:ft !=# '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
     return
   endif
 
