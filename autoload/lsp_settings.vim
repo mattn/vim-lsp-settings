@@ -414,7 +414,9 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endfor
 
   if l:disabled == 0 && l:found ==# 0
-    call s:vim_lsp_settings_suggest(a:ft)
+    if a:ft !=# '_'
+      call s:vim_lsp_settings_suggest(a:ft)
+    endif
   else
     if exists('#User#lsp_setup') !=# 0
       doautocmd User lsp_setup
