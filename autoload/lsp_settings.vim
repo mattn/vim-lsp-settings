@@ -335,10 +335,11 @@ function! s:vim_lsp_suggest_plugin() abort
 endfunction
 
 function! s:vim_lsp_load_or_suggest_delay(ft) abort
-  if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
-    return s:vim_lsp_load_or_suggest(a:ft)
-  endif
-  call timer_start(0, {timer -> [s:vim_lsp_load_or_suggest(a:ft), execute('doautocmd BufReadPost')]})
+  call s:vim_lsp_load_or_suggest(a:ft)
+  "if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
+  "  return s:vim_lsp_load_or_suggest(a:ft)
+  "endif
+  "call timer_start(0, {timer -> [s:vim_lsp_load_or_suggest(a:ft), execute('doautocmd BufReadPost')]})
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
