@@ -63,6 +63,7 @@
   ],
   "css": [
     {
+      "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$",
       "command": "css-languageserver",
       "requires": [
         "npm"
@@ -161,6 +162,27 @@
       ]
     }
   ],
+  "glsl": [
+    {
+      "command": "glslls",
+      "requires": [
+        "cmake",
+        "git",
+        "make"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "vert",
+          "tesc",
+          "tese",
+          "glsl",
+          "geom",
+          "frag"
+        ],
+        "name": "tikhomirov/vim-glsl"
+      }
+    }
+  ],
   "go": [
     {
       "command": "gopls",
@@ -232,6 +254,7 @@
   ],
   "json": [
     {
+      "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$",
       "command": "json-languageserver",
       "requires": [
         "npm"
@@ -354,6 +377,21 @@
       "requires": [
         "luarocks"
       ]
+    }
+  ],
+  "ps1": [
+    {
+      "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$",
+      "command": "powershell-languageserver",
+      "requires": [
+        "pwsh"
+      ],
+      "vim-plugin": {
+        "extensions": [
+          "ps1"
+        ],
+        "name": "PProvost/vim-ps1"
+      }
     }
   ],
   "python": [

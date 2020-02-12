@@ -2,7 +2,8 @@
 
 set -e
 
-R --slave -e 'install.packages("languageserver")'
+echo 'install.packages("languageserver")' > install.r
+Rscript install.r
 
 cat <<EOF >r-languageserver
 #!/usr/bin/env bash

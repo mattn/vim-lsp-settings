@@ -7,7 +7,7 @@ augroup vimlsp_settings_metals
       \ 'initialization_options': lsp_settings#get('metals', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('metals', 'whitelist', ['scala', 'sbt']),
       \ 'blacklist': lsp_settings#get('metals', 'blacklist', []),
-      \ 'config': lsp_settings#get('metals', 'config', {}),
+      \ 'config': lsp_settings#get('metals', 'config', {'typed_pattern': '\k\zs'}),
       \ 'workspace_config': lsp_settings#get('metals', 'workspace_config', {}),
       \ }
 augroup END

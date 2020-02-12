@@ -19,13 +19,25 @@ For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 
 ```viml
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 ```
 
 You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
+
+If you want to use autocompletion plugin, you can use followings.
+
+#### asyncomplete.vim
+```viml
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+```
+
+#### deoplete.nvim
+```viml
+Plug 'Shougo/deoplete.nvim'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+```
 
 ### Notice
 
@@ -38,6 +50,7 @@ But when rebuild the cache, any merging plugin manager erases old cached files(i
 You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
 
 ## Usage
+While editing a file with a supported filetype:
 
 ```
 :LspInstallServer

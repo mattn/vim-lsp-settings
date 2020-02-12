@@ -9,6 +9,10 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
+function! lsp_settings#installer_dir() abort
+  return s:installer_dir
+endfunction
+
 function! lsp_settings#servers_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
   if has('win32')
@@ -27,11 +31,11 @@ function! lsp_settings#executable(cmd) abort
   endif
   let l:paths .= ',' . lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
-    let l:found = globpath(l:paths, a:cmd)
+    let l:found = globpath(l:paths, a:cmd, 1)
     return !empty(l:found)
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
-    if !empty(globpath(l:paths, a:cmd . l:ext))
+    if !empty(globpath(l:paths, a:cmd . l:ext, 1))
       return 1
     endif
   endfor
@@ -122,14 +126,14 @@ function! lsp_settings#exec_path(cmd) abort
     let l:paths = split($PATH, ':')
   endif
   let l:paths = join(l:paths, ',')
-  let l:path = globpath(l:paths, a:cmd)
+  let l:path = globpath(l:paths, a:cmd, 1)
   if !has('win32')
     if !empty(l:path)
       return lsp_settings#utils#first_one(l:path)
     endif
   else
     for l:ext in ['.exe', '.cmd', '.bat']
-      let l:path = globpath(l:paths, a:cmd . l:ext)
+      let l:path = globpath(l:paths, a:cmd . l:ext, 1)
       if !empty(l:path)
         return lsp_settings#utils#first_one(l:path)
       endif
@@ -142,10 +146,10 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
-    return lsp_settings#utils#first_one(globpath(l:paths, a:cmd))
+    return lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
-    let l:path = globpath(l:paths, a:cmd . l:ext)
+    let l:path = globpath(l:paths, a:cmd . l:ext, 1)
     if !empty(l:path)
       return lsp_settings#utils#first_one(l:path)
     endif
@@ -176,9 +180,13 @@ function! lsp_settings#autocd(server_info) abort
   endif
 endfunction
 
+function! lsp_settings#settings() abort
+  return s:settings
+endfunction
+
 function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
   let l:installers = []
-  for l:ft in keys(s:settings)
+  for l:ft in sort(keys(s:settings))
     for l:conf in s:settings[l:ft]
       if !isdirectory(lsp_settings#servers_dir() . '/' . l:conf.command)
         continue
@@ -272,6 +280,7 @@ function! s:vim_lsp_install_server(ft, command) abort
   endif
   let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
   if isdirectory(l:server_install_dir)
+    call lsp_settings#utils#msg('Uninstalling ' . l:entry[0])
     call delete(l:server_install_dir, 'rf')
   endif
   call mkdir(l:server_install_dir, 'p')
@@ -324,7 +333,27 @@ function! s:vim_lsp_suggest_plugin() abort
   endfor
 endfunction
 
+function! s:vim_lsp_load_or_suggest_delay(ft) abort
+  if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
+    return s:vim_lsp_load_or_suggest(a:ft)
+  endif
+  call timer_start(0, {timer -> s:vim_lsp_load_or_suggest(a:ft)})
+endfunction
+
 function! s:vim_lsp_load_or_suggest(ft) abort
+  if (a:ft !=# '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
+    return
+  endif
+
+  if get(g:, 'lsp_loaded', 0)
+    for l:server in s:settings[a:ft]
+      let l:refresh_pattern = get(l:server, 'refresh_pattern', '')
+      if !empty(l:refresh_pattern)
+        let b:asyncomplete_refresh_pattern = l:refresh_pattern
+      endif
+    endfor
+  endif
+
   if get(s:ftmap, a:ft, 0)
     return
   endif
@@ -409,7 +438,7 @@ function! lsp_settings#init() abort
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft printf("call s:vim_lsp_load_or_suggest('%s')", l:ft)
+      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest_delay('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest

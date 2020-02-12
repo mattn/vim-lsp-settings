@@ -1,24 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
-  "type": "object",
-  "title": "vim-lsp-settings",
   "additionalProperties": false,
   "patternProperties": {
-    "^\\$schema$": {
-      "type": "string"
-    },
     "^([a-z0-9_-]+)+$": {
-      "type": "array",
       "description": "filetype name",
       "items": {
-        "description": "define command description",
-        "type": "object",
         "additionalProperties": false,
-        "required": [
-          "command",
-          "requires"
-        ],
+        "description": "define command description",
         "properties": {
+          "refresh_pattern": {
+            "description": "loop left and find the start of the word or trigger chars and set it as the startcol for the source instead of refresh_pattern",
+            "type": "string"
+          },
           "command": {
             "description": "define name of language server",
             "type": "string"
@@ -29,32 +22,43 @@
           },
           "requires": {
             "description": "define commands to install this language server",
-            "type": "array",
             "items": {
-              "type": "string",
-              "description": "executable command name"
-            }
+              "description": "executable command name",
+              "type": "string"
+            },
+            "type": "array"
           },
           "vim-plugin": {
-            "description": "define suggestion for vim-plugin",
-            "type": "object",
             "additionalProperties": false,
+            "description": "define suggestion for vim-plugin",
             "properties": {
               "extensions": {
-                "type": "array",
                 "items": {
-                  "type": "string",
-                  "description": "file extensions"
-                }
+                  "description": "file extensions",
+                  "type": "string"
+                },
+                "type": "array"
               },
               "name": {
-                "type": "string",
-                "description": "plugin identify user/repo"
+                "description": "plugin identify user/repo",
+                "type": "string"
               }
-            }
+            },
+            "type": "object"
           }
-        }
-      }
+        },
+        "required": [
+          "command",
+          "requires"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "^\\$schema$": {
+      "type": "string"
     }
-  }
+  },
+  "title": "vim-lsp-settings",
+  "type": "object"
 }
