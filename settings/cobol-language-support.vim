@@ -7,7 +7,7 @@ augroup vimlsp_settings_cobol_language_support
       \ 'initialization_options': lsp_settings#get('cobol-language-support', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('cobol-language-support', 'whitelist', ['cobol']),
       \ 'blacklist': lsp_settings#get('cobol-language-support', 'blacklist', []),
-      \ 'config': lsp_settings#get('cobol-language-support', 'config', {}),
+      \ 'config': lsp_settings#get('cobol-language-support', 'config', lsp_settings#server_config('cobol-language-support')),
       \ 'workspace_config': lsp_settings#get('cobol-language-support', 'workspace_config', {}),
       \ }
 augroup END

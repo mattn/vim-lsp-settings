@@ -87,6 +87,17 @@ function! s:vim_lsp_installer(ft, ...) abort
   return []
 endfunction
 
+function! lsp_settings#server_config(name) abort
+  for l:ft in sort(keys(s:settings))
+    for l:conf in s:settings[l:ft]
+      if l:conf.command ==# a:name && has_key(l:conf, 'config')
+        return l:conf['config']
+      endif
+    endfor
+  endfor
+  return {}
+endfunction
+
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
@@ -349,10 +360,10 @@ function! s:vim_lsp_load_or_suggest(ft) abort
 
   if get(g:, 'lsp_loaded', 0)
     for l:server in s:settings[a:ft]
-      let l:refresh_pattern = get(l:server, 'refresh_pattern', '')
+      let l:config = lsp_settings#server_config(l:server.command)
+      let l:refresh_pattern = get(l:config, 'refresh_pattern', '')
       if !empty(l:refresh_pattern)
         let b:asyncomplete_refresh_pattern = l:refresh_pattern
-        let b:vim_lsp_refresh_pattern = l:refresh_pattern
       endif
     endfor
   endif

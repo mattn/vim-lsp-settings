@@ -7,7 +7,7 @@ augroup vimlsp_settings_texlab
       \ 'initialization_options': lsp_settings#get('texlab', 'initialization_options', {'diagnostics': 'true'}),
       \ 'whitelist': lsp_settings#get('texlab', 'whitelist', ['plaintex', 'tex']),
       \ 'blacklist': lsp_settings#get('texlab', 'blacklist', []),
-      \ 'config': lsp_settings#get('texlab', 'config', {}),
+      \ 'config': lsp_settings#get('texlab', 'config', lsp_settings#server_config('texlab')),
       \ 'workspace_config': lsp_settings#get('texlab', 'workspace_config', {}),
       \ }
 augroup END

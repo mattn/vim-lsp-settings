@@ -7,7 +7,7 @@ augroup vimlsp_settings_terraform_lsp
       \ 'initialization_options': lsp_settings#get('terraform-lsp', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('terraform-lsp', 'whitelist', ['terraform']),
       \ 'blacklist': lsp_settings#get('terraform-lsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('terraform-lsp', 'config', {}),
+      \ 'config': lsp_settings#get('terraform-lsp', 'config', lsp_settings#server_config('terraform-lsp')),
       \ 'workspace_config': lsp_settings#get('terraform-lsp', 'workspace_config', {}),
       \ }
 augroup END

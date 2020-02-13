@@ -7,7 +7,7 @@ augroup vimlsp_settings_reason_language_server
       \ 'initialization_options': lsp_settings#get('reason-language-server', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('reason-language-server', 'whitelist', ['reason']),
       \ 'blacklist': lsp_settings#get('reason-language-server', 'blacklist', []),
-      \ 'config': lsp_settings#get('reason-language-server', 'config', {}),
+      \ 'config': lsp_settings#get('reason-language-server', 'config', lsp_settings#server_config('reason-language-server')),
       \ 'workspace_config': lsp_settings#get('reason-language-server', 'workspace_config', {}),
       \ }
 augroup END

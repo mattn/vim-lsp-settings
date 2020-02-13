@@ -7,7 +7,7 @@ augroup vimlsp_settings_elm_language_server
       \ 'initialization_options': lsp_settings#get('elm-language-server', 'initialization_options', {'elmPath': 'elm', 'runtime': 'node', 'elmFormatPath': 'elm-format', 'elmTestPath': 'elm-test'}),
       \ 'whitelist': lsp_settings#get('elm-language-server', 'whitelist', ['elm', 'elm.tsx']),
       \ 'blacklist': lsp_settings#get('elm-language-server', 'blacklist', []),
-      \ 'config': lsp_settings#get('elm-language-server', 'config', {}),
+      \ 'config': lsp_settings#get('elm-language-server', 'config', lsp_settings#server_config('elm-language-server')),
       \ 'workspace_config': lsp_settings#get('elm-language-server', 'workspace_config', {}),
       \ }
 augroup END

@@ -7,7 +7,7 @@ augroup vimlsp_settings_monastery
       \ 'initialization_options': lsp_settings#get('monastery', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('monastery', 'whitelist', ['perl']),
       \ 'blacklist': lsp_settings#get('monastery', 'blacklist', []),
-      \ 'config': lsp_settings#get('monastery', 'config', {}),
+      \ 'config': lsp_settings#get('monastery', 'config', lsp_settings#server_config('monastery')),
       \ 'workspace_config': lsp_settings#get('monastery', 'workspace_config', {}),
       \ }
 augroup END

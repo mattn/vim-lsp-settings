@@ -7,7 +7,7 @@ augroup vimlsp_settings_pyls
       \ 'initialization_options': lsp_settings#get('pyls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('pyls', 'whitelist', ['python']),
       \ 'blacklist': lsp_settings#get('pyls', 'blacklist', []),
-      \ 'config': lsp_settings#get('pyls', 'config', {}),
+      \ 'config': lsp_settings#get('pyls', 'config', lsp_settings#server_config('pyls')),
       \ 'workspace_config': lsp_settings#get('pyls', 'workspace_config', {}),
       \ }
 augroup END

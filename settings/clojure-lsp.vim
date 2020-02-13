@@ -8,7 +8,7 @@ augroup vimlsp_settings_clojure_lsp
       \ 'initialization_options': lsp_settings#get('clojure-lsp', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('clojure-lsp', 'whitelist', ['clojure']),
       \ 'blacklist': lsp_settings#get('clojure-lsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('clojure-lsp', 'config', {}),
+      \ 'config': lsp_settings#get('clojure-lsp', 'config', lsp_settings#server_config('clojure-lsp')),
       \ 'workspace_config': lsp_settings#get('clojure-lsp', 'workspace_config', {}),
       \ }
 augroup END

@@ -18,7 +18,7 @@ augroup vimlsp_settings_pyls_ms
       \  }),
       \ 'whitelist': lsp_settings#get('pyls-ms', 'whitelist', ['python']),
       \ 'blacklist': lsp_settings#get('pyls-ms', 'blacklist', []),
-      \ 'config': lsp_settings#get('pyls-ms', 'config', {}),
+      \ 'config': lsp_settings#get('pyls-ms', 'config', lsp_settings#server_config('pyls-ms')),
       \ 'workspace_config': lsp_settings#get('pyls-ms', 'workspace_config', {
       \   'python': {
       \     'analysis': {

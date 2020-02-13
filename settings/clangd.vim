@@ -7,7 +7,7 @@ augroup vimlsp_settings_clangd
       \ 'initialization_options': lsp_settings#get('clangd', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('clangd', 'whitelist', ['c', 'cpp', 'objc', 'objcpp']),
       \ 'blacklist': lsp_settings#get('clangd', 'blacklist', []),
-      \ 'config': lsp_settings#get('clangd', 'config', {}),
+      \ 'config': lsp_settings#get('clangd', 'config', lsp_settings#server_config('clangd')),
       \ 'workspace_config': lsp_settings#get('clangd', 'workspace_config', {}),
       \ }
 augroup END

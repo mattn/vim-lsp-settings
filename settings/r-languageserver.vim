@@ -7,7 +7,7 @@ augroup vimlsp_settings_r_languageserver
       \ 'initialization_options': lsp_settings#get('r-languageserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('r-languageserver', 'whitelist', ['r']),
       \ 'blacklist': lsp_settings#get('r-languageserver', 'blacklist', []),
-      \ 'config': lsp_settings#get('r-languageserver', 'config', {}),
+      \ 'config': lsp_settings#get('r-languageserver', 'config', lsp_settings#server_config('r-languageserver')),
       \ 'workspace_config': lsp_settings#get('r-languageserver', 'workspace_config', {}),
       \ }
 augroup END

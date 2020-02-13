@@ -7,7 +7,7 @@ augroup vimlsp_settings_svls
       \ 'initialization_options': lsp_settings#get('svls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('svls', 'whitelist', ['systemverilog']),
       \ 'blacklist': lsp_settings#get('svls', 'blacklist', []),
-      \ 'config': lsp_settings#get('svls', 'config', {}),
+      \ 'config': lsp_settings#get('svls', 'config', lsp_settings#server_config('svls')),
       \ 'workspace_config': lsp_settings#get('svls', 'workspace_config', {}),
       \ }
 augroup END

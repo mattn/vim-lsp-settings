@@ -7,7 +7,7 @@ augroup vimlsp_settings_slp
       \ 'initialization_options': lsp_settings#get('slp', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('slp', 'whitelist', ['perl']),
       \ 'blacklist': lsp_settings#get('slp', 'blacklist', []),
-      \ 'config': lsp_settings#get('slp', 'config', {}),
+      \ 'config': lsp_settings#get('slp', 'config', lsp_settings#server_config('slp')),
       \ 'workspace_config': lsp_settings#get('slp', 'workspace_config', {}),
       \ }
 augroup END

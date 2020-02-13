@@ -7,7 +7,7 @@ augroup vimlsp_settings_vim_language_server
       \ 'initialization_options': extend({'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp}, lsp_settings#get('vim-language-server', 'initialization_options', {}), 'force'),
       \ 'whitelist': lsp_settings#get('vim-language-server', 'whitelist', ['vim']),
       \ 'blacklist': lsp_settings#get('vimbash-language-server', 'blacklist', []),
-      \ 'config': lsp_settings#get('vim-language-server', 'config', {}),
+      \ 'config': lsp_settings#get('vim-language-server', 'config', lsp_settings#server_config('vim-language-server')),
       \ 'workspace_config': lsp_settings#get('vim-language-server', 'workspace_config', {}),
       \ }
 augroup END

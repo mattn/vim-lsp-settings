@@ -7,7 +7,7 @@ augroup vimlsp_settings_fsautocomplete
       \ 'initialization_options': lsp_settings#get('fsautocomplete', 'initialization_options', {'AutomaticWorkspaceInit': v:true}),
       \ 'whitelist': lsp_settings#get('fsautocomplete', 'whitelist', ['fsharp']),
       \ 'blacklist': lsp_settings#get('fsautocomplete', 'blacklist', []),
-      \ 'config': lsp_settings#get('fsautocomplete', 'config', {}),
+      \ 'config': lsp_settings#get('fsautocomplete', 'config', lsp_settings#server_config('fsautocomplete')),
       \ 'workspace_config': lsp_settings#get('fsautocomplete', 'workspace_config', {}),
       \ }
 augroup END

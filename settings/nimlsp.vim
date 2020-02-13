@@ -7,7 +7,7 @@ augroup vimlsp_settings_nimlsp
       \ 'initialization_options': lsp_settings#get('nimlsp', 'initialization_options', {'diagnostics': 'true'}),
       \ 'whitelist': lsp_settings#get('nimlsp', 'whitelist', ['nim']),
       \ 'blacklist': lsp_settings#get('nimlsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('nimlsp', 'config', {}),
+      \ 'config': lsp_settings#get('nimlsp', 'config', lsp_settings#server_config('nimlsp')),
       \ 'workspace_config': lsp_settings#get('nimlsp', 'workspace_config', {}),
       \ }
 augroup END
