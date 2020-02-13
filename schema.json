@@ -8,13 +8,13 @@
         "additionalProperties": false,
         "description": "define command description",
         "properties": {
-          "refresh_pattern": {
-            "description": "loop left and find the start of the word or trigger chars and set it as the startcol for the source instead of refresh_pattern",
-            "type": "string"
-          },
           "command": {
             "description": "define name of language server",
             "type": "string"
+          },
+          "config": {
+            "description": "server related configurations",
+            "type": "object"
           },
           "disabled": {
             "description": "disable this server",
