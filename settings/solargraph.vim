@@ -7,7 +7,7 @@ augroup vimlsp_settings_solargraph
       \ 'initialization_options': lsp_settings#get('solargraph', 'initialization_options', {'diagnostics': 'true'}),
       \ 'whitelist': lsp_settings#get('solargraph', 'whitelist', ['ruby']),
       \ 'blacklist': lsp_settings#get('solargraph', 'blacklist', []),
-      \ 'config': lsp_settings#get('solargraph', 'config', {}),
+      \ 'config': lsp_settings#get('solargraph', 'config', lsp_settings#server_config('solargraph')),
       \ 'workspace_config': lsp_settings#get('solargraph', 'workspace_config', {}),
       \ }
 augroup END

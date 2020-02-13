@@ -7,7 +7,7 @@ augroup vimlsp_settings_sourcekit_lsp
       \ 'initialization_options': lsp_settings#get('sourcekit-lsp', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('sourcekit-lsp', 'whitelist', ['swift']),
       \ 'blacklist': lsp_settings#get('sourcekit-lsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('sourcekit-lsp', 'config', {}),
+      \ 'config': lsp_settings#get('sourcekit-lsp', 'config', lsp_settings#server_config('sourcekit-lsp')),
       \ 'workspace_config': lsp_settings#get('sourcekit-lsp', 'workspace_config', {}),
       \ }
 augroup END

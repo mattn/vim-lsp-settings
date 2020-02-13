@@ -7,7 +7,7 @@ augroup vimlsp_settings_apex_jorje_lsp
       \ 'initialization_options': lsp_settings#get('apex-jorje-lsp', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('apex-jorje-lsp', 'whitelist', ['apex']),
       \ 'blacklist': lsp_settings#get('apex-jorje-lsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('apex-jorje-lsp', 'config', {}),
+      \ 'config': lsp_settings#get('apex-jorje-lsp', 'config', lsp_settings#server_config('apex-jorje-lsp')),
       \ 'workspace_config': lsp_settings#get('apex-jorje-lsp', 'workspace_config', {}),
       \ }
 augroup END

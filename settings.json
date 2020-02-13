@@ -63,8 +63,10 @@
   ],
   "css": [
     {
-      "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$",
       "command": "css-languageserver",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -210,8 +212,10 @@
   ],
   "html": [
     {
-      "refresh_pattern": "\\(/\\|k\\+\\)$",
       "command": "html-languageserver",
+      "config": {
+        "refresh_pattern": "\\(/\\|k\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -255,8 +259,10 @@
   ],
   "json": [
     {
-      "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$",
       "command": "json-languageserver",
+      "config": {
+        "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -382,8 +388,10 @@
   ],
   "ps1": [
     {
-      "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$",
       "command": "powershell-languageserver",
+      "config": {
+        "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$"
+      },
       "requires": [
         "pwsh"
       ],

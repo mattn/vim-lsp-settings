@@ -7,7 +7,7 @@ augroup vimlsp_settings_erlang_ls
       \ 'initialization_options': lsp_settings#get('erlang-ls', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('erlang-ls', 'whitelist', ['erlang']),
       \ 'blacklist': lsp_settings#get('erlang-ls', 'blacklist', []),
-      \ 'config': lsp_settings#get('erlang-ls', 'config', {}),
+      \ 'config': lsp_settings#get('erlang-ls', 'config', lsp_settings#server_config('erlang-ls')),
       \ 'workspace_config': lsp_settings#get('erlang-ls', 'workspace_config', {}),
       \ }
 augroup END

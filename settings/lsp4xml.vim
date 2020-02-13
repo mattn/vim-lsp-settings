@@ -7,7 +7,7 @@ augroup vimlsp_settings_lsp4xml
       \ 'initialization_options': lsp_settings#get('lsp4xml', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('lsp4xml', 'whitelist', ['xml']),
       \ 'blacklist': lsp_settings#get('lsp4xml', 'blacklist', []),
-      \ 'config': lsp_settings#get('lsp4xml', 'config', {}),
+      \ 'config': lsp_settings#get('lsp4xml', 'config', lsp_settings#server_config('lsp4xml')),
       \ 'workspace_config': lsp_settings#get('lsp4xml', 'workspace_config', {}),
       \ }
 augroup END

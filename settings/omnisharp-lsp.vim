@@ -7,7 +7,7 @@ augroup vimlsp_settings_omnisharp_lsp
       \ 'initialization_options': lsp_settings#get('omnisharp-lsp', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('omnisharp-lsp', 'whitelist', ['cs']),
       \ 'blacklist': lsp_settings#get('omnisharp-lsp', 'blacklist', []),
-      \ 'config': lsp_settings#get('omnisharp-lsp', 'config', {}),
+      \ 'config': lsp_settings#get('omnisharp-lsp', 'config', lsp_settings#server_config('omnisharp-lsp')),
       \ 'workspace_config': lsp_settings#get('omnisharp-lsp', 'workspace_config', {}),
       \ }
 augroup END

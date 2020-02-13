@@ -7,7 +7,7 @@ augroup vimlsp_settings_eclipse_jdt_ls
       \ 'initialization_options': lsp_settings#get('eclipse-jdt-ls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('eclipse-jdt-ls', 'whitelist', ['java']),
       \ 'blacklist': lsp_settings#get('eclipse-jdt-ls', 'blacklist', []),
-      \ 'config': lsp_settings#get('eclipse-jdt-ls', 'config', {}),
+      \ 'config': lsp_settings#get('eclipse-jdt-ls', 'config', lsp_settings#server_config('eclipse-jdt-ls')),
       \ 'workspace_config': lsp_settings#get('eclipse-jdt-ls', 'workspace_config', {}),
       \ }
 augroup END

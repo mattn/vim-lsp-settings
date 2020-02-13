@@ -7,7 +7,7 @@ augroup vimlsp_settings_efm_langserver
       \ 'initialization_options': lsp_settings#get('efm-langserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('efm-langserver', 'whitelist', ['*']),
       \ 'blacklist': lsp_settings#get('efm-langserver', 'blacklist', []),
-      \ 'config': lsp_settings#get('efm-langserver', 'config', {}),
+      \ 'config': lsp_settings#get('efm-langserver', 'config', lsp_settings#server_config('efm-langserver')),
       \ 'workspace_config': lsp_settings#get('efm-langserver', 'workspace_config', {}),
       \ }
 augroup END

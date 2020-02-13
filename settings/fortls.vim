@@ -7,7 +7,7 @@ augroup vimlsp_settings_fortls
       \ 'initialization_options': lsp_settings#get('fortls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('fortls', 'whitelist', ['fortran']),
       \ 'blacklist': lsp_settings#get('fortls', 'blacklist', []),
-      \ 'config': lsp_settings#get('fortls', 'config', {}),
+      \ 'config': lsp_settings#get('fortls', 'config', lsp_settings#server_config('fortls')),
       \ 'workspace_config': lsp_settings#get('fortls', 'workspace_config', {}),
       \ }
 augroup END

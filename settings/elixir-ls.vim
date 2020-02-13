@@ -7,7 +7,7 @@ augroup vimlsp_settings_elixir_ls
       \ 'initialization_options': lsp_settings#get('elixir-ls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('elixir-ls', 'whitelist', ['elixir']),
       \ 'blacklist': lsp_settings#get('elixir-ls', 'blacklist', []),
-      \ 'config': lsp_settings#get('elixir-ls', 'config', {}),
+      \ 'config': lsp_settings#get('elixir-ls', 'config', lsp_settings#server_config('elixir-ls')),
       \ 'workspace_config': lsp_settings#get('elixir-ls', 'workspace_config', {}),
       \ }
 augroup END

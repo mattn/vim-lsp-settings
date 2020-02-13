@@ -7,7 +7,7 @@ augroup vimlsp_settings_fsharp_language_server
       \ 'initialization_options': lsp_settings#get('fsharp-language-server', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('fsharp-language-server', 'whitelist', ['fsharp']),
       \ 'blacklist': lsp_settings#get('fsharp-language-server', 'blacklist', []),
-      \ 'config': lsp_settings#get('fsharp-language-server', 'config', {}),
+      \ 'config': lsp_settings#get('fsharp-language-server', 'config', lsp_settings#server_config('fsharp-language-server')),
       \ 'workspace_config': lsp_settings#get('fsharp-language-server', 'workspace_config', {}),
       \ }
 augroup END

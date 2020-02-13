@@ -7,7 +7,7 @@ augroup vimlsp_settings_typescript_language_server
       \ 'initialization_options': lsp_settings#get('typescript-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'whitelist': lsp_settings#get('typescript-language-server', 'whitelist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx']),
       \ 'blacklist': lsp_settings#get('typescript-language-server', 'blacklist', []),
-      \ 'config': lsp_settings#get('typescript-language-server', 'config', {}),
+      \ 'config': lsp_settings#get('typescript-language-server', 'config', lsp_settings#server_config('typescript-language-server')),
       \ 'workspace_config': lsp_settings#get('typescript-language-server', 'workspace_config', {}),
       \ }
 augroup END

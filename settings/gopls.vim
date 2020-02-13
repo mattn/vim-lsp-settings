@@ -7,7 +7,7 @@ augroup vimlsp_settings_gopls
       \ 'initialization_options': lsp_settings#get('gopls', 'initialization_options', {"diagnostics": v:true, 'completeUnimported': v:true}),
       \ 'whitelist': lsp_settings#get('gopls', 'whitelist', ['go']),
       \ 'blacklist': lsp_settings#get('gopls', 'blacklist', []),
-      \ 'config': lsp_settings#get('gopls', 'config', {}),
+      \ 'config': lsp_settings#get('gopls', 'config', lsp_settings#server_config('gopls')),
       \ 'workspace_config': lsp_settings#get('gopls', 'workspace_config', {}),
       \ }
 augroup END

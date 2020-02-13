@@ -7,7 +7,7 @@ augroup vimlsp_settings_analysis_server_dart_snapshot
       \ 'initialization_options': lsp_settings#get('analysis-server-dart-snapshot', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('analysis-server-dart-snapshot', 'whitelist', ['dart']),
       \ 'blacklist': lsp_settings#get('analysis-server-dart-snapshot', 'blacklist', []),
-      \ 'config': lsp_settings#get('analysis-server-dart-snapshot', 'config', {}),
+      \ 'config': lsp_settings#get('analysis-server-dart-snapshot', 'config', lsp_settings#server_config('analysis-server-dart-snapshot')),
       \ 'workspace_config': lsp_settings#get('analysis-server-dart-snapshot', 'workspace_config', {}),
       \ }
 augroup END
