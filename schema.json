@@ -10,17 +10,21 @@
         "properties": {
           "command": {
             "description": "define name of language server",
-            "type": "string"
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
           },
           "config": {
+            "default": {},
             "description": "server related configurations",
             "type": "object"
           },
           "disabled": {
             "description": "disable this server",
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
           },
           "requires": {
+            "default": [],
             "description": "define commands to install this language server",
             "items": {
               "description": "executable command name",
@@ -29,10 +33,12 @@
             "type": "array"
           },
           "vim-plugin": {
+            "default": {},
             "additionalProperties": false,
             "description": "define suggestion for vim-plugin",
             "properties": {
               "extensions": {
+                "default": [],
                 "items": {
                   "description": "file extensions",
                   "type": "string"
