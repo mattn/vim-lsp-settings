@@ -10,8 +10,8 @@
         "properties": {
           "command": {
             "description": "define name of language server",
-            "type": "string",
-            "pattern": "^[a-zA-Z0-9_-]+$"
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
           },
           "config": {
             "default": {},
@@ -19,9 +19,9 @@
             "type": "object"
           },
           "disabled": {
+            "default": true,
             "description": "disable this server",
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           },
           "requires": {
             "default": [],
@@ -33,8 +33,8 @@
             "type": "array"
           },
           "vim-plugin": {
-            "default": {},
             "additionalProperties": false,
+            "default": {},
             "description": "define suggestion for vim-plugin",
             "properties": {
               "extensions": {
