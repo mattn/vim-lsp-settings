@@ -31,7 +31,7 @@ function! lsp_settings#utils#first_one(lines) abort
   return l:path
 endfunction
 
-function! s:merge(lhs, rhs) abort
+function! lsp_settings#utils#merge(lhs, rhs) abort
   let [l:lhs, l:rhs] = [a:lhs, a:rhs]
   if type(l:lhs) ==# 3
     if type(l:rhs) ==# 3
@@ -70,7 +70,7 @@ function! s:merge(lhs, rhs) abort
           endif
         elseif type(l:rhs[l:key]) ==# 4
           if has_key(l:lhs, l:key)
-            call s:merge(l:lhs[l:key], l:rhs[l:key])
+            call lsp_settings#utils#merge(l:lhs[l:key], l:rhs[l:key])
           else
             let l:lhs[l:key] = l:rhs[l:key]
           endif
@@ -82,7 +82,7 @@ function! s:merge(lhs, rhs) abort
   endif
 endfunction
 
-function! lsp_settings#utils#merge(d) abort
+function! lsp_settings#utils#dotmerge(d) abort
   let l:ret = {}
   let l:keys = keys(a:d)
   for l:k in sort(keys(a:d))
@@ -101,7 +101,7 @@ function! lsp_settings#utils#merge(d) abort
       endif
       let l:cur = l:cur[l:kk]
     endfor
-    call s:merge(l:ret, l:new)
+    call lsp_settings#utils#merge(l:ret, l:new)
   endfor
   return l:ret
 endfunction
