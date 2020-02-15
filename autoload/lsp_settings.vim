@@ -358,6 +358,19 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
+  try
+    let l:root = lsp#utils#find_nearest_parent_directory('.', '.vim-lsp-settings')
+    if !empty(l:root) && filereadable(l:root . '/config.json')
+      let l:config = json_decode(join(readfile(l:root . '/config.json'), "\n"))
+      if  has_key(g:, 'lsp_settings')
+        call lsp_settings#utils#merge(g:lsp_settings, l:config)
+      else
+        let g:lsp_settings = l:config
+      endif
+    endif
+  catch
+  endtry
+
   if get(g:, 'lsp_loaded', 0)
     for l:server in s:settings[a:ft]
       let l:config = lsp_settings#server_config(l:server.command)
