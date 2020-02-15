@@ -3,7 +3,7 @@ augroup vimlsp_settings_vim_language_server
   LspRegisterServer {
       \ 'name': 'vim-language-server',
       \ 'cmd': {server_info->lsp_settings#get('vim-language-server', 'cmd', [lsp_settings#exec_path('vim-language-server'), '--stdio'])},
-      \ 'root_uri':{server_info->lsp_settings#get('vim-language-server', 'root_uri', lsp_settings#root_uri(extend(['.vim/', 'vimfiles/'], g:lsp_settings_root_markers)))},
+      \ 'root_uri':{server_info->lsp_settings#get('vim-language-server', 'root_uri', lsp_settings#root_uri(['.vim/', 'vimfiles/']))},
       \ 'initialization_options': extend({'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp}, lsp_settings#get('vim-language-server', 'initialization_options', {}), 'force'),
       \ 'whitelist': lsp_settings#get('vim-language-server', 'whitelist', ['vim']),
       \ 'blacklist': lsp_settings#get('vimbash-language-server', 'blacklist', []),

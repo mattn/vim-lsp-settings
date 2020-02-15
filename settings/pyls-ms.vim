@@ -3,7 +3,7 @@ augroup vimlsp_settings_pyls_ms
   LspRegisterServer {
       \ 'name': 'pyls-ms',
       \ 'cmd': {server_info->lsp_settings#get('pyls-ms', 'cmd', [lsp_settings#exec_path('pyls-ms')])},
-      \ 'root_uri':{server_info->lsp_settings#get('pyls-ms', 'root_uri', lsp_settings#root_uri(g:lsp_settings_root_markers))},
+      \ 'root_uri':{server_info->lsp_settings#get('pyls-ms', 'root_uri', lsp_settings#root_uri())},
       \ 'initialization_options': lsp_settings#get('pyls-ms', 'initialization_options', {
       \   'analysisUpdates': v:true,
       \   'asyncStartup': v:true,

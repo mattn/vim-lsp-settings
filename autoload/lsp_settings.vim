@@ -168,8 +168,14 @@ function! lsp_settings#exec_path(cmd) abort
   return ''
 endfunction
 
-function! lsp_settings#root_uri(pattern) abort
-  let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:pattern)
+function! lsp_settings#root_path(...) abort
+  let l:patterns = get(a:000, 0, [])
+  return lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
+endfunction
+
+function! lsp_settings#root_uri(...) abort
+  let l:patterns = get(a:000, 0, [])
+  let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
   if empty(l:dir)
     return lsp#utils#get_default_root_uri()
   endif
@@ -358,18 +364,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
-  try
-    let l:root = lsp#utils#find_nearest_parent_directory('.', '.vim-lsp-settings')
-    if !empty(l:root) && filereadable(l:root . '/settings.json')
-      let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
-      if  has_key(g:, 'lsp_settings')
-        call lsp_settings#utils#merge(g:lsp_settings, l:settings)
-      else
-        let g:lsp_settings = l:settings
-      endif
-    endif
-  catch
-  endtry
+  call lsp_settings#profile#load_local()
 
   if get(g:, 'lsp_loaded', 0)
     for l:server in s:settings[a:ft]
@@ -438,6 +433,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     endif
   endfor
 
+  delcommand LspRegisterServer
+
   if l:disabled == 0 && l:found ==# 0
     if a:ft !=# '_'
       call s:vim_lsp_settings_suggest(a:ft)
@@ -451,9 +448,6 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     endif
   endif
 
-  if exists(':LspRegisterServer') !=# 2
-    delcommand LspRegisterServer
-  endif
 endfunction
 
 function! lsp_settings#clear() abort

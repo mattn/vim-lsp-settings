@@ -3,7 +3,7 @@ augroup vimlsp_settings_svls
   LspRegisterServer {
       \ 'name': 'svls',
       \ 'cmd': {server_info->lsp_settings#get('svls', 'cmd', [lsp_settings#exec_path('svls')])},
-      \ 'root_uri':{server_info->lsp_settings#get('svls', 'root_uri', lsp_settings#root_uri(g:lsp_settings_root_markers))},
+      \ 'root_uri':{server_info->lsp_settings#get('svls', 'root_uri', lsp_settings#root_uri())},
       \ 'initialization_options': lsp_settings#get('svls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('svls', 'whitelist', ['systemverilog']),
       \ 'blacklist': lsp_settings#get('svls', 'blacklist', []),
