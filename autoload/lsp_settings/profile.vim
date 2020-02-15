@@ -26,5 +26,6 @@ function! lsp_settings#profile#edit_local() abort
   if !filereadable(l:root . '/settings.json')
     call setline(1, ['{', "\t", '}'])
     call cursor([2, 2])
+    setlocal nomodified
   endif
 endfunction
