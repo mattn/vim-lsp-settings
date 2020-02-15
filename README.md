@@ -162,6 +162,8 @@ Or put `.vim-lsp-settings/settings.json` on your project root directory.
 }
 ```
 
+To edit project local `esttings.json`, do `:LspSettingsLocalEdit`.
+
 Overridable keys are:
 
 * cmd (List ex: `['clangd-6.0', '-enable-snippets']`)
