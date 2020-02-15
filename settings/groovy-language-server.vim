@@ -3,7 +3,7 @@ augroup vimlsp_settings_groovy_language_server
   LspRegisterServer {
       \ 'name': 'groovy-language-server',
       \ 'cmd': {server_info->lsp_settings#get('groovy-language-server', 'cmd', [lsp_settings#exec_path('groovy-language-server')])},
-      \ 'root_uri':{server_info->lsp_settings#get('groovy-language-server', 'root_uri', lsp_settings#root_uri(extend(['build.gradle'], g:lsp_settings_root_markers)))},
+      \ 'root_uri':{server_info->lsp_settings#get('groovy-language-server', 'root_uri', lsp_settings#root_uri(['build.gradle']))},
       \ 'initialization_options': lsp_settings#get('groovy-language-server', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('groovy-language-server', 'whitelist', ['groovy']),
       \ 'blacklist': lsp_settings#get('groovy-language-server', 'blacklist', []),
