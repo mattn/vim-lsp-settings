@@ -144,8 +144,22 @@ If you install clangd already, you can use clangd for C/C++ without configuratio
 
 ```vim
 let g:lsp_settings = {
-\  'clangd': {'cmd': ['clangd-6.0']}
+\  'clangd': {'cmd': ['clangd-6.0']},
+\  'efm-langserver': {'disabled': v:false}
 \}
+```
+
+Or put `.vim-lsp-settings/settings.json` on your project root directory.
+
+```json
+{
+  "clangd": {
+    "cmd": ["clangd-6.0"]
+  },
+  "efm-langserver": {
+    "disabled": false
+  }
+}
 ```
 
 Overridable keys are:
