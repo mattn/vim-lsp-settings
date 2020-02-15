@@ -360,12 +360,12 @@ function! s:vim_lsp_load_or_suggest(ft) abort
 
   try
     let l:root = lsp#utils#find_nearest_parent_directory('.', '.vim-lsp-settings')
-    if !empty(l:root) && filereadable(l:root . '/config.json')
-      let l:config = json_decode(join(readfile(l:root . '/config.json'), "\n"))
+    if !empty(l:root) && filereadable(l:root . '/settings.json')
+      let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
       if  has_key(g:, 'lsp_settings')
-        call lsp_settings#utils#merge(g:lsp_settings, l:config)
+        call lsp_settings#utils#merge(g:lsp_settings, l:settings)
       else
-        let g:lsp_settings = l:config
+        let g:lsp_settings = l:settings
       endif
     endif
   catch
