@@ -3,7 +3,7 @@ augroup vimlsp_settings_erlang_ls
   LspRegisterServer {
       \ 'name': 'erlang-ls',
       \ 'cmd': {server_info->lsp_settings#get('erlang-ls', 'cmd', [lsp_settings#exec_path('erlang-ls'), '--transport', 'stdio'])},
-      \ 'root_uri':{server_info->lsp_settings#get('erlang-ls', 'root_uri', lsp_settings#root_uri(extend(['rebar.config'], g:lsp_settings_root_markers)))},
+      \ 'root_uri':{server_info->lsp_settings#get('erlang-ls', 'root_uri', lsp_settings#root_uri(['rebar.config']))},
       \ 'initialization_options': lsp_settings#get('erlang-ls', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('erlang-ls', 'whitelist', ['erlang']),
       \ 'blacklist': lsp_settings#get('erlang-ls', 'blacklist', []),
