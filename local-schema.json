@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cmd": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "initialization_options": {
+      "type": "object"
+    },
+    "root_uri": {
+      "type": "string",
+      "pattern": "^file://\\S+$"
+    },
+    "whitelist": {
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9_-]+$"
+      },
+      "type": "array"
+    },
+    "blacklist": {
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9_-]+$"
+      },
+      "type": "array"
+    },
+    "config": {
+      "type": "object"
+    },
+    "workspace_config": {
+      "type": "object"
+    }
+  },
+  "title": "vim-lsp-settings-local",
+  "type": "object"
+}

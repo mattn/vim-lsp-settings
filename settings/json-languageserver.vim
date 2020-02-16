@@ -8,6 +8,6 @@ augroup vimlsp_settings_json_languageserver
       \ 'whitelist': lsp_settings#get('json-languageserver', 'whitelist', ['json', 'jsonc']),
       \ 'blacklist': lsp_settings#get('json-languageserver', 'blacklist', []),
       \ 'config': lsp_settings#get('json-languageserver', 'config', lsp_settings#server_config('json-languageserver')),
-      \ 'workspace_config': lsp_settings#get('json-languageserver', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': json_decode(join(readfile(expand('<sfile>:h:h') . '/data/catalog.json'), "\n"))['schemas']}}}),
+      \ 'workspace_config': lsp_settings#get('json-languageserver', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': json_decode(join(readfile(expand('<sfile>:h:h') . '/data/catalog.json'), "\n"))['schemas'] + [{'fileMatch':['/.vim-lsp-settings/settings.json'], 'url': 'https://mattn.github.io/local-schema.json'}]}}}),
       \ }
 augroup END
