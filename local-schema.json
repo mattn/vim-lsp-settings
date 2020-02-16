@@ -2,35 +2,39 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "additionalProperties": false,
   "properties": {
+    "blacklist": {
+      "items": {
+        "pattern": "^[a-zA-Z0-9_-]+$",
+        "type": "string"
+      },
+      "type": "array"
+    },
     "cmd": {
       "items": {
         "type": "string"
       },
       "type": "array"
     },
+    "config": {
+      "type": "object"
+    },
+    "disabled": {
+      "default": true,
+      "type": "boolean"
+    },
     "initialization_options": {
       "type": "object"
     },
     "root_uri": {
-      "type": "string",
-      "pattern": "^file://\\S+$"
+      "pattern": "^file://\\S+$",
+      "type": "string"
     },
     "whitelist": {
       "items": {
-        "type": "string",
-        "pattern": "^[a-zA-Z0-9_-]+$"
+        "pattern": "^[a-zA-Z0-9_-]+$",
+        "type": "string"
       },
       "type": "array"
-    },
-    "blacklist": {
-      "items": {
-        "type": "string",
-        "pattern": "^[a-zA-Z0-9_-]+$"
-      },
-      "type": "array"
-    },
-    "config": {
-      "type": "object"
     },
     "workspace_config": {
       "type": "object"
