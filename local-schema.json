@@ -1,48 +1,57 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
   "additionalProperties": false,
-  "items": {
-    "type": "object",
-    "properties": {
-      "blacklist": {
-        "items": {
-          "pattern": "^[a-zA-Z0-9_-]+$",
+  "patternProperties": {
+    "^([a-z0-9_-]+)+$": {
+      "description": "define name of language server",
+      "properties": {
+        "blacklist": {
+          "items": {
+            "description": "define name of blacklisted language server",
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cmd": {
+          "description": "define command line arguments for the language server",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "config": {
+          "description": "define configuration for the language server",
+          "type": "object"
+        },
+        "disabled": {
+          "description": "set true if you want to enable server",
+          "default": true,
+          "type": "boolean"
+        },
+        "initialization_options": {
+          "description": "define initialization_options for the language server",
+          "type": "object"
+        },
+        "root_uri": {
+          "description": "define root_uri for current project",
+          "pattern": "^file://\\S+$",
           "type": "string"
         },
-        "type": "array"
-      },
-      "cmd": {
-        "items": {
-          "type": "string"
+        "whitelist": {
+          "items": {
+            "description": "define name of whitelisted language server",
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "type": "array"
         },
-        "type": "array"
-      },
-      "config": {
-        "type": "object"
-      },
-      "disabled": {
-        "default": true,
-        "type": "boolean"
-      },
-      "initialization_options": {
-        "type": "object"
-      },
-      "root_uri": {
-        "pattern": "^file://\\S+$",
-        "type": "string"
-      },
-      "whitelist": {
-        "items": {
-          "pattern": "^[a-zA-Z0-9_-]+$",
-          "type": "string"
-        },
-        "type": "array"
-      },
-      "workspace_config": {
-        "type": "object"
+        "workspace_config": {
+          "type": "object"
+        }
       }
     }
   },
   "title": "vim-lsp-settings-local",
-  "type": "array"
+  "type": "object"
 }
