@@ -3,7 +3,7 @@ augroup vimlsp_settings_ra_lsp_server
   LspRegisterServer {
       \ 'name': 'ra_lsp_server',
       \ 'cmd': {server_info->lsp_settings#get('ra_lsp_server', 'cmd', [lsp_settings#exec_path('ra_lsp_server')])},
-      \ 'root_uri':{server_info->lsp_settings#get('ra_lsp_server', 'root_uri', lsp_settings#root_uri())},
+      \ 'root_uri':{server_info->lsp_settings#get('ra_lsp_server', 'root_uri', lsp_settings#root_uri(['Cargo.toml']))},
       \ 'initialization_options': lsp_settings#get('ra_lsp_server', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('ra_lsp_server', 'whitelist', ['rust']),
       \ 'blacklist': lsp_settings#get('ra_lsp_server', 'blacklist', []),
