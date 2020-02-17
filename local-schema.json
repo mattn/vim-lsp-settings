@@ -4,6 +4,7 @@
   "patternProperties": {
     "^([a-z0-9_-]+)+$": {
       "description": "define name of language server",
+      "type": "object",
       "properties": {
         "blacklist": {
           "items": {
