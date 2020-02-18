@@ -41,27 +41,34 @@ let s:color_map = {
 function! lsp_settings#profile#status() abort
   let l:settings = lsp_settings#settings()
   let l:active_servers = lsp#get_whitelisted_servers()
+
+  let l:servers = []
   for l:ft in keys(l:settings)
-    let l:servers = l:settings[l:ft]
-    for l:v in l:servers
-      if index(l:active_servers, l:v.command) != -1
-        let l:status = lsp#get_server_status(l:v.command)
-        echon l:v.command . ': '
-        exec 'echohl' s:color_map[l:status]
-        echon l:status
-        echohl None
-      elseif lsp_settings#executable(l:v.command)
-        echon l:v.command . ': '
-        echohl vimFilter
-        echon 'not running'
-        echohl None
-      else
-        echon l:v.command . ': '
-        echohl vimOption
-        echon 'not installed'
-        echohl None
+    for l:v in l:settings[l:ft]
+      if index(l:servers, l:v.command) ==# -1
+        call add(l:servers, l:v.command)
       endif
-      echo ''
     endfor
+  endfor
+
+  for l:server in uniq(sort(l:servers))
+    if index(l:active_servers, l:server) != -1
+      let l:status = lsp#get_server_status(l:server)
+      echon l:server . ': '
+      exec 'echohl' s:color_map[l:status]
+      echon l:status
+      echohl None
+    elseif lsp_settings#executable(l:server)
+      echon l:server . ': '
+      echohl vimFilter
+      echon 'not running'
+      echohl None
+    else
+      echon l:server . ': '
+      echohl vimOption
+      echon 'not installed'
+      echohl None
+    endif
+    echo ''
   endfor
 endfunction
