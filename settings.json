@@ -497,6 +497,9 @@
       ]
     },
     {
+      "config": {
+        "refresh_pattern": "\\( \\zs\\k*\\|[a-zA-Z0-9_-]\\+\\)$"
+      },
       "command": "sqls",
       "requires": [
         "go"
