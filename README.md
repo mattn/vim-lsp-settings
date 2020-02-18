@@ -179,7 +179,10 @@ If you have some Language Servers and want to use specified the server:
 
 ```vim
 let g:lsp_settings_perl = 'slp'
+let g:lsp_settings_typescript = ['typescript-language-server', 'eslint-language-server']
 ```
+
+When the servers are specifed in a list, these will be started at all.
 
 If you want to disable Language Server:
 
