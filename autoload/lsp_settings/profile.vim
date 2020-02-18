@@ -29,3 +29,39 @@ function! lsp_settings#profile#edit_local() abort
     setlocal nomodified
   endif
 endfunction
+
+let s:color_map = {
+\ 'exited': 'Error',
+\ 'starting': 'MoreMsg',
+\ 'failed': 'WarningMsg',
+\ 'running': 'Keyword',
+\ 'not running': 'NonText'
+\}
+
+function! lsp_settings#profile#status() abort
+  let l:settings = lsp_settings#settings()
+  let l:active_servers = lsp#get_whitelisted_servers()
+  for l:ft in keys(l:settings)
+    let l:servers = l:settings[l:ft]
+    for l:v in l:servers
+      if index(l:active_servers, l:v.command) != -1
+        let l:status = lsp#get_server_status(l:v.command)
+        echon l:v.command . ': '
+        exec 'echohl' s:color_map[l:status]
+        echon l:status
+        echohl None
+      elseif lsp_settings#executable(l:v.command)
+        echon l:v.command . ': '
+        echohl vimFilter
+        echon 'not running'
+        echohl None
+      else
+        echon l:v.command . ': '
+        echohl vimOption
+        echon 'not installed'
+        echohl None
+      endif
+      echo ''
+    endfor
+  endfor
+endfunction
