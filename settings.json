@@ -241,6 +241,12 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "git", "npm"
+      ]
     }
   ],
   "javascriptreact": [
@@ -553,6 +559,12 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "git", "npm"
       ]
     }
   ],

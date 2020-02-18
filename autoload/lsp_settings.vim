@@ -391,6 +391,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
   endif
 
+  let l:default = get(g:, 'lsp_settings_' . a:ft, '')
+
   let l:found = 0
   let l:disabled = 0
 
@@ -399,10 +401,19 @@ function! s:vim_lsp_load_or_suggest(ft) abort
       let l:disabled += 1
       continue
     endif
-    let l:default = get(g:, 'lsp_settings_' . a:ft, '')
-    if !empty(l:default) && l:default != l:server.command
+
+    if type(l:default) ==# v:t_list
+      if len(l:default) ># 0 && index(l:default, l:server.command) == -1
+        continue
+      endif
+    elseif type(l:default) ==# v:t_string
+      if !empty(l:default) && l:default != l:server.command
+        continue
+      endif
+    else
       continue
     endif
+
     let l:command = lsp_settings#get(l:server.command, 'cmd', [])
     if empty(l:command) && !lsp_settings#executable(l:server.command)
       let l:script = printf('%s/%s.vim', s:checkers_dir, l:server.command)
@@ -429,7 +440,11 @@ function! s:vim_lsp_load_or_suggest(ft) abort
       exe 'source' l:script
       let l:found += 1
       let s:ftmap[a:ft] = 1
-      break
+
+      " If default server is specified as list, continue to look next.
+      if type(l:default) !=# v:t_list
+        break
+      endif
     endif
   endfor
 
