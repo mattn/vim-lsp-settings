@@ -174,15 +174,17 @@ function! lsp_settings#root_path(name) abort
 endfunction
 
 function! lsp_settings#root_uri(name) abort
-  let l:patterns = []
-  for l:ft in sort(keys(s:settings))
-    for l:conf in s:settings[l:ft]
-      if l:conf.command ==# a:name && has_key(l:conf, 'root_uri_patterns')
-        let l:patterns = l:conf['root_uri_patterns']
-        break
-      endif
+  let l:patterns = lsp_settings#get(a:name, 'root_uri_patterns', [])
+  if empty(l:patterns)
+    for l:ft in sort(keys(s:settings))
+      for l:conf in s:settings[l:ft]
+        if l:conf.command ==# a:name && has_key(l:conf, 'root_uri_patterns')
+          let l:patterns = l:conf['root_uri_patterns']
+          break
+        endif
+      endfor
     endfor
-  endfor
+  endif
 
   let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
   if empty(l:dir)
