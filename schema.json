@@ -32,7 +32,16 @@
             },
             "type": "array"
           },
-          "vim-plugin": {
+          "root_uri_patterns": {
+            "default": [],
+            "description": "define patterns with file or directory names for finding root_uri",
+            "items": {
+              "description": "file or directory name",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "vim_plugin": {
             "additionalProperties": false,
             "default": {},
             "description": "define suggestion for vim-plugin",

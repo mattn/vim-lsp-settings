@@ -345,15 +345,15 @@ function! s:vim_lsp_suggest_plugin() abort
   let l:ext = expand('%:e')
   for l:ft in keys(s:settings)
     for l:server in s:settings[l:ft]
-      if !has_key(l:server, 'vim-plugin')
+      if !has_key(l:server, 'vim_plugin')
         continue
       endif
-      if index(l:server['vim-plugin']['extensions'], l:ext) == -1
+      if index(l:server['vim_plugin']['extensions'], l:ext) == -1
         continue
       endif
       redraw
       echohl Directory
-      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim-plugin']['name'])
+      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim_plugin']['name'])
       echohl None
       return
     endfor

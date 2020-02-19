@@ -4,7 +4,6 @@
   "patternProperties": {
     "^([a-z0-9_-]+)+$": {
       "description": "define name of language server",
-      "type": "object",
       "properties": {
         "blacklist": {
           "items": {
@@ -26,8 +25,8 @@
           "type": "object"
         },
         "disabled": {
-          "description": "set true if you want to enable server",
           "default": true,
+          "description": "set true if you want to enable server",
           "type": "boolean"
         },
         "initialization_options": {
@@ -38,6 +37,15 @@
           "description": "define root_uri for current project",
           "pattern": "^file://\\S+$",
           "type": "string"
+        },
+        "root_uri_patterns": {
+          "default": [],
+          "description": "define patterns with file or directory names for finding root_uri",
+          "items": {
+            "description": "file or directory name",
+            "type": "string"
+          },
+          "type": "array"
         },
         "whitelist": {
           "items": {
@@ -50,7 +58,8 @@
         "workspace_config": {
           "type": "object"
         }
-      }
+      },
+      "type": "object"
     }
   },
   "title": "vim-lsp-settings-local",
