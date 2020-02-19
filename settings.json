@@ -36,7 +36,14 @@
   "clojure": [
     {
       "command": "clojure-lsp",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        ".lein/",
+        ".shadow-cljs/",
+        "project.clj",
+        "deps.edn",
+        "shadow-cljs.edn"
+      ]
     }
   ],
   "cobol": [
@@ -115,6 +122,9 @@
       "requires": [
         "npm"
       ],
+      "root_uri_patterns": [
+        "elm.json"
+      ],
       "vim-plugin": {
         "extensions": [
           "elm"
@@ -129,6 +139,9 @@
       "requires": [
         "make",
         "rebar3"
+      ],
+      "root_uri_patterns": [
+        "rebar.config"
       ],
       "vim-plugin": {
         "extensions": [
@@ -190,6 +203,9 @@
       "command": "gopls",
       "requires": [
         "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
       ]
     }
   ],
@@ -199,6 +215,11 @@
       "requires": [
         "npm",
         "watchman"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json",
+        ".gqlconfig"
       ]
     }
   ],
@@ -207,6 +228,9 @@
       "command": "groovy-language-server",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "build.gradle"
       ]
     }
   ],
@@ -226,6 +250,10 @@
       "command": "eclipse-jdt-ls",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "pom.xml",
+        "build.gradle"
       ]
     }
   ],
@@ -234,6 +262,10 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
@@ -245,7 +277,12 @@
     {
       "command": "eslint-language-server",
       "requires": [
-        "git", "npm"
+        "git",
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     }
   ],
@@ -254,6 +291,10 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
@@ -444,6 +485,9 @@
     {
       "command": "reason-language-server",
       "requires": [],
+      "root_uri_patterns": [
+        "package.json"
+      ],
       "vim-plugin": {
         "extensions": [
           "re",
@@ -464,11 +508,17 @@
   "rust": [
     {
       "command": "rls",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
     },
     {
       "command": "ra_lsp_server",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
     }
   ],
   "sass": [
@@ -484,6 +534,9 @@
       "command": "metals",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "build.sbt"
       ]
     }
   ],
@@ -514,6 +567,13 @@
       "command": "sourcekit-lsp",
       "requires": [
         "sourcekit-lsp"
+      ],
+      "root_uri_patterns": [
+        "Package.swift",
+        ".xcodeproj",
+        ".xcworkspace",
+        "Cartfile",
+        "Podfile"
       ],
       "vim-plugin": {
         "extensions": [
@@ -559,12 +619,21 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
       "command": "eslint-language-server",
       "requires": [
-        "git", "npm"
+        "git",
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     }
   ],
@@ -573,6 +642,10 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     }
   ],
@@ -581,6 +654,10 @@
       "command": "vim-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        ".vim/",
+        "vimfiles/"
       ]
     }
   ],
@@ -589,6 +666,9 @@
       "command": "vls",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
       ],
       "vim-plugin": {
         "extensions": [
