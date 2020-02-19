@@ -15,7 +15,7 @@
       "requires": [
         "java"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "apxc",
           "apxt",
@@ -107,7 +107,7 @@
       "requires": [
         "elixir"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "ex",
           "exs"
@@ -125,7 +125,7 @@
       "root_uri_patterns": [
         "elm.json"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "elm"
         ],
@@ -143,7 +143,7 @@
       "root_uri_patterns": [
         "rebar.config"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "erl"
         ],
@@ -185,7 +185,7 @@
         "git",
         "make"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "vert",
           "tesc",
@@ -321,7 +321,7 @@
       "requires": [
         "npm"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "cjson"
         ],
@@ -335,7 +335,7 @@
       "requires": [
         "julia"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "jl"
         ],
@@ -349,7 +349,7 @@
       "requires": [
         "java"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "kt"
         ],
@@ -385,7 +385,7 @@
     {
       "command": "nimlsp",
       "requires": [],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "nim"
         ],
@@ -445,7 +445,7 @@
       "requires": [
         "pwsh"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "ps1"
         ],
@@ -488,7 +488,7 @@
       "root_uri_patterns": [
         "package.json"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "re",
           "rei"
@@ -585,7 +585,7 @@
         "Cartfile",
         "Podfile"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "swift"
         ],
@@ -603,7 +603,7 @@
     {
       "command": "terraform-lsp",
       "requires": [],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "tf",
           "tfvars"
@@ -680,7 +680,7 @@
       "root_uri_patterns": [
         "package.json"
       ],
-      "vim-plugin": {
+      "vim_plugin": {
         "extensions": [
           "vue"
         ],
