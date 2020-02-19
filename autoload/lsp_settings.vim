@@ -168,13 +168,22 @@ function! lsp_settings#exec_path(cmd) abort
   return ''
 endfunction
 
-function! lsp_settings#root_path(...) abort
+function! lsp_settings#root_path(name) abort
   let l:patterns = get(a:000, 0, [])
   return lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
 endfunction
 
-function! lsp_settings#root_uri(...) abort
-  let l:patterns = get(a:000, 0, [])
+function! lsp_settings#root_uri(name) abort
+  let l:patterns = []
+  for l:ft in sort(keys(s:settings))
+    for l:conf in s:settings[l:ft]
+      if l:conf.command ==# a:name && has_key(l:conf, 'root_uri_patterns')
+        let l:patterns = l:conf['root_uri_patterns']
+        break
+      endif
+    endfor
+  endfor
+
   let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
   if empty(l:dir)
     return lsp#utils#get_default_root_uri()

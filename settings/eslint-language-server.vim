@@ -3,7 +3,7 @@ augroup vimlsp_settings_eslint_language_server
   LspRegisterServer {
       \ 'name': 'eslint-language-server',
       \ 'cmd': {server_info->lsp_settings#get('eslint-language-server', 'cmd', [lsp_settings#exec_path('eslint-language-server'), '--stdio'])},
-      \ 'root_uri':{server_info->lsp_settings#get('eslint-language-server', 'root_uri', lsp_settings#root_uri())},
+      \ 'root_uri':{server_info->lsp_settings#get('eslint-language-server', 'root_uri', lsp_settings#root_uri('eslint-language-server'))},
       \ 'initialization_options': lsp_settings#get('eslint-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'whitelist': lsp_settings#get('eslint-language-server', 'whitelist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx']),
       \ 'blacklist': lsp_settings#get('eslint-language-server', 'blacklist', []),

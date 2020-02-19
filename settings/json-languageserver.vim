@@ -3,7 +3,7 @@ augroup vimlsp_settings_json_languageserver
   LspRegisterServer {
       \ 'name': 'json-languageserver',
       \ 'cmd': {server_info->lsp_settings#get('json-languageserver', 'cmd', [lsp_settings#exec_path('json-languageserver'), '--stdio'])},
-      \ 'root_uri':{server_info->lsp_settings#get('json-languageserver', 'root_uri', lsp_settings#root_uri())},
+      \ 'root_uri':{server_info->lsp_settings#get('json-languageserver', 'root_uri', lsp_settings#root_uri('json-languageserver'))},
       \ 'initialization_options': lsp_settings#get('json-languageserver', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('json-languageserver', 'whitelist', ['json', 'jsonc']),
       \ 'blacklist': lsp_settings#get('json-languageserver', 'blacklist', []),

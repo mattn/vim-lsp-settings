@@ -3,7 +3,7 @@ augroup vimlsp_settings_rust-analyzer
   LspRegisterServer {
       \ 'name': 'rust-analyzer',
       \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')])},
-      \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri(['Cargo.toml']))},
+      \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri('rust-analyzer'))},
       \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('rust-analyzer', 'whitelist', ['rust']),
       \ 'blacklist': lsp_settings#get('rust-analyzer', 'blacklist', []),

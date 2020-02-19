@@ -515,7 +515,10 @@
     },
     {
       "command": "rust-analyzer",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
     },
     {
       "command": "ra_lsp_server",
@@ -560,10 +563,10 @@
       ]
     },
     {
+      "command": "sqls",
       "config": {
         "refresh_pattern": "\\( \\zs\\k*\\|[a-zA-Z0-9_-]\\+\\)$"
       },
-      "command": "sqls",
       "requires": [
         "go"
       ]
