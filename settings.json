@@ -467,6 +467,10 @@
       "requires": []
     },
     {
+      "command": "rust-analyzer",
+      "requires": []
+    },
+    {
       "command": "ra_lsp_server",
       "requires": []
     }
