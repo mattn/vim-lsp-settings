@@ -172,6 +172,9 @@ Overridable keys are:
 * blacklist (List)
 * config (Dictionary)
 * workspace_config (Dictionary)
+* disabled (Boolean)
+* root_uri (String)
+* root_uri_patterns (List)
 
 If you install ruby but not solargraph, you can install solargraph with following command.
 
