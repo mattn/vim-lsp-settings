@@ -285,7 +285,7 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   call lsp_settings#utils#msg('Installed ' . a:command)
 endfunction
 
-function! s:vim_lsp_install_server(ft, command) abort
+function! s:vim_lsp_install_server(ft, command, bang) abort
   if !empty(a:command) && !lsp_settings#utils#valid_name(a:command)
     call lsp_settings#utils#error('Invalid server name')
     return
@@ -293,6 +293,9 @@ function! s:vim_lsp_install_server(ft, command) abort
   let l:entry = s:vim_lsp_installer(a:ft, a:command)
   if empty(l:entry)
     call lsp_settings#utils#error('Server not found')
+    return
+  endif
+  if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") ==# 2
     return
   endif
   let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
@@ -324,9 +327,6 @@ function! s:vim_lsp_settings_suggest(ft) abort
   echohl Directory
   echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
   echohl None
-  if exists(':LspInstallServer') !=# 2
-    command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
-  endif
 endfunction
 
 function! s:vim_lsp_suggest_plugin() abort
@@ -458,11 +458,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     if exists('#User#lsp_setup') !=# 0
       doautocmd User lsp_setup
     endif
-    if exists(':LspInstallServer') !=# 2
-      command! -nargs=? -buffer -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>)
-    endif
   endif
-
 endfunction
 
 function! lsp_settings#clear() abort
@@ -484,5 +480,6 @@ function! lsp_settings#init() abort
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
+  command! -bang -nargs=? -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>, '<bang>')
   call s:vim_lsp_load_or_suggest('_')
 endfunction
