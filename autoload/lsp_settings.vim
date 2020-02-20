@@ -168,13 +168,24 @@ function! lsp_settings#exec_path(cmd) abort
   return ''
 endfunction
 
-function! lsp_settings#root_path(...) abort
+function! lsp_settings#root_path(name) abort
   let l:patterns = get(a:000, 0, [])
   return lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
 endfunction
 
-function! lsp_settings#root_uri(...) abort
-  let l:patterns = get(a:000, 0, [])
+function! lsp_settings#root_uri(name) abort
+  let l:patterns = lsp_settings#get(a:name, 'root_uri_patterns', [])
+  if empty(l:patterns)
+    for l:ft in sort(keys(s:settings))
+      for l:conf in s:settings[l:ft]
+        if l:conf.command ==# a:name && has_key(l:conf, 'root_uri_patterns')
+          let l:patterns = l:conf['root_uri_patterns']
+          break
+        endif
+      endfor
+    endfor
+  endif
+
   let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
   if empty(l:dir)
     return lsp#utils#get_default_root_uri()
@@ -336,15 +347,15 @@ function! s:vim_lsp_suggest_plugin() abort
   let l:ext = expand('%:e')
   for l:ft in keys(s:settings)
     for l:server in s:settings[l:ft]
-      if !has_key(l:server, 'vim-plugin')
+      if !has_key(l:server, 'vim_plugin')
         continue
       endif
-      if index(l:server['vim-plugin']['extensions'], l:ext) == -1
+      if index(l:server['vim_plugin']['extensions'], l:ext) == -1
         continue
       endif
       redraw
       echohl Directory
-      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim-plugin']['name'])
+      echomsg printf('Please install vim-plugin "%s" to enable Language Server', l:server['vim_plugin']['name'])
       echohl None
       return
     endfor

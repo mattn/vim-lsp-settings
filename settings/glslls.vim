@@ -3,7 +3,7 @@ augroup vimlsp_settings_glslls
   LspRegisterServer {
       \ 'name': 'glslls',
       \ 'cmd': {server_info->lsp_settings#get('glslls', 'cmd', [lsp_settings#exec_path('glslls'), '--stdin'])},
-      \ 'root_uri':{server_info->lsp_settings#get('glslls', 'root_uri', lsp_settings#root_uri())},
+      \ 'root_uri':{server_info->lsp_settings#get('glslls', 'root_uri', lsp_settings#root_uri('glslls'))},
       \ 'initialization_options': lsp_settings#get('glslls', 'initialization_options', v:null),
       \ 'whitelist': lsp_settings#get('glslls', 'whitelist', ['glsl']),
       \ 'blacklist': lsp_settings#get('glslls', 'blacklist', []),

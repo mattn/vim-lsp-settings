@@ -3,7 +3,7 @@ augroup vimlsp_settings_reason_language_server
   LspRegisterServer {
       \ 'name': 'reason-language-server',
       \ 'cmd': {server_info->lsp_settings#get('reason-language-server', 'cmd', [lsp_settings#exec_path('reason-language-server')])},
-      \ 'root_uri':{server_info->lsp_settings#get('reason-language-server', 'root_uri', lsp_settings#root_uri(['package.json']))},
+      \ 'root_uri':{server_info->lsp_settings#get('reason-language-server', 'root_uri', lsp_settings#root_uri('reason-language-server'))},
       \ 'initialization_options': lsp_settings#get('reason-language-server', 'initialization_options', {}),
       \ 'whitelist': lsp_settings#get('reason-language-server', 'whitelist', ['reason']),
       \ 'blacklist': lsp_settings#get('reason-language-server', 'blacklist', []),
