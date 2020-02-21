@@ -9,7 +9,7 @@ cat <<EOF >solargraph
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
-cd \$DIR && bundle exec ruby \$DIR/bin/solargraph stdio
+BUNDLE_GEMFILE=\$DIR/Gemfile bundle exec ruby \$DIR/bin/solargraph \$*
 EOF
 
 chmod +x solargraph

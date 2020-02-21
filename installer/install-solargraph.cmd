@@ -6,7 +6,11 @@ call bundle install --path vendor/bundle
 
 echo @echo off ^
 
-bundle exec ruby %%~dp0\bin/solargraph stdio ^
+setlocal ^
+
+set BUNDLE_GEMFILE=%%~dp0Gemfile ^
+
+bundle exec ruby %%~dp0\bin\solargraph %%* ^
 
 > solargraph.cmd
 
