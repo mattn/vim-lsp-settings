@@ -4,7 +4,7 @@ function! lsp_settings#profile#load_local() abort
     if !empty(l:root) && filereadable(l:root . '/settings.json')
       let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
       if  has_key(g:, 'lsp_settings')
-        call lsp_settings#utils#merge(g:lsp_settings, l:settings)
+        let g:lsp_settings = extend(g:lsp_settings, l:settings)
       else
         let g:lsp_settings = l:settings
       endif
