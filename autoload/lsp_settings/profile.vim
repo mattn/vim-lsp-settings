@@ -4,7 +4,13 @@ function! lsp_settings#profile#load_local() abort
     if !empty(l:root) && filereadable(l:root . '/settings.json')
       let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
       if  has_key(g:, 'lsp_settings')
-        let g:lsp_settings = extend(g:lsp_settings, l:settings)
+        for [l:k, l:v] in items(l:settings)
+          if has_key(g:lsp_settings, l:k)
+            let g:lsp_settings[l:k] = extend(g:lsp_settings[l:k], l:v)
+          else
+            let g:lsp_settings[l:k] = l:v
+          endif
+        endfor
       else
         let g:lsp_settings = l:settings
       endif
