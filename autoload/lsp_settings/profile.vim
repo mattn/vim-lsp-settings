@@ -64,16 +64,10 @@ function! lsp_settings#profile#status() abort
       exec 'echohl' s:color_map[l:status]
       echon l:status
       echohl None
-    elseif lsp_settings#executable(l:server)
-      echon l:server . ': '
-      echohl vimFilter
-      echon 'not running'
-      echohl None
-    else
-      echon l:server . ': '
-      echohl vimOption
-      echon 'not installed'
-      echohl None
+      let l:server_info = lsp#get_server_info(l:server)
+      for [l:k, l:V] in items(l:server_info)
+        echo printf('  %s: %s', l:k, string(l:V))
+      endfor
     endif
     echo ''
   endfor
