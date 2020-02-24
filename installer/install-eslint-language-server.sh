@@ -3,6 +3,7 @@
 git clone "https://github.com/microsoft/vscode-eslint" .
 git checkout release/2.0.15
 npm install
+npm --prefix ./server install ./server
 npm run compile:server
 
 cat <<EOF >eslint-language-server
