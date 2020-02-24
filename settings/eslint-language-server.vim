@@ -8,25 +8,28 @@ augroup vimlsp_settings_eslint_language_server
       \ 'whitelist': lsp_settings#get('eslint-language-server', 'whitelist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx']),
       \ 'blacklist': lsp_settings#get('eslint-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('eslint-language-server', 'config', lsp_settings#server_config('eslint-language-server')),
-      \ 'workspace_config': {
-      \   'validate': v:true,
+      \ 'workspace_config': lsp_settings#get('eslint-language-server', 'workspace_config', {
+      \   'validate': 'probe',
       \   'packageManager': 'npm',
-      \   'autoFix': v:true,
-      \   'autoFixOnSave': v:true,
+      \   'codeActionOnSave': {
+      \     'enable': v:true,
+      \     'mode': 'all',
+      \   },
+      \ 	'codeAction': {
+      \ 		'disableRuleComment': {
+      \ 			'enable': v:true,
+      \ 			'location': 'separateLine',
+      \ 		},
+      \ 		'showDocumentation': {
+      \ 			'enable': v:true,
+      \ 		},
+      \ 	},
+      \   'format': v:false,
+      \   'quiet': v:false,
+      \   'onIgnoredFiles': 'off',
       \   'options': {},
       \   'run': 'onType',
       \   'nodePath': v:null,
-      \   'quiet': v:false,
-      \   'workspaceFolder': v:null,
-      \   'codeAction': {
-      \     'disableRuleComment': {
-      \       'enable': v:true,
-      \       'location': 'separateLine'
-      \     },
-      \     'showDocumentation': {
-      \       'enable': v:true
-      \     }
-      \   }
-      \ },
+      \ }),
       \ }
 augroup END

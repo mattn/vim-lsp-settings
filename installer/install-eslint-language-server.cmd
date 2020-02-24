@@ -1,7 +1,7 @@
 @echo off
 
 git clone "https://github.com/microsoft/vscode-eslint" .
-git checkout release/1.9.1
+git checkout release/2.0.15
 call npm install
 call npm run compile:server
 
