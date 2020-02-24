@@ -15,15 +15,15 @@ augroup vimlsp_settings_eslint_language_server
       \     'enable': v:true,
       \     'mode': 'all',
       \   },
-      \ 	'codeAction': {
-      \ 		'disableRuleComment': {
-      \ 			'enable': v:true,
-      \ 			'location': 'separateLine',
-      \ 		},
-      \ 		'showDocumentation': {
-      \ 			'enable': v:true,
-      \ 		},
-      \ 	},
+      \   'codeAction': {
+      \     'disableRuleComment': {
+      \       'enable': v:true,
+      \       'location': 'separateLine',
+      \     },
+      \     'showDocumentation': {
+      \       'enable': v:true,
+      \     },
+      \   },
       \   'format': v:false,
       \   'quiet': v:false,
       \   'onIgnoredFiles': 'off',
