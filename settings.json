@@ -277,12 +277,10 @@
     {
       "command": "eslint-language-server",
       "requires": [
-        "git",
-        "npm"
+        "node"
       ],
       "root_uri_patterns": [
-        "package.json",
-        "tsconfig.json"
+        "package.json"
       ]
     }
   ],
@@ -293,8 +291,16 @@
         "npm"
       ],
       "root_uri_patterns": [
-        "package.json",
-        "tsconfig.json"
+        "package.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json"
       ]
     },
     {
@@ -638,8 +644,7 @@
     {
       "command": "eslint-language-server",
       "requires": [
-        "git",
-        "npm"
+        "node"
       ],
       "root_uri_patterns": [
         "package.json",
@@ -652,6 +657,16 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
       ],
       "root_uri_patterns": [
         "package.json",
