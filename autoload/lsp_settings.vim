@@ -226,38 +226,36 @@ function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
 endfunction
 
 function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
-  let l:ft = tolower(get(split(&filetype, '\.'), 0, ''))
-  let l:ft = empty(l:ft) ? '_' : l:ft
-  if !has_key(s:settings, l:ft)
-    return []
-  endif
-  let l:server = s:settings[l:ft]
-  if empty(l:server)
-    return []
-  endif
   let l:installers = []
-  for l:conf in l:server
-    let l:missing = 0
-    for l:require in l:conf.requires
-      if !executable(l:require)
-        let l:missing = 1
-        break
-      endif
-    endfor
-    if l:missing !=# 0
+
+  for l:ft in split(&filetype . '.', '\.', 1)
+    let l:ft = tolower(empty(l:ft) ? '_' : l:ft)
+    if !has_key(s:settings, l:ft)
       continue
     endif
-    let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
-    if has('win32')
-      let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
-    else
-      let l:command = l:command . '.sh'
-    endif
-    if executable(l:command)
-      call add(l:installers, l:conf.command)
-    endif
+    for l:conf in s:settings[l:ft]
+      let l:missing = 0
+      for l:require in l:conf.requires
+        if !executable(l:require)
+          let l:missing = 1
+          break
+        endif
+      endfor
+      if l:missing !=# 0
+        continue
+      endif
+      let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
+      if has('win32')
+        let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+      else
+        let l:command = l:command . '.sh'
+      endif
+      if executable(l:command)
+        call add(l:installers, l:conf.command)
+      endif
+    endfor
   endfor
-  return filter(uniq(l:installers), 'stridx(v:val, a:arglead) == 0')
+  return filter(uniq(sort(l:installers)), 'stridx(v:val, a:arglead) == 0')
 endfunction
 
 function! s:vim_lsp_uninstall_server(command) abort
