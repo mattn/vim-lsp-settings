@@ -238,7 +238,7 @@
     {
       "command": "html-languageserver",
       "config": {
-        "refresh_pattern": "\\(/\\|k\\+\\)$"
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
       },
       "requires": [
         "npm"
