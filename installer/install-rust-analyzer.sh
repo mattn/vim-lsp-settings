@@ -13,7 +13,7 @@ darwin)
   ;;
 esac
 
-version="2020-02-18"
+version="2020-02-24"
 curl -L -o ra_lsp_server-$platform "https://github.com/rust-analyzer/rust-analyzer/releases/download/$version/rust-analyzer-$platform"
 
 mv rust-analyzer-$platform rust-analyzer
