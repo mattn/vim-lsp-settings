@@ -9,5 +9,6 @@ augroup vimlsp_settings_kotlin_language_server
       \ 'blacklist': lsp_settings#get('kotlin-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('kotlin-language-server', 'config', lsp_settings#server_config('kotlin-language-server')),
       \ 'workspace_config': lsp_settings#get('kotlin-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('kotlin-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

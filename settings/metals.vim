@@ -9,5 +9,6 @@ augroup vimlsp_settings_metals
       \ 'blacklist': lsp_settings#get('metals', 'blacklist', []),
       \ 'config': lsp_settings#get('metals', 'config', lsp_settings#server_config('metals')),
       \ 'workspace_config': lsp_settings#get('metals', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('metals', 'semantic_highlight', {}),
       \ }
 augroup END

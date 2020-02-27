@@ -9,5 +9,6 @@ augroup vimlsp_settings_rust-analyzer
       \ 'blacklist': lsp_settings#get('rust-analyzer', 'blacklist', []),
       \ 'config': lsp_settings#get('rust-analyzer', 'config', lsp_settings#server_config('rust-analyzer')),
       \ 'workspace_config': lsp_settings#get('rust-analyzer', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
       \ }
 augroup END

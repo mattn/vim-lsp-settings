@@ -9,5 +9,6 @@ augroup vimlsp_settings_reason_language_server
       \ 'blacklist': lsp_settings#get('reason-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('reason-language-server', 'config', lsp_settings#server_config('reason-language-server')),
       \ 'workspace_config': lsp_settings#get('reason-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('reason-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

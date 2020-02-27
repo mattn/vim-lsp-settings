@@ -9,5 +9,6 @@ augroup vimlsp_settings_dockerfile_language_server_nodejs
       \ 'blacklist': lsp_settings#get('docker-langserver', 'blacklist', []),
       \ 'config': lsp_settings#get('docker-langserver', 'config', lsp_settings#server_config('docker-langserver')),
       \ 'workspace_config': lsp_settings#get('docker-langserver', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('docker-langserver', 'semantic_highlight', {}),
       \ }
 augroup END

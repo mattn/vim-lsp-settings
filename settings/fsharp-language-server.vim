@@ -9,5 +9,6 @@ augroup vimlsp_settings_fsharp_language_server
       \ 'blacklist': lsp_settings#get('fsharp-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('fsharp-language-server', 'config', lsp_settings#server_config('fsharp-language-server')),
       \ 'workspace_config': lsp_settings#get('fsharp-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('fsharp-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

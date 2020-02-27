@@ -28,5 +28,6 @@ augroup vimlsp_settings_pyls_ms
       \     },
       \   },
       \ }),
+      \ 'semantic_highlight': lsp_settings#get('pyls-ms', 'semantic_highlight', {}),
       \ }
 augroup END

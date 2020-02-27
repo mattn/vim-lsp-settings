@@ -9,5 +9,6 @@ augroup vimlsp_settings_clojure_lsp
       \ 'blacklist': lsp_settings#get('clojure-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('clojure-lsp', 'config', lsp_settings#server_config('clojure-lsp')),
       \ 'workspace_config': lsp_settings#get('clojure-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('clojure-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

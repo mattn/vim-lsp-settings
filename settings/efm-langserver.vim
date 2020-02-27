@@ -9,5 +9,6 @@ augroup vimlsp_settings_efm_langserver
       \ 'blacklist': lsp_settings#get('efm-langserver', 'blacklist', []),
       \ 'config': lsp_settings#get('efm-langserver', 'config', lsp_settings#server_config('efm-langserver')),
       \ 'workspace_config': lsp_settings#get('efm-langserver', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('efm-langserver', 'semantic_highlight', {}),
       \ }
 augroup END

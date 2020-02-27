@@ -9,5 +9,6 @@ augroup vimlsp_settings_cl_lsp
       \ 'blacklist': lsp_settings#get('cl-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('cl-lsp', 'config', lsp_settings#server_config('cl-lsp')),
       \ 'workspace_config': lsp_settings#get('cl-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('cl-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

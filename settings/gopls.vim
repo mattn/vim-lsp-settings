@@ -9,5 +9,6 @@ augroup vimlsp_settings_gopls
       \ 'blacklist': lsp_settings#get('gopls', 'blacklist', []),
       \ 'config': lsp_settings#get('gopls', 'config', lsp_settings#server_config('gopls')),
       \ 'workspace_config': lsp_settings#get('gopls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('gopls', 'semantic_highlight', {}),
       \ }
 augroup END

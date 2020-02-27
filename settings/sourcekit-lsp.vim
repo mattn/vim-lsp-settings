@@ -9,5 +9,6 @@ augroup vimlsp_settings_sourcekit_lsp
       \ 'blacklist': lsp_settings#get('sourcekit-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('sourcekit-lsp', 'config', lsp_settings#server_config('sourcekit-lsp')),
       \ 'workspace_config': lsp_settings#get('sourcekit-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('sourcekit-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

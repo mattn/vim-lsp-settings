@@ -9,5 +9,6 @@ augroup vimlsp_settings_digestif
       \ 'blacklist': lsp_settings#get('digestif', 'blacklist', []),
       \ 'config': lsp_settings#get('digestif', 'config', lsp_settings#server_config('digestif')),
       \ 'workspace_config': lsp_settings#get('digestif', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('digestif', 'semantic_highlight', {}),
       \ }
 augroup END

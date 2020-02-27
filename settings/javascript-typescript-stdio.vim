@@ -9,5 +9,6 @@ augroup vimlsp_settings_javascript_typescript_stdio
       \ 'blacklist': lsp_settings#get('javascript-typescript-stdio', 'blacklist', []),
       \ 'config': lsp_settings#get('javascript-typescript-stdio', 'config', lsp_settings#server_config('javascript-typescript-stdio')),
       \ 'workspace_config': lsp_settings#get('javascript-typescript-stdio', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('javascript-typescript-stdio', 'semantic_highlight', {}),
       \ }
 augroup END

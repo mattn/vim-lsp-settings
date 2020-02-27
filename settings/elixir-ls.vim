@@ -9,6 +9,7 @@ augroup vimlsp_settings_elixir_ls
       \ 'blacklist': lsp_settings#get('elixir-ls', 'blacklist', []),
       \ 'config': lsp_settings#get('elixir-ls', 'config', lsp_settings#server_config('elixir-ls')),
       \ 'workspace_config': lsp_settings#get('elixir-ls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('elixir-ls', 'semantic_highlight', {}),
       \ }
 augroup END
 

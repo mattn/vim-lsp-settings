@@ -9,5 +9,6 @@ augroup vimlsp_settings_julia_language_server
       \ 'blacklist': lsp_settings#get('julia-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('julia-language-server', 'config', lsp_settings#server_config('julia-language-server')),
       \ 'workspace_config': lsp_settings#get('julia-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('julia-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

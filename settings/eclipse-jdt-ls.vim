@@ -9,5 +9,6 @@ augroup vimlsp_settings_eclipse_jdt_ls
       \ 'blacklist': lsp_settings#get('eclipse-jdt-ls', 'blacklist', []),
       \ 'config': lsp_settings#get('eclipse-jdt-ls', 'config', lsp_settings#server_config('eclipse-jdt-ls')),
       \ 'workspace_config': lsp_settings#get('eclipse-jdt-ls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('eclipse-jdt-ls', 'semantic_highlight', {}),
       \ }
 augroup END

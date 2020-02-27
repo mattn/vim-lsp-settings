@@ -31,5 +31,6 @@ augroup vimlsp_settings_eslint_language_server
       \   'run': 'onType',
       \   'nodePath': v:null,
       \ }),
+      \ 'semantic_highlight': lsp_settings#get('eslint-language-server', 'semantic_highlight', {}),
       \ }
 augroup END
