@@ -9,5 +9,6 @@ augroup vimlsp_settings_elm_language_server
       \ 'blacklist': lsp_settings#get('elm-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('elm-language-server', 'config', lsp_settings#server_config('elm-language-server')),
       \ 'workspace_config': lsp_settings#get('elm-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('elm-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

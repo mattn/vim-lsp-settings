@@ -9,5 +9,6 @@ augroup vimlsp_settings_fortls
       \ 'blacklist': lsp_settings#get('fortls', 'blacklist', []),
       \ 'config': lsp_settings#get('fortls', 'config', lsp_settings#server_config('fortls')),
       \ 'workspace_config': lsp_settings#get('fortls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('fortls', 'semantic_highlight', {}),
       \ }
 augroup END

@@ -9,5 +9,6 @@ augroup vimlsp_settings_omnisharp_lsp
       \ 'blacklist': lsp_settings#get('omnisharp-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('omnisharp-lsp', 'config', lsp_settings#server_config('omnisharp-lsp')),
       \ 'workspace_config': lsp_settings#get('omnisharp-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('omnisharp-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

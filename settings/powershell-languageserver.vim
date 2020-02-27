@@ -9,5 +9,6 @@ augroup vimlsp_settings_powershell_languageserver
       \ 'blacklist': lsp_settings#get('powershell-languageserver', 'blacklist', []),
       \ 'config': lsp_settings#get('powershell-languageserver', 'config', lsp_settings#server_config('powershell-languageserver')),
       \ 'workspace_config': lsp_settings#get('powershell-languageserver', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('powershell-languageserver', 'semantic_highlight', {}),
       \ }
 augroup END

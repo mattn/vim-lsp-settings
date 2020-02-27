@@ -9,5 +9,6 @@ augroup vimlsp_settings_sqls
       \ 'blacklist': lsp_settings#get('sqls', 'blacklist', []),
       \ 'config': lsp_settings#get('sqls', 'config', lsp_settings#server_config('sqls')),
       \ 'workspace_config': lsp_settings#get('sqls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('sqls', 'semantic_highlight', {}),
       \ }
 augroup END

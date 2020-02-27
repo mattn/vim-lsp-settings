@@ -9,5 +9,6 @@ augroup vimlsp_settings_cobol_language_support
       \ 'blacklist': lsp_settings#get('cobol-language-support', 'blacklist', []),
       \ 'config': lsp_settings#get('cobol-language-support', 'config', lsp_settings#server_config('cobol-language-support')),
       \ 'workspace_config': lsp_settings#get('cobol-language-support', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('cobol-language-support', 'semantic_highlight', {}),
       \ }
 augroup END

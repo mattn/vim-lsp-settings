@@ -9,5 +9,6 @@ augroup vimlsp_settings_vls
       \ 'blacklist': lsp_settings#get('vls', 'blacklist', []),
       \ 'config': lsp_settings#get('vls', 'config', lsp_settings#server_config('vls')),
       \ 'workspace_config': lsp_settings#get('vls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('vls', 'semantic_highlight', {}),
       \ }
 augroup END

@@ -9,5 +9,6 @@ augroup vimlsp_settings_nimlsp
       \ 'blacklist': lsp_settings#get('nimlsp', 'blacklist', []),
       \ 'config': lsp_settings#get('nimlsp', 'config', lsp_settings#server_config('nimlsp')),
       \ 'workspace_config': lsp_settings#get('nimlsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('nimlsp', 'semantic_highlight', {}),
       \ }
 augroup END

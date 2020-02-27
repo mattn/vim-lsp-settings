@@ -9,5 +9,6 @@ augroup vimlsp_settings_solargraph
       \ 'blacklist': lsp_settings#get('solargraph', 'blacklist', []),
       \ 'config': lsp_settings#get('solargraph', 'config', lsp_settings#server_config('solargraph')),
       \ 'workspace_config': lsp_settings#get('solargraph', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('solargraph', 'semantic_highlight', {}),
       \ }
 augroup END

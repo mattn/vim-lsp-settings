@@ -9,5 +9,6 @@ augroup vimlsp_settings_analysis_server_dart_snapshot
       \ 'blacklist': lsp_settings#get('analysis-server-dart-snapshot', 'blacklist', []),
       \ 'config': lsp_settings#get('analysis-server-dart-snapshot', 'config', lsp_settings#server_config('analysis-server-dart-snapshot')),
       \ 'workspace_config': lsp_settings#get('analysis-server-dart-snapshot', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('analysis-server-dart-snapshot', 'semantic_highlight', {}),
       \ }
 augroup END

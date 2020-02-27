@@ -9,5 +9,6 @@ augroup vimlsp_settings_glslls
       \ 'blacklist': lsp_settings#get('glslls', 'blacklist', []),
       \ 'config': lsp_settings#get('glslls', 'config', lsp_settings#server_config('glslls')),
       \ 'workspace_config': lsp_settings#get('glslls', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': json_decode(join(readfile(expand('<sfile>:h:h') . '/data/catalog.json'), "\n"))['schemas']}}}),
+      \ 'semantic_highlight': lsp_settings#get('glslls', 'semantic_highlight', {}),
       \ }
 augroup END

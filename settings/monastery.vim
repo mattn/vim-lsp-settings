@@ -9,5 +9,6 @@ augroup vimlsp_settings_monastery
       \ 'blacklist': lsp_settings#get('monastery', 'blacklist', []),
       \ 'config': lsp_settings#get('monastery', 'config', lsp_settings#server_config('monastery')),
       \ 'workspace_config': lsp_settings#get('monastery', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('monastery', 'semantic_highlight', {}),
       \ }
 augroup END

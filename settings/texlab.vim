@@ -9,5 +9,6 @@ augroup vimlsp_settings_texlab
       \ 'blacklist': lsp_settings#get('texlab', 'blacklist', []),
       \ 'config': lsp_settings#get('texlab', 'config', lsp_settings#server_config('texlab')),
       \ 'workspace_config': lsp_settings#get('texlab', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('texlab', 'semantic_highlight', {}),
       \ }
 augroup END

@@ -12,5 +12,6 @@ augroup vimlsp_settings_css_languageserver
       \   'css': {'lint': {'validProperties': []}},
       \   'less': {'lint': {'validProperties': []}},
       \   'sass': {'lint': {'validProperties': []}},
-      \ })}
+      \ })'semantic_highlight': lsp_settings#get('css-languageserver', 'semantic_highlight', {}),
+      \ }
 augroup END

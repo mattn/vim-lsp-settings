@@ -9,6 +9,7 @@ augroup vimlsp_settings_clangd
       \ 'blacklist': lsp_settings#get('clangd', 'blacklist', []),
       \ 'config': lsp_settings#get('clangd', 'config', lsp_settings#server_config('clangd')),
       \ 'workspace_config': lsp_settings#get('clangd', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('clangd', 'semantic_highlight', {}),
       \ }
 augroup END
 

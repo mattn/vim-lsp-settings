@@ -9,5 +9,6 @@ augroup vimlsp_settings_groovy_language_server
       \ 'blacklist': lsp_settings#get('groovy-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('groovy-language-server', 'config', lsp_settings#server_config('groovy-language-server')),
       \ 'workspace_config': lsp_settings#get('groovy-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('groovy-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

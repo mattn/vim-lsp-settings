@@ -9,5 +9,6 @@ augroup vimlsp_settings_apex_jorje_lsp
       \ 'blacklist': lsp_settings#get('apex-jorje-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('apex-jorje-lsp', 'config', lsp_settings#server_config('apex-jorje-lsp')),
       \ 'workspace_config': lsp_settings#get('apex-jorje-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('apex-jorje-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

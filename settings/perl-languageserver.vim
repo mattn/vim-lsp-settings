@@ -9,5 +9,6 @@ augroup vimlsp_settings_perl_languageserver
       \ 'blacklist': lsp_settings#get('perl-languageserver', 'blacklist', []),
       \ 'config': lsp_settings#get('perl-languageserver', 'config', lsp_settings#server_config('perl-languageserver')),
       \ 'workspace_config': lsp_settings#get('perl-languageserver', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('perl-languageserver', 'semantic_highlight', {}),
       \ }
 augroup END

@@ -9,5 +9,6 @@ augroup vimlsp_settings_terraform_lsp
       \ 'blacklist': lsp_settings#get('terraform-lsp', 'blacklist', []),
       \ 'config': lsp_settings#get('terraform-lsp', 'config', lsp_settings#server_config('terraform-lsp')),
       \ 'workspace_config': lsp_settings#get('terraform-lsp', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('terraform-lsp', 'semantic_highlight', {}),
       \ }
 augroup END

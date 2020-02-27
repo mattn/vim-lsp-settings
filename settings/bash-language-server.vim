@@ -9,5 +9,6 @@ augroup vimlsp_settings_bash_language_server
       \ 'blacklist': lsp_settings#get('bash-language-server', 'blacklist', []),
       \ 'config': lsp_settings#get('bash-language-server', 'config', lsp_settings#server_config('bash-language-server')),
       \ 'workspace_config': lsp_settings#get('bash-language-server', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('bash-language-server', 'semantic_highlight', {}),
       \ }
 augroup END

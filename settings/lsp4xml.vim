@@ -9,5 +9,6 @@ augroup vimlsp_settings_lsp4xml
       \ 'blacklist': lsp_settings#get('lsp4xml', 'blacklist', []),
       \ 'config': lsp_settings#get('lsp4xml', 'config', lsp_settings#server_config('lsp4xml')),
       \ 'workspace_config': lsp_settings#get('lsp4xml', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('lsp4xml', 'semantic_highlight', {}),
       \ }
 augroup END
