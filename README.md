@@ -138,6 +138,12 @@ Finally, you have to install `@playlyfe/gql` into your project.
 $ npm install @playlyfe/gql --save-dev
 ```
 
+### [dart analysis server](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server) (Dart)
+
+If you have a separate existing installation of the dart analysis server and
+want it to be used, it must either exist in your path, or you must specify its
+location. See 'Configurations' below.
+
 ## Configurations
 
 Most of configurations are not required.
@@ -162,6 +168,24 @@ Or put `.vim-lsp-settings/settings.json` on your project root directory.
     "disabled": false
   }
 }
+```
+
+If you already have the dart analysis server installed but it is not in your
+path, you can still configure the settings to use it. Use the vimscript below
+to change the command to start the server. Note the command has three parts:
+the path to your 'dart' executable, the path to your 'analysis_server.dart.snapshot',
+and the '--lsp' flag.
+
+```vimscript
+let g:lsp_settings = {
+    \ 'analysis_server.dart.snapshot': {
+    \     'cmd': [
+    \         '/path/to/your/dart-sdk/bin/dart',
+    \         '/path/to/your/dart-sdk/bin/bin/snapshots/analysis_server.dart.snapshot',
+    \         '--lsp'
+    \     ],
+    \ },
+\ }
 ```
 
 To edit project local `settings.json`, do `:LspSettingsLocalEdit`.
