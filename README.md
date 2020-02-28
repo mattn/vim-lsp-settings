@@ -177,6 +177,7 @@ Overridable keys are:
 * disabled (Boolean)
 * root_uri (String)
 * root_uri_patterns (List)
+* semantic_highlight (Dictionary)
 
 If you install ruby but not solargraph, you can install solargraph with following command.
 
