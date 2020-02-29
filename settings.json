@@ -689,6 +689,9 @@
   "vue": [
     {
       "command": "vls",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
       ],
