@@ -1,4 +1,4 @@
-augroup vimlsp_settings_rust-analyzer
+augroup vimlsp_settings_rust_analyzer
   au!
   LspRegisterServer {
       \ 'name': 'rust-analyzer',
@@ -11,6 +11,7 @@ augroup vimlsp_settings_rust-analyzer
       \ 'workspace_config': lsp_settings#get('rust-analyzer', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
       \ }
+  autocmd User lsp_setup call s:register_command()
 augroup END
 
 function! s:rust_analyzer_apply_source_change(context)
@@ -26,4 +27,12 @@ function! s:rust_analyzer_apply_source_change(context)
         call cursor(lsp#utils#position#_lsp_to_vim('%', l:cursor_position))
     endif
 endfunction
-call lsp#register_command('rust-analyzer.applySourceChange', function('s:rust_analyzer_apply_source_change'))
+
+function! s:register_command()
+  augroup vimlsp_settings_rust_analyzer
+    au!
+  augroup END
+  if exists('*lsp#register_command')
+    call lsp#register_command('rust-analyzer.applySourceChange', function('s:rust_analyzer_apply_source_change'))
+  endif
+endfunction
