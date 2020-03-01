@@ -12,3 +12,18 @@ augroup vimlsp_settings_rust-analyzer
       \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
       \ }
 augroup END
+
+function! s:rust_analyzer_apply_source_change(context)
+    let l:command = get(a:context, 'command', {})
+
+    let l:workspace_edit = get(l:command['arguments'][0], 'workspaceEdit', {})
+    if !empty(l:workspace_edit)
+        call lsp#utils#workspace_edit#apply_workspace_edit(l:workspace_edit)
+    endif
+
+    let l:cursor_position = get(l:command['arguments'][0], 'cursorPosition', {})
+    if !empty(l:cursor_position)
+        call cursor(lsp#utils#position#_lsp_to_vim('%', l:cursor_position))
+    endif
+endfunction
+call lsp#register_command('rust-analyzer.applySourceChange', function('s:rust_analyzer_apply_source_change'))

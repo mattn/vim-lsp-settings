@@ -12,3 +12,10 @@ augroup vimlsp_settings_eclipse_jdt_ls
       \ 'semantic_highlight': lsp_settings#get('eclipse-jdt-ls', 'semantic_highlight', {}),
       \ }
 augroup END
+
+function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
+    let l:command = get(a:context, 'command', {})
+
+    call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
+endfunction
+call lsp#register_command('java.apply.workspaceEdit', function('s:eclipse_jdt_ls_java_apply_workspaceEdit'))
