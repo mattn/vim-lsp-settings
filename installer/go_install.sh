@@ -6,4 +6,5 @@
 set -e
 
 GOPATH=$(pwd) GOBIN=$(pwd) GO111MODULE=on go get -v "$1"
+GOPATH=$(pwd) GO111MODULE=on go clean -modcache
 rm -rf src pkg 2> /dev/null
