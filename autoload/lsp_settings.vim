@@ -52,6 +52,9 @@ function! s:vim_lsp_installer(ft, ...) abort
   if empty(l:server)
     return []
   endif
+  if l:ft !=# '_'
+    let l:server += s:settings['_']
+  endif
   let l:found = {}
   for l:conf in l:server
     let l:missing = 0
