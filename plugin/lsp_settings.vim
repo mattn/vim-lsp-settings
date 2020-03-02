@@ -4,6 +4,7 @@ endif
 let g:loaded_lsp_settings= 1
 
 let g:lsp_settings_root_markers = get(g:, 'lsp_settings_root_markers', [
+      \ '.git',
       \ '.git/',
       \ '.svn/',
       \ '.hg/',
