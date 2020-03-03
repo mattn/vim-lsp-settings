@@ -17,7 +17,7 @@ darwin)
 *) ;;
 esac
 
-version="0.5.30"
+version="0.5.31"
 url="https://pvsc.azureedge.net/python-language-server-stable/Python-Language-Server-${system}-x64.${version}.nupkg"
 
 nupkg="./pyls.nupkg"
