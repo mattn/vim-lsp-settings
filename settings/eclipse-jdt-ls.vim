@@ -11,4 +11,19 @@ augroup vimlsp_settings_eclipse_jdt_ls
       \ 'workspace_config': lsp_settings#get('eclipse-jdt-ls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('eclipse-jdt-ls', 'semantic_highlight', {}),
       \ }
+  autocmd User lsp_setup call s:register_command()
 augroup END
+
+function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
+    let l:command = get(a:context, 'command', {})
+    call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
+endfunction
+
+function! s:register_command()
+  augroup vimlsp_settings_eclipse_jdt_ls
+    au!
+  augroup END
+  if exists('*lsp#register_command')
+    call lsp#register_command('java.apply.workspaceEdit', function('s:eclipse_jdt_ls_java_apply_workspaceEdit'))
+  endif
+endfunction
