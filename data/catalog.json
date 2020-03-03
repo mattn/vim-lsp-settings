@@ -12,7 +12,7 @@
     {
       "name": "Ansible",
       "description": "Ansible task files",
-      "url": "http://json.schemastore.org/ansible-stable-2.7",
+      "url": "http://json.schemastore.org/ansible-stable-2.9",
       "fileMatch": ["tasks/*.yml", "tasks/*.yaml"],
       "versions": {
         "2.0": "http://json.schemastore.org/ansible-stable-2.0",
@@ -22,7 +22,8 @@
         "2.4": "http://json.schemastore.org/ansible-stable-2.4",
         "2.5": "http://json.schemastore.org/ansible-stable-2.5",
         "2.6": "http://json.schemastore.org/ansible-stable-2.6",
-        "2.7": "http://json.schemastore.org/ansible-stable-2.7"
+        "2.7": "http://json.schemastore.org/ansible-stable-2.7",
+        "2.9": "http://json.schemastore.org/ansible-stable-2.9"
       }
     },
     {
@@ -108,7 +109,7 @@
       "name": "batect.yml",
       "description": "batect configuration file",
       "fileMatch": ["batect.yml"],
-      "url": "https://batect.charleskorn.com/configSchema.json"
+      "url": "https://batect.dev/configSchema.json"
     },
     {
       "name": ".bootstraprc",
@@ -139,6 +140,12 @@
       "description": "Bozr test suite file",
       "fileMatch": [".suite.json", ".xsuite.json"],
       "url": "http://json.schemastore.org/bozr"
+    },
+    {
+      "name": "bucklescript",
+      "description": "BuckleScript configuration file",
+      "fileMatch": ["bsconfig.json"],
+      "url": "https://bucklescript.github.io/bucklescript/docson/build-schema.json"
     },
     {
       "name": "Bukkit plugin.yml",
@@ -220,6 +227,12 @@
       "description": "Schema for compilerconfig.json files",
       "fileMatch": ["compilerconfig.json"],
       "url": "http://json.schemastore.org/compilerconfig"
+    },
+    {
+      "name": "compile_commands.json",
+      "description": "LLVM compilation database",
+      "fileMatch": ["compile_commands.json"],
+      "url": "http://json.schemastore.org/compile-commands"
     },
     {
       "name": "commands.json",
@@ -753,6 +766,12 @@
       }
     },
     {
+      "name": ".nodehawkrc",
+      "description": "JSON schema for .nodehawkrc configuration files.",
+      "url": "http://json.schemastore.org/nodehawk",
+      "fileMatch": [".nodehawkrc"]
+    },
+    {
       "name": "nodemon.json",
       "description": "JSON schema for nodemon.json configuration files.",
       "url": "http://json.schemastore.org/nodemon",
@@ -949,9 +968,16 @@
     },
     {
       "name": "Renovate",
-      "description": "Renovate config file (https://renovatebot.com/)",
-      "fileMatch": ["renovate.json"],
-      "url": "http://json.schemastore.org/renovate"
+      "description": "Renovate config file (https://github.com/renovatebot/renovate)",
+      "fileMatch": [
+        "renovate.json",
+        "renovate.json5",
+        ".github/renovate.json",
+        ".github/renovate.json5",
+        ".renovaterc",
+        ".renovaterc.json"
+      ],
+      "url": "https://docs.renovatebot.com/renovate-schema.json"
     },
     {
       "name": "sarif-1.0.0.json",
@@ -1058,6 +1084,12 @@
       "description": "Schema for image sprite generation files",
       "fileMatch": ["*.sprite"],
       "url": "http://json.schemastore.org/sprite"
+    },
+    {
+      "name": "Stryker Mutator",
+      "description": "Configuration file for Stryker Mutator, the mutation testing framework for JavaScript and friends. See https://stryker-mutator.io.",
+      "fileMatch": ["stryker.conf.json", "stryker-*.conf.json"],
+      "url": "https://raw.githubusercontent.com/stryker-mutator/stryker/master/packages/api/schema/stryker-core.json"
     },
     {
       "name": "StyleCop Analyzers Configuration",
@@ -1366,7 +1398,7 @@
       "fileMatch": ["now.json"],
       "url": "http://json.schemastore.org/now"
     },
-     {
+    {
       "name": "taskcat",
       "description": "taskcat",
       "fileMatch": [".taskcat.yml"],
@@ -1401,6 +1433,18 @@
       "description": "Zuul CI configuration file",
       "fileMatch": ["*zuul.d/*.yaml", "*/.zuul.yaml"],
       "url": "https://raw.githubusercontent.com/pycontribs/zuul-lint/master/zuul_lint/zuul-schema.json"
+    },
+    {
+      "name": "Briefcase",
+      "description": "Microsoft Briefcase configuration file",
+      "fileMatch": ["briefcase.yaml"],
+      "url": "https://raw.githubusercontent.com/microsoft/Briefcase/master/mlbriefcase/briefcase-schema.json"
+    },
+    {
+      "name": "httparchive",
+      "description": "HTTP Archive",
+      "fileMatch": ["*.har"],
+      "url": "https://raw.githubusercontent.com/ahmadnassri/har-schema/master/lib/har.json"
     }
   ]
 }
