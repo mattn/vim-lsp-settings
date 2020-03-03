@@ -6,4 +6,4 @@
 set -e
 
 GOPATH=$(pwd) GOBIN=$(pwd) GO111MODULE=on go get -v "$1"
-rm -rf src
+rm -rf src pkg 2> /dev/null
