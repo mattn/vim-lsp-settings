@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -8,7 +8,7 @@ url=https://dl.bintray.com/lsp4xml/releases/org/lsp4xml/org.eclipse.lsp4xml/${ve
 curl -LO "$url"
 
 cat <<EOF >lsp4xml
-#!/bin/sh
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 java -jar \$DIR/org.eclipse.lsp4xml-${version}-uber.jar

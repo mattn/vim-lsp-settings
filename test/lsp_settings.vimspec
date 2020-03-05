@@ -1,0 +1,124 @@
+Describe lsp_settings
+    Describe lsp_settings#get
+        It should return configuration value from key and name
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'bad')
+            let g:lsp_settings = {'pyls': {'cmd': 'good'}}
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'good')
+            let g:lsp_settings = {'pyls': {'cmd': {key,name->'good'}}}
+            Assert Equals(lsp_settings#get('pyls', 'cmd', 'bad'), 'good')
+            unlet g:lsp_settings
+        End
+
+        It should return default value with lambda
+            Assert Equals(lsp_settings#get('pyls', 'cmd', {key, name-> 'good'}), 'good')
+        End
+    End
+
+    Describe lsp_settings#executable
+        It should return command is executable in $PATH
+            if has('win32')
+                Assert Equals(lsp_settings#executable('cmd'), 1)
+            else
+                Assert Equals(lsp_settings#executable('sh'), 1)
+            endif
+            Assert Equals(lsp_settings#executable('unknown-command'), 0)
+        End
+
+        It should return 0 when command is not in server/foo-bar/foo-bar
+            let l:servers_dir = lsp_settings#servers_dir()
+
+            try
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+                call mkdir(l:servers_dir . '/foo-bar', 'p')
+                Assert Equals(lsp_settings#executable('foo-bar'), 0)
+            finally
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+            endtry
+        End
+
+        It should return 1 when command is executable in server/foo-bar/foo-bar
+            let l:servers_dir = lsp_settings#servers_dir()
+
+            try
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+                call mkdir(l:servers_dir . '/foo-bar', 'p')
+                if has('win32')
+                    call writefile(['@echo off', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar.cmd')
+                else
+                    call writefile(['#!/bin/sh', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar')
+                    call setfperm(l:servers_dir . '/foo-bar/foo-bar', 'rwxr-xr-x')
+                endif
+                Assert Equals(lsp_settings#executable('foo-bar'), 1)
+            finally
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+            endtry
+        End
+    End
+
+    Describe lsp_settings#exec_path
+        It should return full-path to the command
+            if has('win32')
+                Assert Equals(empty(lsp_settings#exec_path('cmd')), 0)
+            else
+                Assert Equals(empty(lsp_settings#exec_path('sh')), 0)
+            endif
+        End
+
+        It should return 1 when command is executable in server/foo-bar/foo-bar
+            let l:servers_dir = lsp_settings#servers_dir()
+
+            try
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+                call mkdir(l:servers_dir . '/foo-bar', 'p')
+                if has('win32')
+                    call writefile(['@echo off', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar.cmd')
+                    Assert Equals(lsp_settings#exec_path('foo-bar'), l:servers_dir . '\foo-bar\foo-bar.cmd')
+                else
+                    call writefile(['#!/bin/sh', 'echo foo-bar'], l:servers_dir . '/foo-bar/foo-bar')
+                    call setfperm(l:servers_dir . '/foo-bar/foo-bar', 'rwxr-xr-x')
+                    Assert Equals(lsp_settings#exec_path('foo-bar'), l:servers_dir . '/foo-bar/foo-bar')
+                endif
+            finally
+                call delete(l:servers_dir . '/foo-bar', 'rf')
+            endtry
+        End
+    End
+
+    Describe lsp_settings#init
+        It should setup commands and autocmds.
+            call lsp_settings#clear()
+            call lsp_settings#init()
+            let g:vim_lsp_settings_filetype_no_delays = 1
+            autocmd vim_lsp_suggest_python
+            Assert exists(':LspInstallServer')
+            delcommand LspInstallServer
+            Assert !exists('#vim_lsp_suggest_efm_langserver')
+            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_"')
+                exe 'augroup ' . v
+                  autocmd!
+                augroup END
+                exe 'augroup! ' . v
+            endfor
+            bw!
+            unlet g:vim_lsp_settings_filetype_no_delays
+        End
+
+        It should setup commands and autocmds with python.
+            call lsp_settings#clear()
+            call lsp_settings#init()
+            new
+            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar']}}
+            let g:vim_lsp_settings_filetype_no_delays = 1
+            Throw /E117/ :setfiletype python
+            bw!
+            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
+                exe 'augroup ' . v
+                  autocmd!
+                augroup END
+                exe 'augroup! ' . v
+            endfor
+            unlet g:lsp_settings
+            unlet g:vim_lsp_settings_filetype_no_delays
+        End
+    End
+End

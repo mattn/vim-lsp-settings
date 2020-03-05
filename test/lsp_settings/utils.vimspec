@@ -1,0 +1,43 @@
+Describe lsp_settings#utils
+    Describe lsp_settings#utils#first_one
+        It should return first item in lines
+            Assert Equals(lsp_settings#utils#first_one("\nfoo"), fnamemodify('foo', ':p'))
+            Assert Equals(lsp_settings#utils#first_one('foo'), fnamemodify('foo', ':p'))
+            Assert Equals(lsp_settings#utils#first_one("foo\nbar\n"), fnamemodify('foo', ':p'))
+        End
+    End
+
+    Describe lsp_settings#utils#group_name
+        It should return autocmd group name
+            Assert Equals(lsp_settings#utils#group_name('foo'), 'vim_lsp_suggest_foo')
+        End
+    End
+
+    Describe lsp_settings#utils#valid_name
+        It should return whether the command is valid
+            Assert Equals(lsp_settings#utils#valid_name('foo'), 1)
+            Assert Equals(lsp_settings#utils#valid_name('foo bar'), 0)
+            Assert Equals(lsp_settings#utils#valid_name(' foo'), 0)
+            Assert Equals(lsp_settings#utils#valid_name(' foo '), 0)
+            Assert Equals(lsp_settings#utils#valid_name('foo '), 0)
+            Assert Equals(lsp_settings#utils#valid_name('foo-bar'), 1)
+            Assert Equals(lsp_settings#utils#valid_name('foo_bar'), 1)
+            Assert Equals(lsp_settings#utils#valid_name('foo&bar'), 0)
+            Assert Equals(lsp_settings#utils#valid_name('foo#bar'), 0)
+        End
+    End
+
+    Describe lsp_settings#utils#msg
+        It should display information
+            Assert Equals(execute("call lsp_settings#utils#msg('foo')"), "\nfoo")
+            Assert Equals(execute("call lsp_settings#utils#msg('foo')"), "\nfoo")
+        End
+    End
+
+    Describe lsp_settings#utils#error
+        It should display information
+            Assert Equals(execute("call lsp_settings#utils#error('foo')"), "\nfoo")
+            Assert Equals(execute("call lsp_settings#utils#error('foo')"), "\nfoo")
+        End
+    End
+End

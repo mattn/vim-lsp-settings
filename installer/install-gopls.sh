@@ -1,6 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
-GOPATH=$(pwd) GOBIN=$(pwd) go get -v -u golang.org/x/tools/gopls
-rm -rf src
+"$(dirname "$0")/go_install.sh" golang.org/x/tools/gopls@latest

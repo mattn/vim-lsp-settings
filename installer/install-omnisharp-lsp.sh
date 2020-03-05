@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
+arch="-x64"
 
 case $os in
 linux) ;;
 darwin)
   os="osx"
+  arch=""
   ;;
 *)
   printf "%s doesn't supported by bash installer" "$os"
@@ -16,15 +18,13 @@ darwin)
 esac
 
 version="v1.34.9"
-url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os-x64.tar.gz"
-curl -LO "$url"
-tar xzvf omnisharp-$os-x64.tar.gz
-rm omnisharp-$os-x64.tar.gz
+url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os$arch.tar.gz"
+curl -L "$url" | tar xz
 
 chmod +x run
 
-cat <<EOF > omnisharp-lsp
-#!/bin/sh
+cat <<EOF >omnisharp-lsp
+#!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/run \$*

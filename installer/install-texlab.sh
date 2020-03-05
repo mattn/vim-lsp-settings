@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -15,6 +15,6 @@ darwin)
   ;;
 esac
 
-url="https://github.com/latex-lsp/texlab/releases/download/v1.8.0/texlab-x86_64-$os.tar.gz"
-curl -LO "$url"
-tar xzvf texlab-x86_64-$os.tar.gz
+version="v1.8.0"
+url="https://github.com/latex-lsp/texlab/releases/download/$version/texlab-x86_64-$os.tar.gz"
+curl -L "$url" | tar xzv

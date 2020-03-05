@@ -1,4 +1,32 @@
 {
+  "$schema": "https://mattn.github.io/vim-lsp-settings/schema.json",
+  "_": [
+    {
+      "command": "efm-langserver",
+      "disabled": true,
+      "requires": [
+        "go"
+      ]
+    }
+  ],
+  "apex": [
+    {
+      "command": "apex-jorje-lsp",
+      "requires": [
+        "java"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "apxc",
+          "apxt",
+          "cls",
+          "trigger",
+          "tgr"
+        ],
+        "name": "ejholmes/vim-forcedotcom"
+      }
+    }
+  ],
   "c": [
     {
       "command": "clangd",
@@ -8,7 +36,14 @@
   "clojure": [
     {
       "command": "clojure-lsp",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        ".lein/",
+        ".shadow-cljs/",
+        "project.clj",
+        "deps.edn",
+        "shadow-cljs.edn"
+      ]
     }
   ],
   "cobol": [
@@ -36,6 +71,9 @@
   "css": [
     {
       "command": "css-languageserver",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -68,7 +106,14 @@
       "command": "elixir-ls",
       "requires": [
         "elixir"
-      ]
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ex",
+          "exs"
+        ],
+        "name": "elixir-editors/vim-elixir"
+      }
     }
   ],
   "elm": [
@@ -76,7 +121,16 @@
       "command": "elm-language-server",
       "requires": [
         "npm"
-      ]
+      ],
+      "root_uri_patterns": [
+        "elm.json"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "elm"
+        ],
+        "name": "ElmCast/elm-vim"
+      }
     }
   ],
   "erlang": [
@@ -85,7 +139,16 @@
       "requires": [
         "make",
         "rebar3"
-      ]
+      ],
+      "root_uri_patterns": [
+        "rebar.config"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "erl"
+        ],
+        "name": "vim-erlang/vim-erlang-runtime"
+      }
     }
   ],
   "fortran": [
@@ -102,11 +165,61 @@
       ]
     }
   ],
+  "fsharp": [
+    {
+      "command": "fsautocomplete",
+      "requires": []
+    },
+    {
+      "command": "fsharp-language-server",
+      "requires": [
+        "dotnet"
+      ]
+    }
+  ],
+  "glsl": [
+    {
+      "command": "glslls",
+      "requires": [
+        "cmake",
+        "git",
+        "make"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "vert",
+          "tesc",
+          "tese",
+          "glsl",
+          "geom",
+          "frag"
+        ],
+        "name": "tikhomirov/vim-glsl"
+      }
+    }
+  ],
   "go": [
     {
       "command": "gopls",
       "requires": [
         "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
+      ]
+    }
+  ],
+  "graphql": [
+    {
+      "command": "gql-language-server",
+      "requires": [
+        "npm",
+        "watchman"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json",
+        ".gqlconfig"
       ]
     }
   ],
@@ -115,12 +228,18 @@
       "command": "groovy-language-server",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "build.gradle"
       ]
     }
   ],
   "html": [
     {
       "command": "html-languageserver",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -131,6 +250,10 @@
       "command": "eclipse-jdt-ls",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "pom.xml",
+        "build.gradle"
       ]
     }
   ],
@@ -139,12 +262,25 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
       "command": "javascript-typescript-stdio",
       "requires": [
         "npm"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json"
       ]
     }
   ],
@@ -153,6 +289,18 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json"
       ]
     },
     {
@@ -165,9 +313,40 @@
   "json": [
     {
       "command": "json-languageserver",
+      "config": {
+        "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
+    }
+  ],
+  "jsonc": [
+    {
+      "command": "json-languageserver",
+      "requires": [
+        "npm"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "cjson"
+        ],
+        "name": "neoclide/jsonc.vim"
+      }
+    }
+  ],
+  "julia": [
+    {
+      "command": "julia-language-server",
+      "requires": [
+        "julia"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "jl"
+        ],
+        "name": "ajpaulson/julia-syntax.vim"
+      }
     }
   ],
   "kotlin": [
@@ -175,7 +354,13 @@
       "command": "kotlin-language-server",
       "requires": [
         "java"
-      ]
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "kt"
+        ],
+        "name": "udalov/kotlin-vim"
+      }
     }
   ],
   "less": [
@@ -183,6 +368,14 @@
       "command": "css-languageserver",
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "lisp": [
+    {
+      "command": "cl-lsp",
+      "requires": [
+        "ros"
       ]
     }
   ],
@@ -197,12 +390,41 @@
   "nim": [
     {
       "command": "nimlsp",
-      "requires": []
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "nim"
+        ],
+        "name": "zah/nim.vim"
+      }
+    }
+  ],
+  "perl": [
+    {
+      "command": "slp",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "monastery",
+      "requires": [
+        "cpanm"
+      ]
+    },
+    {
+      "command": "perl-languageserver",
+      "requires": [
+        "cpanm"
+      ]
     }
   ],
   "php": [
     {
       "command": "intelephense",
+      "config": {
+        "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -220,6 +442,23 @@
       ]
     }
   ],
+  "ps1": [
+    {
+      "command": "powershell-languageserver",
+      "config": {
+        "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "pwsh"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ps1"
+        ],
+        "name": "PProvost/vim-ps1"
+      }
+    }
+  ],
   "python": [
     {
       "command": "pyls",
@@ -232,12 +471,36 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "pyls-ms",
+      "requires": [
+        "python"
+      ]
+    }
+  ],
+  "r": [
+    {
+      "command": "r-languageserver",
+      "requires": [
+        "R"
+      ]
     }
   ],
   "reason": [
     {
       "command": "reason-language-server",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        "package.json"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "re",
+          "rei"
+        ],
+        "name": "reasonml-editor/vim-reason-plus"
+      }
     }
   ],
   "ruby": [
@@ -251,7 +514,17 @@
   "rust": [
     {
       "command": "rls",
-      "requires": []
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
+    },
+    {
+      "command": "rust-analyzer",
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
     }
   ],
   "sass": [
@@ -267,14 +540,37 @@
       "command": "metals",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "build.sbt"
       ]
     }
   ],
   "sh": [
     {
       "command": "bash-language-server",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|\\k\\+\\)$"
+      },
       "requires": [
         "npm"
+      ]
+    }
+  ],
+  "sql": [
+    {
+      "command": "sql-language-server",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
+      "command": "sqls",
+      "config": {
+        "refresh_pattern": "\\( \\zs\\k*\\|[a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "go"
       ]
     }
   ],
@@ -283,13 +579,39 @@
       "command": "sourcekit-lsp",
       "requires": [
         "sourcekit-lsp"
-      ]
+      ],
+      "root_uri_patterns": [
+        "Package.swift",
+        ".xcodeproj",
+        ".xcworkspace",
+        "Cartfile",
+        "Podfile"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "swift"
+        ],
+        "name": "keith/swift.vim"
+      }
+    }
+  ],
+  "systemverilog": [
+    {
+      "command": "svls",
+      "requires": []
     }
   ],
   "terraform": [
     {
       "command": "terraform-lsp",
-      "requires": []
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "tf",
+          "tfvars"
+        ],
+        "name": "hashivim/vim-terraform"
+      }
     }
   ],
   "tex": [
@@ -309,6 +631,20 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     }
   ],
@@ -317,6 +653,20 @@
       "command": "typescript-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     }
   ],
@@ -325,7 +675,31 @@
       "command": "vim-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        ".vim/",
+        "vimfiles/"
       ]
+    }
+  ],
+  "vue": [
+    {
+      "command": "vls",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "vue"
+        ],
+        "name": "posva/vim-vue"
+      }
     }
   ],
   "xml": [

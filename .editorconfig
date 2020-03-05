@@ -7,6 +7,8 @@ charset = utf-8
 # Extension
 [*.sh]
 end_of_line = lf
+indent_style = space
+indent_size = 2
 
 [*.cmd]
 end_of_line = crlf

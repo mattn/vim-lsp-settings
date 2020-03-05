@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
-cd $(dirname $0)
+cd "$(dirname "$0")"
 
 git clone --depth=1 https://github.com/vscode-langservers/vscode-html-languageserver ../servers/html-languageserver
 cd ../servers/html-languageserver
