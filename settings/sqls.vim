@@ -12,3 +12,32 @@ augroup vimlsp_settings_sqls
       \ 'semantic_highlight': lsp_settings#get('sqls', 'semantic_highlight', {}),
       \ }
 augroup END
+
+function! s:sqls_query() abort
+  call lsp#send_request('sqls', {
+    \ 'method': 'workspace/executeCommand',
+    \ 'params': {
+    \   'command': 'sqls.executeQuery',
+    \   'arguments': [lsp#utils#get_buffer_uri()],
+    \ },
+    \ 'on_notification': function('s:handle_execute_command'),
+    \ })
+endfunction
+
+function! s:handle_execute_command(data) abort
+  let l:lines = a:data['response']['result']
+  vnew
+  call setline(1, split(l:lines, "\n"))
+endfunction
+
+function! s:on_lsp_buffer_enabled() abort
+  if &ft !=# 'sql'
+    return
+  endif
+  command! -buffer LspSQLQuery call <SID>sqls_query()
+endfunction
+
+augroup lsp_install_sqls
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

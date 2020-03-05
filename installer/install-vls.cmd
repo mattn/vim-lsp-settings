@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install.cmd" vls vue-language-server
+call "%~dp0\npm_install.cmd" vls vls
