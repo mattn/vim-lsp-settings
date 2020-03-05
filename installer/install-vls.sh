@@ -2,4 +2,4 @@
 
 set -e
 
-"$(dirname "$0")/npm_install.sh" vls vue-language-server
+"$(dirname "$0")/npm_install.sh" vls vls
