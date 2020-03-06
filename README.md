@@ -39,6 +39,20 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'lighttiger2505/deoplete-vim-lsp'
 ```
 
+vim-lsp-settings install Language Servers into:
+
+#### Windows
+
+```
+%LOCALAPPDATA%\vim-lsp-settings\servers
+```
+
+#### Others
+
+```
+$HOME/.config/vim-lsp-settings/servers
+```
+
 ### Notice
 
 If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
