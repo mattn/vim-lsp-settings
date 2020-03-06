@@ -5,7 +5,7 @@ let s:root_dir = expand('<sfile>:h:h')
 
 if has('win32')
   let s:servers_dir = expand('$LOCALAPPDATA/vim-lsp-settings/servers')
-elseif $XDG_DATA_HOME != ''
+elseif $XDG_DATA_HOME !=# ''
   let s:servers_dir = expand('$XDG_DATA_HOME/vim-lsp-settings/servers')
 else
   let s:servers_dir = expand('~/.local/share/vim-lsp-settings/servers')
