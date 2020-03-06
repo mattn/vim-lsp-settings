@@ -50,7 +50,13 @@ vim-lsp-settings install Language Servers into:
 #### Others
 
 ```
-$HOME/.config/vim-lsp-settings/servers
+$HOME/.local/share/vim-lsp-settings/servers
+```
+
+If $XDG_DATA_HOME is defined:
+
+```
+$XDG_DATA_HOME/vim-lsp-settings/servers
 ```
 
 ### Notice
