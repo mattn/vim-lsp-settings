@@ -403,7 +403,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
   endif
 
-  let l:default = get(g:, 'lsp_settings_' . a:ft, '')
+  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
 
   let l:found = 0
   let l:disabled = 0

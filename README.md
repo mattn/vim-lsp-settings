@@ -208,8 +208,8 @@ If you install ruby but not solargraph, you can install solargraph with followin
 If you have some Language Servers and want to use specified the server:
 
 ```vim
-let g:lsp_settings_perl = 'slp'
-let g:lsp_settings_typescript = ['typescript-language-server', 'eslint-language-server']
+let g:lsp_settings_filetype_perl = 'slp'
+let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
 ```
 
 When the servers are specifed in a list, these will be started at all.
