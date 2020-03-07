@@ -11,7 +11,7 @@ Auto configurations for Language Server for [vim-lsp](https://github.com/prabirs
 
 ## Introduction
 
-Language Servers is not easily to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
+Language Servers is not easy to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
 
 ## Installation instruction
 
@@ -45,8 +45,26 @@ If you use plugin manager that is merging  plugins (ex. dein), Please setting st
 
 _reason_:
 
-Servers are installed in `./servers` directory at the caching area in default.
-But when rebuild the cache, any merging plugin manager erases old cached files(include `./servers` and server execute files) before install.
+vim-lsp-settings install Language Servers into:
+
+#### Windows
+
+```
+%LOCALAPPDATA%\vim-lsp-settings\servers
+```
+
+#### Others
+
+```
+$HOME/.local/share/vim-lsp-settings/servers
+```
+
+If you define $XDG_DATA_HOME:
+
+```
+$XDG_DATA_HOME/vim-lsp-settings/servers
+```
+
 You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
 
 ## Usage
@@ -56,7 +74,13 @@ While editing a file with a supported filetype:
 :LspInstallServer
 ```
 
-Currently, no way to uninstall/update server. Run this command again, newer version will be installed.
+To uninstall server:
+
+```
+:LspUninstallServer
+```
+
+Because no way to update server, please run `:LspInstallServer` again, newer version will be installed.
 
 ## Supported Languages
 
