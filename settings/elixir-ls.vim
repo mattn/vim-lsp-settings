@@ -1,4 +1,4 @@
-augroup vimlsp_settings_elixir_ls
+augroup vim_lsp_settings_elixir_ls
   au!
   LspRegisterServer {
       \ 'name': 'elixir-ls',

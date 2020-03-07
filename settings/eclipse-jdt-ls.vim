@@ -1,4 +1,4 @@
-augroup vimlsp_settings_eclipse_jdt_ls
+augroup vim_lsp_settings_eclipse_jdt_ls
   au!
   LspRegisterServer {
       \ 'name': 'eclipse-jdt-ls',

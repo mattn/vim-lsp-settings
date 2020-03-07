@@ -1,4 +1,4 @@
-augroup vimlsp_settings_metals
+augroup vim_lsp_settings_metals
   au!
   LspRegisterServer {
       \ 'name': 'metals',

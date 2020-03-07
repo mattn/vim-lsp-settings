@@ -1,4 +1,4 @@
-augroup vimlsp_settings_sourcekit_lsp
+augroup vim_lsp_settings_sourcekit_lsp
   au!
   LspRegisterServer {
       \ 'name': 'sourcekit-lsp',

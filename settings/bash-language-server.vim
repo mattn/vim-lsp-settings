@@ -1,4 +1,4 @@
-augroup vimlsp_settings_bash_language_server
+augroup vim_lsp_settings_bash_language_server
   au!
   LspRegisterServer {
       \ 'name': 'bash-language-server',

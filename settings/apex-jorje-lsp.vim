@@ -1,4 +1,4 @@
-augroup vimlsp_settings_apex_jorje_lsp
+augroup vim_lsp_settings_apex_jorje_lsp
   au!
   LspRegisterServer {
       \ 'name': 'apex-jorje-lsp',

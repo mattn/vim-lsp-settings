@@ -1,4 +1,4 @@
-augroup vimlsp_settings_kotlin_language_server
+augroup vim_lsp_settings_kotlin_language_server
   au!
   LspRegisterServer {
       \ 'name': 'kotlin-language-server',

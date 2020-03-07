@@ -1,4 +1,4 @@
-augroup vimlsp_settings_perl_languageserver
+augroup vim_lsp_settings_perl_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'perl-languageserver',

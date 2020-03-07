@@ -1,4 +1,4 @@
-augroup vimlsp_settings_json_languageserver
+augroup vim_lsp_settings_json_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'json-languageserver',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_fortls
+augroup vim_lsp_settings_fortls
   au!
   LspRegisterServer {
       \ 'name': 'fortls',

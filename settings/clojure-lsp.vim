@@ -1,4 +1,4 @@
-augroup vimlsp_settings_clojure_lsp
+augroup vim_lsp_settings_clojure_lsp
   au!
   LspRegisterServer {
       \ 'name': 'clojure-lsp',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_gopls
+augroup vim_lsp_settings_gopls
   au!
   LspRegisterServer {
       \ 'name': 'gopls',

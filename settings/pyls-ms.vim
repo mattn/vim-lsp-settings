@@ -1,4 +1,4 @@
-augroup vimlsp_settings_pyls_ms
+augroup vim_lsp_settings_pyls_ms
   au!
   LspRegisterServer {
       \ 'name': 'pyls-ms',

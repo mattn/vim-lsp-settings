@@ -1,4 +1,4 @@
-augroup vimlsp_settings_javascript_typescript_stdio
+augroup vim_lsp_settings_javascript_typescript_stdio
   au!
   LspRegisterServer {
       \ 'name': 'javascript-typescript-stdio',

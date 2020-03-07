@@ -1,4 +1,4 @@
-augroup vimlsp_settings_vim_language_server
+augroup vim_lsp_settings_vim_language_server
   au!
   LspRegisterServer {
       \ 'name': 'vim-language-server',

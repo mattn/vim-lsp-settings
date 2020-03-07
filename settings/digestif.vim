@@ -1,4 +1,4 @@
-augroup vimlsp_settings_digestif
+augroup vim_lsp_settings_digestif
   au!
   LspRegisterServer {
       \ 'name': 'digestif',

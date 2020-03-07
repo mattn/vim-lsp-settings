@@ -1,4 +1,4 @@
-augroup vimlsp_settings_terraform_lsp
+augroup vim_lsp_settings_terraform_lsp
   au!
   LspRegisterServer {
       \ 'name': 'terraform-lsp',

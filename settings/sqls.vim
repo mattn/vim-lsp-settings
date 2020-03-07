@@ -1,4 +1,4 @@
-augroup vimlsp_settings_sqls
+augroup vim_lsp_settings_sqls
   au!
   LspRegisterServer {
       \ 'name': 'sqls',

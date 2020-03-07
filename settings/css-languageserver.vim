@@ -1,4 +1,4 @@
-augroup vimlsp_settings_css_languageserver
+augroup vim_lsp_settings_css_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'css-languageserver',

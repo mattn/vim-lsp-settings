@@ -1,4 +1,4 @@
-augroup vimlsp_settings_powershell_languageserver
+augroup vim_lsp_settings_powershell_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'powershell-languageserver',

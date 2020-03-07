@@ -1,4 +1,4 @@
-augroup vimlsp_settings_clangd
+augroup vim_lsp_settings_clangd
   au!
   LspRegisterServer {
       \ 'name': 'clangd',

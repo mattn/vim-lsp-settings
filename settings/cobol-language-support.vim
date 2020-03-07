@@ -1,4 +1,4 @@
-augroup vimlsp_settings_cobol_language_support
+augroup vim_lsp_settings_cobol_language_support
   au!
   LspRegisterServer {
       \ 'name': 'cobol-language-support',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_slp
+augroup vim_lsp_settings_slp
   au!
   LspRegisterServer {
       \ 'name': 'slp',

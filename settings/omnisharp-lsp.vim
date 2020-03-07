@@ -1,4 +1,4 @@
-augroup vimlsp_settings_omnisharp_lsp
+augroup vim_lsp_settings_omnisharp_lsp
   au!
   LspRegisterServer {
       \ 'name': 'omnisharp-lsp',

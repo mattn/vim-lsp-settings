@@ -1,4 +1,4 @@
-augroup vimlsp_settings_glslls
+augroup vim_lsp_settings_glslls
   au!
   LspRegisterServer {
       \ 'name': 'glslls',

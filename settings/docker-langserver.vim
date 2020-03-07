@@ -1,4 +1,4 @@
-augroup vimlsp_settings_dockerfile_language_server_nodejs
+augroup vim_lsp_settings_dockerfile_language_server_nodejs
   au!
   LspRegisterServer {
       \ 'name': 'docker-langserver',

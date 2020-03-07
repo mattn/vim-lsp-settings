@@ -1,4 +1,4 @@
-augroup vimlsp_settings_analysis_server_dart_snapshot
+augroup vim_lsp_settings_analysis_server_dart_snapshot
   au!
   LspRegisterServer {
       \ 'name': 'analysis-server-dart-snapshot',

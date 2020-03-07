@@ -1,4 +1,4 @@
-augroup vimlsp_settings_erlang_ls
+augroup vim_lsp_settings_erlang_ls
   au!
   LspRegisterServer {
       \ 'name': 'erlang-ls',

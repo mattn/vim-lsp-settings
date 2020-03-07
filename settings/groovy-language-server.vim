@@ -1,4 +1,4 @@
-augroup vimlsp_settings_groovy_language_server
+augroup vim_lsp_settings_groovy_language_server
   au!
   LspRegisterServer {
       \ 'name': 'groovy-language-server',

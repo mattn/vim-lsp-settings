@@ -1,4 +1,4 @@
-augroup vimlsp_settings_gql_language_server
+augroup vim_lsp_settings_gql_language_server
   au!
   LspRegisterServer {
       \ 'name': 'gql-language-server',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_dls
+augroup vim_lsp_settings_dls
   au!
   LspRegisterServer {
       \ 'name': 'dls',

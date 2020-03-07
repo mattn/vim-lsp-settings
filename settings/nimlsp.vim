@@ -1,4 +1,4 @@
-augroup vimlsp_settings_nimlsp
+augroup vim_lsp_settings_nimlsp
   au!
   LspRegisterServer {
       \ 'name': 'nimlsp',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_emmylua_ls
+augroup vim_lsp_settings_emmylua_ls
   au!
   LspRegisterServer {
       \ 'name': 'emmylua-ls',

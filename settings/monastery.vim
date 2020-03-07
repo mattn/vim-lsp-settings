@@ -1,4 +1,4 @@
-augroup vimlsp_settings_monastery
+augroup vim_lsp_settings_monastery
   au!
   LspRegisterServer {
       \ 'name': 'monastery',

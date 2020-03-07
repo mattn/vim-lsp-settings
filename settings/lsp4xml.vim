@@ -1,4 +1,4 @@
-augroup vimlsp_settings_lsp4xml
+augroup vim_lsp_settings_lsp4xml
   au!
   LspRegisterServer {
       \ 'name': 'lsp4xml',

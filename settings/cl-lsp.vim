@@ -1,4 +1,4 @@
-augroup vimlsp_settings_cl_lsp
+augroup vim_lsp_settings_cl_lsp
   au!
   LspRegisterServer {
       \ 'name': 'cl-lsp',

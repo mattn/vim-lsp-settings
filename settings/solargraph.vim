@@ -1,4 +1,4 @@
-augroup vimlsp_settings_solargraph
+augroup vim_lsp_settings_solargraph
   au!
   LspRegisterServer {
       \ 'name': 'solargraph',

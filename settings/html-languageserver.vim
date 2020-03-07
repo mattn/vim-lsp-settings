@@ -1,4 +1,4 @@
-augroup vimlsp_settings_html_languageserver
+augroup vim_lsp_settings_html_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'html-languageserver',

@@ -1,4 +1,4 @@
-augroup vimlsp_settings_yaml_language_server
+augroup vim_lsp_settings_yaml_language_server
   au!
   LspRegisterServer {
       \ 'name': 'yaml-language-server',

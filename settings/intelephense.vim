@@ -1,4 +1,4 @@
-augroup vimlsp_settings_intelephense_server
+augroup vim_lsp_settings_intelephense_server
   au!
   LspRegisterServer {
       \ 'name': 'intelephense',

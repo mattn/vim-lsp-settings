@@ -1,4 +1,4 @@
-augroup vimlsp_settings_vls
+augroup vim_lsp_settings_vls
   au!
   LspRegisterServer {
       \ 'name': 'vls',

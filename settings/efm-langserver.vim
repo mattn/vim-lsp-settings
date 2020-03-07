@@ -1,4 +1,4 @@
-augroup vimlsp_settings_efm_langserver
+augroup vim_lsp_settings_efm_langserver
   au!
   LspRegisterServer {
       \ 'name': 'efm-langserver',

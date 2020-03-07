@@ -1,4 +1,4 @@
-augroup vimlsp_settings_rust_analyzer
+augroup vim_lsp_settings_rust_analyzer
   au!
   LspRegisterServer {
       \ 'name': 'rust-analyzer',

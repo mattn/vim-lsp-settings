@@ -1,4 +1,4 @@
-augroup vimlsp_settings_fsautocomplete
+augroup vim_lsp_settings_fsautocomplete
   au!
   LspRegisterServer {
       \ 'name': 'fsautocomplete',
