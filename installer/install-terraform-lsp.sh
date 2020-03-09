@@ -3,7 +3,7 @@
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
-version="0.0.9"
+version="0.0.10"
 
 case $os in
 darwin | linux)
