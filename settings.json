@@ -207,6 +207,15 @@
       "root_uri_patterns": [
         "go.mod"
       ]
+    },
+    {
+      "command": "golangci-lint-langserver",
+      "requires": [
+        "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
+      ]
     }
   ],
   "graphql": [
