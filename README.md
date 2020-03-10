@@ -98,6 +98,7 @@ Because no way to update server, please run `:LspInstallServer` again, newer ver
 | Python           | pyls-ms (Microsoft Version)                            | Yes           |
 | Rust             | rls                                                    | No            |
 | Go               | gopls                                                  | Yes           |
+| Go               | golangci-lint-langserver                               | Yes           |
 | Ruby             | solargraph                                             | Yes           |
 | PHP              | intelephense                                           | Yes           |
 | Java             | eclipse-jdt-ls                                         | Yes           |
