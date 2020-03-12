@@ -556,6 +556,14 @@
       ]
     }
   ],
+  "scss": [
+    {
+      "command": "css-languageserver",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "scala": [
     {
       "command": "metals",
