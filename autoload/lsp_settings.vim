@@ -62,23 +62,7 @@ function! s:vim_lsp_installer(ft, ...) abort
   if l:ft !=# '_'
     let l:server += s:settings['_']
   endif
-  let l:found = {}
-  for l:conf in l:server
-    let l:missing = 0
-    for l:require in l:conf.requires
-      if !lsp_settings#executable(l:require)
-        let l:missing = 1
-        break
-      endif
-    endfor
-    if l:missing ==# 0
-      let l:found = l:conf
-      break
-    endif
-  endfor
-  if empty(l:found)
-    return []
-  endif
+
   let l:name = get(a:000, 0, '')
   for l:conf in l:server
     if !empty(l:name) && l:conf.command != l:name
@@ -89,6 +73,16 @@ function! s:vim_lsp_installer(ft, ...) abort
       let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
     else
       let l:command = l:command . '.sh'
+    endif
+    let l:missing = 0
+    for l:require in l:conf.requires
+      if !lsp_settings#executable(l:require)
+        let l:missing = 1
+        break
+      endif
+    endfor
+    if l:missing !=# 0
+      continue
     endif
     if lsp_settings#executable(l:command)
       return [l:conf.command, l:command]
