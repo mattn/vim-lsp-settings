@@ -77,7 +77,7 @@ While editing a file with a supported filetype:
 To uninstall server:
 
 ```
-:LspUninstallServer
+:LspUninstallServer server-name
 ```
 
 Because no way to update server, please run `:LspInstallServer` again, newer version will be installed.
