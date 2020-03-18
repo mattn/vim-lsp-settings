@@ -108,7 +108,7 @@ Because no way to update server, please run `:LspInstallServer` again, newer ver
 | Terraform        | terraform-lsp                                          | Yes           |
 | Dockerfile       | dockerfile-language-server-nodejs                      | Yes           |
 | YAML             | yaml-language-server                                   | Yes           |
-| XML              | lsp4xml                                                | Yes           |
+| XML              | lemminx                                                | Yes           |
 | Fortran          | fortls                                                 | Yes           |
 | Scala            | Metals                                                 | Yes           |
 | Elm              | elm-language-server                                    | Yes           |

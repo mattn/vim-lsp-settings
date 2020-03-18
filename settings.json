@@ -733,7 +733,7 @@
   ],
   "xml": [
     {
-      "command": "lsp4xml",
+      "command": "lemminx",
       "requires": [
         "java"
       ]
