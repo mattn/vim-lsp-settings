@@ -19,8 +19,14 @@ function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
     call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
 endfunction
 
+let s:initialized = 0
+
 function! s:register_command()
-  augroup vimlsp_settings_eclipse_jdt_ls
+  if s:initialized
+    return
+  endif
+  let s:initialized = 1
+  augroup vim_lsp_settings_eclipse_jdt_ls
     au!
   augroup END
   if exists('*lsp#register_command')
