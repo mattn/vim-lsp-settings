@@ -4,12 +4,13 @@ let s:installer_dir = expand('<sfile>:h:h') . '/installer'
 let s:root_dir = expand('<sfile>:h:h')
 
 if has('win32')
-  let s:servers_dir = expand('$LOCALAPPDATA/vim-lsp-settings/servers')
+  let s:data_dir = expand('$LOCALAPPDATA/vim-lsp-settings')
 elseif $XDG_DATA_HOME !=# ''
-  let s:servers_dir = expand('$XDG_DATA_HOME/vim-lsp-settings/servers')
+  let s:data_dir = expand('$XDG_DATA_HOME/vim-lsp-settings')
 else
-  let s:servers_dir = expand('~/.local/share/vim-lsp-settings/servers')
+  let s:data_dir = expand('~/.local/share/vim-lsp-settings')
 endif
+let s:servers_dir = s:data_dir . '/servers'
 
 let s:settings = json_decode(join(readfile(expand('<sfile>:h:h') . '/settings.json'), "\n"))
 call remove(s:settings, '$schema')
@@ -377,6 +378,14 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
+  if filereadable(s:data_dir . '/settings.json')
+    let l:settings = json_decode(join(readfile(s:data_dir . '/settings.json'), "\n"))
+    if  has_key(g:, 'lsp_settings')
+      call extend(g:lsp_settings, l:settings)
+    else
+      let g:lsp_settings = l:settings
+    endif
+  endif
   call lsp_settings#profile#load_local()
 
   if get(g:, 'lsp_loaded', 0)
