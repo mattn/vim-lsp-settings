@@ -19,6 +19,19 @@ function! lsp_settings#profile#load_local() abort
   endtry
 endfunction
 
+function! lsp_settings#profile#edit_global() abort
+  let l:root = lsp_settings#data_dir()
+  if !isdirectory(l:root)
+    call mkdir(l:root)
+  endif
+  exe 'new' l:root . '/settings.json'
+  if !filereadable(l:root . '/settings.json')
+    call setline(1, ['{', "\t", '}'])
+    call cursor([2, 2])
+    setlocal nomodified
+  endif
+endfunction
+
 function! lsp_settings#profile#edit_local() abort
   let l:root = lsp_settings#root_path(['.vim-lsp-settings'])
   if !isdirectory(l:root)

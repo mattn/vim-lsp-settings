@@ -13,5 +13,6 @@ let g:lsp_settings_root_markers = get(g:, 'lsp_settings_root_markers', [
 
 command! -nargs=0 LspSettingsStatus call lsp_settings#profile#status()
 command! -nargs=0 LspSettingsLocalEdit call lsp_settings#profile#edit_local()
+command! -nargs=0 LspSettingsGlobalEdit call lsp_settings#profile#edit_global()
 
 call lsp_settings#init()

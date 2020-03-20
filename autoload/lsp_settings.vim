@@ -17,6 +17,10 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
+function! lsp_settings#data_dir() abort
+  return s:data_dir
+endfunction
+
 function! lsp_settings#installer_dir() abort
   return s:installer_dir
 endfunction
