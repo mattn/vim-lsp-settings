@@ -239,6 +239,21 @@ let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-
 
 When the servers are specifed in a list, these will be started at all.
 
+If you want to configure Language Server to use flake8 rather than pycodestyle,
+the following can be added to your `~/.vimrc` file.
+
+```vim
+let g:lsp_settings = {
+\   'pyls': {
+\     'workspace_config': {
+\       'pyls': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
+```
+
 If you want to disable Language Server:
 
 ```vim
