@@ -121,4 +121,38 @@ Describe lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
         End
     End
+
+    Describe lsp_settings#root_path
+        It should return full-path to the directory that contains one of args
+            if empty(globpath(&rtp, 'autoload/lsp/utils.vim'))
+                Skip vim-lsp plugin required, use --runtimepath {path-to-plugin-dir}
+            endif
+            let s:_saved_lsp_settings_root_markers = g:lsp_settings_root_markers
+            let g:lsp_settings_root_markers = []
+            try
+                new autoload/testbuffer
+                Assert Equal(lsp_settings#root_path(['lsp_settings/']), expand('%:p:h'))
+                Assert Equal(lsp_settings#root_path(['README.md']), expand('%:p:h:h'))
+                Assert Equal(lsp_settings#root_path(['not exist file name', 'README.md']), expand('%:p:h:h'))
+            finally
+                bwipe! autoload/testbuffer
+                let g:lsp_settings_root_markers = s:_saved_lsp_settings_root_markers
+            endtry
+        End
+
+        It should return '' when directory not found
+            if empty(globpath(&rtp, 'autoload/lsp/utils.vim'))
+                Skip vim-lsp plugin required, use --runtimepath {path-to-plugin-dir}
+            endif
+            let s:_saved_lsp_settings_root_markers = g:lsp_settings_root_markers
+            let g:lsp_settings_root_markers = []
+            try
+                new autoload/testbuffer
+                Assert Empty(lsp_settings#root_path(['not exist file name']))
+            finally
+                bwipe! autoload/testbuffer
+                let g:lsp_settings_root_markers = s:_saved_lsp_settings_root_markers
+            endtry
+        End
+    End
 End
