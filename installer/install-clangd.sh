@@ -66,9 +66,9 @@ url_v9="http://releases.llvm.org/9.0.0/$filename_v9.tar.xz"
 filename_v10="clang+llvm-10.0.0-x86_64-$platform"
 url_v10="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/$filename_v10.tar.xz"
 
-response_code=`curl -sIL ${url_v10} -o /dev/null -w "%{response_code}"`
+response_code=$(curl -sIL ${url_v10} -o /dev/null -w "%{response_code}")
 
-if [ ${response_code} == 404 ]; then
+if [ ${response_code} == '404' ]; then
   url=${url_v9}
   filename=${filename_v9}
 else
