@@ -68,12 +68,12 @@ url_v10="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/$
 
 response_code=$(curl -sIL ${url_v10} -o /dev/null -w "%{response_code}")
 
-if [ ${response_code} == "404" ]; then
-  url=${url_v9}
-  filename=${filename_v9}
+if [ "${response_code}" == "404" ]; then
+  url="${url_v9}"
+  filename="${filename_v9}"
 else
-  url=${url_v10}
-  filename=${filename_v10}
+  url="${url_v10}"
+  filename="${filename_v10}"
 fi
 
 echo "Downloading clangd and LLVM..."
