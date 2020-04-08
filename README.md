@@ -249,6 +249,27 @@ let g:lsp_settings = {
 \}
 ```
 
+When resolving the root directory for a language servers, this plugin will look
+for directories containing special root markers defined in `g:lsp_settings_root_markers`.
+
+If you need to specify alternative root markers:
+
+```vim
+let g:lsp_settings_root_markers = ['.projections.json', '.git', '.git/']
+```
+
+By default, this is set to:
+
+```vim
+let g:lsp_settings_root_markers = [
+\   '.git',
+\   '.git/',
+\   '.svn',
+\   '.hg',
+\   '.bzr'
+\ ]
+```
+
 ## License
 
 MIT
