@@ -102,11 +102,11 @@ and put schemas property like below:
      "schemas": [
        {
          "fileMatch":["my-config.yaml"],
-         "url": "https://example.com/my-config-schema.json'
+         "url": "https://example.com/my-config-schema.json"
        },
        {
          "fileMatch":["your-config.yaml"],
-         "url": "https://example.com/your-config-schema.json'
+         "url": "https://example.com/your-config-schema.json"
        }
      ]
    }
