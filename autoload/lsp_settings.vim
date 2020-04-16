@@ -177,9 +177,9 @@ function! lsp_settings#exec_path(cmd) abort
   return ''
 endfunction
 
-function! lsp_settings#root_path(name) abort
-  let l:patterns = get(a:000, 0, [])
-  return lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
+function! lsp_settings#root_path(patterns) abort
+  let l:patterns = extend(copy(a:patterns), g:lsp_settings_root_markers)
+  return lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), l:patterns)
 endfunction
 
 function! lsp_settings#root_uri(name) abort
