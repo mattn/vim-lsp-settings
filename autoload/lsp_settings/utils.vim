@@ -54,3 +54,11 @@ function! lsp_settings#utils#dotmerge(d) abort
   endfor
   return l:ret
 endfunction
+
+let s:catalog_path = expand('<sfile>:h:h:h') . '/data/catalog.json'
+
+function! lsp_settings#utils#load_schemas(name) abort
+  let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
+  let g:hoge = l:schemas
+  return extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
+endfunction
