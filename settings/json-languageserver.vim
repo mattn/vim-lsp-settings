@@ -8,7 +8,7 @@ augroup vim_lsp_settings_json_languageserver
       \ 'whitelist': lsp_settings#get('json-languageserver', 'whitelist', ['json', 'jsonc']),
       \ 'blacklist': lsp_settings#get('json-languageserver', 'blacklist', []),
       \ 'config': lsp_settings#get('json-languageserver', 'config', lsp_settings#server_config('json-languageserver')),
-      \ 'workspace_config': lsp_settings#get('json-languageserver', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas('json-language-server') + [{'fileMatch':['/.vim-lsp-settings/settings.json'], 'url': 'https://mattn.github.io/vim-lsp-settings/local-schema.json'}]}}}),
+      \ 'workspace_config': lsp_settings#get('json-languageserver', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas('json-languageserver') + [{'fileMatch':['/.vim-lsp-settings/settings.json'], 'url': 'https://mattn.github.io/vim-lsp-settings/local-schema.json'}]}}}),
       \ 'semantic_highlight': lsp_settings#get('json-languageserver', 'semantic_highlight', {}),
       \ }
 augroup END
