@@ -107,6 +107,9 @@
       "requires": [
         "elixir"
       ],
+      "root_uri_patterns":[
+        "mix.exs"
+      ],
       "vim_plugin": {
         "extensions": [
           "ex",
