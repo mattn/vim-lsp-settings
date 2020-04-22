@@ -2,8 +2,8 @@
 
 set -e
 
-version="v0.2.25"
-url="https://github.com/JakeBecker/elixir-ls/releases/download/$version/elixir-ls.zip"
+version="v0.3.3"
+url="https://github.com/elixir-lsp/elixir-ls/releases/download/$version/elixir-ls.zip"
 curl -LO "$url"
 unzip elixir-ls.zip
 rm elixir-ls.zip
