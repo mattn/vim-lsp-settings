@@ -32,8 +32,14 @@ function! lsp_settings#profile#edit_global() abort
   endif
 endfunction
 
-function! lsp_settings#profile#edit_local() abort
-  let l:root = lsp_settings#root_path(['.vim-lsp-settings'])
+function! lsp_settings#profile#edit_local(...) abort
+  let l:root = ''
+  if a:0 >= 1
+    let l:root = a:1
+  endif
+  if l:root ==# ''
+    let l:root = lsp_settings#root_path(['.vim-lsp-settings'])
+  endif
   if !isdirectory(l:root)
     return
   endif
