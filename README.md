@@ -7,15 +7,15 @@
 [![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/windows_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
 [![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/mac_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
 
-Auto configurations for Language Server for [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+Auto configurations for Language Servers for [vim-lsp](https://github.com/prabirshrestha/vim-lsp).
 
 ## Introduction
 
-Language Servers is not easy to install. Visual Studio Code provide easy way to install/update Language Server and Language Server Client. This plugin provide same feature on Vim.
+Language Servers are not easy to install. Visual Studio Code provides easy ways to install and update Language Servers and Language Server Client. This plugin provides the same feature for Vim.
 
-## Installation instruction
+## Installation
 
-For [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
+Using the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 
 ```viml
 Plug 'prabirshrestha/async.vim'
@@ -25,7 +25,7 @@ Plug 'mattn/vim-lsp-settings'
 
 You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
 
-If you want to use autocompletion plugin, you can use followings.
+If you want to use auto-completion, you can use one of the following.
 
 #### asyncomplete.vim
 ```viml
@@ -41,7 +41,7 @@ Plug 'lighttiger2505/deoplete-vim-lsp'
 
 ### Notice
 
-If you use plugin manager that is merging  plugins (ex. dein), Please setting stop merging work(ex. dein / merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
+If you use a plugin manager that merges  plugins (for example [dein](https://github.com/Shougo/dein.vim)), please turn of merging (for example with dein, merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
 
 _reason_:
 
@@ -53,13 +53,13 @@ vim-lsp-settings install Language Servers into:
 %LOCALAPPDATA%\vim-lsp-settings\servers
 ```
 
-#### Others
+#### MacOS/Linux
 
 ```
 $HOME/.local/share/vim-lsp-settings/servers
 ```
 
-If you define $XDG_DATA_HOME:
+If you define `$XDG_DATA_HOME`:
 
 ```
 $XDG_DATA_HOME/vim-lsp-settings/servers
@@ -68,6 +68,7 @@ $XDG_DATA_HOME/vim-lsp-settings/servers
 You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
 
 ## Usage
+
 While editing a file with a supported filetype:
 
 ```
@@ -80,7 +81,7 @@ To uninstall server:
 :LspUninstallServer server-name
 ```
 
-Because no way to update server, please run `:LspInstallServer` again, newer version will be installed.
+Because there is no way to update a server, please run `:LspInstallServer` again, the newer version will be installed.
 
 ## Supported Languages
 
@@ -140,15 +141,15 @@ Because no way to update server, please run `:LspInstallServer` again, newer ver
 
 ### clangd (C/C++)
 
-There is a Linux OS/version that does not run locally installed clangd due to zlib version mismatch. If you want to use clangd, please install clangd on your system.
+There is a Linux OS/version that does not run the locally installed clangd due to zlib version mismatch. If you want to use clangd, please install clangd on your system.
 
 ### rls (Rust)
 
-If you install rls already, you can use rls without configurations. But if you not installed rls yet, you can install it by following [this instruction](https://github.com/rust-lang/rls#setup).
+If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instruction](https://github.com/rust-lang/rls#setup).
 
 ### gql-language-server (GraphQL)
 
-To use gql-language-server, `.gqlconfig` have to be located on the top of project directory. And schema must be pointed to the schema file correctly.
+To use gql-language-server, the `.gqlconfig` has to be located on the top of project directory. The schema must be pointed to the schema file correctly.
 
 ```json5
 {
@@ -172,9 +173,9 @@ location. See 'Configurations' below.
 
 ## Configurations
 
-Most of configurations are not required.
+Most of the configurations are not required.
 
-If you install clangd already, you can use clangd for C/C++ without configurations. But if you install clang with named clangd-6.0, you can replace executable like below:
+If you installed clangd already, you can use clangd for C/C++ without any configuration. But if you installed clang with named clangd-6.0, you can replace executable like below:
 
 ```vim
 let g:lsp_settings = {
@@ -183,7 +184,7 @@ let g:lsp_settings = {
 \}
 ```
 
-Or put `.vim-lsp-settings/settings.json` on your project root directory.
+Or put `.vim-lsp-settings/settings.json` in your project root directory.
 
 ```json
 {
@@ -214,7 +215,7 @@ let g:lsp_settings = {
 \ }
 ```
 
-To edit project local `settings.json`, do `:LspSettingsLocalEdit`.
+To edit the project local `settings.json`, do `:LspSettingsLocalEdit`.
 
 Overridable keys are:
 
@@ -229,7 +230,7 @@ Overridable keys are:
 * root_uri_patterns (List)
 * semantic_highlight (Dictionary)
 
-If you install ruby but not solargraph, you can install solargraph with following command.
+If you installed ruby but not solargraph, you can install solargraph with the following command.
 
 If you have some Language Servers and want to use specified the server:
 
@@ -238,7 +239,7 @@ let g:lsp_settings_filetype_perl = 'slp'
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
 ```
 
-When the servers are specified in a list, these will be started at all.
+When the servers are specified in a list, these will all be started.
 
 If you want to configure Language Server to use flake8 rather than pycodestyle,
 the following can be added to your `~/.vimrc` file.
@@ -255,7 +256,7 @@ let g:lsp_settings = {
 \}
 ```
 
-If you want to disable Language Server:
+If you want to disable a Language Server:
 
 ```vim
 let g:lsp_settings = {
