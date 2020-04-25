@@ -1,4 +1,5 @@
-*vim-lsp-settings.txt* vim-lsp-settings
+*vim-lsp-settings.txt*
+                                                            *vim-lsp-settings*
 
            -------------------------------------------------------
              Auto configurations for Language Server for vim-lsp
@@ -9,12 +10,20 @@ Repository: https://github.com/mattn/vim-lsp-settings
 License: MIT
 
 ==============================================================================
+CONTENTS                                           *vim-lsp-settings-contents*
+  1. Introduction..............................|vim-lsp-settings-introduction|
+  2. Installation..............................|vim-lsp-settings-installation|
+  3. Install Language Server...............................|:LspInstallServer|
+  4. Uninstall Language Server...........................|:LspUninstallServer|
+  5. Configuration............................|vim-lsp-settings-configuration|
+
+==============================================================================
 INTRODUCTION                                     *vim-lsp-settings-introduction*
 
-vim-lsp-settings is a plugin to improbe vim-lsp.
+vim-lsp-settings is a plugin to improve vim-lsp.
 
 * Easy to install Language Servers.
-* Easy to uninstlal Language Servers.
+* Easy to uninstall Language Servers.
 * Auto-configuration for Language Servers.
 * Extra useful commands.
 
@@ -40,7 +49,7 @@ vim-plug: add below to .vimrc
 
 
 ==============================================================================
-INSTALL LANGUAGE SERVER                      *vim-lsp-settings-LspInstallServer*
+INSTALL LANGUAGE SERVER                                       *LspInstallServer*
 
 To install Language Server, you need to open the source file. The filetype
 should be set correctly. Then |:LspInstallServer|. |:LspInstallServer| can be
@@ -51,7 +60,7 @@ taken an argument for the name of Language Server installable.
 If you want to update Language Server, please do |:LspInstallServer| again.
 
 ==============================================================================
-UNINSTALL LANGUAGE SERVER                  *vim-lsp-settings-LspUninstallServer*
+UNINSTALL LANGUAGE SERVER                                   *LspUninstallServer*
 
 To uninstall Language Server, do |:LspUninstallServer|.
 >
@@ -112,6 +121,22 @@ and put schemas property like below:
    }
  }
 <
+
+:LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
+  Edit local settings. Accepts an optional explicit [root] directory that
+  contains the .vim-lsp-settings config directory.
+  [root] is path to the vim-lsp-settings plugin if omitted.
+
+:LspSettingsGlobalEdit                                *:LspSettingsGlobalEdit*
+  Edit global settings.
+
+
+You can use the :LspSettingsStatus command to inspect the current config.
+
+
+:LspSettingsStatus                                        *:LspSettingsStatus*
+  Print a status dump of information about the language server configured for
+  the current buffer.
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:
