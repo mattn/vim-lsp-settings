@@ -537,14 +537,14 @@
   ],
   "rust": [
     {
-      "command": "rls",
+      "command": "rust-analyzer",
       "requires": [],
       "root_uri_patterns": [
         "Cargo.toml"
       ]
     },
     {
-      "command": "rust-analyzer",
+      "command": "rls",
       "requires": [],
       "root_uri_patterns": [
         "Cargo.toml"
