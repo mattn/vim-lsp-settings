@@ -31,7 +31,13 @@ function! s:rust_analyzer_apply_source_change(context)
     endif
 endfunction
 
+let s:setup = 0
+
 function! s:register_command()
+  if s:setup == 1
+    return
+  endif
+  let s:setup = 1
   augroup vimlsp_settings_rust_analyzer
     au!
   augroup END
