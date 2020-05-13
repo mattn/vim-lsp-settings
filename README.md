@@ -205,7 +205,7 @@ and the '--lsp' flag.
 
 ```vimscript
 let g:lsp_settings = {
-    \ 'analysis_server.dart.snapshot': {
+    \ 'analysis-server-dart-snapshot': {
     \     'cmd': [
     \         '/path/to/your/dart-sdk/bin/dart',
     \         '/path/to/your/dart-sdk/bin/bin/snapshots/analysis_server.dart.snapshot',
