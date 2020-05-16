@@ -12,7 +12,9 @@ augroup vim_lsp_settings_pyls_ms
       \      'properties': {
       \        'InterpreterPath': lsp_settings#get('pyls-ms', 'python-path', {key, name->exepath('python')}),
       \        'UseDefaultDatabase': v:true,
-      \        'Version': lsp_settings#get('pyls-ms', 'python-ver', {key, name->trim(matchstr(system('python -V'), '\s\zs\S\+'))}),
+      \        'Version': lsp_settings#get('pyls-ms', 'python-ver', {key, name->trim(matchstr(system(
+      \          shellescape(lsp_settings#get('pyls-ms', 'python-path', {key, name->exepath('python')})) . ' -V'
+      \        ), '\s\zs\S\+'))}),
       \      },
       \    },
       \  }),
