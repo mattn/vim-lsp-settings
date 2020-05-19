@@ -12,13 +12,13 @@ goto :EOF
 
 :python
 REM python is 2 or 3 check(python3 version at python3 grammar)
-python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
+call python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
 if errorlevel 1 goto :python_fail
 
 REM python support slash path split?
-python -m venv ./venv
+call python -m venv ./venv
 if not errorlevel 1 goto :install
-python -m venv .\venv
+call python -m venv .\venv
 goto :install
 
 :python3
@@ -27,9 +27,9 @@ REM python3 -c "import sys; from distutils.version import LooseVersion;sys.exit(
 REM if errorlevel 1 goto :python3_fail
 
 REM python3 support slash path split?
-python3 -m venv ./venv
+call python3 -m venv ./venv
 if not errorlevel 1 goto :install
-python3 -m venv .\venv
+call python3 -m venv .\venv
 goto :install
 
 :install
