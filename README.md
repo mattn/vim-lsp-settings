@@ -90,6 +90,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | C/C++            | clangd                                                 | Yes           |
 | C#               | omnisharp                                              | Yes           |
 | Clojure          | clojure-lsp                                            | Yes           |
+| Clojure          | clj-kond-lsp                                           | Yes           |
 | CSS              | vscode-css-languageserver-bin                          | Yes           |
 | TypeScript       | typescript-language-server                             | Yes           |
 | TypeScript       | eslint-language-server                                 | Yes           |
