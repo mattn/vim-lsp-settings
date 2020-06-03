@@ -1,12 +1,12 @@
 @echo off
 
 setlocal
+set VERSION=3.1.1
+curl -L -o dotnet-runtime-%VERSION%-win-x64.zip "https://download.visualstudio.microsoft.com/download/pr/d9768135-4646-4839-9eea-b404bb940452/8275e4320514bab636b1627c62906ef9/dotnet-runtime-%VERSION%-win-x64.zip"
+call "%~dp0\run_unzip.cmd" dotnet-runtime-%VERSION%-win-x64.zip
 
-curl -L -o dotnet-runtime-3.1.1-win-x64.zip "https://download.visualstudio.microsoft.com/download/pr/d9768135-4646-4839-9eea-b404bb940452/8275e4320514bab636b1627c62906ef9/dotnet-runtime-3.1.1-win-x64.zip"
-call "%~dp0\run_unzip.cmd" dotnet-runtime-3.1.1-win-x64.zip
-
-set version=0.5.45
-set url=https://pvsc.blob.core.windows.net/python-language-server-stable/Python-Language-Server-win-x64.%version%.nupkg
+set VERSION=0.5.45
+set url=https://pvsc.blob.core.windows.net/python-language-server-stable/Python-Language-Server-win-x64.%VERSION%.nupkg
 
 set nupkg=./pyls.nupkg
 curl -L %url% -o %nupkg%
