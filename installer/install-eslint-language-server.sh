@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-url="https://github.com/microsoft/vscode-eslint/releases/download/release%2F2.1.0-next.1/vscode-eslint-2.1.0.vsix"
+set -e
+
+version="2.1.0"
+url="https://github.com/microsoft/vscode-eslint/releases/download/release%2F$version-next.1/vscode-eslint-$version.vsix"
 asset="vscode-eslint.vsix"
 curl -L "$url" -o "$asset"
 unzip "$asset"
