@@ -1,6 +1,8 @@
 @echo off
 
-curl -L -o "vscode-eslint.vsix" "https://github.com/microsoft/vscode-eslint/releases/download/release%%2F2.1.0-next.1/vscode-eslint-2.1.0.vsix"
+setlocal
+set VERSION=2.1.0
+curl -L -o "vscode-eslint.vsix" "https://github.com/microsoft/vscode-eslint/releases/download/release%%2F%VERSION%-next.1/vscode-eslint-%VERSION%.vsix"
 call "%~dp0\run_unzip.cmd" vscode-eslint.vsix
 del vscode-eslint.vsix
 
