@@ -44,6 +44,19 @@
         "deps.edn",
         "shadow-cljs.edn"
       ]
+    },
+    {
+      "command": "clj-kondo-lsp",
+      "requires": [
+        "java"
+      ],
+      "root_uri_patterns": [
+        ".lein/",
+        ".shadow-cljs/",
+        "project.clj",
+        "deps.edn",
+        "shadow-cljs.edn"
+      ]
     }
   ],
   "cobol": [
