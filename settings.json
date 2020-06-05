@@ -59,6 +59,20 @@
       ]
     }
   ],
+  "cmake": [
+    {
+      "command": "cmake-language-server",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "cmake-language-server",
+      "requires": [
+        "python3"
+      ]
+    }
+  ],
   "cobol": [
     {
       "command": "cobol-language-support",
