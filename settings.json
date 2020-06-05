@@ -61,13 +61,13 @@
   ],
   "cmake": [
     {
-      "command": "cmake",
+      "command": "cmake-language-server",
       "requires": [
         "py"
       ]
     },
     {
-      "command": "cmake",
+      "command": "cmake-language-server",
       "requires": [
         "python3"
       ]
