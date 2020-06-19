@@ -14,38 +14,43 @@ goto :EOF
 REM python is 2 or 3 check(python3 version at python3 grammar)
 call python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
 if errorlevel 1 goto :python_fail
-
-REM python support slash path split?
-call python -m venv ./venv
-if not errorlevel 1 goto :install
-call python -m venv .\venv
-goto :install
+set PYTHON=python
+goto :create_venv
 
 :python3
 REM python3 always python 3.x :-)
 REM python3 -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
 REM if errorlevel 1 goto :python3_fail
+set PYTHON=python3
+goto :create_venv
 
-REM python3 support slash path split?
-call python3 -m venv ./venv
+:create_venv
+REM python support slash path split?
+call "%PYTHON%" -m venv ./venv
 if not errorlevel 1 goto :install
-call python3 -m venv .\venv
+call "%PYTHON%" -m venv .\venv
 goto :install
 
 :install
-
-REM pip command path check (env var set just path&&... need)
-where venv\bin\:pip3     2>NUL && set PIPPATH=venv\bin&&     goto :generate
-where venv\Scripts\:pip3 2>NUL && set PIPPATH=venv\Scripts&& goto :generate
+REM python command path check (env var set just path&&... need)
+where venv\bin\:python      2>NUL && set PYTHON=venv\bin\python&&      goto :generate
+where venv\Scripts\:python  2>NUL && set PYTHON=venv\Scripts\python&&  goto :generate
+where venv\bin\:python3     2>NUL && set PYTHON=venv\bin\python3&&     goto :generate
+where venv\Scripts\:python3 2>NUL && set PYTHON=venv\Scripts\python3&& goto :generate
 goto :EOF
 
-REM pyls exec cmd generate
 :generate
-%PIPPATH%\pip3 install --user -U pip
-%PIPPATH%\pip3 install %2
+REM get absolute path of bin or Scripts directory
+for /f %%V in ("%PYTHON%") do set BINPATH=%%~dpV
 
+REM upgrade pip (windows: use `python -m pip`)
+REM and install target package
+"%PYTHON%" -m pip install -U pip
+"%PYTHON%" -m pip install %2
+
+REM exec cmd generate
 echo @echo off ^
 
-%%~dp0\%PIPPATH%\%1 %%* ^
+"%BINPATH%%1" %%* ^
 
 > %1.cmd
