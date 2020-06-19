@@ -99,6 +99,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | JavaScript       | eslint-language-server                                 | Yes           |
 | Python           | pyls                                                   | Yes           |
 | Python           | pyls-ms (Microsoft Version)                            | Yes           |
+| Python           | jedi-language-server                                   | Yes           |
 | Rust             | rls                                                    | No            |
 | Go               | gopls                                                  | Yes           |
 | Go               | golangci-lint-langserver                               | Yes           |
