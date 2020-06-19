@@ -528,6 +528,18 @@
       "requires": [
         "python"
       ]
+    },
+    {
+      "command": "jedi-language-server",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "jedi-language-server",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "r": [
