@@ -18,12 +18,11 @@ Language Servers are not easy to install. Visual Studio Code provides easy ways 
 Using the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager:
 
 ```viml
-Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 ```
 
-You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and its accompanying plugins and vim-lsp-settings.
+You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and vim-lsp-settings.
 
 If you want to use auto-completion, you can use one of the following.
 
