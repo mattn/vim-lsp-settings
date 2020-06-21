@@ -2,7 +2,7 @@
 
 set -e
 
-git clone https://github.com/fsprojects/fsharp-language-server .
+git clone --depth=1 https://github.com/fsprojects/fsharp-language-server .
 npm install
 dotnet build -c Release
 
