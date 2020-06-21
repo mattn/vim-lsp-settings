@@ -2,7 +2,7 @@
 
 set -e
 
-git clone "https://github.com/castwide/solargraph" .
+git clone --depth=1 https://github.com/castwide/solargraph .
 bundle install --path vendor/bundle
 
 cat <<EOF >solargraph
