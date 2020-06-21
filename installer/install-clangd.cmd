@@ -6,7 +6,7 @@ echo Downloading clang and LLVM...
 curl -L -o LLVM-%VERSION%-win64.exe "https://github.com/llvm/llvm-project/releases/download/llvmorg-%VERSION%/LLVM-%VERSION%-win64.exe"
 echo Running setup...
 
-REM Run setup as regular user to avoid a UAC popup
+rem Run setup as regular user to avoid a UAC popup
 set __COMPAT_LAYER=RUNASINVOKER
 md tmp
 LLVM-%VERSION%-win64.exe /S /D=%cd%\tmp
