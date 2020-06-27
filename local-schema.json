@@ -7,7 +7,7 @@
       "properties": {
         "blocklist": {
           "items": {
-            "description": "define list of blocked language server",
+            "description": "define list of blocked language servers",
             "pattern": "^[a-zA-Z0-9_-]+$",
             "type": "string"
           },
@@ -49,7 +49,7 @@
         },
         "allowlist": {
           "items": {
-            "description": "define list of allowed language server",
+            "description": "define list of allowed language servers",
             "pattern": "^[a-zA-Z0-9_-]+$",
             "type": "string"
           },
