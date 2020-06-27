@@ -477,7 +477,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   delcommand LspRegisterServer
 
   if l:disabled == 0 && l:found ==# 0
-    if a:ft !=# '_' && get(g:, 'lsp_settings_enable_suggestions') == 1
+    if a:ft !=# '_' && get(g:, 'lsp_settings_enable_suggestions', 1) == 1
       call s:vim_lsp_settings_suggest(a:ft)
     endif
   else

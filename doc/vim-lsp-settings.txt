@@ -124,10 +124,9 @@ and put schemas property like below:
 
 					  *g:lsp_settings_enable_suggestions*
 g:lsp_settings_enable_suggestions
-  Default: 0
-  Set 1 if you'd like to get "Please do :LspInstallServer to enable Language
-  Server" suggestion messages when you open a file with its filetype not being
-  supposed by installed items.
+  Default: 1
+  Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
+  Language Server" suggestion messages.
 
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
