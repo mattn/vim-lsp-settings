@@ -223,8 +223,8 @@ Overridable keys are:
 
 * cmd (List ex: `['clangd-6.0', '-enable-snippets']`)
 * initialization_options (Dictionary)
-* whitelist (List)
-* blacklist (List)
+* allowlist (List)
+* blocklist (List)
 * config (Dictionary)
 * workspace_config (Dictionary)
 * disabled (Boolean)

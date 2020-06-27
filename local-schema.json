@@ -5,9 +5,9 @@
     "^([a-z0-9_-]+)+$": {
       "description": "define name of language server",
       "properties": {
-        "blacklist": {
+        "blocklist": {
           "items": {
-            "description": "define name of blacklisted language server",
+            "description": "define list of blocked language server",
             "pattern": "^[a-zA-Z0-9_-]+$",
             "type": "string"
           },
@@ -47,9 +47,9 @@
           },
           "type": "array"
         },
-        "whitelist": {
+        "allowlist": {
           "items": {
-            "description": "define name of whitelisted language server",
+            "description": "define list of allowed language server",
             "pattern": "^[a-zA-Z0-9_-]+$",
             "type": "string"
           },

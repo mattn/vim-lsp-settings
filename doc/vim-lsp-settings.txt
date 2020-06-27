@@ -83,7 +83,7 @@ script. You can modify configuration like below:
  \    'disabled': 0,
  \   },
  \  'efm-langserver': {
- \    'blacklist': ['', 'twitvim'],
+ \    'blocklist': ['', 'twitvim'],
  \    'disabled': 0,
  \   },
  \  'yaml-language-server1': {
