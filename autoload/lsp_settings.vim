@@ -195,7 +195,7 @@ function! lsp_settings#root_uri(name) abort
     endfor
   endif
 
-  let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(l:patterns, g:lsp_settings_root_markers))
+  let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(copy(l:patterns), g:lsp_settings_root_markers))
   if empty(l:dir)
     return lsp#utils#get_default_root_uri()
   endif
