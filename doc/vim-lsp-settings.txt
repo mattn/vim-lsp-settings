@@ -122,6 +122,12 @@ and put schemas property like below:
  }
 <
 
+					  *g:lsp_settings_enable_suggestions*
+g:lsp_settings_enable_suggestions
+  Default: 1
+  Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
+  Language Server" suggestion messages.
+
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
   contains the .vim-lsp-settings config directory.
