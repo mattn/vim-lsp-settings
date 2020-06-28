@@ -65,7 +65,7 @@ let s:color_map = {
 
 function! lsp_settings#profile#status() abort
   let l:settings = lsp_settings#settings()
-  let l:active_servers = lsp#get_whitelisted_servers()
+  let l:active_servers = lsp#get_allowed_servers()
 
   let l:servers = []
   for l:ft in keys(l:settings)

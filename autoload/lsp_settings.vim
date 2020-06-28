@@ -493,7 +493,7 @@ endfunction
 
 function! lsp_settings#init() abort
   for l:ft in keys(s:settings)
-    if has_key(g:, 'lsp_settings_whitelist') && index(g:lsp_settings_whitelist, l:ft) == -1 || empty(s:settings[l:ft])
+    if has_key(g:, 'lsp_settings_allowlist') && index(g:lsp_settings_allowlist, l:ft) == -1 || empty(s:settings[l:ft])
       continue
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
