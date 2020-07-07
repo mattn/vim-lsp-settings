@@ -134,7 +134,7 @@
       "requires": [
         "elixir"
       ],
-      "root_uri_patterns":[
+      "root_uri_patterns": [
         "mix.exs"
       ],
       "vim_plugin": {
@@ -270,6 +270,18 @@
       ],
       "root_uri_patterns": [
         "build.gradle"
+      ]
+    }
+  ],
+  "haskell": [
+    {
+      "command": "hie",
+      "requires": [
+        "stack"
+      ],
+      "root_uri_patterns": [
+        "stack.yaml",
+        "package.yaml"
       ]
     }
   ],

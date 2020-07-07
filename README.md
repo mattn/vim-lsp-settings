@@ -138,6 +138,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | SystemVerilog    | svls                                                   | Yes           |
 | Apex/VisualForce | apex-jorje-lsp                                         | Yes           |
 | *                | efm-langserver                                         | Yes           |
+| Haskell          | haskell-ide-engine                                     | No            |
 
 ## Notes
 
@@ -172,6 +173,11 @@ $ npm install @playlyfe/gql --save-dev
 If you have a separate existing installation of the dart analysis server and
 want it to be used, it must either exist in your path, or you must specify its
 location. See 'Configurations' below.
+
+### [haskell ide engine](https://github.com/haskell/haskell-ide-engine) (Haskell)
+
+If you installed hie with stack, you can use hie without configurations.
+But if you have not installed hie yet, you can install it by following [these steps](https://github.com/haskell/haskell-ide-engine#installation).
 
 ## Configurations
 
