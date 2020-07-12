@@ -101,6 +101,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Python           | pyls-ms (Microsoft Version)                            | Yes           |
 | Python           | jedi-language-server                                   | Yes           |
 | Rust             | rls                                                    | No            |
+| Rust             | rust-analyzer                                          | Yes           |
 | Go               | gopls                                                  | Yes           |
 | Go               | golangci-lint-langserver                               | Yes           |
 | Ruby             | solargraph                                             | Yes           |
