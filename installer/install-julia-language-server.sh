@@ -7,7 +7,6 @@ julia -e 'using Pkg; Pkg.add("LanguageServer")'
 cat <<EOF >julia-language-server
 #!/usr/bin/env bash
 
-DIR=\$(cd \$(dirname \$0); pwd)
 julia -e "using LanguageServer, LanguageServer.SymbolServer; runserver()"
 EOF
 
