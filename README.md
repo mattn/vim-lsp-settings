@@ -140,6 +140,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Apex/VisualForce | apex-jorje-lsp                                         | Yes           |
 | *                | efm-langserver                                         | Yes           |
 | Haskell          | haskell-ide-engine                                     | No            |
+| Julia            | LanguageServer.jl                                      | No            |
 
 ## Notes
 
