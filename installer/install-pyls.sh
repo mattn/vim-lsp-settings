@@ -3,4 +3,3 @@
 set -e
 
 "$(dirname "$0")/pip_install.sh" pyls 'python-language-server[all]'
-"$(dirname "$0")/pip_install.sh" pyls-isort pyls-isort
