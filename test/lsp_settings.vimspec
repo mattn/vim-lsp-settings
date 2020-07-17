@@ -107,9 +107,8 @@ Describe lsp_settings
             call lsp_settings#clear()
             call lsp_settings#init()
             new
-            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar'], 'allowlist': ['python', 'zsh']}}
+            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar']}}
             let g:vim_lsp_settings_filetype_no_delays = 1
-            setfiletype zsh
             Throw /E117/ :setfiletype python
             bw!
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
