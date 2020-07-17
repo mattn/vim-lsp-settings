@@ -120,6 +120,24 @@ Describe lsp_settings
             unlet g:lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
         End
+
+        It should setup commands and autocmds with unknown filetype in allowlist.
+            call lsp_settings#clear()
+            call lsp_settings#init()
+            new
+            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar'], 'allowlist': ['python', 'zsh']}}
+            let g:vim_lsp_settings_filetype_no_delays = 1
+            setfiletype zsh
+            bw!
+            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
+                exe 'augroup ' . v
+                  autocmd!
+                augroup END
+                exe 'augroup! ' . v
+            endfor
+            unlet g:lsp_settings
+            unlet g:vim_lsp_settings_filetype_no_delays
+        End
     End
 
     Describe lsp_settings#root_path
