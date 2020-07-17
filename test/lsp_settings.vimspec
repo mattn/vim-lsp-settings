@@ -129,12 +129,6 @@ Describe lsp_settings
             let g:vim_lsp_settings_filetype_no_delays = 1
             setfiletype zsh
             bw!
-            for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
-                exe 'augroup ' . v
-                  silent! autocmd!
-                augroup END
-                silent! exe 'augroup! ' . v
-            endfor
             unlet g:lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
         End
