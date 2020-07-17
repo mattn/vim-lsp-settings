@@ -492,8 +492,9 @@ function! lsp_settings#init() abort
       if !has_key(s:settings, l:ft)
         let s:settings[l:ft] = []
       endif
+      let l:found = 0
       for [l:ft2, l:configs] in items(s:settings)
-        if l:ft ==# l:ft2
+        if l:found || l:ft ==# l:ft2
           continue
         endif
         for l:config in l:configs
@@ -501,6 +502,8 @@ function! lsp_settings#init() abort
             continue
           endif
           call add(s:settings[l:ft], l:config)
+          let l:found = 1
+          break
         endfor
       endfor
     endfor
