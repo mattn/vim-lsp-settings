@@ -369,14 +369,6 @@ function! s:vim_lsp_suggest_plugin() abort
   endfor
 endfunction
 
-function! s:vim_lsp_load_or_suggest_delay(ft) abort
-  call s:vim_lsp_load_or_suggest(a:ft)
-  "if get(g:, 'vim_lsp_settings_filetype_no_delays', 0)
-  "  return s:vim_lsp_load_or_suggest(a:ft)
-  "endif
-  "call timer_start(0, {timer -> [s:vim_lsp_load_or_suggest(a:ft), execute('doautocmd BufReadPost')]})
-endfunction
-
 function! s:vim_lsp_load_or_suggest(ft) abort
   if (a:ft !=# '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
     return
@@ -492,13 +484,38 @@ function! lsp_settings#clear() abort
 endfunction
 
 function! lsp_settings#init() abort
+  for [l:name, l:server] in items(get(g:, 'lsp_settings', {}))
+    if !has_key(l:server, 'allowlist')
+      continue
+    endif
+    for l:ft in l:server['allowlist']
+      if !has_key(s:settings, l:ft)
+        let s:settings[l:ft] = []
+      endif
+      let l:found = 0
+      for [l:ft2, l:configs] in items(s:settings)
+        if l:found || l:ft ==# l:ft2
+          continue
+        endif
+        for l:config in l:configs
+          if l:config.command !=# l:name
+            continue
+          endif
+          call add(s:settings[l:ft], l:config)
+          let l:found = 1
+          break
+        endfor
+      endfor
+    endfor
+  endfor
+
   for l:ft in keys(s:settings)
     if has_key(g:, 'lsp_settings_allowlist') && index(g:lsp_settings_allowlist, l:ft) == -1 || empty(s:settings[l:ft])
       continue
     endif
     exe 'augroup' lsp_settings#utils#group_name(l:ft)
       autocmd!
-      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest_delay('%s')", l:ft)
+      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest('%s')", l:ft)
     augroup END
   endfor
   augroup vim_lsp_suggest

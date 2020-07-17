@@ -95,9 +95,9 @@ Describe lsp_settings
             Assert !exists('#vim_lsp_suggest_efm_langserver')
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_"')
                 exe 'augroup ' . v
-                  autocmd!
+                  silent! autocmd!
                 augroup END
-                exe 'augroup! ' . v
+                silent! exe 'augroup! ' . v
             endfor
             bw!
             unlet g:vim_lsp_settings_filetype_no_delays
@@ -107,15 +107,15 @@ Describe lsp_settings
             call lsp_settings#clear()
             call lsp_settings#init()
             new
-            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar']}}
+            let g:lsp_settings = {'pyls': {'cmd': ['foo', 'bar'], 'allowlist': ['python', 'zsh']}}
             let g:vim_lsp_settings_filetype_no_delays = 1
             Throw /E117/ :setfiletype python
             bw!
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
                 exe 'augroup ' . v
-                  autocmd!
+                  silent! autocmd!
                 augroup END
-                exe 'augroup! ' . v
+                silent! exe 'augroup! ' . v
             endfor
             unlet g:lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
