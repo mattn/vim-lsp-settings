@@ -95,7 +95,7 @@ Describe lsp_settings
             Assert !exists('#vim_lsp_suggest_efm_langserver')
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_"')
                 exe 'augroup ' . v
-                  autocmd!
+                  silent! autocmd!
                 augroup END
                 silent! exe 'augroup! ' . v
             endfor
@@ -113,7 +113,7 @@ Describe lsp_settings
             bw!
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
                 exe 'augroup ' . v
-                  autocmd!
+                  silent! autocmd!
                 augroup END
                 silent! exe 'augroup! ' . v
             endfor
@@ -131,7 +131,7 @@ Describe lsp_settings
             bw!
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_suggest"')
                 exe 'augroup ' . v
-                  autocmd!
+                  silent! autocmd!
                 augroup END
                 silent! exe 'augroup! ' . v
             endfor
