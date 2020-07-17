@@ -97,7 +97,7 @@ Describe lsp_settings
                 exe 'augroup ' . v
                   autocmd!
                 augroup END
-                exe 'augroup! ' . v
+                silent! exe 'augroup! ' . v
             endfor
             bw!
             unlet g:vim_lsp_settings_filetype_no_delays
@@ -115,7 +115,7 @@ Describe lsp_settings
                 exe 'augroup ' . v
                   autocmd!
                 augroup END
-                exe 'augroup! ' . v
+                silent! exe 'augroup! ' . v
             endfor
             unlet g:lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
@@ -133,7 +133,7 @@ Describe lsp_settings
                 exe 'augroup ' . v
                   autocmd!
                 augroup END
-                exe 'augroup! ' . v
+                silent! exe 'augroup! ' . v
             endfor
             unlet g:lsp_settings
             unlet g:vim_lsp_settings_filetype_no_delays
