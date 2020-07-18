@@ -97,7 +97,8 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | JavaScript       | typescript-language-server                             | Yes           |
 | JavaScript       | javascript-typescript-stdio                            | Yes           |
 | JavaScript       | eslint-language-server                                 | Yes           |
-| Python           | pyls                                                   | Yes           |
+| Python           | pyls-all (pyls with dependencies)                      | Yes           |
+| Python           | pyls (pyls without dependencies)                       | Yes           |
 | Python           | pyls-ms (Microsoft Version)                            | Yes           |
 | Python           | jedi-language-server                                   | Yes           |
 | Rust             | rls                                                    | No            |

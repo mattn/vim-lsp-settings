@@ -524,6 +524,18 @@
   ],
   "python": [
     {
+      "command": "pyls-all",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "pyls-all",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
       "command": "pyls",
       "requires": [
         "py"
