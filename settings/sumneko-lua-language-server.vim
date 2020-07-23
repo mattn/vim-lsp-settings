@@ -1,42 +1,42 @@
 augroup vim_lsp_settings_sumneko_lua_language_server
   let g:vim_lsp_settings_sumneko_lua_language_server_workspace_config = {
-        \  "Lua": {
-        \    "color": {
-        \      "mode": "Semantic"
+        \  'Lua': {
+        \    'color': {
+        \      'mode': 'Semantic'
         \    },
-        \    "completion": {
-        \      "callSnippet": "Disable",
-        \      "enable": v:true,
-        \      "keywordSnippet": "Replace"
+        \    'completion': {
+        \      'callSnippet': 'Disable',
+        \      'enable': v:true,
+        \      'keywordSnippet': 'Replace'
         \    },
-        \    "develop": {
-        \      "debuggerPort": 11412,
-        \      "debuggerWait": v:false,
-        \      "enable": v:false
+        \    'develop': {
+        \      'debuggerPort': 11412,
+        \      'debuggerWait': v:false,
+        \      'enable': v:false
         \    },
-        \    "diagnostics": {
-        \      "enable": v:true,
-        \      "globals": "",
-        \      "severity": {}
+        \    'diagnostics': {
+        \      'enable': v:true,
+        \      'globals': '',
+        \      'severity': {}
         \    },
-        \    "hover": {
-        \      "enable": v:true,
-        \      "viewNumber": v:true,
-        \      "viewString": v:true,
-        \      "viewStringMax": 1000
+        \    'hover': {
+        \      'enable': v:true,
+        \      'viewNumber': v:true,
+        \      'viewString': v:true,
+        \      'viewStringMax': 1000
         \    },
-        \    "runtime": {
-        \      "path": ["?.lua", "?/init.lua", "?/?.lua"],
-        \      "version": "Lua 5.3"
+        \    'runtime': {
+        \      'path': ['?.lua', '?/init.lua', '?/?.lua'],
+        \      'version': 'Lua 5.3'
         \    },
-        \    "signatureHelp": {
-        \      "enable": v:true
+        \    'signatureHelp': {
+        \      'enable': v:true
         \    },
-        \    "workspace": {
-        \      "ignoreDir": [],
-        \      "maxPreload": 1000,
-        \      "preloadFileSize": 100,
-        \      "useGitIgnore": v:true
+        \    'workspace': {
+        \      'ignoreDir': [],
+        \      'maxPreload': 1000,
+        \      'preloadFileSize': 100,
+        \      'useGitIgnore': v:true
         \    }
         \  }
         \}
