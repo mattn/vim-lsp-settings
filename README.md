@@ -109,6 +109,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | PHP              | intelephense                                           | Yes           |
 | Java             | eclipse-jdt-ls                                         | Yes           |
 | Lua              | emmylua-ls                                             | Yes           |
+| Lua              | sumneko-lua-language-server                            | Yes           |
 | Vim              | vim-language-server                                    | Yes           |
 | Bash             | bash-language-server                                   | Yes           |
 | Terraform        | terraform-lsp                                          | Yes           |
