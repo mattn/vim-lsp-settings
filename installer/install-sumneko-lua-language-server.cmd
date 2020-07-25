@@ -2,10 +2,10 @@
 
 setlocal
 set VERSION=0.20.2
-curl -L -o "vscode-eslint.vsix" "https://github.com/sumneko/vscode-lua/releases/download/v%VERSION%/lua-%VERSION%.vsix"
+curl -L -o "vscode-lua.vsix" "https://github.com/sumneko/vscode-lua/releases/download/v%VERSION%/lua-%VERSION%.vsix"
 
-call "%~dp0\run_unzip.cmd" vscode-eslint.vsix
-del vscode-eslint.vsix
+call "%~dp0\run_unzip.cmd" vscode-lua.vsix
+del vscode-lua.vsix
 
 echo @echo off ^
 
