@@ -14,14 +14,12 @@ darwin)
 esac
 
 version="0.20.2"
+url="https://github.com/sumneko/vscode-lua/releases/download/v$version/lua-$version.vsix"
+asset="vscode-lua.vsix"
 
-publisher="sumneko"
-extensionname="lua"
-filename="sumneko-lua-language-server.zip"
-
-curl -Lo "$filename" "https://$publisher.gallery.vsassets.io/_apis/public/gallery/publisher/$publisher/extension/$extensionname/$version/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
-unzip "$filename"
-rm "$filename"
+curl -L "$url" -o "$asset"
+unzip "$asset"
+rm "$asset"
 
 chmod +x extension/server/bin/$platform/lua-language-server
 
