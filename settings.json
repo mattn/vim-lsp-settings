@@ -296,7 +296,7 @@
       ]
     },
     {
-      "command": "angular-language-service",
+      "command": "angular-language-server",
       "config": {
         "refresh_pattern": "\\(/\\|\\k\\+\\)$"
       },
