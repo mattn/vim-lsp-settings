@@ -294,6 +294,15 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "angular-language-server",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "java": [
