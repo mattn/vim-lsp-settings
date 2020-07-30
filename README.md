@@ -86,63 +86,66 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 
 | Language         | Language Server                                        | Local Install |
 |------------------|--------------------------------------------------------|:-------------:|
-| C/C++            | clangd                                                 | Yes           |
+| Apex/VisualForce | apex-jorje-lsp                                         | Yes           |
+| Bash             | bash-language-server                                   | Yes           |
 | C#               | omnisharp                                              | Yes           |
+| C/C++            | clangd                                                 | Yes           |
+| COBOL            | cobol-language-support                                 | Yes           |
+| CSS              | css-languageserver                                     | Yes           |
 | Clojure          | clojure-lsp                                            | Yes           |
 | Clojure          | clj-kondo-lsp                                          | Yes           |
 | Cmake            | cmake-language-server                                  | Yes           |
-| CSS              | vscode-css-languageserver-bin                          | Yes           |
-| TypeScript       | typescript-language-server                             | Yes           |
-| TypeScript       | eslint-language-server                                 | Yes           |
+| D                | dls                                                    | No            |
+| Dart             | analysis-server-dart-snapshot                          | Yes           |
+| Dockerfile       | dockerfile-language-server-nodejs                      | Yes           |
+| Elixir           | elixir-ls                                              | Yes           |
+| Elm              | elm-language-server                                    | Yes           |
+| Erlang           | erlang-ls                                              | Yes           |
+| F#               | fsharp-language-server                                 | Yes           |
+| Fortran          | fortls                                                 | Yes           |
+| Go               | gopls                                                  | Yes           |
+| Go               | golangci-lint-langserver                               | Yes           |
+| GraphQL          | gql-language-server                                    | Yes           |
+| Groovy           | groovy-language-server                                 | Yes           |
+| Haskell          | haskell-ide-engine                                     | No            |
+| HTML             | html-languageserver                                    | Yes           |
+| HTML             | angular-language-server                                | Yes           |
+| JSON             | json-languageserver                                    | Yes           |
+| Java             | eclipse-jdt-ls                                         | Yes           |
 | JavaScript       | typescript-language-server                             | Yes           |
 | JavaScript       | javascript-typescript-stdio                            | Yes           |
 | JavaScript       | eslint-language-server                                 | Yes           |
+| Julia            | LanguageServer.jl                                      | No            |
+| Kotlin           | kotlin-language-server                                 | Yes           |
+| Lisp             | cl-lsp                                                 | No            |
+| Lua              | emmylua-ls                                             | Yes           |
+| Lua              | sumneko-lua-language-server                            | Yes           |
+| Nim              | nimls                                                  | No            |
+| PHP              | intelephense                                           | Yes           |
 | Python           | pyls-all (pyls with dependencies)                      | Yes           |
 | Python           | pyls (pyls without dependencies)                       | Yes           |
 | Python           | pyls-ms (Microsoft Version)                            | Yes           |
 | Python           | jedi-language-server                                   | Yes           |
+| R                | languageserver                                         | No            |
+| Reason           | reason-language-server                                 | Yes           |
+| Ruby             | solargraph                                             | Yes           |
 | Rust             | rls                                                    | No            |
 | Rust             | rust-analyzer                                          | Yes           |
-| Go               | gopls                                                  | Yes           |
-| Go               | golangci-lint-langserver                               | Yes           |
-| Ruby             | solargraph                                             | Yes           |
-| PHP              | intelephense                                           | Yes           |
-| Java             | eclipse-jdt-ls                                         | Yes           |
-| Lua              | emmylua-ls                                             | Yes           |
-| Lua              | sumneko-lua-language-server                            | Yes           |
-| Vim              | vim-language-server                                    | Yes           |
-| Bash             | bash-language-server                                   | Yes           |
-| Terraform        | terraform-lsp                                          | Yes           |
-| Dockerfile       | dockerfile-language-server-nodejs                      | Yes           |
-| YAML             | yaml-language-server                                   | Yes           |
-| XML              | lemminx                                                | Yes           |
-| Fortran          | fortls                                                 | Yes           |
+| SQL              | sql-language-server                                    | Yes           |
+| SQL              | sqls                                                   | Yes           |
 | Scala            | Metals                                                 | Yes           |
-| Elm              | elm-language-server                                    | Yes           |
-| JSON             | json-languageserver                                    | Yes           |
 | Swift            | sourcekit-lsp                                          | No            |
-| COBOL            | cobol-language-support                                 | Yes           |
-| Reason           | reason-language-server                                 | Yes           |
+| SystemVerilog    | svls                                                   | Yes           |
 | TeX              | texlab                                                 | Yes           |
 | TeX              | digestif                                               | No            |
-| Nim              | nimls                                                  | No            |
-| D                | dls                                                    | No            |
-| Elixir           | elixir-ls                                              | Yes           |
-| Groovy           | groovy-language-server                                 | Yes           |
-| Dart             | analysis-server-dart-snapshot                          | Yes           |
-| Erlang           | erlang-ls                                              | Yes           |
-| F#               | fsharp-language-server                                 | Yes           |
-| GraphQL          | gql-language-server                                    | Yes           |
+| Terraform        | terraform-lsp                                          | Yes           |
+| TypeScript       | typescript-language-server                             | Yes           |
+| TypeScript       | eslint-language-server                                 | Yes           |
+| Vim              | vim-language-server                                    | Yes           |
 | Vue              | vue-language-server                                    | Yes           |
-| SQL              | sql-language-server                                    | Yes           |
-| Lisp             | cl-lsp                                                 | No            |
-| Kotlin           | kotlin-language-server                                 | Yes           |
-| R                | languageserver                                         | No            |
-| SystemVerilog    | svls                                                   | Yes           |
-| Apex/VisualForce | apex-jorje-lsp                                         | Yes           |
+| XML              | lemminx                                                | Yes           |
+| YAML             | yaml-language-server                                   | Yes           |
 | *                | efm-langserver                                         | Yes           |
-| Haskell          | haskell-ide-engine                                     | No            |
-| Julia            | LanguageServer.jl                                      | No            |
 
 ## Notes
 
@@ -248,6 +251,7 @@ If you have some Language Servers and want to use specified the server:
 
 ```vim
 let g:lsp_settings_filetype_perl = 'slp'
+let g:lsp_settings_filetype_html = ['html-languageserver', 'angular-language-server']
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server']
 ```
 
