@@ -1,4 +1,4 @@
-augroup vim_lsp_settings_tailwindcss-intellisenser
+augroup vim_lsp_settings_tailwindcss-intellisense
   au!
   LspRegisterServer {
       \ 'name': 'tailwindcss-intellisense',
