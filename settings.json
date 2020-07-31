@@ -307,7 +307,7 @@
     {
       "command": "tailwindcss-intellisense",
       "config": {
-        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|\\k\\+\\)$"
       },
       "requires": [
         "npm"
