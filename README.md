@@ -110,6 +110,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Haskell          | haskell-ide-engine                                     | No            |
 | HTML             | html-languageserver                                    | Yes           |
 | HTML             | angular-language-server                                | Yes           |
+| HTML             | tailwindcss-intellisense                               | Yes           |
 | JSON             | json-languageserver                                    | Yes           |
 | Java             | eclipse-jdt-ls                                         | Yes           |
 | JavaScript       | typescript-language-server                             | Yes           |
