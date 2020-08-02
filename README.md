@@ -40,7 +40,7 @@ Plug 'lighttiger2505/deoplete-vim-lsp'
 
 ### Notice
 
-If you use a plugin manager that merges  plugins (for example [dein](https://github.com/Shougo/dein.vim)), please turn of merging (for example with dein, merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
+If you use a plugin manager that merges  plugins (for example [dein](https://github.com/Shougo/dein.vim)), please turn off merging (for example with dein, merged = 0) or set `g:lsp_settings_servers_dir` option to a different directory from the vim-lsp's default.
 
 _reason_:
 
@@ -156,7 +156,7 @@ There is a Linux OS/version that does not run the locally installed clangd due t
 
 ### rls (Rust)
 
-If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instruction](https://github.com/rust-lang/rls#setup).
+If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
 
 ### gql-language-server (GraphQL)
 
