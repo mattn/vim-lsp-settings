@@ -156,7 +156,7 @@ There is a Linux OS/version that does not run the locally installed clangd due t
 
 ### rls (Rust)
 
-If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instruction](https://github.com/rust-lang/rls#setup).
+If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
 
 ### gql-language-server (GraphQL)
 
