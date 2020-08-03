@@ -104,6 +104,15 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "tailwindcss-intellisense",
+      "config": {
+        "refresh_pattern": "\\(@[a-zA-Z0-9_]*\\|[a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "d": [
@@ -307,7 +316,7 @@
     {
       "command": "tailwindcss-intellisense",
       "config": {
-        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+        "refresh_pattern": "\\(@[a-zA-Z0-9_]*\\|[a-zA-Z0-9_-]\\+\\)$"
       },
       "requires": [
         "npm"
