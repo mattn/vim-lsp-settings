@@ -700,6 +700,23 @@
       ]
     }
   ],
+  "svelte": [
+    {
+      "command": "svelte-language-server",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "svelte"
+        ],
+        "name": "evanleck/vim-svelte"
+      }
+    }
+  ],
   "swift": [
     {
       "command": "sourcekit-lsp",
