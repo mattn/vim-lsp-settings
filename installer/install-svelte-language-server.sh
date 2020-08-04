@@ -4,9 +4,7 @@ set -e
 
 git clone --depth=1 https://github.com/sveltejs/language-tools .
 
-npm install
-npm run bootstrap
-npm run build
+(cd packages/language-server && npm install && npm run build)
 
 cat <<EOF >svelte-language-server
 #!/usr/bin/env bash
