@@ -484,6 +484,12 @@
       "requires": []
     }
   ],
+  "ocaml": [
+    {
+      "command": "ocaml-lsp",
+      "requires": []
+    }
+  ],
   "perl": [
     {
       "command": "slp",
