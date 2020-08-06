@@ -136,6 +136,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | SQL              | sql-language-server                                    | Yes           |
 | SQL              | sqls                                                   | Yes           |
 | Scala            | Metals                                                 | Yes           |
+| Svelte           | svelte/language-tools                                  | Yes           |
 | Swift            | sourcekit-lsp                                          | No            |
 | SystemVerilog    | svls                                                   | Yes           |
 | TeX              | texlab                                                 | Yes           |
