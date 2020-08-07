@@ -3,12 +3,10 @@
 set -e
 
 DEFAULT_DIR="$(pwd)"
-INSTALL_DIR="$DEFAULT_DIR/bin"
-
 
 # We should not download GitHub's zip file here, because it doesn't include some submodules.
-git clone --recurse-submodules http://github.com/ocaml/ocaml-lsp.git --depth=1
-cd ocaml-lsp
+git clone --recurse-submodules http://github.com/ocaml/ocaml-lsp.git ocaml-lsp-files  --depth=1
+cd ocaml-lsp-files
 
 rm -r lsp/test
 export OPAMROOT="$(pwd)/.opam"
@@ -20,8 +18,5 @@ opam exec --switch=. dune build
 rm -rf .git
 
 cd "$DEFAULT_DIR"
-ln -snf "ocaml-lsp/_build/install/default/bin/ocamllsp" .
-chmod +x ocamllsp
-
-# output : ./ocamllsp
-
+ln -snf "./ocaml-lsp-files/_build/default/ocaml-lsp-server/src/main.exe" ocaml-lsp
+chmod +x ocaml-lsp
