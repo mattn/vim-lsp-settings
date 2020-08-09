@@ -9,9 +9,11 @@ git clone --recurse-submodules http://github.com/ocaml/ocaml-lsp.git ocaml-lsp-f
 cd ocaml-lsp-files
 
 rm -r lsp/test
-export OPAMROOT="$(pwd)/.opam"
+OPAMROOT="$(pwd)/.opam"
+export OPAMROOT
+
 opam init -a -n
-eval $(opam env)
+eval "$(opam env)"
 opam switch create . -y
 opam exec --switch=. dune build
 
