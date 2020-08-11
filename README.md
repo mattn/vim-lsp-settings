@@ -112,9 +112,11 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | HTML             | angular-language-server                                | Yes           |
 | HTML             | tailwindcss-intellisense                               | Yes           |
 | JSON             | json-languageserver                                    | Yes           |
+| JSON             | rome                                                   | Yes           |
 | Java             | eclipse-jdt-ls                                         | Yes           |
 | JavaScript       | typescript-language-server                             | Yes           |
 | JavaScript       | javascript-typescript-stdio                            | Yes           |
+| JavaScript       | rome                                                   | Yes           |
 | JavaScript       | eslint-language-server                                 | Yes           |
 | Julia            | LanguageServer.jl                                      | No            |
 | Kotlin           | kotlin-language-server                                 | Yes           |
@@ -143,6 +145,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | TeX              | digestif                                               | No            |
 | Terraform        | terraform-lsp                                          | Yes           |
 | TypeScript       | typescript-language-server                             | Yes           |
+| TypeScript       | rome                                                   | Yes           |
 | TypeScript       | eslint-language-server                                 | Yes           |
 | Vim              | vim-language-server                                    | Yes           |
 | Vue              | vue-language-server                                    | Yes           |
