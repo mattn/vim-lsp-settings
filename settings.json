@@ -360,6 +360,12 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "rome",
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "javascriptreact": [
@@ -386,6 +392,12 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "rome",
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "json": [
@@ -394,6 +406,12 @@
       "config": {
         "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$"
       },
+      "requires": [
+        "npm"
+      ]
+    },
+    {
+      "command": "rome",
       "requires": [
         "npm"
       ]
@@ -795,6 +813,12 @@
         "package.json",
         "tsconfig.json"
       ]
+    },
+    {
+      "command": "rome",
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "typescriptreact": [
@@ -816,6 +840,12 @@
       "root_uri_patterns": [
         "package.json",
         "tsconfig.json"
+      ]
+    },
+    {
+      "command": "rome",
+      "requires": [
+        "npm"
       ]
     }
   ],
