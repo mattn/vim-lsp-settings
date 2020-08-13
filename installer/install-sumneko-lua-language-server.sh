@@ -13,7 +13,7 @@ darwin)
 	;;
 esac
 
-version="0.20.2"
+version="0.20.3"
 url="https://github.com/sumneko/vscode-lua/releases/download/v$version/lua-$version.vsix"
 asset="vscode-lua.vsix"
 
