@@ -9,7 +9,7 @@ cat <<EOF >groovy-language-server
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
-java -jar \$DIR/build/libs/groovy-language-server-all.jar
+java -jar \$DIR/build/libs/groovy-language-server-all.jar \$*
 EOF
 
 chmod +x groovy-language-server
