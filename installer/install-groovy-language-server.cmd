@@ -1,7 +1,7 @@
 @echo off
 
 git clone --depth=1 https://github.com/prominic/groovy-language-server .
-call gradlew.cmd build
+call gradlew.bat build
 
 echo @echo off ^
 
