@@ -280,17 +280,6 @@
       "root_uri_patterns": [
         "build.gradle"
       ]
-    },
-    {
-      "command": "java-language-server",
-      "requires": [
-        "java",
-        "mvn"
-      ],
-      "root_uri_patterns": [
-        "pom.xml",
-        "build.gradle"
-      ]
     }
   ],
   "haskell": [
@@ -339,6 +328,17 @@
       "command": "eclipse-jdt-ls",
       "requires": [
         "java"
+      ],
+      "root_uri_patterns": [
+        "pom.xml",
+        "build.gradle"
+      ]
+    },
+    {
+      "command": "java-language-server",
+      "requires": [
+        "java",
+        "mvn"
       ],
       "root_uri_patterns": [
         "pom.xml",
