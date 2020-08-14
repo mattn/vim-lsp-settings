@@ -5,6 +5,6 @@ call gradlew.bat build
 
 echo @echo off ^
 
-java -jar %%~dp0\build\libs\groovy-language-server-all.jar %%*
+java -jar %%~dp0\build\libs\groovy-language-server-all.jar %%* ^
 
 > groovy-language-server.cmd
