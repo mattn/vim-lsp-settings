@@ -860,6 +860,18 @@
       ]
     }
   ],
+  "vala": [
+    {
+      "command": "vala-language-server",
+      "requires": [
+        "meson",
+        "valac"
+      ],
+      "root_uri_patterns": [
+        "meson.build"
+      ]
+    }
+  ],
   "vim": [
     {
       "command": "vim-language-server",
