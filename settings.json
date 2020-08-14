@@ -280,6 +280,17 @@
       "root_uri_patterns": [
         "build.gradle"
       ]
+    },
+    {
+      "command": "java-language-server",
+      "requires": [
+        "java",
+        "mvn"
+      ],
+      "root_uri_patterns": [
+        "pom.xml",
+        "build.gradle"
+      ]
     }
   ],
   "haskell": [
