@@ -150,6 +150,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | TypeScript       | rome                              | Yes           | Yes           |
 | TypeScript       | eslint-language-server            | Yes           | Yes           |
 | Vim              | vim-language-server               | Yes           | Yes           |
+| Vala             | vala-language-server              | No            | No            |
 | Vue              | vue-language-server               | Yes           | Yes           |
 | XML              | lemminx                           | Yes           | Yes           |
 | YAML             | yaml-language-server              | Yes           | Yes           |
