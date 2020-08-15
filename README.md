@@ -254,8 +254,6 @@ Overridable keys are:
 * root_uri_patterns (List)
 * semantic_highlight (Dictionary)
 
-If you installed ruby but not solargraph, you can install solargraph with the following command.
-
 If you have some Language Servers and want to use specified the server:
 
 ```vim
