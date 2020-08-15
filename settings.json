@@ -117,6 +117,10 @@
   ],
   "d": [
     {
+      "command": "serve-d",
+      "requires": []
+    },
+    {
       "command": "dls",
       "requires": [
         "npm"
