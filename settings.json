@@ -525,7 +525,15 @@
   "ocaml": [
     {
       "command": "ocaml-lsp",
-      "requires": []
+      "requires": [
+        "opam"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ml"
+        ],
+        "name": "ocaml/vim-ocaml"
+      }
     }
   ],
   "perl": [

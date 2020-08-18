@@ -13,7 +13,7 @@ OPAMROOT="$(pwd)/.opam"
 export OPAMROOT
 
 opam init -a -n
-eval "$(opam env)"
+eval "$(opam env)" 2> /dev/null
 opam switch create . -y
 opam exec --switch=. dune build
 
