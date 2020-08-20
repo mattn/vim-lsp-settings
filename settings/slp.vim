@@ -2,7 +2,7 @@ augroup vim_lsp_settings_slp
   au!
   LspRegisterServer {
       \ 'name': 'slp',
-      \ 'cmd': {server_info->lsp_settings#get('slp', 'cmd', [lsp_settings#exec_path('slp.pl')])},
+      \ 'cmd': {server_info->lsp_settings#get('slp', 'cmd', [lsp_settings#exec_path('slp')])},
       \ 'root_uri':{server_info->lsp_settings#get('slp', 'root_uri', lsp_settings#root_uri('slp'))},
       \ 'initialization_options': lsp_settings#get('slp', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('slp', 'allowlist', ['perl']),
