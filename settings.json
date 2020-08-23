@@ -927,5 +927,13 @@
         "npm"
       ]
     }
+  ],
+  "zig": [
+    {
+      "command": "zls",
+      "requires": [
+        "zig"
+      ]
+    }
   ]
 }
