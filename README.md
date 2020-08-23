@@ -154,6 +154,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Vue              | vue-language-server               | Yes           | Yes           |
 | XML              | lemminx                           | Yes           | Yes           |
 | YAML             | yaml-language-server              | Yes           | Yes           |
+| ZIG              | zls                               | No            | No            |
 | *                | efm-langserver                    | Yes           | Yes           |
 
 ## Notes
