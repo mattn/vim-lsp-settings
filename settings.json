@@ -932,7 +932,8 @@
     {
       "command": "zls",
       "requires": [
-        "zig"
+        "zig",
+        "git"
       ]
     }
   ]

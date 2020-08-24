@@ -3,7 +3,7 @@
 setlocal enabledelayedexpansion
 
 git clone --recurse-submodules --depth=1 https://github.com/zigtools/zls .
-zls build
+zig build
 move zig-cache\bin\zls.exe
 rd /Q /S zig-cache src tests
 
