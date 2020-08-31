@@ -96,6 +96,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Clojure          | clj-kondo-lsp                     | Yes           | Yes           |
 | Cmake            | cmake-language-server             | Yes           | Yes           |
 | D                | dls                               | Yes           | No            |
+| D                | serve-d                           | Yes           | No            |
 | Dart             | analysis-server-dart-snapshot     | Yes           | Yes           |
 | Dockerfile       | dockerfile-language-server-nodejs | Yes           | Yes           |
 | Elixir           | elixir-ls                         | Yes           | Yes           |
