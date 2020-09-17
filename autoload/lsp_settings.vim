@@ -297,7 +297,7 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
       endif
       exe 'source' l:script
       delcommand LspRegisterServer
-      doautocmd User lsp_setup
+      doautocmd <nomodeline> User lsp_setup
     endif
   endif
   call lsp_settings#utils#msg('Installed ' . a:command)
@@ -474,7 +474,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     endif
   else
     if exists('#User#lsp_setup') !=# 0
-      doautocmd User lsp_setup
+      doautocmd <nomodeline> User lsp_setup
     endif
   endif
 endfunction
