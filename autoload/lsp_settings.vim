@@ -303,6 +303,17 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   call lsp_settings#utils#msg('Installed ' . a:command)
 endfunction
 
+function! s:vim_lsp_install_server_exec(server, command) abort
+  let l:server_install_dir = lsp_settings#servers_dir() . '/' . a:server
+  if isdirectory(l:server_install_dir)
+    call lsp_settings#utils#msg('Uninstalling ' . a:server)
+    call delete(l:server_install_dir, 'rf')
+  endif
+  call mkdir(l:server_install_dir, 'p')
+  call lsp_settings#utils#msg('Installing ' . a:server)
+  call system(a:command)
+endfunction
+
 function! s:vim_lsp_install_server(ft, command, bang) abort
   if !empty(a:command) && !lsp_settings#utils#valid_name(a:command)
     call lsp_settings#utils#error('Invalid server name')
@@ -316,23 +327,7 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
   if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") ==# 2
     return
   endif
-  let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
-  if isdirectory(l:server_install_dir)
-    call lsp_settings#utils#msg('Uninstalling ' . l:entry[0])
-    call delete(l:server_install_dir, 'rf')
-  endif
-  call mkdir(l:server_install_dir, 'p')
-  call lsp_settings#utils#msg('Installing ' . l:entry[0])
-  if has('nvim')
-    split new
-    call termopen(l:entry[1], {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
-  else
-    let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
-    let l:job = term_getjob(l:bufnr)
-    if l:job != v:null
-      call job_setoptions(l:job, {'exit_cb': function('s:vim_lsp_install_server_post', [l:entry[0]])})
-    endif
-  endif
+  call s:vim_lsp_install_server_exec(l:entry[0], l:entry[1])
 endfunction
 
 function! s:vim_lsp_settings_suggest(ft) abort
@@ -481,6 +476,50 @@ endfunction
 
 function! lsp_settings#clear() abort
   let s:ftmap = {}
+endfunction
+
+function! lsp_settings#update_servers(bang) abort
+  if empty(a:bang) && confirm('Update all installed servers?', "&Yes\n&Cancel") ==# 2
+    return
+  endif
+  let l:servers = []
+  for l:ft in keys(s:settings)
+    for l:v in s:settings[l:ft]
+      if index(l:servers, l:v.command) ==# -1
+        call add(l:servers, l:v.command)
+      endif
+    endfor
+  endfor
+  echo
+
+  let l:old_more = &more
+  set nomore
+  try
+    for l:server in uniq(sort(l:servers))
+      let l:path = printf('%s/%s/%s', lsp_settings#servers_dir(), l:server, l:server)
+      if has('win32')
+        let l:path .= '.cmd'
+      endif
+      if !executable(l:path)
+        continue
+      endif
+      call lsp_settings#utils#msg_inline('Uninstalling ' . l:server)
+      let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:server
+      if isdirectory(l:server_install_dir)
+        call delete(l:server_install_dir, 'rf')
+      endif
+      let l:command = printf('%s/install-%s', s:installer_dir, l:server)
+      if has('win32')
+        let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+      else
+        let l:command = l:command . '.sh'
+      endif
+      call lsp_settings#utils#msg_inline('Installing ' . l:server)
+      call system(l:command)
+    endfor
+  finally
+    let &more = l:old_more
+  endtry
 endfunction
 
 function! lsp_settings#init() abort

@@ -5,6 +5,12 @@ function! lsp_settings#utils#msg(msg) abort
   echohl None
 endfunction
 
+function! lsp_settings#utils#msg_inline(msg) abort
+  echohl Comment
+  echo a:msg
+  echohl None
+endfunction
+
 function! lsp_settings#utils#error(msg) abort
   redraw
   echohl Error
