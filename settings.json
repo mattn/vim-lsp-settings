@@ -632,6 +632,12 @@
       ]
     },
     {
+      "command": "pyright-langserver",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "jedi-language-server",
       "requires": [
         "py"
