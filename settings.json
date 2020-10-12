@@ -583,6 +583,14 @@
       ]
     }
   ],
+  "prolog": [
+    {
+      "command": "prolog-lsp_server",
+      "requires": [
+        "swipl"
+      ]
+    }
+  ],
   "ps1": [
     {
       "command": "powershell-languageserver",
