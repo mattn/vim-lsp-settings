@@ -2,7 +2,8 @@
 
 set -e
 
-curl -L -o EmmyLua-LS-all.jar 'https://ci.appveyor.com/api/buildjobs/54yf9rjvj49494pd/artifacts/EmmyLua-LS%2Fbuild%2Flibs%2FEmmyLua-LS-all.jar'
+version="0.3.6"
+curl -L -o EmmyLua-LS-all.jar "https://github.com/EmmyLua/EmmyLua-LanguageServer/releases/download/$version/EmmyLua-LS-all.jar"
 
 cat <<EOF >emmylua-ls
 #!/usr/bin/env bash
