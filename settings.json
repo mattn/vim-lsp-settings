@@ -381,6 +381,12 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "rslint-lsp",
+      "requires": [
+        "cargo"
+      ]
     }
   ],
   "javascriptreact": [
