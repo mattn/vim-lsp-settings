@@ -511,7 +511,9 @@
   "nim": [
     {
       "command": "nimlsp",
-      "requires": [],
+      "requires": [
+        "nimble"
+      ],
       "vim_plugin": {
         "extensions": [
           "nim"
@@ -909,6 +911,16 @@
       "command": "vim-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        ".vim/",
+        "vimfiles/"
+      ]
+    },
+    {
+      "command": "vimscript-language-server",
+      "requires": [
+        "cargo"
       ],
       "root_uri_patterns": [
         ".vim/",
