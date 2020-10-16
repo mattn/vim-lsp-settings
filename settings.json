@@ -824,6 +824,17 @@
         ],
         "name": "hashivim/vim-terraform"
       }
+    },
+    {
+      "command": "terraform-ls",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "tf",
+          "tfvars"
+        ],
+        "name": "hashivim/vim-terraform"
+      }
     }
   ],
   "tex": [

@@ -147,6 +147,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | TeX              | texlab                            | Yes           | Yes           |
 | TeX              | digestif                          | Yes           | No            |
 | Terraform        | terraform-lsp                     | Yes           | Yes           |
+| Terraform        | terraform-ls                      | Yes           | Yes           |
 | TypeScript       | typescript-language-server        | Yes           | Yes           |
 | TypeScript       | rome                              | Yes           | Yes           |
 | TypeScript       | eslint-language-server            | Yes           | Yes           |
