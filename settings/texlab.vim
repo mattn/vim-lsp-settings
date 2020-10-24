@@ -8,7 +8,9 @@ augroup vim_lsp_settings_texlab
       \ 'allowlist': lsp_settings#get('texlab', 'allowlist', ['plaintex', 'tex']),
       \ 'blocklist': lsp_settings#get('texlab', 'blocklist', []),
       \ 'config': lsp_settings#get('texlab', 'config', lsp_settings#server_config('texlab')),
-      \ 'workspace_config': lsp_settings#get('texlab', 'workspace_config', {}),
+      \ 'workspace_config': lsp_settings#get('texlab', 'workspace_config', {
+      \   'latex': {'build': {'args': []}}
+      \ }),
       \ 'semantic_highlight': lsp_settings#get('texlab', 'semantic_highlight', {}),
       \ }
 augroup END
