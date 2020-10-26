@@ -340,6 +340,9 @@ function! s:vim_lsp_settings_suggest(ft) abort
   if empty(l:entry)
     return
   endif
+  if lsp_settings#executable(l:entry[0])
+    return
+  endif
 
   redraw!
   echohl Directory
