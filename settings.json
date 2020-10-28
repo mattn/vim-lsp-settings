@@ -90,9 +90,7 @@
   "cs": [
     {
       "command": "omnisharp-lsp",
-      "requires": [
-        "npm"
-      ]
+      "requires": []
     }
   ],
   "css": [
