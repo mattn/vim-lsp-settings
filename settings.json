@@ -489,7 +489,6 @@
   "lisp": [
     {
       "command": "cl-lsp",
-      "disabled": true,
       "requires": [
         "ros"
       ]
