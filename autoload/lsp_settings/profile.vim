@@ -20,7 +20,7 @@ function! lsp_settings#profile#load_local() abort
 endfunction
 
 function! lsp_settings#profile#edit_global() abort
-  let l:root = lsp_settings#data_dir()
+  let l:root = lsp_settings#global_settings_dir()
   if !isdirectory(l:root)
     call mkdir(l:root)
   endif
