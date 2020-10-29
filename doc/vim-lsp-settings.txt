@@ -128,6 +128,22 @@ g:lsp_settings_enable_suggestions
   Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
   Language Server" suggestion messages.
 
+					  *g:lsp_settings_servers_dir*
+g:lsp_settings_servers_dir
+  Default:
+      %LOCALAPPDATA%\vim-lsp-settings\servers (Windows)
+      $HOME/.local/share/vim-lsp-settings/servers (Non-Windows)
+      $XDG_DATA_HOME/vim-lsp-settings/servers ($XDG_DATA_HOME defined Non-Windows)
+  When value defined, store server file under these directory.
+
+					  *g:lsp_settings_global_settings_dir*
+g:lsp_settings_global_settings_dir
+  Default:
+      %LOCALAPPDATA%\vim-lsp-settings (Windows)
+      $HOME/.local/share/vim-lsp-settings (Non-Windows)
+      $XDG_DATA_HOME/vim-lsp-settings ($XDG_DATA_HOME defined Non-Windows)
+  When value defined, store global settings under these directory.
+
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
   contains the .vim-lsp-settings config directory.
