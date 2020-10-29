@@ -17,16 +17,20 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
-function! lsp_settings#data_dir() abort
-  return s:data_dir
-endfunction
-
 function! lsp_settings#installer_dir() abort
   return s:installer_dir
 endfunction
 
 function! lsp_settings#servers_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
+  if has('win32')
+     let l:path = substitute(l:path, '/', '\', 'g')
+  endif
+  return substitute(l:path, '[\/]$', '', '')
+endfunction
+
+function! lsp_settings#global_settings_dir() abort
+  let l:path = fnamemodify(get(g:, 'lsp_settings_global_settings_dir', s:data_dir), ':p')
   if has('win32')
      let l:path = substitute(l:path, '/', '\', 'g')
   endif
@@ -377,8 +381,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
-  if filereadable(s:data_dir . '/settings.json')
-    let l:settings = json_decode(join(readfile(s:data_dir . '/settings.json'), "\n"))
+  if filereadable(lsp_settings#global_settings_dir() . '/settings.json')
+    let l:settings = json_decode(join(readfile(lsp_settings#global_settings_dir() . '/settings.json'), "\n"))
     if  has_key(g:, 'lsp_settings')
       call extend(g:lsp_settings, l:settings)
     else
