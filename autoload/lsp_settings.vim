@@ -37,6 +37,25 @@ function! lsp_settings#global_settings_dir() abort
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
+function! lsp_settings#intalled_servers() abort
+  let l:servers = []
+  for l:ft in sort(keys(s:settings))
+    for l:conf in s:settings[l:ft]
+      let l:path = lsp_settings#servers_dir() . '/' . l:conf.command . '/' . l:conf.command
+      if !executable(l:path)
+        continue
+      endif
+      let l:path = lsp_settings#servers_dir() . '/' . l:conf.command . '/.vim-lsp-settings-version'
+      let l:version = ''
+      if filereadable(l:path)
+        let l:version = trim(join(readfile(l:path), "\n"))
+      endif
+      call add(l:servers, {'name': l:conf.command, 'version': l:version})
+    endfor
+  endfor
+  return l:servers
+endfunction
+
 function! lsp_settings#executable(cmd) abort
   if executable(a:cmd)
     return 1
