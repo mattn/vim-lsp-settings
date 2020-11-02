@@ -17,10 +17,6 @@ call remove(s:settings, '$schema')
 
 let s:ftmap = {}
 
-function! lsp_settings#data_dir() abort
-  return s:data_dir
-endfunction
-
 function! lsp_settings#installer_dir() abort
   return s:installer_dir
 endfunction
@@ -31,6 +27,33 @@ function! lsp_settings#servers_dir() abort
      let l:path = substitute(l:path, '/', '\', 'g')
   endif
   return substitute(l:path, '[\/]$', '', '')
+endfunction
+
+function! lsp_settings#global_settings_dir() abort
+  let l:path = fnamemodify(get(g:, 'lsp_settings_global_settings_dir', s:data_dir), ':p')
+  if has('win32')
+     let l:path = substitute(l:path, '/', '\', 'g')
+  endif
+  return substitute(l:path, '[\/]$', '', '')
+endfunction
+
+function! lsp_settings#intalled_servers() abort
+  let l:servers = []
+  for l:ft in sort(keys(s:settings))
+    for l:conf in s:settings[l:ft]
+      let l:path = lsp_settings#servers_dir() . '/' . l:conf.command . '/' . l:conf.command
+      if !executable(l:path)
+        continue
+      endif
+      let l:path = lsp_settings#servers_dir() . '/' . l:conf.command . '/.vim-lsp-settings-version'
+      let l:version = ''
+      if filereadable(l:path)
+        let l:version = trim(join(readfile(l:path), "\n"))
+      endif
+      call add(l:servers, {'name': l:conf.command, 'version': l:version})
+    endfor
+  endfor
+  return l:servers
 endfunction
 
 function! lsp_settings#executable(cmd) abort
@@ -324,7 +347,7 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
     call lsp_settings#utils#error('Server not found')
     return
   endif
-  if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") ==# 2
+  if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") !=# 1
     return
   endif
   let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
@@ -349,6 +372,9 @@ endfunction
 function! s:vim_lsp_settings_suggest(ft) abort
   let l:entry = s:vim_lsp_installer(a:ft)
   if empty(l:entry)
+    return
+  endif
+  if lsp_settings#executable(l:entry[0])
     return
   endif
 
@@ -385,8 +411,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
-  if filereadable(s:data_dir . '/settings.json')
-    let l:settings = json_decode(join(readfile(s:data_dir . '/settings.json'), "\n"))
+  if filereadable(lsp_settings#global_settings_dir() . '/settings.json')
+    let l:settings = json_decode(join(readfile(lsp_settings#global_settings_dir() . '/settings.json'), "\n"))
     if  has_key(g:, 'lsp_settings')
       call extend(g:lsp_settings, l:settings)
     else

@@ -3,7 +3,7 @@
 set -e
 
 git clone --depth=1 https://github.com/castwide/solargraph .
-bundle install --path vendor/bundle
+bundle install --without development --path vendor/bundle
 
 cat <<EOF >solargraph
 #!/usr/bin/env bash

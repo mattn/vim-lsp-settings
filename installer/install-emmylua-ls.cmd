@@ -1,6 +1,8 @@
 @echo off
 
-curl -L -o EmmyLua-LS-all.jar "https://ci.appveyor.com/api/buildjobs/54yf9rjvj49494pd/artifacts/EmmyLua-LS%%2Fbuild%%2Flibs%%2FEmmyLua-LS-all.jar"
+setlocal
+set VERSION=0.3.6
+curl -L -o EmmyLua-LS-all.jar "https://github.com/EmmyLua/EmmyLua-LanguageServer/releases/download/%VERSION%/EmmyLua-LS-all.jar"
 
 echo @echo off ^
 

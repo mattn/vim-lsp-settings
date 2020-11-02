@@ -73,7 +73,7 @@ vim-lsp-settings have two way configurations. One way is write with Vim
 script. You can modify configuration like below:
 >
  let g:lsp_settings = {
- \  'r-languageserver1': {
+ \  'r-languageserver': {
  \    'cmd': ['c:\Program Files\R\R-3.6.2\bin\R.exe', '--slave', '-e', 'languageserver::run()'],
  \  },
  \  'sqls1': {
@@ -86,7 +86,7 @@ script. You can modify configuration like below:
  \    'blocklist': ['', 'twitvim'],
  \    'disabled': 0,
  \   },
- \  'yaml-language-server1': {
+ \  'yaml-language-server': {
  \    'workspace_config': {
  \      'yaml': {
  \        'schemas': {
@@ -127,6 +127,22 @@ g:lsp_settings_enable_suggestions
   Default: 1
   Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
   Language Server" suggestion messages.
+
+					  *g:lsp_settings_servers_dir*
+g:lsp_settings_servers_dir
+  Default:
+      %LOCALAPPDATA%\vim-lsp-settings\servers (Windows)
+      $HOME/.local/share/vim-lsp-settings/servers (Non-Windows)
+      $XDG_DATA_HOME/vim-lsp-settings/servers ($XDG_DATA_HOME defined Non-Windows)
+  When value defined, store server file under these directory.
+
+					  *g:lsp_settings_global_settings_dir*
+g:lsp_settings_global_settings_dir
+  Default:
+      %LOCALAPPDATA%\vim-lsp-settings (Windows)
+      $HOME/.local/share/vim-lsp-settings (Non-Windows)
+      $XDG_DATA_HOME/vim-lsp-settings ($XDG_DATA_HOME defined Non-Windows)
+  When value defined, store global settings under these directory.
 
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that

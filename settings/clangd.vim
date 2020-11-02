@@ -20,12 +20,12 @@ function! s:handle_document_switch_source_header(ctx, server, type, has_extensio
 
   if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
     call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': ' . lsp#client#error_message(a:data['response']))
-  elseif type(a:data['response']['result']) ==# v:t_string
-    let a:ctx['list'] = a:ctx['list'] + [lsp#utils#uri_to_path(a:data['response']['result'])]
-  else
+    return
+  elseif type(a:data['response']['result']) !=# v:t_string
     call lsp#utils#error('No switchable header file found')
     return
   endif
+  let a:ctx['list'] = a:ctx['list'] + [lsp#utils#uri_to_path(a:data['response']['result'])]
 
   if a:ctx['counter'] == a:has_extension
     if empty(a:ctx['list'])
@@ -47,7 +47,7 @@ function! s:handle_document_switch_source_header(ctx, server, type, has_extensio
 endfunction
 
 function! s:document_switch_source_header() abort
-  let l:servers = lsp#get_allowlisted_servers()
+  let l:servers = lsp#get_whitelisted_servers()
 
   let l:has_extension = 0
   for l:server in l:servers
@@ -56,7 +56,6 @@ function! s:document_switch_source_header() abort
     endif
   endfor
 
-  let l:command_id = lsp#_new_command()
   call setqflist([])
 
   if l:has_extension == 0
@@ -64,6 +63,7 @@ function! s:document_switch_source_header() abort
     return
   endif
 
+  let l:command_id = lsp#_new_command()
   let l:ctx = { 'counter': l:has_extension, 'list':[], 'last_command_id': l:command_id }
   for l:server in l:servers
     if stridx(l:server, 'clangd') == -1

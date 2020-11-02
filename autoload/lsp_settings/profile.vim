@@ -20,7 +20,7 @@ function! lsp_settings#profile#load_local() abort
 endfunction
 
 function! lsp_settings#profile#edit_global() abort
-  let l:root = lsp_settings#data_dir()
+  let l:root = lsp_settings#global_settings_dir()
   if !isdirectory(l:root)
     call mkdir(l:root)
   endif
@@ -88,10 +88,6 @@ function! lsp_settings#profile#status() abort
     exec 'echohl' s:color_map[l:status]
     echon l:status
     echohl None
-    let l:server_info = lsp#get_server_info(l:server)
-    for [l:k, l:V] in items(l:server_info)
-      echo printf('  %s: %s', l:k, string(l:V))
-    endfor
     echo ''
   endfor
 endfunction

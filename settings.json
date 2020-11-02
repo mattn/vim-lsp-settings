@@ -90,9 +90,7 @@
   "cs": [
     {
       "command": "omnisharp-lsp",
-      "requires": [
-        "npm"
-      ]
+      "requires": []
     }
   ],
   "css": [
@@ -381,6 +379,12 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "rslint-lsp",
+      "requires": [
+        "cargo"
+      ]
     }
   ],
   "javascriptreact": [
@@ -505,7 +509,9 @@
   "nim": [
     {
       "command": "nimlsp",
-      "requires": [],
+      "requires": [
+        "nimble"
+      ],
       "vim_plugin": {
         "extensions": [
           "nim"
@@ -583,6 +589,14 @@
       ]
     }
   ],
+  "prolog": [
+    {
+      "command": "prolog-lsp_server",
+      "requires": [
+        "swipl"
+      ]
+    }
+  ],
   "ps1": [
     {
       "command": "powershell-languageserver",
@@ -629,6 +643,12 @@
       "command": "pyls-ms",
       "requires": [
         "python"
+      ]
+    },
+    {
+      "command": "pyright-langserver",
+      "requires": [
+        "npm"
       ]
     },
     {
@@ -802,6 +822,17 @@
         ],
         "name": "hashivim/vim-terraform"
       }
+    },
+    {
+      "command": "terraform-ls",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "tf",
+          "tfvars"
+        ],
+        "name": "hashivim/vim-terraform"
+      }
     }
   ],
   "tex": [
@@ -889,6 +920,16 @@
       "command": "vim-language-server",
       "requires": [
         "npm"
+      ],
+      "root_uri_patterns": [
+        ".vim/",
+        "vimfiles/"
+      ]
+    },
+    {
+      "command": "vimscript-language-server",
+      "requires": [
+        "cargo"
       ],
       "root_uri_patterns": [
         ".vim/",
