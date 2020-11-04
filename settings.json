@@ -81,6 +81,18 @@
       ]
     }
   ],
+  "context": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
   "cpp": [
     {
       "command": "clangd",
