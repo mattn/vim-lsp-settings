@@ -1,11 +1,7 @@
 # vim-lsp-settings
 
 [![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/reviewdog/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/linux_vim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/linux_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/windows_vim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/windows_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/mac_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
+[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/ci/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
 
 Auto configurations for Language Servers for [vim-lsp](https://github.com/prabirshrestha/vim-lsp).
 

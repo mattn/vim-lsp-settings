@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        version: [stable, nightly]
+        vim_type: ['Vim', 'Neovim']
+        include:
+          - vim_type: 'Vim'
+            neovim: false
+          - vim_type: 'Neovim'
+            neovim: true
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: vim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          version: ${{ matrix.version }}
+          neovim: ${{ matrix.neovim }}
+      - name: 'Setup vim-themis'
+        uses: actions/checkout@v2
+        with: 
+          repository: thinca/vim-themis
+          path: vim-themis
+      - name: Run tests
+        env:
+          THEMIS_VIM: ${{ steps.vim.outputs.executable }}
+        run: |
+          ./vim-themis/bin/themis ./test
