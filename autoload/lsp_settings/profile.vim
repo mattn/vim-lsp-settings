@@ -1,19 +1,24 @@
 function! lsp_settings#profile#load_local() abort
   try
-    let l:root = lsp#utils#find_nearest_parent_directory('.', '.vim-lsp-settings')
-    if !empty(l:root) && filereadable(l:root . '/settings.json')
-      let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
-      if  has_key(g:, 'lsp_settings')
-        for [l:k, l:v] in items(l:settings)
-          if has_key(g:lsp_settings, l:k)
-            let g:lsp_settings[l:k] = extend(g:lsp_settings[l:k], l:v)
-          else
-            let g:lsp_settings[l:k] = l:v
-          endif
-        endfor
-      else
-        let g:lsp_settings = l:settings
-      endif
+    let l:root = findfile('.vim-lsp-settings')
+    if !empty(l:root)
+      return
+    endif
+    let l:root = fnamemodify(l:root, ':h')
+    if filereadable(l:root . '/settings.json')
+      return
+    endif
+    let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
+    if has_key(g:, 'lsp_settings')
+      for [l:k, l:v] in items(l:settings)
+        if has_key(g:lsp_settings, l:k)
+          let g:lsp_settings[l:k] = extend(g:lsp_settings[l:k], l:v)
+        else
+          let g:lsp_settings[l:k] = l:v
+        endif
+      endfor
+    else
+      let g:lsp_settings = l:settings
     endif
   catch
   endtry
