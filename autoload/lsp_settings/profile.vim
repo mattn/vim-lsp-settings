@@ -1,10 +1,10 @@
 function! lsp_settings#profile#load_local() abort
   try
     let l:root = finddir('.vim-lsp-settings', ';')
-    if !empty(l:root)
+    if empty(l:root)
       return
     endif
-    if filereadable(l:root . '/settings.json')
+    if !filereadable(l:root . '/settings.json')
       return
     endif
     let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
