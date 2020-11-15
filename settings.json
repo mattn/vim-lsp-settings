@@ -601,6 +601,20 @@
       ]
     }
   ],
+  "prisma": [
+    {
+      "command": "prisma-language-server",
+      "requires": [
+        "npm"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "prisma"
+        ],
+        "name": "pantharshit00/vim-prisma"
+      }
+    }
+  ],
   "prolog": [
     {
       "command": "prolog-lsp_server",
