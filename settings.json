@@ -859,6 +859,15 @@
       ]
     }
   ],
+  "ttcn3": [
+    {
+      "command": "ntt",
+      "requires": [],
+      "root_uri_patterns": [
+        "package.yml"
+      ]
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
