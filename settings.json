@@ -859,7 +859,7 @@
       ]
     }
   ],
-  "ttcn3": [
+  "ttcn": [
     {
       "command": "ntt",
       "requires": [],
@@ -871,7 +871,7 @@
           "ttcn",
           "ttcn3"
         ],
-        "name": "5nord/vim-ttcn3"
+        "name": "gustafj/vim-ttcn"
       }
     }
   ],
