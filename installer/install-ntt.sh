@@ -4,7 +4,6 @@ set -e
 set -o pipefail
 
 version="0.4"
-filename="ntt.tgz"
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 
 case "${os,,}" in
