@@ -859,6 +859,22 @@
       ]
     }
   ],
+  "ttcn": [
+    {
+      "command": "ntt",
+      "requires": [],
+      "root_uri_patterns": [
+        "package.yml"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ttcn",
+          "ttcn3"
+        ],
+        "name": "gustafj/vim-ttcn"
+      }
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
