@@ -865,7 +865,14 @@
       "requires": [],
       "root_uri_patterns": [
         "package.yml"
-      ]
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ttcn",
+          "ttcn3"
+        ],
+        "name": "5nord/vim-ttcn3"
+      }
     }
   ],
   "typescript": [
