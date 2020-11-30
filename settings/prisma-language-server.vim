@@ -1,4 +1,4 @@
-augroup vim_lsp_settings_typescript_language_server
+augroup vim_lsp_settings_prisma_language_server
   au!
   LspRegisterServer {
       \ 'name': 'prisma-language-server',
