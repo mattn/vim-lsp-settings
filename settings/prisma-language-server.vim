@@ -4,7 +4,7 @@ augroup vim_lsp_settings_prisma_language_server
       \ 'name': 'prisma-language-server',
       \ 'cmd': {server_info->lsp_settings#get('prisma-language-server', 'cmd', [lsp_settings#exec_path('prisma-language-server'), '--stdio'])},
       \ 'root_uri':{server_info->lsp_settings#get('prisma-language-server', 'root_uri', lsp_settings#root_uri('prisma-language-server'))},
-      \ 'initialization_options': lsp_settings#get('typescript-language-server', 'initialization_options', {'diagnostics': 'true'}),
+      \ 'initialization_options': lsp_settings#get('prisma-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('prisma', 'allowlist', ['prisma']),
       \ 'blocklist': lsp_settings#get('prisma-language-server', 'blocklist', []),
       \ 'config': lsp_settings#get('prisma-language-server', 'config', lsp_settings#server_config('prisma-language-server')),
