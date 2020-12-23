@@ -39,7 +39,7 @@ function! s:handle_document_switch_source_header(ctx, server, type, has_extensio
           \ 'col': 0,
           \ }
 
-      call lsp#utils#location#_open_vim_list_item(l:loc)
+      call lsp#utils#location#_open_vim_list_item(l:loc, '')
       echo 'Retrieved ' . a:type
       redraw
     endif
