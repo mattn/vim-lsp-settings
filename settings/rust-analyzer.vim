@@ -4,7 +4,11 @@ augroup vim_lsp_settings_rust_analyzer
       \ 'name': 'rust-analyzer',
       \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')])},
       \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri('rust-analyzer'))},
-      \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', v:null),
+      \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', {
+      \     'completion': {
+      \         'autoimport': { 'enable': v:true },
+      \     },
+      \ }),
       \ 'allowlist': lsp_settings#get('rust-analyzer', 'allowlist', ['rust']),
       \ 'blocklist': lsp_settings#get('rust-analyzer', 'blocklist', []),
       \ 'config': lsp_settings#get('rust-analyzer', 'config', lsp_settings#server_config('rust-analyzer')),
