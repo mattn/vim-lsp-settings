@@ -965,6 +965,18 @@
       ]
     }
   ],
+  "vlang": [
+    {
+      "command": "vlang-vls",
+      "requires": [
+        "git",
+        "v"
+      ],
+      "root_uri_patterns": [
+        "v.mod"
+      ]
+    }
+  ],
   "vue": [
     {
       "command": "vls",
