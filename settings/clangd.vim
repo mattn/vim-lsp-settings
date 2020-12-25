@@ -9,8 +9,18 @@ augroup vim_lsp_settings_clangd
       \ 'blocklist': lsp_settings#get('clangd', 'blocklist', []),
       \ 'config': lsp_settings#get('clangd', 'config', lsp_settings#server_config('clangd')),
       \ 'workspace_config': lsp_settings#get('clangd', 'workspace_config', {}),
+      \ 'capabilities': lsp_settings#get('clangd', 'capabilities', {'window': {'workDoneProgress': v:true }}),
       \ 'semantic_highlight': lsp_settings#get('clangd', 'semantic_highlight', {}),
       \ }
+
+  call lsp#callbag#pipe(
+        \ lsp#stream(),
+        \ lsp#callbag#filter({x->has_key(x, 'response') && has_key(x['response'], 'method')
+        \  && x['response']['method'] ==# '$/progress' && has_key(x['response'], 'params')
+        \  && has_key(x['response']['params'], 'value') && type(x['response']['params']['value']) == type({})}),
+        \  lsp#callbag#map({x->x['response']['params']}),
+        \  lsp#callbag#subscribe(funcref('lsp_settings#utils#handle_work_done_progress')),
+        \ )
 augroup END
 
 function! s:handle_document_switch_source_header(ctx, server, type, has_extension, data) abort "ctx = {counter, list, last_command_id}

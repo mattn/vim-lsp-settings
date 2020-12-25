@@ -68,3 +68,16 @@ function! lsp_settings#utils#load_schemas(name) abort
   let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
   return extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
 endfunction
+
+function! lsp_settings#utils#handle_work_done_progress(progress) abort
+  let l:value = a:progress['value']
+  if l:value['kind'] ==# 'end'
+    let g:lsp_progress['messages'] = ''
+    let g:lsp_progress['percentage'] = 100
+  elseif l:value['kind'] ==# 'begin'
+    let g:lsp_progress['title'] = l:value['title']
+  elseif l:value['kind'] ==# 'report'
+    let g:lsp_progress['messages'] = l:value['message']
+    let g:lsp_progress['percentage'] = l:value['percentage']
+  endif
+endfunction

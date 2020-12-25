@@ -13,9 +13,19 @@ augroup vim_lsp_settings_rust_analyzer
       \ 'blocklist': lsp_settings#get('rust-analyzer', 'blocklist', []),
       \ 'config': lsp_settings#get('rust-analyzer', 'config', lsp_settings#server_config('rust-analyzer')),
       \ 'workspace_config': lsp_settings#get('rust-analyzer', 'workspace_config', {}),
+      \ 'capabilities': lsp_settings#get('rust-analyzer', 'capabilities', {'window': {'workDoneProgress': v:true }}),
       \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
       \ }
   autocmd User lsp_setup call s:register_command()
+
+  call lsp#callbag#pipe(
+        \ lsp#stream(),
+        \ lsp#callbag#filter({x->has_key(x, 'response') && has_key(x['response'], 'method')
+        \  && x['response']['method'] ==# '$/progress' && has_key(x['response'], 'params')
+        \  && has_key(x['response']['params'], 'value') && type(x['response']['params']['value']) == type({})}),
+        \  lsp#callbag#map({x->x['response']['params']}),
+        \  lsp#callbag#subscribe(funcref('lsp_settings#utils#handle_work_done_progress')),
+        \ )
 augroup END
 
 function! s:rust_analyzer_apply_source_change(context)
