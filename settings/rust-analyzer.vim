@@ -51,10 +51,11 @@ function! s:rust_analyzer_run_single(context) abort
         let l:workspaceRoot = get(l:args, 'workspaceRoot', getcwd())
         let l:cargoArgs = get(l:args, 'cargoArgs', [])
         let l:cargoExtraArgs = get(l:args, 'cargoExtraArgs', [])
-        let l:cmd = ['cargo'] + l:cargoArgs
+        let l:executableArgs = get(l:args, 'executableArgs', [])
+        let l:cmd = ['cargo'] + l:cargoArgs + l:cargoExtraArgs
 
-        if !empty(l:cargoExtraArgs)
-            let l:cmd += ['--'] + l:cargoExtraArgs
+        if !empty(l:executableArgs)
+            let l:cmd += ['--'] + l:executableArgs
         endif
 
         call lsp_settings#utils#term_start(l:cmd, {'cwd': l:workspaceRoot})
