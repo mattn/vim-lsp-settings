@@ -77,7 +77,7 @@ function! lsp_settings#utils#handle_work_done_progress(progress) abort
   elseif l:value['kind'] ==# 'begin'
     let g:lsp_progress['title'] = l:value['title']
   elseif l:value['kind'] ==# 'report'
-    let g:lsp_progress['messages'] = l:value['message']
-    let g:lsp_progress['percentage'] = l:value['percentage']
+    let g:lsp_progress['messages'] = get(l:value, 'message', '')
+    let g:lsp_progress['percentage'] = get(l:value, 'percentage', '')
   endif
 endfunction
