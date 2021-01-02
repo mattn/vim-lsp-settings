@@ -81,6 +81,18 @@
       ]
     }
   ],
+  "context": [
+    {
+      "command": "texlab",
+      "requires": []
+    },
+    {
+      "command": "digestif",
+      "requires": [
+        "luarocks"
+      ]
+    }
+  ],
   "cpp": [
     {
       "command": "clangd",
@@ -218,6 +230,18 @@
       ]
     }
   ],
+  "gdscript": [
+    {
+      "command": "godot",
+      "requires": []
+    }
+  ],
+  "gdscript3": [
+    {
+      "command": "godot",
+      "requires": []
+    }
+  ],
   "glsl": [
     {
       "command": "glslls",
@@ -290,6 +314,14 @@
       "requires": [
         "stack"
       ],
+      "root_uri_patterns": [
+        "stack.yaml",
+        "package.yaml"
+      ]
+    },
+    {
+      "command": "haskell-language-server",
+      "requires": [],
       "root_uri_patterns": [
         "stack.yaml",
         "package.yaml"
@@ -847,6 +879,22 @@
       ]
     }
   ],
+  "ttcn": [
+    {
+      "command": "ntt",
+      "requires": [],
+      "root_uri_patterns": [
+        "package.yml"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "ttcn",
+          "ttcn3"
+        ],
+        "name": "gustafj/vim-ttcn"
+      }
+    }
+  ],
   "typescript": [
     {
       "command": "typescript-language-server",
@@ -934,6 +982,18 @@
       "root_uri_patterns": [
         ".vim/",
         "vimfiles/"
+      ]
+    }
+  ],
+  "vlang": [
+    {
+      "command": "vlang-vls",
+      "requires": [
+        "git",
+        "v"
+      ],
+      "root_uri_patterns": [
+        "v.mod"
       ]
     }
   ],

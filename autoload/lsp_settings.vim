@@ -105,6 +105,7 @@ function! s:vim_lsp_installer(ft, ...) abort
     let l:missing = 0
     for l:require in l:conf.requires
       if !lsp_settings#executable(l:require)
+        call lsp_settings#utils#warning(l:conf.command . ' requires ' . l:require)
         let l:missing = 1
         break
       endif
@@ -116,7 +117,7 @@ function! s:vim_lsp_installer(ft, ...) abort
       return [l:conf.command, l:command]
     endif
   endfor
-  return []
+  return [v:false] " placeholder, so that empty() returns false, but len() < 2 returns true
 endfunction
 
 function! lsp_settings#server_config(name) abort
@@ -336,6 +337,10 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
     call lsp_settings#utils#error('Server not found')
     return
   endif
+  if len(l:entry) < 2
+    call lsp_settings#utils#error('Server could not be installed. See :messages for details.')
+    return
+  endif
   if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") !=# 1
     return
   endif
@@ -369,7 +374,7 @@ function! s:vim_lsp_settings_suggest(ft) abort
 
   redraw!
   echohl Directory
-  echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
+  unsilent echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
   echohl None
 endfunction
 

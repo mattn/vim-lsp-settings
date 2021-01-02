@@ -1,11 +1,7 @@
 # vim-lsp-settings
 
 [![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/reviewdog/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/linux_vim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/linux_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/windows_vim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/windows_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
-[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/mac_neovim/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
+[![Actions Status](https://github.com/mattn/vim-lsp-settings/workflows/ci/badge.svg)](https://github.com/mattn/vim-lsp-settings/actions)
 
 Auto configurations for Language Servers for [vim-lsp](https://github.com/prabirshrestha/vim-lsp).
 
@@ -103,6 +99,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | GraphQL          | gql-language-server               | Yes       | Yes           |
 | Groovy           | groovy-language-server            | Yes       | Yes           |
 | Haskell          | haskell-ide-engine                | No        | No            |
+| Haskell          | haskell-language-server           | No        | No            |
 | HTML             | html-languageserver               | Yes       | Yes           |
 | HTML             | angular-language-server           | Yes       | Yes           |
 | HTML             | tailwindcss-intellisense          | Yes       | Yes           |
@@ -127,6 +124,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Python           | pyls (pyls without dependencies)  | Yes       | Yes           |
 | Python           | pyls-ms (Microsoft Version)       | Yes       | Yes           |
 | Python           | jedi-language-server              | Yes       | Yes           |
+| Python           | pyright-langserver                | Yes       | Yes           |
 | R                | languageserver                    | Yes       | No            |
 | Reason           | reason-language-server            | Yes       | Yes           |
 | Ruby             | solargraph                        | Yes       | Yes           |
@@ -142,12 +140,14 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | TeX              | digestif                          | Yes       | No            |
 | Terraform        | terraform-lsp                     | Yes       | Yes           |
 | Terraform        | terraform-ls                      | Yes       | Yes           |
+| TTCN-3           | ntt                               | Yes       | Yes           |
 | TypeScript       | typescript-language-server        | Yes       | Yes           |
 | TypeScript       | rome                              | Yes       | Yes           |
 | TypeScript       | eslint-language-server            | Yes       | Yes           |
 | Vim              | vim-language-server               | Yes       | Yes           |
 | Vala             | vala-language-server              | No        | No            |
 | Vue              | vue-language-server               | Yes       | Yes           |
+| V                | vls                               | Yes       | Yes           |
 | XML              | lemminx                           | Yes       | Yes           |
 | YAML             | yaml-language-server              | Yes       | Yes           |
 | ZIG              | zls                               | No        | No            |

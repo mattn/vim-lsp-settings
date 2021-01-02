@@ -39,7 +39,7 @@ function! s:handle_document_switch_source_header(ctx, server, type, has_extensio
           \ 'col': 0,
           \ }
 
-      call lsp#utils#location#_open_vim_list_item(l:loc)
+      call lsp#utils#location#_open_vim_list_item(l:loc, '')
       echo 'Retrieved ' . a:type
       redraw
     endif
@@ -83,8 +83,8 @@ function! s:document_switch_source_header() abort
 endfunction
 
 function! s:on_lsp_buffer_enabled() abort
-  command! LspDocumentSwitchSourceHeader call <SID>document_switch_source_header()
-  nnoremap <plug>(lsp-switch-source-header) :<c-u>call <SID>document_switch_source_header()<cr>
+  command! -buffer LspDocumentSwitchSourceHeader call <SID>document_switch_source_header()
+  nnoremap <buffer> <plug>(lsp-switch-source-header) :<c-u>call <SID>document_switch_source_header()<cr>
 endfunction
 
 augroup lsp_install_clangd
