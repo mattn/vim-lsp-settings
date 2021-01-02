@@ -230,6 +230,18 @@
       ]
     }
   ],
+  "gdscript": [
+    {
+      "command": "godot",
+      "requires": []
+    }
+  ],
+  "gdscript3": [
+    {
+      "command": "godot",
+      "requires": []
+    }
+  ],
   "glsl": [
     {
       "command": "glslls",
