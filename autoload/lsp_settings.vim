@@ -374,7 +374,7 @@ function! s:vim_lsp_settings_suggest(ft) abort
 
   redraw!
   echohl Directory
-  echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
+  unsilent echomsg 'Please do :LspInstallServer to enable Language Server ' . l:entry[0]
   echohl None
 endfunction
 

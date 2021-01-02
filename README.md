@@ -99,6 +99,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | GraphQL          | gql-language-server               | Yes       | Yes           |
 | Groovy           | groovy-language-server            | Yes       | Yes           |
 | Haskell          | haskell-ide-engine                | No        | No            |
+| Haskell          | haskell-language-server           | No        | No            |
 | HTML             | html-languageserver               | Yes       | Yes           |
 | HTML             | angular-language-server           | Yes       | Yes           |
 | HTML             | tailwindcss-intellisense          | Yes       | Yes           |
@@ -123,6 +124,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Python           | pyls (pyls without dependencies)  | Yes       | Yes           |
 | Python           | pyls-ms (Microsoft Version)       | Yes       | Yes           |
 | Python           | jedi-language-server              | Yes       | Yes           |
+| Python           | pyright-langserver                | Yes       | Yes           |
 | Prisma           | prisma-language-server            | Yes       | Yes           |
 | R                | languageserver                    | Yes       | No            |
 | Reason           | reason-language-server            | Yes       | Yes           |
@@ -146,6 +148,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Vim              | vim-language-server               | Yes       | Yes           |
 | Vala             | vala-language-server              | No        | No            |
 | Vue              | vue-language-server               | Yes       | Yes           |
+| V                | vls                               | Yes       | Yes           |
 | XML              | lemminx                           | Yes       | Yes           |
 | YAML             | yaml-language-server              | Yes       | Yes           |
 | ZIG              | zls                               | No        | No            |
