@@ -8,7 +8,8 @@ augroup vim_lsp_settings_pyright_langserver
       \ 'allowlist': lsp_settings#get('pyright-langserver', 'allowlist', ['python']),
       \ 'blocklist': lsp_settings#get('pyright-langserver', 'blocklist', []),
       \ 'config': lsp_settings#get('pyright-langserver', 'config', lsp_settings#server_config('pyright-langserver')),
-      \ 'workspace_config': lsp_settings#get('pyright-langserver', 'workspace_config', {}),
+      \ 'workspace_config': lsp_settings#get('pyright-langserver', 'workspace_config', {
+      \ }),
       \ 'semantic_highlight': lsp_settings#get('pyright-langserver', 'semantic_highlight', {}),
       \ }
 augroup END
