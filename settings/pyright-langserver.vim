@@ -9,6 +9,11 @@ augroup vim_lsp_settings_pyright_langserver
       \ 'blocklist': lsp_settings#get('pyright-langserver', 'blocklist', []),
       \ 'config': lsp_settings#get('pyright-langserver', 'config', lsp_settings#server_config('pyright-langserver')),
       \ 'workspace_config': lsp_settings#get('pyright-langserver', 'workspace_config', {
+      \   'python': {
+      \     'analysis': {
+      \       'useLibraryCodeForTypes': v:true
+      \     },
+      \   },
       \ }),
       \ 'semantic_highlight': lsp_settings#get('pyright-langserver', 'semantic_highlight', {}),
       \ }
