@@ -318,6 +318,14 @@
         "stack.yaml",
         "package.yaml"
       ]
+    },
+    {
+      "command": "haskell-language-server",
+      "requires": [],
+      "root_uri_patterns": [
+        "stack.yaml",
+        "package.yaml"
+      ]
     }
   ],
   "html": [

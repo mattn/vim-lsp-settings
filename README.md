@@ -99,6 +99,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | GraphQL          | gql-language-server               | Yes       | Yes           |
 | Groovy           | groovy-language-server            | Yes       | Yes           |
 | Haskell          | haskell-ide-engine                | No        | No            |
+| Haskell          | haskell-language-server           | No        | No            |
 | HTML             | html-languageserver               | Yes       | Yes           |
 | HTML             | angular-language-server           | Yes       | Yes           |
 | HTML             | tailwindcss-intellisense          | Yes       | Yes           |
