@@ -45,7 +45,7 @@ function! s:rust_analyzer_run_single(context) abort
         return
     endif
 
-    if l:argument['kind'] == 'cargo'
+    if l:argument['kind'] ==# 'cargo'
         let l:label = get(l:argument, 'label', 'cargo')
         let l:args = get(l:argument, 'args', {})
         let l:workspaceRoot = get(l:args, 'workspaceRoot', getcwd())
