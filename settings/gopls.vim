@@ -9,6 +9,7 @@ augroup vim_lsp_settings_gopls
       \     'completeUnimported': v:true,
       \     'matcher': 'fuzzy',
       \     'codelens': {
+      \         'generate': v:true,
       \         'test': v:true,
       \     },
       \ }),
@@ -26,6 +27,7 @@ function! s:register_command() abort
     if s:setup == 1 | return | endif
     let s:setup = 1
     call lsp#register_command('gopls.test', function('s:gopls_test'))
+    call lsp#register_command('gopls.generate', function('s:gopls_generate'))
 endfunction
 
 function! s:gopls_test(context) abort
@@ -42,4 +44,15 @@ function! s:gopls_test(context) abort
     else
         call lsp_settings#utils#error('Unsupported gopls.test ' . json_encode(l:command))
     endif
+endfunction
+
+function! s:gopls_generate(context) abort
+    let l:command = get(a:context, 'command', {})
+    let l:arguments = get(l:command, 'arguments', [])
+    let l:package = l:arguments[0]
+    let l:recursive = l:arguments[1]
+
+    let l:cmd = ['go', 'generate', l:recursive ? './..' : l:package]
+
+    call lsp_settings#utils#term_start(l:cmd, {})
 endfunction
