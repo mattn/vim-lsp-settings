@@ -13,6 +13,6 @@ echo @echo off ^
 
 call %%~dp0\node_modules\@prisma\engines\prisma-fmt-windows.exe %%* ^
 
-> prisma-fmt.exe
+> prisma-fmt.cmd
 
 call "%~dp0\npm_install.cmd" prisma-langauge-server "@prisma/language-server"
