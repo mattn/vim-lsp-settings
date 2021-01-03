@@ -125,6 +125,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Python           | pyls-ms (Microsoft Version)       | Yes       | Yes           |
 | Python           | jedi-language-server              | Yes       | Yes           |
 | Python           | pyright-langserver                | Yes       | Yes           |
+| Prisma           | prisma-language-server            | Yes       | Yes           |
 | R                | languageserver                    | Yes       | No            |
 | Reason           | reason-language-server            | Yes       | Yes           |
 | Ruby             | solargraph                        | Yes       | Yes           |
