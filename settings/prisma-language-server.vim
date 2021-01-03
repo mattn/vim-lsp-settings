@@ -9,7 +9,7 @@ augroup vim_lsp_settings_prisma_language_server
       \ 'blocklist': lsp_settings#get('prisma-language-server', 'blocklist', []),
       \ 'config': lsp_settings#get('prisma-language-server', 'config', lsp_settings#server_config('prisma-language-server')),
       \ 'workspace_config': lsp_settings#get('prisma-language-server', 'workspace_config', {
-      \   'prismaLanguageServer': {
+      \   'prisma': {
       \     'prismaFmtBinPath': {c->!empty(c) ? c : lsp_settings#servers_dir() . '/prisma-language-server/prisma-fmt'}(lsp_settings#exec_path('prisma-fmt')),
       \   }
       \ }),
