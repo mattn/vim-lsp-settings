@@ -68,3 +68,16 @@ function! lsp_settings#utils#load_schemas(name) abort
   let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
   return extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
 endfunction
+
+function! lsp_settings#utils#term_start(cmd, options) abort
+    let l:options = {}
+    if has_key(a:options, 'cwd')
+        let l:options['cwd'] = a:options['cwd']
+    endif
+    if has('nvim')
+        split new
+        call termopen(a:cmd, l:options)
+    else
+        call term_start(a:cmd, l:options)
+    endif
+endfunction
