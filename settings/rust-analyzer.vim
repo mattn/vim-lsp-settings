@@ -16,9 +16,30 @@ augroup vim_lsp_settings_rust_analyzer
       \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
       \ }
   autocmd User lsp_setup call s:register_command()
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-function! s:rust_analyzer_apply_source_change(context)
+function! s:on_lsp_buffer_enabled() abort
+  command! -buffer LspOpenCargoToml call <SID>open_cargo_toml()
+  nnoremap <buffer> <plug>(lsp-open-cargo-toml) :<c-u>call <SID>open_cargo_toml()<cr>
+endfunction
+
+function! s:open_cargo_toml() abort
+    call lsp#callbag#pipe(
+        \ lsp#request('rust-analyzer', {
+        \   'method': 'experimental/openCargoToml',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \   }
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next':{x->lsp#utils#location#_open_lsp_location(x['response']['result'])},
+        \   'error':{e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:rust_analyzer_apply_source_change(context) abort
     let l:command = get(a:context, 'command', {})
 
     let l:arguments = get(l:command, 'arguments', [])
@@ -66,7 +87,7 @@ endfunction
 
 let s:setup = 0
 
-function! s:register_command()
+function! s:register_command() abort
   if s:setup == 1
     return
   endif
