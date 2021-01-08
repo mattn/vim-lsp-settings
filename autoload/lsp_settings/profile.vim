@@ -1,3 +1,55 @@
+function! s:extend(lhs, rhs) abort
+  let [l:lhs, l:rhs] = [a:lhs, a:rhs]
+  if type(l:lhs) ==# 3
+    if type(l:rhs) ==# 3
+      let l:lhs += l:rhs
+      if len(l:lhs)
+        call remove(l:lhs, 0, len(l:lhs)-1)
+      endif
+      for l:rhi in l:rhs
+        call add(l:lhs, l:rhs[l:rhi])
+      endfor
+    elseif type(l:rhs) ==# 4
+      let l:lhs += map(keys(l:rhs), '{v:val : l:rhs[v:val]}')
+    endif
+  elseif type(l:lhs) ==# 4
+    if type(l:rhs) ==# 3
+      for l:V in l:rhs
+        if type(l:V) != 4
+          continue
+        endif
+        for l:k in keys(l:V)
+          let l:lhs[l:k] = l:V[l:k]
+        endfor
+      endfor
+    elseif type(l:rhs) ==# 4
+      for l:key in keys(l:rhs)
+        if type(l:rhs[l:key]) ==# 3
+          if !has_key(l:lhs, l:key)
+            let l:lhs[l:key] = []
+          endif
+          if type(l:lhs[l:key]) == 3
+            let l:lhs[l:key] += l:rhs[l:key]
+          elseif type(l:lhs[l:key]) == 4
+            for l:k in keys(l:rhs[l:key])
+              let l:lhs[l:key][l:k] = l:rhs[l:key][l:k]
+            endfor
+          endif
+        elseif type(l:rhs[l:key]) ==# 4
+          if has_key(l:lhs, l:key)
+            call s:extend(l:lhs[l:key], l:rhs[l:key])
+          else
+            let l:lhs[l:key] = l:rhs[l:key]
+          endif
+        else
+          let l:lhs[l:key] = l:rhs[l:key]
+        endif
+      endfor
+    endif
+  endif
+  return l:lhs
+endfunction
+
 function! lsp_settings#profile#load_local() abort
   try
     let l:root = finddir('.vim-lsp-settings', ';')
@@ -11,7 +63,7 @@ function! lsp_settings#profile#load_local() abort
     if has_key(g:, 'lsp_settings')
       for [l:k, l:v] in items(l:settings)
         if has_key(g:lsp_settings, l:k)
-          let g:lsp_settings[l:k] = extend(g:lsp_settings[l:k], l:v)
+          let g:lsp_settings[l:k] = s:extend(g:lsp_settings[l:k], l:v)
         else
           let g:lsp_settings[l:k] = l:v
         endif
