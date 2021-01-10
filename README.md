@@ -82,6 +82,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | C/C++            | clangd                            | Yes       | Yes           |
 | COBOL            | cobol-language-support            | Yes       | Yes           |
 | CSS              | css-languageserver                | Yes       | Yes           |
+| CSS              | tailwindcss-intellisense          | Yes       | Yes           |
 | Clojure          | clojure-lsp                       | Yes       | Yes           |
 | Clojure          | clj-kondo-lsp                     | Yes       | Yes           |
 | Cmake            | cmake-language-server             | Yes       | Yes           |
