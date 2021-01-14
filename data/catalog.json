@@ -811,7 +811,7 @@
       "name": "omnisharp.json",
       "description": "Omnisharp Configuration file",
       "fileMatch": ["omnisharp.json"],
-      "url": "http://json.schemastore.org/omnisharp"
+      "url": "https://raw.githubusercontent.com/OmniSharp/omnisharp-server/master/OmniSharp/config.json"
     },
     {
       "name": "openapi.json",
