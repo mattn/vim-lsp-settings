@@ -17,7 +17,7 @@ darwin)
   ;;
 esac
 
-version="v1.35.3"
+version="v1.37.5"
 url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os$arch.tar.gz"
 curl -L "$url" | tar xz
 
