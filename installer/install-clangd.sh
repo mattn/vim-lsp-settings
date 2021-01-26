@@ -61,11 +61,19 @@ Fedora | Oracle | CentOS)
   ;;
 esac
 
-filename_v9="clang+llvm-9.0.0-x86_64-$platform"
+# Check Architecture
+arch=$(arch)
+case $arch in
+aarch64)
+  platform="linux-gnu"
+  ;;
+esac
+
+filename_v9="clang+llvm-9.0.0-$arch-$platform"
 url_v9="http://releases.llvm.org/9.0.0/$filename_v9.tar.xz"
-filename_v10="clang+llvm-10.0.0-x86_64-$platform"
+filename_v10="clang+llvm-10.0.0-$arch-$platform"
 url_v10="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/$filename_v10.tar.xz"
-filename_v11="clang+llvm-11.0.0-x86_64-$platform"
+filename_v11="clang+llvm-11.0.0-$arch-$platform"
 url_v11="https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/$filename_v11.tar.xz"
 
 response_code=$(curl -sIL ${url_v11} -o /dev/null -w "%{response_code}")
