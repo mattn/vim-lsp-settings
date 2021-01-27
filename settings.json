@@ -607,6 +607,19 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "psalm-language-server",
+      "config": {
+        "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "composer"
+      ],
+      "root_uri_patterns": [
+        "psalm.xml",
+        "psalm.xml.dist"
+      ]
     }
   ],
   "plaintex": [

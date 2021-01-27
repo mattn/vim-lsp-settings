@@ -120,6 +120,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Lua              | sumneko-lua-language-server       | Yes       | Yes           |
 | Nim              | nimls                             | No        | No            |
 | PHP              | intelephense                      | Yes       | Yes           |
+| PHP              | psalm-language-server             | Yes       | Yes           |
 | OCaml            | ocaml-lsp                         | UNIX Only | Yes           |
 | Python           | pyls-all (pyls with dependencies) | Yes       | Yes           |
 | Python           | pyls (pyls without dependencies)  | Yes       | Yes           |
