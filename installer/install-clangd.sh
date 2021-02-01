@@ -62,7 +62,7 @@ Fedora | Oracle | CentOS)
 esac
 
 # Check Architecture
-arch=$(arch)
+arch=$(uname -m)
 case $arch in
 aarch64)
   platform="linux-gnu"
