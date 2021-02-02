@@ -2,17 +2,6 @@
 
 set -e
 
-os=$(uname -s | tr "[:upper:]" "[:lower:]")
-
-case $os in
-linux)
-  platform="pc-linux-gnu"
-  ;;
-darwin)
-  platform="apple-darwin"
-  ;;
-esac
-
 if command -v lsb_release 2>/dev/null; then
   distributor_id=$(lsb_release -a 2>&1 | grep 'Distributor ID' | awk '{print $3}')
 elif [ -e /etc/fedora-release ]; then
@@ -30,50 +19,78 @@ elif [ -e /etc/vine-release ]; then
 elif [ -e /etc/gentoo-release ]; then
   distributor_id="Gentoo"
 else
-  distributor_id="Unkown"
+  distributor_id="Unknown"
 fi
 
-case $distributor_id in
-# Check Ubuntu version
-Ubuntu)
-  ubuntu_version=$(lsb_release -a 2>&1 | grep 'Release' | awk '{print $2}')
-  case $ubuntu_version in
-  14.04 | 16.04 | 18.04 | 20.04)
-    platform="linux-gnu-ubuntu-$ubuntu_version"
+filename() {
+  local distributor_id=$1
+  local version=$2
+
+  local os
+  os=$(uname -s | tr "[:upper:]" "[:lower:]")
+
+  case $os in
+  linux)
+    local platform="pc-linux-gnu"
+    ;;
+  darwin)
+    local platform="apple-darwin"
     ;;
   esac
-  ;;
-# Check LinuxMint version
-LinuxMint)
-  linuxmint_version=$(lsb_release -a 2>&1 | grep 'Release' | awk '{print $2}')
-  case $linuxmint_version in
-  19 | 19.1 | 19.2 | 19.3)
-    platform="linux-gnu-ubuntu-18.04"
+
+  case $distributor_id in
+  # Check Ubuntu version
+  Ubuntu)
+    local ubuntu_version
+    ubuntu_version=$(lsb_release -a 2>&1 | grep 'Release' | awk '{print $2}')
+    case $ubuntu_version in
+    14.04 | 16.04 | 18.04 | 20.04)
+      local platform="linux-gnu-ubuntu-$ubuntu_version"
+      ;;
+    esac
     ;;
-  18 | 18.1 | 18.2 | 18.3)
-    platform="linux-gnu-ubuntu-16.04"
+  # Check LinuxMint version
+  LinuxMint)
+    local linuxmint_version
+    linuxmint_version=$(lsb_release -a 2>&1 | grep 'Release' | awk '{print $2}')
+    case $linuxmint_version in
+    19 | 19.1 | 19.2 | 19.3)
+      local platform="linux-gnu-ubuntu-18.04"
+      ;;
+    18 | 18.1 | 18.2 | 18.3)
+      local platform="linux-gnu-ubuntu-16.04"
+      ;;
+    esac
+    ;;
+  # Check RedHat OS version
+  Fedora | Oracle | CentOS)
+    case $version in
+    9.0.0 | 10.0.0)
+      local platform="linux-sles11.3"
+      ;;
+    11.0.0)
+      local platform="linux-sles12.4"
+    esac
     ;;
   esac
-  ;;
-# Check RedHat OS version
-Fedora | Oracle | CentOS)
-  platform="linux-sles11.3"
-  ;;
-esac
 
-# Check Architecture
-arch=$(uname -m)
-case $arch in
-aarch64)
-  platform="linux-gnu"
-  ;;
-esac
+  # Check Architecture
+  local arch
+  arch=$(uname -m)
+  case $arch in
+  aarch64)
+    local platform="linux-gnu"
+    ;;
+  esac
 
-filename_v9="clang+llvm-9.0.0-$arch-$platform"
+  echo "clang+llvm-$version-$arch-$platform"
+}
+
+filename_v9="$(filename "$distributor_id" '9.0.0')"
 url_v9="http://releases.llvm.org/9.0.0/$filename_v9.tar.xz"
-filename_v10="clang+llvm-10.0.0-$arch-$platform"
+filename_v10="$(filename "$distributor_id" '10.0.0')"
 url_v10="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/$filename_v10.tar.xz"
-filename_v11="clang+llvm-11.0.0-$arch-$platform"
+filename_v11="$(filename "$distributor_id" '11.0.0')"
 url_v11="https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/$filename_v11.tar.xz"
 
 response_code=$(curl -sIL ${url_v11} -o /dev/null -w "%{response_code}")
