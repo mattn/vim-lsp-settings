@@ -283,6 +283,17 @@
       ]
     }
   ],
+  "gomod": [
+    {
+      "command": "gopls",
+      "requires": [
+        "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
+      ]
+    }
+  ],
   "graphql": [
     {
       "command": "gql-language-server",
