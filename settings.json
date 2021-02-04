@@ -291,7 +291,13 @@
       ],
       "root_uri_patterns": [
         "go.mod"
-      ]
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "mod"
+        ],
+        "name": "mattn/vim-gomod"
+      }
     }
   ],
   "graphql": [
