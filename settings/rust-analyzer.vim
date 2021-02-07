@@ -85,12 +85,8 @@ function! s:rust_analyzer_run_single(context) abort
     endif
 endfunction
 
-let s:setup = 0
-
 function! s:register_command() abort
-  if s:setup == 1
-    return
-  endif
+  if get(s:, 'setup') | return | endif
   let s:setup = 1
   augroup vimlsp_settings_rust_analyzer
     au!

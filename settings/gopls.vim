@@ -22,9 +22,8 @@ augroup vim_lsp_settings_gopls
   autocmd User lsp_setup call s:register_command()
 augroup END
 
-let s:setup = 0
 function! s:register_command() abort
-    if s:setup == 1 | return | endif
+    if get(s:, 'setup') | return | endif
     let s:setup = 1
     call lsp#register_command('gopls.test', function('s:gopls_test'))
     call lsp#register_command('gopls.generate', function('s:gopls_generate'))
