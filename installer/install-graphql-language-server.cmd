@@ -11,4 +11,6 @@ call npm install "graphql-language-service-cli"
 
 echo @echo off ^
 
-call %%~dp0\node_modules\.bin\graphql-lsp %%* graphql-language-server
+call %%~dp0\node_modules\.bin\graphql-lsp %%* ^
+
+> graphql-language-server.cmd
