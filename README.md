@@ -97,6 +97,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Fortran          | fortls                            | Yes       | Yes           |
 | Go               | gopls                             | Yes       | Yes           |
 | Go               | golangci-lint-langserver          | Yes       | Yes           |
+| GraphQL          | graphql-language-service-cli      | Yes       | Yes           |
 | GraphQL          | gql-language-server               | Yes       | Yes           |
 | Groovy           | groovy-language-server            | Yes       | Yes           |
 | Haskell          | haskell-ide-engine                | No        | No            |
@@ -165,6 +166,16 @@ There is a Linux OS/version that does not run the locally installed clangd due t
 ### rls (Rust)
 
 If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
+
+### graphql-language-service-cli(GraphQL)
+
+To use graphql-language-service-cli, the [GraphQL Config](https://graphql-config.com/introduction#examples) has to be located on the top of project directory. The schema must be pointed to the schema file correctly.
+
+```json
+{
+  "schema": "./schema.graphql"
+}
+```
 
 ### gql-language-server (GraphQL)
 
