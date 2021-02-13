@@ -452,6 +452,10 @@
       ]
     },
     {
+      "command": "deno",
+      "requires": []
+    },
+    {
       "command": "rslint-lsp",
       "requires": [
         "cargo"
@@ -488,6 +492,10 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "deno",
+      "requires": []
     }
   ],
   "json": [
@@ -987,6 +995,10 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "deno",
+      "requires": []
     }
   ],
   "typescriptreact": [
@@ -1015,6 +1027,10 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "deno",
+      "requires": []
     }
   ],
   "vala": [
