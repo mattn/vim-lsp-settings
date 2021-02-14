@@ -17,5 +17,5 @@ darwin)
   ;;
 esac
 
-curl -L -o deno-$os.zip https://github.com/denoland/deno/releases/latest/download/$filename
-unzip deno-$os.zip
+curl -L -o "deno-$os.zip" "https://github.com/denoland/deno/releases/latest/download/$filename"
+unzip "deno-$os.zip"
