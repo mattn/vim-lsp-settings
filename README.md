@@ -146,6 +146,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Terraform        | terraform-ls                      | Yes       | Yes           |
 | TTCN-3           | ntt                               | Yes       | Yes           |
 | TypeScript       | typescript-language-server        | Yes       | Yes           |
+| TypeScript       | deno                              | Yes       | Yes           |
 | TypeScript       | rome                              | Yes       | Yes           |
 | TypeScript       | eslint-language-server            | Yes       | Yes           |
 | Vim              | vim-language-server               | Yes       | Yes           |
@@ -166,6 +167,10 @@ There is a Linux OS/version that does not run the locally installed clangd due t
 ### rls (Rust)
 
 If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
+
+### deno (TypeScript)
+
+To use deno, `node_modules` should **not** located on the project directory.
 
 ### graphql-language-service-cli(GraphQL)
 
