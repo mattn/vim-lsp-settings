@@ -3,7 +3,6 @@
 set -e
 set -o pipefail
 
-version="0.5"
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 
 case "${os}" in
