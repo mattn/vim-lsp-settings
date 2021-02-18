@@ -9,6 +9,6 @@ rem del vscode-tailwindcss.vsix
 
 echo @echo off ^
 
-node %%~dp0\extension\dist\server\index.js --stdio %%* ^
+node %%~dp0\extension\dist\server\index.js %%* ^
 
 > tailwindcss-intellisense.cmd

@@ -8,7 +8,7 @@ del vscode-eslint.vsix
 
 echo @echo off ^
 
-node %%~dp0\extension\server\out\eslintServer.js --stdio %%* ^
+node %%~dp0\extension\server\out\eslintServer.js %%* ^
 
 > eslint-language-server.cmd
 
