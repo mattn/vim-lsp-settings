@@ -17,7 +17,7 @@ cat <<EOF >tailwindcss-intellisense
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
-node \$DIR/extension/dist/server/index.js --stdio \$*
+node \$DIR/extension/dist/server/index.js \$*
 EOF
 
 chmod +x tailwindcss-intellisense

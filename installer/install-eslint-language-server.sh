@@ -13,7 +13,7 @@ cat <<EOF >eslint-language-server
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
-node \$DIR/extension/server/out/eslintServer.js --stdio \$*
+node \$DIR/extension/server/out/eslintServer.js \$*
 EOF
 
 chmod +x eslint-language-server
