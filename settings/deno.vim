@@ -50,7 +50,6 @@ function! s:handle_deno_status(ctx, server, type, data) abort
 endfunction
 
 function! s:status() abort
-  let l:command_id = lsp#_new_command()
   let l:ctx = {}
   call lsp#send_request('deno', {
       \ 'method': 'deno/virtualTextDocument',
