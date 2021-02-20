@@ -50,13 +50,8 @@ function! s:handle_deno_status(ctx, server, type, data) abort
 endfunction
 
 function! s:status() abort
-  let l:has_extension = 1
   let l:command_id = lsp#_new_command()
-  let l:ctx = {
-        \ 'counter': l:has_extension,
-        \ 'list':[],
-        \ 'last_command_id': l:command_id,
-        \ }
+  let l:ctx = {}
   call lsp#send_request('deno', {
       \ 'method': 'deno/virtualTextDocument',
       \ 'params': {
