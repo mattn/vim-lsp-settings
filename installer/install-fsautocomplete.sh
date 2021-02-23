@@ -12,7 +12,7 @@ else
   dotnetcmd="\\$DIR/.dotnet/dotnet"
 fi
 
-url="https://ci.appveyor.com/api/projects/fsautocomplete/fsautocomplete/artifacts/bin/pkgs/fsautocomplete.netcore.zip?branch=master"
+url="https://github.com/fsharp/FsAutoComplete/releases/latest/download/fsautocomplete.netcore.zip"
 zip=fsautocomplete.zip
 curl -L "$url" -o "$zip"
 unzip -o -d "fsautocomplete.netcore" "$zip"
