@@ -87,7 +87,7 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
                 " Darty hack for vim-lsp's `s:ensure_start()`.
                 " `s:ensure_start()` checks path is remote uri like or not.
                 " `deno://http/` is detected as remote uri and finish.
-                let a:ctx['target_uri'] = l:target_uri =~ 'deno://' ? substitute(l:target_uri, '^deno:\/\/', 'deno:', '') : l:target_uri
+                let a:ctx['target_uri'] = l:target_uri =~# 'deno://' ? substitute(l:target_uri, '^deno:\/\/', 'deno:', '') : l:target_uri
             elseif l:target_uri =~# 'deno:/'
                 " deno 1.7.5 response `deno:/`
                 " deno lsp encode `@` such as `std@0.87.0` to `std%400.87.0`
