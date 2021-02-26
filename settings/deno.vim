@@ -82,13 +82,13 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
             " path.
             let l:target_uri = a:data['response']['result'][0]['targetUri']
             let l:target_selection_range = a:data['response']['result'][0]['targetSelectionRange']
-            if l:target_uri =~ 'deno://'
+            if l:target_uri =~# 'deno://'
                 " deno 1.7.4 response `deno://`
                 " Darty hack for vim-lsp's `s:ensure_start()`.
                 " `s:ensure_start()` checks path is remote uri like or not.
                 " `deno://http/` is detected as remote uri and finish.
                 let a:ctx['target_uri'] = l:target_uri =~ 'deno://' ? substitute(l:target_uri, '^deno:\/\/', 'deno:', '') : l:target_uri
-            elseif l:target_uri =~ 'deno:/'
+            elseif l:target_uri =~# 'deno:/'
                 " deno 1.7.5 response `deno:/`
                 " deno lsp encode `@` such as `std@0.87.0` to `std%400.87.0`
                 " It's hard to handle in vim-lsp, so decode `@` for filepath.
@@ -155,14 +155,14 @@ function! s:definition() abort
 
     let l:ctx = { 'counter': len(l:servers), 'list':[], 'last_command_id': l:command_id, 'jump_if_one': 1, 'mods': '', 'in_preview': 0 }
     if len(l:servers) == 0
-        call s:not_supported('Retrieving definition')
+        call lsp#utils#error('Retriving definition not supported for filetype deno')
         return
     endif
     let l:target_uri = lsp#get_text_document_identifier().uri
 
     " Save deno's targetUri as buffer name and vim-lsp add `file://` prefex.
     " If identifier is startwith `file://deno:`, remove `file://` prefex.
-    if l:target_uri =~ 'file://deno%3A'
+    if l:target_uri =~# 'file://deno%3A'
         let l:target_uri = substitute(l:target_uri, 'file:\/\/deno%3A', 'deno:', '')
     endif
 
@@ -214,7 +214,7 @@ endfunction
 
 function! s:cache() abort
     let l:is_download_cache = input('Download all cache files?(y/n) ', 'y')
-    if l:is_download_cache =~ 'y'
+    if l:is_download_cache =~# 'y'
       call lsp#send_request('deno', {
          \ 'method': 'deno/cache',
          \ 'params': {
