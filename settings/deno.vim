@@ -147,13 +147,17 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
     endif
 endfunction
 
-function! s:definition() abort
+function! s:definition(in_preview, ...) abort
     " Based on vim-lsp/autoload/lsp/ui/vim.vim s:list_location()
     let l:capabilities_func = 'lsp#capabilities#has_definition_provider(v:val)'
     let l:servers = filter(lsp#get_allowed_servers(), l:capabilities_func)
     let l:command_id = lsp#_new_command()
 
-    let l:ctx = { 'counter': len(l:servers), 'list':[], 'last_command_id': l:command_id, 'jump_if_one': 1, 'mods': '', 'in_preview': 0 }
+    let l:ctx = { 'counter': len(l:servers), 'list':[], 'last_command_id': l:command_id, 'jump_if_one': 1, 'mods': '', 'in_preview': a:in_preview }
+    if a:0
+        let l:ctx['mods'] = a:1
+    endif
+
     if len(l:servers) == 0
         call lsp#utils#error('Retriving definition not supported for filetype deno')
         return
@@ -181,13 +185,19 @@ function! s:definition() abort
     echo 'Retrieving definition ...'
 endfunction
 
-function! s:status() abort
+function! s:status(in_preview, ...) abort
   let l:ctx = {
+      \ 'mods': '',
+      \ 'in_preview': a:in_preview,
       \ 'target_uri': 'deno:/status.md',
       \ 'target_selection_range': {
       \   'end': { 'character': 0, 'line': 0 },
       \   'start': { 'character': 0, 'line': 0 }
       \ }}
+  if a:0
+      let l:ctx['mods'] = a:1
+  endif
+
   call lsp#send_request('deno', {
       \ 'method': 'deno/virtualTextDocument',
       \ 'params': {
@@ -227,11 +237,11 @@ function! s:cache() abort
 endfunction
 
 function! s:on_lsp_buffer_enabled() abort
-  command! -buffer LspDenoDefinition call <SID>definition()
-  nnoremap <buffer> <plug>(lsp-deno-definition) :<c-u>call <SID>definition()<cr>
+  command! -buffer LspDenoDefinition call <SID>definition(0, <q-mods>)
+  nnoremap <buffer> <plug>(lsp-deno-definition) :<c-u>call <SID>definition(0)<cr>
 
-  command! -buffer LspDenoStatus call <SID>status()
-  nnoremap <buffer> <plug>(lsp-deno-status) :<c-u>call <SID>status()<cr>
+  command! -buffer LspDenoStatus call <SID>status(0, <q-mods>)
+  nnoremap <buffer> <plug>(lsp-deno-status) :<c-u>call <SID>status(0)<cr>
 
   command! -buffer LspDenoCache call <SID>cache()
   nnoremap <buffer> <plug>(lsp-deno-cache) :<c-u>call <SID>cache()<cr>
