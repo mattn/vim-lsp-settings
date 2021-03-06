@@ -778,6 +778,12 @@
       ]
     }
   ],
+  "racket": [
+    {
+      "command": "racket-lsp",
+      "requires": []
+    }
+  ],
   "reason": [
     {
       "command": "reason-language-server",
