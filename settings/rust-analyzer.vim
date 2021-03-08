@@ -22,6 +22,9 @@ augroup END
 function! s:on_lsp_buffer_enabled() abort
   command! -buffer LspOpenCargoToml call <SID>open_cargo_toml()
   nnoremap <buffer> <plug>(lsp-open-cargo-toml) :<c-u>call <SID>open_cargo_toml()<cr>
+
+  command! -buffer LspCargoReload call <SID>reload_workspace()
+  nnoremap <buffer> <plug>(lsp-cargo-reload) :<c-u>call <SID>reload_workspace()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -35,6 +38,18 @@ function! s:open_cargo_toml() abort
         \ lsp#callbag#subscribe({
         \   'next':{x->lsp#utils#location#_open_lsp_location(x['response']['result'])},
         \   'error':{e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:reload_workspace() abort
+    call lsp#callbag#pipe(
+        \ lsp#request('rust-analyzer', {
+        \   'method': 'rust-analyzer/reloadWorkspace',
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x -> execute('echo "Cargo workspace reloaded"', '')},
+        \   'error': {e -> lsp_settings#utils#error(e)},
         \ })
         \ )
 endfunction
