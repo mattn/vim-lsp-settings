@@ -15,4 +15,4 @@ call %%~dp0\node_modules\@prisma\engines\prisma-fmt-windows.exe %%* ^
 
 > prisma-fmt.cmd
 
-call "%~dp0\npm_install.cmd" prisma-langauge-server "@prisma/language-server"
+call "%~dp0\npm_install.cmd" prisma-language-server "@prisma/language-server"
