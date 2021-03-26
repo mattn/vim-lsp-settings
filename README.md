@@ -112,6 +112,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | JavaScript       | typescript-language-server        | Yes       | Yes           |
 | JavaScript       | javascript-typescript-stdio       | Yes       | Yes           |
 | JavaScript       | rome                              | Yes       | Yes           |
+| JavaScript       | flow                              | Yes       | Yes           |
 | JavaScript       | eslint-language-server            | Yes       | Yes           |
 | Julia            | LanguageServer.jl                 | Yes       | No            |
 | Java             | java-language-server              | No        | No            |
@@ -172,6 +173,10 @@ If you installed rls already, you can use rls without configurations. But if you
 ### deno (TypeScript)
 
 To use deno, `node_modules` should **not** located on the project directory.
+
+### flow (JavaScript)
+
+To use flow, the `.flowconfig` has to be located on the top of project directory.
 
 ### graphql-language-service-cli(GraphQL)
 
