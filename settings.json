@@ -460,6 +460,16 @@
       "requires": [
         "cargo"
       ]
+    },
+    {
+      "command": "flow",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        ".flowconfig"
+      ]
     }
   ],
   "javascriptreact": [
@@ -496,6 +506,16 @@
     {
       "command": "deno",
       "requires": []
+    },
+    {
+      "command": "flow",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        ".flowconfig"
+      ]
     }
   ],
   "json": [
