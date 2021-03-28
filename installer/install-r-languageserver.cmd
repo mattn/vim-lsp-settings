@@ -1,6 +1,6 @@
 @echo off
 
-R --slave -e install.packages("languageserver")
+R --slave -e install.packages('languageserver')
 
 echo @echo off ^
 
