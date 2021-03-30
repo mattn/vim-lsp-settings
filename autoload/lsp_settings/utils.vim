@@ -1,22 +1,25 @@
-function! lsp_settings#utils#msg(msg) abort
+function! lsp_settings#utils#msg(msg, ...) abort
   redraw
   echohl Comment
   echo a:msg
   echohl None
+  return a:0 > 0 ? a:000[0] : v:null
 endfunction
 
-function! lsp_settings#utils#warning(msg) abort
+function! lsp_settings#utils#warning(msg, ...) abort
   redraw
   echohl WarningMsg
   echomsg a:msg
   echohl None
+  return a:0 > 0 ? a:000[0] : v:null
 endfunction
 
-function! lsp_settings#utils#error(msg) abort
+function! lsp_settings#utils#error(msg, ...) abort
   redraw
   echohl Error
   echomsg a:msg
   echohl None
+  return a:0 > 0 ? a:000[0] : v:null
 endfunction
 
 function! lsp_settings#utils#valid_name(command) abort

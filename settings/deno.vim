@@ -15,7 +15,7 @@ augroup vim_lsp_settings_deno
       \   },
       \ }),
       \ 'allowlist': lsp_settings#get('deno', 'allowlist', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']),
-      \ 'blocklist': lsp_settings#get('deno', 'blocklist', {c->empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/')) ? [] : ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']}),
+      \ 'blocklist': lsp_settings#get('deno', 'blocklist', {c->empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/')) ? [] : lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])}),
       \ 'config': lsp_settings#get('deno', 'config', lsp_settings#server_config('deno')),
       \ 'workspace_config': lsp_settings#get('deno', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('deno', 'semantic_highlight', {}),
