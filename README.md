@@ -172,7 +172,21 @@ If you installed rls already, you can use rls without configurations. But if you
 
 ### deno (TypeScript)
 
-To use deno, `node_modules` should **not** located on the project directory.
+To use deno, `node_modules` should **not** located on the project directory or traversing the filesystem upwards.
+
+When you editing Node projects, following warning message is shown.
+
+`server "deno" is disabled since "node_modules" is found`
+
+If you want to disable warning message, you may put `.vim-lsp-settings/settings.json` in your project root directory.
+
+```json
+{
+  "deno": {
+    "disabled": true
+  }
+}
+```
 
 ### flow (JavaScript)
 
