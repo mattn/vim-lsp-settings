@@ -3,7 +3,7 @@
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
-version="0.8.0"
+version="0.15.0"
 filename="terraform-ls_${version}.zip"
 
 case $os in
