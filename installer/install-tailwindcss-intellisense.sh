@@ -2,7 +2,7 @@
 
 set -e
 
-version="0.4.1"
+version="0.5.10"
 url="https://github.com/tailwindlabs/tailwindcss-intellisense/releases/download/v$version/vscode-tailwindcss-$version.vsix"
 asset="vscode-tailwindcss.vsix"
 
