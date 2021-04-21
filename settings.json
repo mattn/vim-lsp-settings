@@ -822,6 +822,17 @@
       }
     }
   ],
+  "rst": [
+    {
+      "command": "esbonio",
+      "requires": [
+        "python"
+      ],
+      "root_uri_patterns": [
+        "conf.py"
+      ]
+    }
+  ],
   "ruby": [
     {
       "command": "solargraph",

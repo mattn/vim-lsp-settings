@@ -136,6 +136,7 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 | Ruby             | solargraph                        | Yes       | Yes           |
 | Rust             | rls                               | Yes       | No            |
 | Rust             | rust-analyzer                     | Yes       | Yes           |
+| Sphinx           | esbonio                           | Yes       | Yes           |
 | SQL              | sql-language-server               | Yes       | Yes           |
 | SQL              | sqls                              | Yes       | Yes           |
 | Scala            | Metals                            | Yes       | Yes           |
