@@ -1,6 +1,7 @@
 @echo off
 
-setlocal
+call "%~dp0\pip_install.cmd" esbonio esbonio[lsp]
+rem del esboniio
 
 echo @echo off ^
 
