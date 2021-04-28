@@ -83,16 +83,16 @@ function! s:vim_lsp_installer(ft, ...) abort
   if !has_key(s:settings, l:ft)
     return []
   endif
-  let l:server = s:settings[l:ft]
-  if empty(l:server)
+  let l:servers = s:settings[l:ft]
+  if empty(l:servers)
     return []
   endif
   if l:ft !=# '_'
-    let l:server += s:settings['_']
+    let l:servers += s:settings['_']
   endif
 
   let l:name = get(a:000, 0, '')
-  for l:conf in l:server
+  for l:conf in l:servers
     if !empty(l:name) && l:conf.command != l:name
       continue
     endif
