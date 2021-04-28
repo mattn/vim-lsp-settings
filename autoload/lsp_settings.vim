@@ -37,7 +37,7 @@ function! lsp_settings#global_settings_dir() abort
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
-function! lsp_settings#intalled_servers() abort
+function! lsp_settings#installed_servers() abort
   let l:servers = []
   for l:ft in sort(keys(s:settings))
     for l:conf in s:settings[l:ft]
