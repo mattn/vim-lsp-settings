@@ -20,6 +20,25 @@ Plug 'mattn/vim-lsp-settings'
 
 You need to install both [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and vim-lsp-settings.
 
+## Usage
+
+While editing a file with a supported filetype:
+
+```
+:LspInstallServer
+```
+
+To uninstall server:
+
+```
+:LspUninstallServer server-name
+```
+
+Because there is no way to update a server, please run `:LspInstallServer` again, the newer version will be installed.
+
+
+### Auto-complete
+
 If you want to use auto-completion, you can use one of the following.
 
 #### asyncomplete.vim
@@ -34,7 +53,9 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'lighttiger2505/deoplete-vim-lsp'
 ```
 
-### server store directory
+### LSP server download directory
+
+This is where LSP servers are placed on your system after you download them with `:LspInstallServer`
 
 #### Windows
 
@@ -55,22 +76,6 @@ $XDG_DATA_HOME/vim-lsp-settings/servers
 ```
 
 You can change the directory to install servers by set `g:lsp_settings_servers_dir` option in full path.
-
-## Usage
-
-While editing a file with a supported filetype:
-
-```
-:LspInstallServer
-```
-
-To uninstall server:
-
-```
-:LspUninstallServer server-name
-```
-
-Because there is no way to update a server, please run `:LspInstallServer` again, the newer version will be installed.
 
 ## Supported Languages
 
@@ -165,17 +170,17 @@ Because there is no way to update a server, please run `:LspInstallServer` again
 
 ### clangd (C/C++)
 
-There is a Linux OS/version that does not run the locally installed clangd due to zlib version mismatch. If you want to use clangd, please install clangd on your system.
+There is a Linux OS/version that does not run the locally installed `clangd` due to zlib version mismatch. If you want to use `clangd`, please install `clangd` on your system.
 
 ### rls (Rust)
 
-If you installed rls already, you can use rls without configurations. But if you have not installed rls yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
+If you installed `rls` already, you can use `rls` without configurations. But if you have not installed `rls` yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
 
 ### deno (TypeScript)
 
 To use deno, `node_modules` should **not** located on the project directory or traversing the filesystem upwards.
 
-When you editing Node projects, following warning message is shown.
+When editing Node projects, the following warning message is shown.
 
 `server "deno" is disabled since "node_modules" is found`
 
@@ -229,14 +234,14 @@ location. See 'Configurations' below.
 
 ### [haskell ide engine](https://github.com/haskell/haskell-ide-engine) (Haskell)
 
-If you installed hie with stack, you can use hie without configurations.
-But if you have not installed hie yet, you can install it by following [these steps](https://github.com/haskell/haskell-ide-engine#installation).
+If you installed `hie` with stack, you can use hie without configurations.
+But if you have not installed `hie` yet, you can install it by following [these steps](https://github.com/haskell/haskell-ide-engine#installation).
 
-## Configurations
+## Extra Configurations
 
 Most of the configurations are not required.
 
-If you installed clangd already, you can use clangd for C/C++ without any configuration. But if you installed clang with named clangd-6.0, you can replace executable like below:
+If you installed `clangd` already, you can use `clangd` for C/C++ without any configuration. But if you installed `clang` with the name` clangd-6.0`, you can replace executable with the following config:
 
 ```vim
 let g:lsp_settings = {
@@ -301,7 +306,7 @@ let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-
 
 When the servers are specified in a list, these will all be started.
 
-If you want to configure Language Server to use flake8 rather than pycodestyle,
+If you want to configure Language Server to use `flake8` rather than `pycodestyle`,
 the following can be added to your `~/.vimrc` file.
 Note that `pyls-all` was the automatically registered server name. Check with `:LspStatus`.
 
