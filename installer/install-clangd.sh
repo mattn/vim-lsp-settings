@@ -2,6 +2,17 @@
 
 set -e
 
+# On MacOS, use clangd in Command Line Tools for Xcode.
+if command -v xcrun 2>/dev/null && xcrun --find clangd 2>/dev/null; then
+  cat <<'EOF' >clangd
+#!/usr/bin/env bash
+
+exec xcrun --run clangd "$@"
+EOF
+  chmod +x clangd
+  exit
+fi
+
 if command -v lsb_release 2>/dev/null; then
   distributor_id=$(lsb_release -a 2>&1 | grep 'Distributor ID' | awk '{print $3}')
 elif [ -e /etc/fedora-release ]; then
