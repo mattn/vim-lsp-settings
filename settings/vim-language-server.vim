@@ -5,6 +5,7 @@ augroup vim_lsp_settings_vim_language_server
       \ 'cmd': {server_info->lsp_settings#get('vim-language-server', 'cmd', [lsp_settings#exec_path('vim-language-server'), '--stdio'])},
       \ 'root_uri':{server_info->lsp_settings#get('vim-language-server', 'root_uri', lsp_settings#root_uri('vim-language-server'))},
       \ 'initialization_options': extend({
+      \   'isNeovim': has('nvim'),
       \   'vimruntime': $VIMRUNTIME,
       \   'runtimepath': &rtp,
       \   'iskeyword': &isk,
