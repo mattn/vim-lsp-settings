@@ -1090,6 +1090,9 @@
       "requires": [
         "npm"
       ],
+      "config": {
+        "refresh_pattern": "\\([bwtglsav]:\\)\\?\\k*$"
+      },
       "root_uri_patterns": [
         ".vim/",
         "vimfiles/"
