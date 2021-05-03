@@ -8,7 +8,7 @@ augroup vim_lsp_settings_vim_language_server
       \   'isNeovim': has('nvim'),
       \   'vimruntime': $VIMRUNTIME,
       \   'runtimepath': &rtp,
-      \   'iskeyword': &isk,
+      \   'iskeyword': &isk . ',:',
       \   'diagnostic': {'enable': v:true}
       \  }, lsp_settings#get('vim-language-server', 'initialization_options', {}), 'force'),
       \ 'allowlist': lsp_settings#get('vim-language-server', 'allowlist', ['vim']),
