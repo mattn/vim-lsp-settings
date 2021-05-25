@@ -194,6 +194,23 @@ If you want to disable warning message, you may put `.vim-lsp-settings/settings.
 }
 ```
 
+To use importMap, default file name is `import_map.json`.
+
+If you don't want to use `import_map.json`, you may put `.vim-lsp-settings/settings.json` in your project root directory and set importMap whatever you want.
+
+```
+{
+  "deno": {
+    "initialization_options": {
+      "enable": true,
+      "lint": true,
+      "unstable": true,
+      "importMap": "your_own_import_map.json"
+    }
+  }
+}
+```
+
 ### flow (JavaScript)
 
 To use flow, the `.flowconfig` has to be located on the top of project directory.
