@@ -8,6 +8,7 @@ augroup vim_lsp_settings_deno
       \   'enable': v:true,
       \   'lint': v:true,
       \   'unstable': v:true,
+      \   'importMap': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json'),
       \   'codeLens': {
       \     'implementations': v:true,
       \     'references': v:true,
