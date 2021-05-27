@@ -113,10 +113,14 @@ function! s:vim_lsp_installer(ft, ...) abort
     if l:missing !=# 0
       continue
     endif
+
     if lsp_settings#executable(l:command)
-      return [l:conf.command, l:command]
+      let l:version = lsp_settings#get(l:conf.command, 'version', '')
+      return [l:conf.command, l:command . ' ' . l:version]
     endif
+
   endfor
+
   return [v:false] " placeholder, so that empty() returns false, but len() < 2 returns true
 endfunction
 
