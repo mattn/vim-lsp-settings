@@ -14,6 +14,6 @@ call npm install "%2"
 
 echo @echo off ^
 
-call %%~dp0\node_modules\.bin\%1.cmd %%* ^
+call ^"%%~dp0\node_modules\.bin\%1.cmd^" %%* ^
 
-> %1.cmd
+> "%1.cmd"
