@@ -28,7 +28,16 @@ function! s:open_new_buffer(ctx, server, type, data) abort
     let l:path = a:ctx['target_uri']
     let l:line = a:ctx['target_selection_range']['start']['line'] + 1
     let l:col = a:ctx['target_selection_range']['start']['character'] + 1
+    let l:text = a:data['response']['result']
 
+    if a:ctx['in_preview'] ==# 1
+        call lsp#ui#vim#output#preview(a:server, l:text, {
+            \   'statusline': ' LSP Peek ' . a:type,
+            \   'cursor': { 'line': l:line, 'col': l:col, 'align': g:lsp_peek_alignment },
+            \   'filetype': &filetype
+            \ })
+        return
+    endif
     let l:buffer = bufnr(l:path)
     let l:mods = has_key(a:ctx, 'mods') ? a:ctx['mods'] : ''
     if l:mods ==# '' && &modified && !&hidden && l:buffer != bufnr('%')
@@ -44,7 +53,6 @@ function! s:open_new_buffer(ctx, server, type, data) abort
         let l:cmd = l:mods . ' ' . (l:buffer !=# -1 ? 'sb ' . l:buffer : 'split ' . l:path)
     endif
 
-    let l:text = a:data['response']['result']
     execute 'silent ' l:cmd
 
     setlocal modifiable
@@ -240,6 +248,9 @@ endfunction
 function! s:on_lsp_buffer_enabled() abort
   command! -buffer LspDenoDefinition call <SID>definition(0, <q-mods>)
   nnoremap <buffer> <plug>(lsp-deno-definition) :<c-u>call <SID>definition(0)<cr>
+
+  command! -buffer LspDenoPeekDefinition call <SID>definition(1, <q-mods>)
+  nnoremap <buffer> <plug>(lsp-deno-peek-definition) :<c-u>call <SID>definition(1)<cr>
 
   command! -buffer LspDenoStatus call <SID>status(0, <q-mods>)
   nnoremap <buffer> <plug>(lsp-deno-status) :<c-u>call <SID>status(0)<cr>
