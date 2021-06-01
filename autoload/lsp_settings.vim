@@ -362,7 +362,11 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
     split new
     call termopen(shellescape(l:entry[1]), {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
   else
-    let l:bufnr = term_start(shellescape(l:entry[1]), {'cwd': l:server_install_dir})
+    if has('win32')
+      let l:bufnr = term_start(shellescape(l:entry[1]), {'cwd': l:server_install_dir})
+    else
+      let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
+    endif
     let l:job = term_getjob(l:bufnr)
     if l:job != v:null
       call job_setoptions(l:job, {'exit_cb': function('s:vim_lsp_install_server_post', [l:entry[0]])})
