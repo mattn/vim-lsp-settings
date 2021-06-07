@@ -742,6 +742,30 @@
   ],
   "python": [
     {
+      "command": "pylsp-all",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "pylsp-all",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
+      "command": "pylsp",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "pylsp",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
       "command": "pyls-all",
       "requires": [
         "py"
