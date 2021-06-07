@@ -839,6 +839,12 @@
       "requires": [
         "gem"
       ]
+    },
+    {
+      "command": "ruby_language_server",
+      "requires": [
+        "gem"
+      ]
     }
   ],
   "rust": [
