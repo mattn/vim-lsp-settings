@@ -5,7 +5,7 @@ setlocal
 curl -Lo coursier https://git.io/coursier-cli
 curl -Lo coursier.bat https://git.io/coursier-bat
 
-set VERSION=0.9.10
+set VERSION=0.10.4
 set JAVA_FLAGS=
 if "%HTTPS_PROXY%" neq "" (
   set JAVA_FLAGS=-Dhttps.proxyHost=%HTTPS_PROXY%
