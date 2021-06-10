@@ -5,7 +5,7 @@ set -e
 DEFAULT_DIR="$(pwd)"
 
 # We should not download GitHub's zip file here, because it doesn't include some submodules.
-git clone --recurse-submodules http://github.com/ocaml/ocaml-lsp.git ocaml-lsp-files  --depth=1
+git clone --recurse-submodules http://github.com/ocaml/ocaml-lsp.git ocaml-lsp-files --depth=1
 cd ocaml-lsp-files
 
 rm -r lsp/test
@@ -14,7 +14,7 @@ export OPAMROOT
 
 opam init -a -n
 eval "$(opam env)" 2> /dev/null
-opam switch create . -y
+opam switch create . --with-test -y
 opam exec --switch=. dune build
 
 rm -rf .git
