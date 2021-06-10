@@ -259,7 +259,69 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <plug>(lsp-deno-cache) :<c-u>call <SID>cache()<cr>
 endfunction
 
+function! s:deno_test(context) abort
+  let l:command = get(a:context, 'command', {})
+  let l:arguments = get(l:command, 'arguments', [])
+  let l:testfile = lsp#utils#uri_to_path(get(l:arguments, 0, ''))
+  let l:test = get(l:arguments, 1, [])
+  let l:cmd = ['deno']
+    if len(l:test) > 0
+        let l:cmd += ['test', '--filter', l:test, l:testfile]
+        call lsp_settings#utils#term_start(l:cmd, {})
+    else
+        call lsp_settings#utils#error('Unsupported deno.test ' . json_encode(l:command))
+    endif
+endfunction
+
+function! s:deno_show_references(context) abort
+  let l:bufnr = get(a:context, 'bufnr', 0)
+  let l:command = get(a:context, 'command', {})
+  let l:arguments = get(l:command, 'arguments', [])
+
+  if len(l:arguments) > 0
+    let l:source_file = lsp#utils#uri_to_path(get(l:arguments, 0, ''))
+    let l:source_position = get(l:arguments, 1, {})
+    let l:source_lnum = l:source_position['line'] + 1
+    let l:references = get(l:arguments, 2, [])
+    let l:loclist = []
+    " Add source
+    call add(l:loclist, {
+          \ 'bufnr': l:bufnr,
+          \ 'filename': l:source_file,
+          \ 'lnum': l:source_lnum,
+          \ 'col': l:source_position['character'] + 1,
+          \ 'text': getline(l:source_lnum),
+          \ })
+
+    for l:reference in l:references
+      let l:lnum = l:reference['range']['start']['line'] + 1
+      let l:col = l:reference['range']['start']['character'] + 1
+      call add(l:loclist, {
+            \ 'bufnr': l:bufnr,
+            \ 'filename': lsp#utils#uri_to_path(l:reference['uri']),
+            \ 'lnum': l:lnum,
+            \ 'col': l:col,
+            \ 'text': getline(l:lnum),
+            \ })
+    endfor
+    call setloclist(win_getid(), l:loclist)
+    execute 'lopen'
+  endif
+endfunction
+
+function! s:noop(context)
+endfunction
+
+function! s:register_command() abort
+    if get(s:, 'setup') | return | endif
+    let s:setup = 1
+    call lsp#register_command('deno.test', function('s:deno_test'))
+    call lsp#register_command('deno.showReferences', function('s:deno_show_references'))
+    call lsp#register_command('', function('s:noop'))
+endfunction
+
 augroup lsp_install_deno
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  autocmd User lsp_setup call s:register_command()
 augroup END
