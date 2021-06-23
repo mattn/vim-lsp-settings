@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 
 git clone --recurse-submodules --depth=1 https://github.com/zigtools/zls .
 zig build
-move zig-cache\bin\zls.exe
-rd /Q /S zig-cache src tests
+move zig-out\bin\zls.exe
+rd /Q /S zig-cache zig-out src tests
 
 for /f "usebackq tokens=1 delims==" %%f in (`where zig`) do (
   set "f=%%~dpf"
