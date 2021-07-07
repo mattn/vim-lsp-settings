@@ -50,6 +50,20 @@ function! s:extend(lhs, rhs) abort
   return l:lhs
 endfunction
 
+function! s:filter_deny_keys(settings) abort
+  let l:deny_keys = get(g:, 'lsp_settings_deny_local_keys', ['cmd'])
+  if empty(l:deny_keys)
+    return
+  endif
+  for [l:name, l:setting] in items(a:settings)
+    for [l:k, l:v] in items(l:setting)
+      for l:k in keys(l:deny_keys)
+        call remove(l:setting, l:k)
+      endfor
+    endfor
+  endfor
+endfunction
+
 function! lsp_settings#profile#load_local() abort
   try
     let l:root = finddir('.vim-lsp-settings', ';')
@@ -60,6 +74,7 @@ function! lsp_settings#profile#load_local() abort
       return
     endif
     let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
+    call s:filter_keys(l:settings)
     if has_key(g:, 'lsp_settings')
       for [l:k, l:v] in items(l:settings)
         if has_key(g:lsp_settings, l:k)
