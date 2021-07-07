@@ -144,6 +144,14 @@ g:lsp_settings_global_settings_dir
       $XDG_DATA_HOME/vim-lsp-settings ($XDG_DATA_HOME defined Non-Windows)
   When value defined, store global settings under these directory.
 
+                                              *g:lsp_settings_deny_local_keys*
+g:lsp_settings_deny_local_keys
+  Default: ['cmd']
+  vim-lsp-settings load local settings from .vim-lsp-settings but it might be
+  dangerous when the git repository contains the directory same named.
+  This variable is specified name of settings like 'cmd' to drop items in the
+  settings.
+
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
   contains the .vim-lsp-settings config directory.
