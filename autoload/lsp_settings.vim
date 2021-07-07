@@ -50,7 +50,7 @@ function! lsp_settings#installed_servers() abort
       if filereadable(l:path)
         let l:version = trim(join(readfile(l:path), "\n"))
       endif
-      call add(l:servers, {'name': l:conf.command, 'version': l:version})
+      call add(l:servers, {'command': l:conf.command, 'version': l:version})
     endfor
   endfor
   return l:servers
@@ -526,6 +526,50 @@ endfunction
 
 function! lsp_settings#clear() abort
   let s:ftmap = {}
+endfunction
+
+function! lsp_settings#update_servers(bang) abort
+  if empty(a:bang) && confirm('Update all installed servers?', "&Yes\n&Cancel") ==# 2
+    return
+  endif
+  let l:servers = lsp_settings#installed_servers()
+  let l:servers_dir = lsp_settings#servers_dir()
+  let l:pwd = getcwd()
+
+  let l:old_more = &more
+  set nomore
+  for l:server in l:servers
+    try
+      let l:from = printf('%s/%s', l:servers_dir, l:server.command)
+      let l:to = printf('%s/___%s', l:servers_dir, l:server.command)
+      call rename(l:from, l:to)
+      let l:command = printf('%s/install-%s', s:installer_dir, l:server.command)
+      if has('win32')
+        let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
+      else
+        let l:command = l:command . '.sh'
+      endif
+      if !executable(l:command)
+        continue
+      endif
+      call mkdir(l:from, 'p')
+      call chdir(l:from)
+      call lsp_settings#utils#msg('Installing ' . l:server.command)
+      call system(l:command)
+      call delete(l:to, 'rf')
+    catch
+      echomsg v:exception
+      if isdirectory(l:to)
+        if isdirectory(l:from)
+          call delete(l:from, 'rf')
+        endif
+        call rename(l:to, l:from)
+      endif
+    finally
+      call chdir(l:pwd)
+    endtry
+  endfor
+  let &more = l:old_more
 endfunction
 
 function! lsp_settings#init() abort

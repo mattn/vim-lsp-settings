@@ -151,13 +151,14 @@ function! lsp_settings#profile#status() abort
   endfor
 
   for l:server in uniq(sort(l:servers))
-    if index(l:active_servers, l:server) != -1
-      let l:status = lsp#get_server_status(l:server)
-      echon l:server . ': '
-      exec 'echohl' s:color_map[l:status]
-      echon l:status
-      echohl None
+    if index(l:active_servers, l:server) ==# -1
+      continue
     endif
+    let l:status = lsp#get_server_status(l:server)
+    echon l:server . ': '
+    exec 'echohl' s:color_map[l:status]
+    echon l:status
+    echohl None
     echo ''
   endfor
 endfunction
