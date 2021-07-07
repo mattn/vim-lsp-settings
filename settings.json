@@ -605,6 +605,12 @@
       "requires": []
     }
   ],
+  "markdown": [
+    {
+      "command": "zeta-note",
+      "requires": []
+    }
+  ],
   "nim": [
     {
       "command": "nimlsp",
