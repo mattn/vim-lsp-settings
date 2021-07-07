@@ -74,7 +74,7 @@ function! lsp_settings#profile#load_local() abort
       return
     endif
     let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
-    call s:filter_keys(l:settings)
+    call s:filter_deny_keys(l:settings)
     if has_key(g:, 'lsp_settings')
       for [l:k, l:v] in items(l:settings)
         if has_key(g:lsp_settings, l:k)
