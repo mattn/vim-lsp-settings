@@ -91,11 +91,42 @@ function! s:vim_lsp_installer(ft, ...) abort
     let l:servers += s:settings['_']
   endif
 
+  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+
   let l:name = get(a:000, 0, '')
   for l:conf in l:servers
     if !empty(l:name) && l:conf.command != l:name
       continue
     endif
+
+    if lsp_settings#get(l:conf.command, 'disabled', get(l:conf, 'disabled', 0))
+      if !empty(l:name) && l:conf.command == l:name
+        call lsp_settings#utils#warning(l:name . ' requested but is disabled by global or local settings')
+      endif
+      continue
+    endif
+
+    if type(l:default) ==# v:t_list
+      if len(l:default) ># 0 && index(l:default, l:server.command) == -1
+        if !empty(l:name) && l:conf.command == l:name
+          call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
+        endif
+        continue
+      endif
+    elseif type(l:default) ==# v:t_string
+      if !empty(l:default) && l:default != l:server.command
+        if !empty(l:name) && l:conf.command == l:name
+          call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
+        endif
+        continue
+      endif
+    else
+      if !empty(l:name) && l:conf.command == l:name
+        call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
+      endif
+      continue
+    endif
+
     let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
     if has('win32')
       let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
