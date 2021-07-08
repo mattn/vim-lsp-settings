@@ -1175,6 +1175,24 @@
         ],
         "name": "posva/vim-vue"
       }
+    },
+    {
+      "command": "volar",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "vue"
+        ],
+        "name": "leafOfTree/vim-vue-plugin"
+      }
     }
   ],
   "xml": [
