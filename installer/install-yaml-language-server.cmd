@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\npm_install.cmd" yaml-language-server yaml-language-server
+call "%~dp0\yarn_install.cmd" yaml-language-server yaml-language-server
