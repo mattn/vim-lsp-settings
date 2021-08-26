@@ -869,6 +869,12 @@
       "requires": [
         "gem"
       ]
+    },
+    {
+      "command": "steep",
+      "requires": [
+        "gem"
+      ]
     }
   ],
   "rust": [
