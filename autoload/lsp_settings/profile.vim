@@ -57,8 +57,10 @@ function! s:filter_deny_keys(settings) abort
   endif
   for [l:name, l:setting] in items(a:settings)
     for [l:k, l:v] in items(l:setting)
-      for l:k in keys(l:deny_keys)
-        call remove(l:setting, l:k)
+      for l:deny in l:deny_keys
+        if has_key(l:v, l:deny)
+          call remove(l:v, l:deny)
+        endif
       endfor
     endfor
   endfor
