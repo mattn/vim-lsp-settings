@@ -9,12 +9,13 @@ if [ ! -f package.json ]; then
   echo '{"name": ""}' >package.json
 fi
 
-npm install "vscode-vue-languageservice"
+npm install @volar/server@0.27.12-alpha.1
+npm install typescript@4.3 # volar doesn't work well with TS4.4
 
 cat <<EOF >volar
 #!/usr/bin/env node
 
-require('./node_modules/vscode-vue-languageservice/out/index.js')
+require('./node_modules/@volar/server/out/index.js')
 EOF
 
 chmod +x volar
