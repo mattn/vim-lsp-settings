@@ -1,13 +1,13 @@
 @echo off
 
-rem if not exist package.json (
-rem 	call npm init -y
-rem 
-rem 	echo {"name":""}>package.json
-rem )
+if not exist package.json (
+	call npm init -y
 
-rem call npm install @volar/server@0.27.12-alpha.1
-rem call npm install typescript@4.3
+	echo {"name":""}>package.json
+)
+
+call npm install @volar/server@0.27.12-alpha.1
+call npm install typescript@4.3
 
 echo 0^</* :{ ^
 
