@@ -55,8 +55,14 @@ function! s:filter_deny_keys(settings) abort
   if empty(l:deny_keys)
     return
   endif
-  for [l:name, l:setting] in items(a:settings)
-    for [l:k, l:v] in items(l:setting)
+  for l:setting in values(a:settings)
+    if v:t_dict !=# type(l:setting)
+      continue
+    endif
+    for l:v in values(l:setting)
+      if v:t_dict !=# type(l:v)
+        continue
+      endif
       for l:deny in l:deny_keys
         if has_key(l:v, l:deny)
           call remove(l:v, l:deny)
