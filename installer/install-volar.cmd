@@ -6,7 +6,7 @@ if not exist package.json (
 	echo {"name":""}>package.json
 )
 
-call npm install @volar/server@0.27.12-alpha.1
+call npm install @volar/server@0.27.12
 call npm install typescript@4.3
 
 echo 0^</* :{ ^
