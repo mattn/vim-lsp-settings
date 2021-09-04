@@ -1028,6 +1028,12 @@
       ]
     }
   ],
+  "toml": [
+    {
+      "command": "taplo-lsp",
+      "requires": []
+    }
+  ],
   "ttcn": [
     {
       "command": "ntt",
