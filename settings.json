@@ -1177,7 +1177,7 @@
       }
     },
     {
-      "command": "volar",
+      "command": "volar-server",
       "config": {
         "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
       },
