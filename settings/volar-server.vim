@@ -103,7 +103,7 @@ augroup vim_lsp_settings_volar_server
   au!
   LspRegisterServer {
   \ 'name': 'volar-server',
-  \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server'), '--stdio'])},
+  \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
   \ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
   \ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', Vim_lsp_settings_volar_initialization_options()),
   \ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue']),

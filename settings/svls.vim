@@ -2,7 +2,7 @@ augroup vim_lsp_settings_svls
   au!
   LspRegisterServer {
       \ 'name': 'svls',
-      \ 'cmd': {server_info->lsp_settings#get('svls', 'cmd', [lsp_settings#exec_path('svls')])},
+      \ 'cmd': {server_info->lsp_settings#get('svls', 'cmd', [lsp_settings#exec_path('svls')]+lsp_settings#get('svls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('svls', 'root_uri', lsp_settings#root_uri('svls'))},
       \ 'initialization_options': lsp_settings#get('svls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('svls', 'allowlist', ['systemverilog']),

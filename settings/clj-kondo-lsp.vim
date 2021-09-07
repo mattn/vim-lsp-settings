@@ -2,7 +2,7 @@ augroup vim_lsp_settings_clj_kondo_lsp
   au!
   LspRegisterServer {
       \ 'name': 'clj-kondo-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('clj-kondo-lsp', 'cmd', ['java', '-jar', lsp_settings#exec_path('clj-kondo-lsp')])},
+      \ 'cmd': {server_info->lsp_settings#get('clj-kondo-lsp', 'cmd', ['java', '-jar', lsp_settings#exec_path('clj-kondo-lsp')]+lsp_settings#get('clj-kondo-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('clj-kondo-lsp', 'root_uri', lsp_settings#root_uri('clj-kondo-lsp'))},
       \ 'initialization_options': lsp_settings#get('clj-kondo-lsp', 'initialization_options', {}),
       \ 'allowlist': lsp_settings#get('clj-kondo-lsp', 'allowlist', ['clojure']),

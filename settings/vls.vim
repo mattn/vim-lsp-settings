@@ -44,7 +44,7 @@ augroup vim_lsp_settings_vls
   au!
   LspRegisterServer {
   \ 'name': 'vls',
-  \ 'cmd': {server_info->lsp_settings#get('vls', 'cmd', [lsp_settings#exec_path('vls'), '--stdio'])},
+  \ 'cmd': {server_info->lsp_settings#get('vls', 'cmd', [lsp_settings#exec_path('vls')]+lsp_settings#get('vls', 'args', ['--stdio']))},
   \ 'root_uri':{server_info->lsp_settings#get('vls', 'root_uri', lsp_settings#root_uri('vls'))},
   \ 'initialization_options': lsp_settings#get('vls', 'initialization_options', { 'config': g:vim_lsp_settings_vls_config }),
   \ 'allowlist': lsp_settings#get('vls', 'allowlist', ['vue']),

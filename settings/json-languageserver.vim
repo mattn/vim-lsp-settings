@@ -2,7 +2,7 @@ augroup vim_lsp_settings_json_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'json-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('json-languageserver', 'cmd', [lsp_settings#exec_path('json-languageserver'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('json-languageserver', 'cmd', [lsp_settings#exec_path('json-languageserver')]+lsp_settings#get('json-languageserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('json-languageserver', 'root_uri', lsp_settings#root_uri('json-languageserver'))},
       \ 'initialization_options': lsp_settings#get('json-languageserver', 'initialization_options', {'provideFormatter': v:true}),
       \ 'allowlist': lsp_settings#get('json-languageserver', 'allowlist', ['json', 'jsonc']),

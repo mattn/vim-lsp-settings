@@ -2,7 +2,7 @@ augroup vim_lsp_settings_hie
   au!
   LspRegisterServer {
       \ 'name': 'hie',
-      \ 'cmd': {server_info->lsp_settings#get('hie', 'cmd', [lsp_settings#exec_path('hie-wrapper'), "--lsp"])},
+      \ 'cmd': {server_info->lsp_settings#get('hie', 'cmd', [lsp_settings#exec_path('hie-wrapper')]+lsp_settings#get('hie', 'args', ['--lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('hie', 'root_uri', lsp_settings#root_uri('hie'))},
       \ 'initialization_options': lsp_settings#get('hie', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('hie', 'allowlist', ['haskell']),

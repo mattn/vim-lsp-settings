@@ -2,7 +2,7 @@ augroup vim_lsp_settings_rls
   au!
   LspRegisterServer {
       \ 'name': 'rls',
-      \ 'cmd': {server_info->lsp_settings#get('rls', 'cmd', [lsp_settings#exec_path('rls')])},
+      \ 'cmd': {server_info->lsp_settings#get('rls', 'cmd', [lsp_settings#exec_path('rls')]+lsp_settings#get('rls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('rls', 'root_uri', lsp_settings#root_uri('rls'))},
       \ 'initialization_options': lsp_settings#get('rls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('rls', 'allowlist', ['rust']),

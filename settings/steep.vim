@@ -2,7 +2,7 @@ augroup vim_lsp_settings_steep
   au!
   LspRegisterServer {
       \ 'name': 'steep',
-      \ 'cmd': {server_info->lsp_settings#get('steep', 'cmd', printf('%s langserver --steepfile=%s', lsp_settings#exec_path('steep'), lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'Steepfile')))},
+      \ 'cmd': {server_info->lsp_settings#get('steep', 'cmd', [lsp_settings#exec_path('steep'), 'langserver', printf('--steepfile=%s', lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'Steepfile'))]+lsp_settings#get('steep', 'args', []))},
       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Steepfile'))},
       \ 'initialization_options': lsp_settings#get('steep', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('steep', 'allowlist', {x->empty(lsp_settings#root_path(['Steepfile'])) ? [] : ['ruby']}),

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_glslls
   au!
   LspRegisterServer {
       \ 'name': 'glslls',
-      \ 'cmd': {server_info->lsp_settings#get('glslls', 'cmd', [lsp_settings#exec_path('glslls'), '--stdin'])},
+      \ 'cmd': {server_info->lsp_settings#get('glslls', 'cmd', [lsp_settings#exec_path('glslls')]+lsp_settings#get('glslls', 'args', ['--stdin']))},
       \ 'root_uri':{server_info->lsp_settings#get('glslls', 'root_uri', lsp_settings#root_uri('glslls'))},
       \ 'initialization_options': lsp_settings#get('glslls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('glslls', 'allowlist', ['glsl']),

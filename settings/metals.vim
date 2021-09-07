@@ -2,7 +2,7 @@ augroup vim_lsp_settings_metals
   au!
   LspRegisterServer {
       \ 'name': 'metals',
-      \ 'cmd': {server_info->lsp_settings#get('metals', 'cmd', [lsp_settings#exec_path('metals')])},
+      \ 'cmd': {server_info->lsp_settings#get('metals', 'cmd', [lsp_settings#exec_path('metals')]+lsp_settings#get('metals', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('metals', 'root_uri', lsp_settings#root_uri('metals'))},
       \ 'initialization_options': lsp_settings#get('metals', 'initialization_options', {'isHttpEnabled': 'true'}),
       \ 'allowlist': lsp_settings#get('metals', 'allowlist', ['scala', 'sbt']),

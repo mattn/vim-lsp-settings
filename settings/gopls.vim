@@ -2,7 +2,7 @@ augroup vim_lsp_settings_gopls
   au!
   LspRegisterServer {
       \ 'name': 'gopls',
-      \ 'cmd': {server_info->lsp_settings#get('gopls', 'cmd', [lsp_settings#exec_path('gopls')])},
+      \ 'cmd': {server_info->lsp_settings#get('gopls', 'cmd', [lsp_settings#exec_path('gopls')]+lsp_settings#get('gopls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('gopls', 'root_uri', lsp_settings#root_uri('gopls'))},
       \ 'initialization_options': lsp_settings#get('gopls', 'initialization_options', {
       \     'completeUnimported': v:true,
