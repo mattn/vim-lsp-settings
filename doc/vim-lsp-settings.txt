@@ -101,6 +101,15 @@ script. You can modify configuration like below:
  \}
 
 <
+Tips: If you want to only add/replace arguments for the server,
+>
+ let g:lsp_settings = {
+ \  'some-langserver': {
+ \    'args': ['foo', 'bar', 'baz'],
+ \  },
+ \}
+<
+
 If you want to add extra schemas for yaml-language-server or
 json-language-server, do |:LspSettingsLocalEdit| or |:LspSettingsGlobalEdit|
 and put schemas property like below:
