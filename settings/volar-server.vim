@@ -4,7 +4,7 @@ function! s:get_current_ts_path() abort
   let project_dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json')
   let tsserverlibrary_path = project_dir . ts_path
 
-  let server_dir = lsp_settings#servers_dir() . '/volar'
+  let server_dir = lsp_settings#servers_dir() . '/volar-server'
   let fallback_path = server_dir . ts_path
 
   let path = filereadable(tsserverlibrary_path) ? tsserverlibrary_path : fallback_path
@@ -21,7 +21,7 @@ endfunction
 
 let g:vim_lsp_settings_volar_options = {
 \   'typescript': {
-\     'serverPath': "",
+\     'serverPath': '',
 \   },
 \   'languageFeatures': {
 \     'references': { 'enabledInTsScript': v:true },
@@ -63,13 +63,13 @@ let g:vim_lsp_settings_volar_options = {
 
 let g:vim_lsp_settings_volar_config = {
 \   'volar-api': {
-\     'trace': { 'server': "off" },
+\     'trace': { 'server': 'off' },
 \   },
 \   'volar-document': {
-\     'trace': { 'server': "off" },
+\     'trace': { 'server': 'off' },
 \   },
 \   'volar-html': {
-\     'trace': { 'server': "off" },
+\     'trace': { 'server': 'off' },
 \   },
 \   'volar': {
 \     'codeLens': {
@@ -89,26 +89,26 @@ let g:vim_lsp_settings_volar_config = {
 \     'autoCompleteRefs': v:true,
 \     'tsPluginStatus': v:false,
 \     'checkVueTscVersion': v:false,
-\     'preferredTagNameCase': "auto",
-\     'preferredAttrNameCase': "auto",
+\     'preferredTagNameCase': 'auto',
+\     'preferredAttrNameCase': 'auto',
 \     'preview': {
 \       'port': 3333,
-\       'backgroundColor': "fff",
+\       'backgroundColor': 'fff',
 \       'transparentGrid': v:false,
 \     }
 \   }
 \ }
 
-augroup vim_lsp_settings_volar
+augroup vim_lsp_settings_volar_server
   au!
   LspRegisterServer {
-  \ 'name': 'volar',
-  \ 'cmd': {server_info->lsp_settings#get('volar', 'cmd', [lsp_settings#exec_path('volar'), '--stdio'])},
-  \ 'root_uri':{server_info->lsp_settings#get('volar', 'root_uri', lsp_settings#root_uri('volar'))},
-  \ 'initialization_options': lsp_settings#get('volar', 'initialization_options', Vim_lsp_settings_volar_initialization_options()),
-  \ 'allowlist': lsp_settings#get('volar', 'allowlist', ['vue']),
-  \ 'blocklist': lsp_settings#get('volar', 'blocklist', []),
-  \ 'config': lsp_settings#get('volar', 'config', lsp_settings#server_config('volar')),
-  \ 'workspace_config': lsp_settings#get('volar', 'workspace_config', g:vim_lsp_settings_volar_config),
+  \ 'name': 'volar-server',
+  \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
+  \ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
+  \ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', Vim_lsp_settings_volar_initialization_options()),
+  \ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue']),
+  \ 'blocklist': lsp_settings#get('volar-server', 'blocklist', []),
+  \ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
+  \ 'workspace_config': lsp_settings#get('volar-server', 'workspace_config', g:vim_lsp_settings_volar_config),
   \ }
 augroup END

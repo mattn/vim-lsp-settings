@@ -160,7 +160,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Vim              | vim-language-server               | Yes       | Yes           |
 | Vala             | vala-language-server              | No        | No            |
 | Vue              | vue-language-server               | Yes       | Yes           |
-| Vue              | volar                             | Yes       | Yes           |
+| Vue              | volar-server                      | Yes       | Yes           |
 | V                | vls                               | Yes       | Yes           |
 | XML              | lemminx                           | Yes       | Yes           |
 | YAML             | yaml-language-server              | Yes       | Yes           |

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_pyls
   au!
   LspRegisterServer {
       \ 'name': 'pyls',
-      \ 'cmd': {server_info->lsp_settings#get('pyls', 'cmd', [lsp_settings#exec_path('pyls')])},
+      \ 'cmd': {server_info->lsp_settings#get('pyls', 'cmd', [lsp_settings#exec_path('pyls')]+lsp_settings#get('pyls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('pyls', 'root_uri', lsp_settings#root_uri('pyls'))},
       \ 'initialization_options': lsp_settings#get('pyls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('pyls', 'allowlist', ['python']),

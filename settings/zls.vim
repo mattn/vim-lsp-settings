@@ -2,7 +2,7 @@ augroup vim_lsp_settings_zls
   au!
   LspRegisterServer {
       \ 'name': 'zls',
-      \ 'cmd': {server_info->lsp_settings#get('zls', 'cmd', [lsp_settings#exec_path('zls')])},
+      \ 'cmd': {server_info->lsp_settings#get('zls', 'cmd', [lsp_settings#exec_path('zls')]+lsp_settings#get('zls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('zls', 'root_uri', lsp_settings#root_uri('zls'))},
       \ 'initialization_options': lsp_settings#get('zls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('zls', 'allowlist', ['zig']),

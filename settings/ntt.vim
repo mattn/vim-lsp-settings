@@ -2,7 +2,7 @@ augroup vim_lsp_settings_ntt
   au!
   LspRegisterServer {
       \ 'name': 'ntt',
-      \ 'cmd': {server_info->lsp_settings#get('ntt', 'cmd', [lsp_settings#exec_path('ntt'), 'langserver'])},
+      \ 'cmd': {server_info->lsp_settings#get('ntt', 'cmd', [lsp_settings#exec_path('ntt')]+lsp_settings#get('ntt', 'args', ['langserver']))},
       \ 'root_uri':{server_info->lsp_settings#get('ntt', 'root_uri', lsp_settings#root_uri('ntt'))},
       \ 'initialization_options': lsp_settings#get('ntt', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('ntt', 'allowlist', ['ttcn3', 'ttcn']),

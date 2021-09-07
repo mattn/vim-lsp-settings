@@ -2,7 +2,7 @@ augroup vim_lsp_settings_rust_analyzer
   au!
   LspRegisterServer {
       \ 'name': 'rust-analyzer',
-      \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')])},
+      \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')]+lsp_settings#get('rust-analyzer', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri('rust-analyzer'))},
       \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', {
       \     'completion': {

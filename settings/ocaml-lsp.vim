@@ -2,7 +2,7 @@ augroup vim_lsp_settings_ocaml_lsp
   au!
   LspRegisterServer {
       \ 'name': 'ocaml-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('ocaml-lsp', 'cmd', [lsp_settings#exec_path('ocaml-lsp'), '--log-file=log.txt'])},
+      \ 'cmd': {server_info->lsp_settings#get('ocaml-lsp', 'cmd', [lsp_settings#exec_path('ocaml-lsp')]+lsp_settings#get('ocaml-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('ocaml-lsp', 'root_uri', lsp_settings#root_uri('ocaml-lsp'))},
       \ 'initialization_options': lsp_settings#get('ocaml-lsp', 'initialization_options', {}),
       \ 'allowlist': lsp_settings#get('ocaml-lsp', 'allowlist', ['ocaml']),

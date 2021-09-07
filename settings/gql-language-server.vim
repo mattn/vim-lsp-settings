@@ -2,7 +2,7 @@ augroup vim_lsp_settings_gql_language_server
   au!
   LspRegisterServer {
       \ 'name': 'gql-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('gql-language-server', 'cmd', [lsp_settings#exec_path('gql-language-server'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('gql-language-server', 'cmd', [lsp_settings#exec_path('gql-language-server')]+lsp_settings#get('gql-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('gql-language-server', 'root_uri', lsp_settings#root_uri('gql-language-server'))},
       \ 'initialization_options': lsp_settings#get('gql-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('gql-language-server', 'allowlist', ['graphql']),

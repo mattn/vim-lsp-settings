@@ -2,7 +2,7 @@ augroup vim_lsp_settings_nimlsp
   au!
   LspRegisterServer {
       \ 'name': 'nimlsp',
-      \ 'cmd': {server_info->lsp_settings#get('nimlsp', 'cmd', [lsp_settings#exec_path('nimlsp')])},
+      \ 'cmd': {server_info->lsp_settings#get('nimlsp', 'cmd', [lsp_settings#exec_path('nimlsp')]+lsp_settings#get('nimlsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('nimlsp', 'root_uri', lsp_settings#root_uri('nimlsp'))},
       \ 'initialization_options': lsp_settings#get('nimlsp', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('nimlsp', 'allowlist', ['nim']),

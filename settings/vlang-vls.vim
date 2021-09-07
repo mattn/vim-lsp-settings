@@ -2,7 +2,7 @@ augroup vim_lsp_settings_vlang_vls
   au!
   LspRegisterServer {
       \ 'name': 'vlang-vls',
-      \ 'cmd': {server_info->lsp_settings#get('vlang-vls', 'cmd', [lsp_settings#exec_path('vlang-vls')])},
+      \ 'cmd': {server_info->lsp_settings#get('vlang-vls', 'cmd', [lsp_settings#exec_path('vlang-vls')]+lsp_settings#get('vlang-vls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('vlang-vls', 'root_uri', lsp_settings#root_uri('vlang-vls'))},
       \ 'initialization_options': lsp_settings#get('vlang-vls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('vlang-vls', 'allowlist', ['vlang']),

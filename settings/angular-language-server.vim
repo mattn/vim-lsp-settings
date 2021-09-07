@@ -2,7 +2,7 @@ augroup vim_lsp_settings_angular_language_server
   au!
   LspRegisterServer {
       \ 'name': 'angular-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('angular-language-server', 'cmd', [lsp_settings#exec_path('angular-language-server'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('angular-language-server', 'cmd', [lsp_settings#exec_path('angular-language-server')]+lsp_settings#get('angular-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('angular-language-server', 'root_uri', lsp_settings#root_uri('angular-language-server'))},
       \ 'initialization_options': lsp_settings#get('angular-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('angular-language-server', 'allowlist', {x-> empty(lsp_settings#root_path(['angular.json'])) ? [] : ['html']}),

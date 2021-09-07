@@ -2,7 +2,7 @@ augroup vim_lsp_settings_solargraph
   au!
   LspRegisterServer {
       \ 'name': 'solargraph',
-      \ 'cmd': {server_info->lsp_settings#get('solargraph', 'cmd', [lsp_settings#exec_path('solargraph'), 'stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('solargraph', 'cmd', [lsp_settings#exec_path('solargraph')]+lsp_settings#get('solargraph', 'args', ['stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('solargraph', 'root_uri', lsp_settings#root_uri('solargraph'))},
       \ 'initialization_options': lsp_settings#get('solargraph', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('solargraph', 'allowlist', ['ruby']),

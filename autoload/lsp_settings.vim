@@ -336,6 +336,7 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
     call lsp_settings#utils#error('Invalid server name')
     return
   endif
+  call lsp#stop_server(a:command)
   let l:entry = s:vim_lsp_installer(a:ft, a:command)
   if empty(l:entry)
     call lsp_settings#utils#error('Server not found')

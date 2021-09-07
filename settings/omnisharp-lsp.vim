@@ -2,7 +2,7 @@ augroup vim_lsp_settings_omnisharp_lsp
   au!
   LspRegisterServer {
       \ 'name': 'omnisharp-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('omnisharp-lsp', 'cmd', [lsp_settings#exec_path('omnisharp-lsp'), '-lsp'])},
+      \ 'cmd': {server_info->lsp_settings#get('omnisharp-lsp', 'cmd', [lsp_settings#exec_path('omnisharp-lsp')]+lsp_settings#get('omnisharp-lsp', 'args', ['-lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('omnisharp-lsp', 'root_uri', lsp_settings#root_uri('omnisharp-lsp'))},
       \ 'initialization_options': lsp_settings#get('omnisharp-lsp', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('omnisharp-lsp', 'allowlist', ['cs']),

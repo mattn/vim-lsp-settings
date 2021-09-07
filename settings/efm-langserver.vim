@@ -2,7 +2,7 @@ augroup vim_lsp_settings_efm_langserver
   au!
   LspRegisterServer {
       \ 'name': 'efm-langserver',
-      \ 'cmd': {server_info->lsp_settings#get('efm-langserver', 'cmd', [lsp_settings#exec_path('efm-langserver')])},
+      \ 'cmd': {server_info->lsp_settings#get('efm-langserver', 'cmd', [lsp_settings#exec_path('efm-langserver')]+lsp_settings#get('efm-langserver', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('efm-langserver', 'root_uri', lsp_settings#root_uri('efm-langserver'))},
       \ 'initialization_options': lsp_settings#get('efm-langserver', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('efm-langserver', 'allowlist', ['*']),

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_deno
   au!
   LspRegisterServer {
       \ 'name': 'deno',
-      \ 'cmd': {server_info->lsp_settings#get('deno', 'cmd', [lsp_settings#exec_path('deno'), 'lsp'])},
+      \ 'cmd': {server_info->lsp_settings#get('deno', 'cmd', [lsp_settings#exec_path('deno')]+lsp_settings#get('deno', 'args', ['lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('deno', 'root_uri', lsp_settings#root_uri('deno'))},
       \ 'initialization_options': lsp_settings#get('deno', 'initialization_options', {
       \   'enable': v:true,

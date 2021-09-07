@@ -2,7 +2,7 @@ augroup vim_lsp_settings_r_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'r-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('r-languageserver', 'cmd', ['R', '--slave', '-e', 'languageserver::run()'])},
+      \ 'cmd': {server_info->lsp_settings#get('r-languageserver', 'cmd', ['R', '--slave', '-e', 'languageserver::run()']+lsp_settings#get('r-languageserver', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('r-languageserver', 'root_uri', lsp_settings#root_uri('r-languageserver'))},
       \ 'initialization_options': lsp_settings#get('r-languageserver', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('r-languageserver', 'allowlist', ['r']),
