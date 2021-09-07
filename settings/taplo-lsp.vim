@@ -2,7 +2,7 @@ augroup vim_lsp_settings_taplo_lsp
   au!
   LspRegisterServer {
       \ 'name': 'taplo-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')])},
+      \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')]+lsp_settings#get('taplo-lsp', 'args', ['run']))},
       \ 'root_uri':{server_info->lsp_settings#get('taplo-lsp', 'root_uri', lsp_settings#root_uri('taplo-lsp'))},
       \ 'initialization_options': lsp_settings#get('taplo-lsp', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('taplo-lsp', 'allowlist', ['toml']),
