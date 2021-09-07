@@ -2,7 +2,7 @@ augroup vim_lsp_settings_yaml_language_server
   au!
   LspRegisterServer {
       \ 'name': 'yaml-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('yaml-language-server', 'cmd', [lsp_settings#exec_path('yaml-language-server'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('yaml-language-server', 'cmd', [lsp_settings#exec_path('yaml-language-server')]+lsp_settings#get('yaml-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('yaml-language-server', 'root_uri', lsp_settings#root_uri('yaml-language-server'))},
       \ 'initialization_options': lsp_settings#get('yaml-language-server', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('yaml-language-server', 'allowlist', ['yaml']),

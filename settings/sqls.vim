@@ -2,7 +2,7 @@ augroup vim_lsp_settings_sqls
   au!
   LspRegisterServer {
       \ 'name': 'sqls',
-      \ 'cmd': {server_info->lsp_settings#get('sqls', 'cmd', [lsp_settings#exec_path('sqls')])},
+      \ 'cmd': {server_info->lsp_settings#get('sqls', 'cmd', [lsp_settings#exec_path('sqls')]+lsp_settings#get('sqls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('sqls', 'root_uri', lsp_settings#root_uri('sqls'))},
       \ 'initialization_options': lsp_settings#get('sqls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('sqls', 'allowlist', ['sql']),

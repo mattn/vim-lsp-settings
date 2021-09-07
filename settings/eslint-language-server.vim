@@ -2,7 +2,7 @@ augroup vim_lsp_settings_eslint_language_server
   au!
   LspRegisterServer {
       \ 'name': 'eslint-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('eslint-language-server', 'cmd', [lsp_settings#exec_path('eslint-language-server'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('eslint-language-server', 'cmd', [lsp_settings#exec_path('eslint-language-server')]+lsp_settings#get('eslint-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('eslint-language-server', 'root_uri', lsp_settings#root_uri('eslint-language-server'))},
       \ 'initialization_options': lsp_settings#get('eslint-language-server', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('eslint-language-server', 'allowlist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']),

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_racket_lsp
   au!
   LspRegisterServer {
       \ 'name': 'racket-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('racket-lsp', 'cmd', [lsp_settings#exec_path('racket-lsp')])},
+      \ 'cmd': {server_info->lsp_settings#get('racket-lsp', 'cmd', [lsp_settings#exec_path('racket-lsp')]+lsp_settings#get('racket-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('racket-lsp', 'root_uri', lsp_settings#root_uri('racket-lsp'))},
       \ 'initialization_options': lsp_settings#get('racket-lsp', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('racket-lsp', 'allowlist', ['racket']),

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_esbonio
   au!
   LspRegisterServer {
       \ 'name': 'esbonio',
-      \ 'cmd': {server_info->lsp_settings#get('esbonio', 'cmd', [lsp_settings#exec_path('esbonio')])},
+      \ 'cmd': {server_info->lsp_settings#get('esbonio', 'cmd', [lsp_settings#exec_path('esbonio')]+lsp_settings#get('esbonio', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('esbonio', 'root_uri', lsp_settings#root_uri('esbonio'))},
       \ 'initialization_options': lsp_settings#get('esbonio', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('esbonio', 'allowlist', ['rst']),

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_monastery
   au!
   LspRegisterServer {
       \ 'name': 'monastery',
-      \ 'cmd': {server_info->lsp_settings#get('monastery', 'cmd', [lsp_settings#exec_path('monastery')])},
+      \ 'cmd': {server_info->lsp_settings#get('monastery', 'cmd', [lsp_settings#exec_path('monastery')]+lsp_settings#get('monastery', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('monastery', 'root_uri', lsp_settings#root_uri('monastery'))},
       \ 'initialization_options': lsp_settings#get('monastery', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('monastery', 'allowlist', ['perl']),

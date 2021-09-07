@@ -2,7 +2,7 @@ augroup vim_lsp_settings_powershell_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'powershell-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('powershell-languageserver', 'cmd', [lsp_settings#exec_path('powershell-languageserver')])},
+      \ 'cmd': {server_info->lsp_settings#get('powershell-languageserver', 'cmd', [lsp_settings#exec_path('powershell-languageserver')]+lsp_settings#get('powershell-languageserver', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('powershell-languageserver', 'root_uri', lsp_settings#root_uri('powershell-languageserver'))},
       \ 'initialization_options': lsp_settings#get('powershell-languageserver', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('powershell-languageserver', 'allowlist', ['ps1']),

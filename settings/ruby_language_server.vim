@@ -2,7 +2,7 @@ augroup vim_lsp_settings_ruby_language_server
   au!
   LspRegisterServer {
       \ 'name': 'ruby_language_server',
-      \ 'cmd': {server_info->lsp_settings#get('ruby_language_server', 'cmd', [lsp_settings#exec_path('ruby_language_server')])},
+      \ 'cmd': {server_info->lsp_settings#get('ruby_language_server', 'cmd', [lsp_settings#exec_path('ruby_language_server')]+lsp_settings#get('ruby_language_server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('ruby_language_server', 'root_uri', lsp_settings#root_uri('ruby_language_server'))},
       \ 'initialization_options': lsp_settings#get('ruby_language_server', 'initialization_options', {'diagnostics': 'false'}),
       \ 'allowlist': lsp_settings#get('ruby_language_server', 'allowlist', ['ruby']),

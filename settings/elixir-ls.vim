@@ -2,7 +2,7 @@ augroup vim_lsp_settings_elixir_ls
   au!
   LspRegisterServer {
       \ 'name': 'elixir-ls',
-      \ 'cmd': {server_info->lsp_settings#get('elixir-ls', 'cmd', [lsp_settings#exec_path('elixir-ls')])},
+      \ 'cmd': {server_info->lsp_settings#get('elixir-ls', 'cmd', [lsp_settings#exec_path('elixir-ls')]+lsp_settings#get('elixir-ls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('elixir-ls', 'root_uri', lsp_settings#root_uri('elixir-ls'))},
       \ 'initialization_options': lsp_settings#get('elixir-ls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('elixir-ls', 'allowlist', ['elixir']),

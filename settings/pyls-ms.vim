@@ -2,7 +2,7 @@ augroup vim_lsp_settings_pyls_ms
   au!
   LspRegisterServer {
       \ 'name': 'pyls-ms',
-      \ 'cmd': {server_info->lsp_settings#get('pyls-ms', 'cmd', [lsp_settings#exec_path('pyls-ms')])},
+      \ 'cmd': {server_info->lsp_settings#get('pyls-ms', 'cmd', [lsp_settings#exec_path('pyls-ms')]+lsp_settings#get('pyls-ms', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('pyls-ms', 'root_uri', lsp_settings#root_uri('pyls-ms'))},
       \ 'initialization_options': lsp_settings#get('pyls-ms', 'initialization_options', {
       \   'analysisUpdates': v:true,

@@ -2,7 +2,7 @@ augroup vim_lsp_settings_clojure_lsp
   au!
   LspRegisterServer {
       \ 'name': 'clojure-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('clojure-lsp', 'cmd', [lsp_settings#exec_path('clojure-lsp')])},
+      \ 'cmd': {server_info->lsp_settings#get('clojure-lsp', 'cmd', [lsp_settings#exec_path('clojure-lsp')]+lsp_settings#get('clojure-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('clojure-lsp', 'root_uri', lsp_settings#root_uri('clojure-lsp'))},
       \ 'initialization_options': lsp_settings#get('clojure-lsp', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('clojure-lsp', 'allowlist', ['clojure']),

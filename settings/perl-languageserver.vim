@@ -2,7 +2,7 @@ augroup vim_lsp_settings_perl_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'perl-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('perl-languageserver', 'cmd', ['perl', '-MPerl::LanguageServer', '-e', 'Perl::LanguageServer->run'])},
+      \ 'cmd': {server_info->lsp_settings#get('perl-languageserver', 'cmd', ['perl', '-MPerl::LanguageServer', '-e', 'Perl::LanguageServer->run']+lsp_settings#get('perl-languageserver', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('perl-languageserver', 'root_uri', lsp_settings#root_uri('perl-languageserver'))},
       \ 'initialization_options': lsp_settings#get('perl-languageserver', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('perl-languageserver', 'allowlist', ['perl']),

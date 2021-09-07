@@ -2,7 +2,7 @@ augroup vim_lsp_settings_terraform_ls
   au!
   LspRegisterServer {
       \ 'name': 'terraform-ls',
-      \ 'cmd': {server_info->lsp_settings#get('terraform-ls', 'cmd', [lsp_settings#exec_path('terraform-ls'), 'serve'])},
+      \ 'cmd': {server_info->lsp_settings#get('terraform-ls', 'cmd', [lsp_settings#exec_path('terraform-ls')]+lsp_settings#get('terraform-ls', 'args', ['serve']))},
       \ 'root_uri':{server_info->lsp_settings#get('terraform-ls', 'root_uri', lsp_settings#root_uri('terraform-ls'))},
       \ 'initialization_options': lsp_settings#get('terraform-ls', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('terraform-ls', 'allowlist', ['terraform']),

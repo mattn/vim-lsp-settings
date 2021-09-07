@@ -2,7 +2,7 @@ augroup vim_lsp_settings_lemminx
   au!
   LspRegisterServer {
       \ 'name': 'lemminx',
-      \ 'cmd': {server_info->lsp_settings#get('lemminx', 'cmd', [lsp_settings#exec_path('lemminx')])},
+      \ 'cmd': {server_info->lsp_settings#get('lemminx', 'cmd', [lsp_settings#exec_path('lemminx')]+lsp_settings#get('lemminx', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('lemminx', 'root_uri', lsp_settings#root_uri('lemminx'))},
       \ 'initialization_options': lsp_settings#get('lemminx', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('lemminx', 'allowlist', ['xml']),

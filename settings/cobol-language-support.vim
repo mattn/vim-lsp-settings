@@ -2,7 +2,7 @@ augroup vim_lsp_settings_cobol_language_support
   au!
   LspRegisterServer {
       \ 'name': 'cobol-language-support',
-      \ 'cmd': {server_info->lsp_settings#get('cobol-language-support', 'cmd', [lsp_settings#exec_path('cobol-language-support')])},
+      \ 'cmd': {server_info->lsp_settings#get('cobol-language-support', 'cmd', [lsp_settings#exec_path('cobol-language-support')]+lsp_settings#get('cobol-language-support', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('cobol-language-server', 'root_uri', lsp_settings#root_uri('cobol-language-support'))},
       \ 'initialization_options': lsp_settings#get('cobol-language-support', 'initialization_options', {}),
       \ 'allowlist': lsp_settings#get('cobol-language-support', 'allowlist', ['cobol']),

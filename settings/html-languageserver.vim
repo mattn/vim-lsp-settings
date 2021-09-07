@@ -2,7 +2,7 @@ augroup vim_lsp_settings_html_languageserver
   au!
   LspRegisterServer {
       \ 'name': 'html-languageserver',
-      \ 'cmd': {server_info->lsp_settings#get('html-languageserver', 'cmd', [lsp_settings#exec_path('html-languageserver'), '--stdio'])},
+      \ 'cmd': {server_info->lsp_settings#get('html-languageserver', 'cmd', [lsp_settings#exec_path('html-languageserver')]+lsp_settings#get('html-languageserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('html-langserver', 'root_uri', lsp_settings#root_uri('html-languageserver'))},
       \ 'initialization_options': lsp_settings#get('html-languageserver', 'initialization_options', {'embeddedLanguages': {'css': v:true, 'javascript': v:true}}),
       \ 'allowlist': lsp_settings#get('html-languageserver', 'allowlist', ['html']),
