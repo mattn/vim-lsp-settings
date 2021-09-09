@@ -120,7 +120,6 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JavaScript       | flow                              | Yes       | Yes           |
 | JavaScript       | eslint-language-server            | Yes       | Yes           |
 | Julia            | LanguageServer.jl                 | Yes       | No            |
-| Java             | java-language-server              | No        | No            |
 | Kotlin           | kotlin-language-server            | Yes       | Yes           |
 | Lisp             | cl-lsp                            | Yes       | No            |
 | Lua              | emmylua-ls                        | Yes       | Yes           |
