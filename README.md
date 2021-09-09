@@ -151,6 +151,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TeX              | digestif                          | Yes       | No            |
 | Terraform        | terraform-lsp                     | Yes       | Yes           |
 | Terraform        | terraform-ls                      | Yes       | Yes           |
+| TOML             | taplo-lsp                         | No        | Yes           |
 | TTCN-3           | ntt                               | Yes       | Yes           |
 | TypeScript       | typescript-language-server        | Yes       | Yes           |
 | TypeScript       | deno                              | Yes       | Yes           |
