@@ -81,6 +81,7 @@ filename() {
       ;;
     11.0.0)
       local platform="linux-sles12.4"
+      ;;
     esac
     ;;
   esac
