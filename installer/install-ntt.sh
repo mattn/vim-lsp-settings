@@ -6,7 +6,7 @@ set -o pipefail
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 
 case "${os}" in
-darwin|linux)
+darwin | linux)
   url="https://github.com/nokia/ntt/releases/latest/download/ntt_${os}_x86_64.tar.gz"
   curl -L "$url" | tar xz ntt
   chmod +x ntt

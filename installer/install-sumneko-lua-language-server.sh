@@ -6,11 +6,11 @@ os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 case $os in
 linux)
-	platform="Linux"
-	;;
+  platform="Linux"
+  ;;
 darwin)
-	platform="macOS"
-	;;
+  platform="macOS"
+  ;;
 esac
 
 version="1.12.1"

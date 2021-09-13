@@ -10,7 +10,6 @@ curl -L "$url" -o "$asset"
 unzip "$asset"
 rm "$asset" \[Content_Types\].xml extension.vsixmanifest
 
-
 chmod +x extension/dist/server/index.js
 
 cat <<EOF >tailwindcss-intellisense
