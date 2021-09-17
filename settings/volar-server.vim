@@ -24,7 +24,7 @@ let g:vim_lsp_settings_volar_options = {
 \     'serverPath': '',
 \   },
 \   'languageFeatures': {
-\     'references': { 'enabledInTsScript': v:true },
+\     'references': v:true,
 \     'definition': v:true,
 \     'typeDefinition': v:true,
 \     'callHierarchy': v:true,
@@ -87,6 +87,8 @@ let g:vim_lsp_settings_volar_config = {
 \     },
 \     'lowPowerMode': v:false,
 \     'autoCompleteRefs': v:true,
+\     "takeOverBuiltinTsExtension": v:true,
+\     'tsPlugin': v:null,
 \     'tsPluginStatus': v:false,
 \     'checkVueTscVersion': v:false,
 \     'preferredTagNameCase': 'auto',
@@ -95,7 +97,7 @@ let g:vim_lsp_settings_volar_config = {
 \       'port': 3333,
 \       'backgroundColor': 'fff',
 \       'transparentGrid': v:false,
-\     }
+\     },
 \   }
 \ }
 
