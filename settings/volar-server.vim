@@ -87,7 +87,7 @@ let g:vim_lsp_settings_volar_config = {
 \     },
 \     'lowPowerMode': v:false,
 \     'autoCompleteRefs': v:true,
-\     "takeOverBuiltinTsExtension": v:true,
+\     "takeOverBuiltinTsExtension": v:false,
 \     'tsPlugin': v:null,
 \     'tsPluginStatus': v:false,
 \     'checkVueTscVersion': v:false,
