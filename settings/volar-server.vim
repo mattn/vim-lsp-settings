@@ -22,6 +22,7 @@ endfunction
 let g:vim_lsp_settings_volar_options = {
 \   'typescript': {
 \     'serverPath': '',
+\     'localizedPath': v:null,
 \   },
 \   'languageFeatures': {
 \     'references': v:true,
@@ -40,9 +41,7 @@ let g:vim_lsp_settings_volar_options = {
 \     },
 \     'documentHighlight': v:true,
 \     'documentLink': v:true,
-\     'codeLens': {
-\       'showReferencesNotification': v:false,
-\     },
+\     'codeLens': v:true,
 \     'semanticTokens': v:true,
 \     'codeAction': v:true,
 \     'diagnostics': v:true,
@@ -72,6 +71,7 @@ let g:vim_lsp_settings_volar_config = {
 \     'trace': { 'server': 'off' },
 \   },
 \   'volar': {
+\     'lowPowerMode': v:false,
 \     'codeLens': {
 \       'references': v:false,
 \       'pugTools': v:false,
@@ -81,15 +81,13 @@ let g:vim_lsp_settings_volar_config = {
 \       'printWidth': 100,
 \     },
 \     'icon': {
-\       'splitEditors': v:true,
+\       'splitEditors': v:false,
 \       'preview': v:false,
 \       'finder': v:false,
 \     },
-\     'lowPowerMode': v:false,
 \     'autoCompleteRefs': v:true,
 \     "takeOverBuiltinTsExtension": v:false,
-\     'tsPlugin': v:null,
-\     'tsPluginStatus': v:false,
+\     'tsPlugin': v:false,
 \     'checkVueTscVersion': v:false,
 \     'preferredTagNameCase': 'auto',
 \     'preferredAttrNameCase': 'auto',
