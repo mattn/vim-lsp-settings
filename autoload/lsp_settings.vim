@@ -107,14 +107,14 @@ function! s:vim_lsp_installer(ft, ...) abort
     endif
 
     if type(l:default) ==# v:t_list
-      if len(l:default) ># 0 && index(l:default, l:server.command) == -1
+      if len(l:default) ># 0 && index(l:default, l:conf.command) == -1
         if !empty(l:name) && l:conf.command == l:name
           call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
         endif
         continue
       endif
     elseif type(l:default) ==# v:t_string
-      if !empty(l:default) && l:default != l:server.command
+      if !empty(l:default) && l:default != l:conf.command
         if !empty(l:name) && l:conf.command == l:name
           call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
         endif
