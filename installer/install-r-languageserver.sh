@@ -2,7 +2,7 @@
 
 set -e
 
-echo 'install.packages("languageserver")' >install.r
+echo 'install.packages("languageserver", repos = "https://cran.r-project.org")' >install.r
 Rscript install.r
 
 cat <<EOF >r-languageserver
