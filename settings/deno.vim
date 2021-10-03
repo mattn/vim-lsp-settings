@@ -84,7 +84,7 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
 
     if a:ctx['counter'] == 0
         if empty(a:ctx['list'])
-            if type(a:data['response']) == type(v:none)
+            if type(a:data['response']) == type(v:null)
                 call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': response is null')
                 return
             endif
