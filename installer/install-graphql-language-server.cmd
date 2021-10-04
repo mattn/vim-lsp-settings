@@ -6,7 +6,6 @@ if not exist package.json (
 	echo {"name":""}>package.json
 )
 
-call npm install "graphql"
 call npm install "graphql-language-service-cli"
 
 echo @echo off ^
