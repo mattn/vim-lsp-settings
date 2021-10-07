@@ -2,5 +2,5 @@
 
 set -e
 
-"$(dirname "$0")/npm_install.sh" volar-server @volar/server@0.27.29
+"$(dirname "$0")/npm_install.sh" volar-server @volar/server@0.27.30
 npm install typescript@4.4
