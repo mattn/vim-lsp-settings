@@ -146,8 +146,6 @@ let g:vim_lsp_settings_volar_config = {
 \     },
 \     'autoCompleteRefs': v:true,
 \     "takeOverBuiltinTsExtension": v:false,
-\     'tsPlugin': v:false,
-\     'checkVueTscVersion': v:false,
 \     'preferredTagNameCase': 'auto',
 \     'preferredAttrNameCase': 'auto',
 \     'preview': {
