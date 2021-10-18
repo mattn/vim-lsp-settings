@@ -417,6 +417,16 @@
         "pom.xml",
         "build.gradle"
       ]
+    },
+    {
+      "command": "ijaas",
+      "requires": [
+        "java"
+      ],
+      "root_uri_patterns": [
+        "pom.xml",
+        "build.gradle"
+      ]
     }
   ],
   "javascript": [
