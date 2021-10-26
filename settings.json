@@ -826,7 +826,7 @@
     {
       "command": "racket-lsp",
       "requires": [
-          "raco"
+        "raco"
       ]
     }
   ],
@@ -1026,6 +1026,20 @@
       "requires": [
         "luarocks"
       ]
+    }
+  ],
+  "templ": [
+    {
+      "command": "templ",
+      "requires": [
+        "go"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "templ"
+        ],
+        "name": "Joe-Davidson1802/templ.vim"
+      }
     }
   ],
   "toml": [
