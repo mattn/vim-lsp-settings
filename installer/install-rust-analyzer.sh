@@ -3,13 +3,28 @@
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
+arch="$(uname -m)"
 
 case $os in
 linux)
-  platform="x86_64-unknown-linux-gnu"
+  if [[ $arch == "x86_64" ]]; then
+    platform="x86_64-unknown-linux-gnu"
+  elif [[ $arch == "aarch64" ]]; then
+    platform="aarch64-unknown-linux-gnu"
+  else
+    echo "unknown architecture: $arch"
+    exit 1
+  fi
   ;;
 darwin)
-  platform="x86_64-apple-darwin"
+  if [[ $arch == "x86_64" ]]; then
+    platform="x86_64-apple-darwin"
+  elif [[ $arch == "aarch64" ]]; then
+    platform="aarch64-apple-darwin"
+  else
+    echo "unknown architecture: $arch"
+    exit 1
+  fi
   ;;
 esac
 
