@@ -5,7 +5,7 @@ set -e
 curl -Lo ./coursier https://git.io/coursier-cli
 chmod +x ./coursier
 
-version="0.10.7"
+version="0.10.9"
 java_flags=()
 
 if [[ -n "${https_proxy}" ]]; then
