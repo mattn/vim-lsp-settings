@@ -42,6 +42,7 @@ let g:vim_lsp_settings_volar_options = {
 \     },
 \     'documentHighlight': v:true,
 \     'documentLink': v:true,
+\     'workspaceSymbol': v:true,
 \     'codeLens': v:true,
 \     'semanticTokens': v:true,
 \     'codeAction': v:true,
@@ -76,6 +77,7 @@ let g:vim_lsp_settings_volar_api_options = {
 \     'renameFileRefactoring': v:true,
 \     'signatureHelp': v:true,
 \     'codeAction': v:true,
+\     'workspaceSymbol': v:true,
 \     'completion': {
 \       'defaultTagNameCase': 'both',
 \       'defaultAttrNameCase': 'kebabCase',
@@ -145,9 +147,14 @@ let g:vim_lsp_settings_volar_config = {
 \       'finder': v:false,
 \     },
 \     'autoCompleteRefs': v:true,
-\     "takeOverBuiltinTsExtension": v:false,
-\     'preferredTagNameCase': 'auto',
-\     'preferredAttrNameCase': 'auto',
+\     'takeOverMode': {
+\       'enabled': v:false,
+\     },
+\     'completion': {
+\       'preferredTagNameCase': 'auto',
+\       'preferredAttrNameCase': 'auto-kebab',
+\       'autoImportComponent': v:true,
+\     },
 \     'preview': {
 \       'port': 3333,
 \       'backgroundColor': 'fff',
