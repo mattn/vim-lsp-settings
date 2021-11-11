@@ -19,7 +19,7 @@ linux)
 darwin)
   if [[ $arch == "x86_64" ]]; then
     platform="x86_64-apple-darwin"
-  elif [[ $arch == "aarch64" ]]; then
+  elif [[ $arch == "arm64" ]]; then
     platform="aarch64-apple-darwin"
   else
     echo "unknown architecture: $arch"
