@@ -6,6 +6,6 @@ del dartsdk-windows-x64-release.zip
 
 echo @echo off ^
 
-%%~dp0\dart-sdk\bin\dart %%~dp0\dart-sdk\bin\snapshots\analysis_server.dart.snapshot --lsp %%* ^
+%%~dp0\dart-sdk\bin\dart language-server %%* ^
 
 > analysis-server-dart-snapshot.cmd
