@@ -1,3 +1,17 @@
+function! Vim_lsp_settings_deno_get_blocklist() abort
+    if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.json'))
+        return []
+    endif
+    if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.jsonc'))
+        return []
+    endif
+
+    if empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/'))
+        return []
+    endif
+    return lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])
+endfunction
+
 augroup vim_lsp_settings_deno
   au!
   LspRegisterServer {
@@ -20,7 +34,7 @@ augroup vim_lsp_settings_deno
       \   'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
       \ }),
       \ 'allowlist': lsp_settings#get('deno', 'allowlist', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']),
-      \ 'blocklist': lsp_settings#get('deno', 'blocklist', {c->empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/')) ? [] : lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])}),
+      \ 'blocklist': lsp_settings#get('deno', 'blocklist', Vim_lsp_settings_deno_get_blocklist()),
       \ 'config': lsp_settings#get('deno', 'config', lsp_settings#server_config('deno')),
       \ 'workspace_config': lsp_settings#get('deno', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('deno', 'semantic_highlight', {}),
