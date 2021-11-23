@@ -181,7 +181,9 @@ If you installed `rls` already, you can use `rls` without configurations. But if
 
 ### deno (TypeScript)
 
-To use deno, `node_modules` should **not** located on the project directory or traversing the filesystem upwards.
+To use deno, `deno.json(c)` should located on the project directory or traversing the filesystem upwards.
+
+If `deno.json` does not located, `node_modules` should **not** located on the project directory or traversing the filesystem upwards.
 
 When editing Node projects, the following warning message is shown.
 
