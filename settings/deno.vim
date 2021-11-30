@@ -16,6 +16,18 @@ augroup vim_lsp_settings_deno
       \     'test': v:true,
       \     'testArgs': ['--allow-all'],
       \   },
+      \   "suggest": {
+      \     "autoImports": v:true,
+      \     "completeFunctionCalls": v:true,
+      \     "names": v:true,
+      \     "paths": v:true,
+      \     "imports": {
+      \       "autoDiscover": v:false,
+      \       "hosts": {
+      \         "https://deno.land/": v:true,
+      \       },
+      \     },
+      \   },
       \   'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
       \   'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
       \ }),
@@ -235,6 +247,12 @@ function! s:handle_deno_cache(data) abort
     endif
 endfunction
 
+function! s:handle_reload_import_registries(data) abort
+    if a:data['response']['result'] == v:true
+        echo 'Import registries reloaded'
+    endif
+endfunction
+
 function! s:cache() abort
     let l:is_download_cache = input('Download all cache files?(y/n) ', 'y')
     if l:is_download_cache =~# 'y'
@@ -246,6 +264,20 @@ function! s:cache() abort
          \ },
          \ 'on_notification': function('s:handle_deno_cache', [])
          \ })
+    endif
+endfunction
+
+function! s:reload_import_registries() abort
+  let l:is_download_cache = input('Do you reload import registries?(y/n) ', 'y')
+  if l:is_download_cache =~# 'y'
+    call lsp#send_request('deno', {
+        \ 'method': 'deno/reloadImportRegistries',
+        \ 'params': {
+        \   'referrer': lsp#get_text_document_identifier(),
+        \   'uris': [],
+        \ },
+        \ 'on_notification': function('s:handle_reload_import_registries', [])
+        \ })
     endif
 endfunction
 
@@ -261,6 +293,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspDenoCache call <SID>cache()
   nnoremap <buffer> <plug>(lsp-deno-cache) :<c-u>call <SID>cache()<cr>
+
+  command! -buffer LspDenoReloadImportRegistries call <SID>reload_import_registries()
+  nnoremap <buffer> <plug>(lsp-deno-reload-import-registries) :<c-u>call <SID>reload_import_registries()<cr>
 endfunction
 
 function! s:deno_test(context) abort
