@@ -13,15 +13,15 @@ augroup vim_lsp_settings_yaml_language_server
       \ }
 augroup END
 
-function! s:update_schema(url) abort
+function! s:set_schema(url) abort
   let l:name = fnamemodify(lsp#utils#get_buffer_uri(), ':t')
   let l:schema = {a:url : l:name}
-  let l:config = lsp_settings#merge('yaml-language-server', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': [l:schema] + lsp_settings#utils#load_schemas('yaml-language-server')}})
+  let l:config = lsp_settings#merge('yaml-language-server', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': l:schema}})
   call lsp#update_workspace_config('yaml-language-server', l:config)
 endfunction
 
 function! s:on_lsp_buffer_enabled() abort
-  command! -buffer -nargs=1 LspYamlSchema call <SID>update_schema(<q-args>)
+  command! -buffer -nargs=1 LspYamlSetSchema call <SID>set_schema(<q-args>)
 endfunction
 
 augroup lsp_install_yaml
