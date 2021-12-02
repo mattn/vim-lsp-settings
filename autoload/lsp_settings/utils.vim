@@ -69,6 +69,11 @@ let s:catalog_path = expand('<sfile>:h:h:h') . '/data/catalog.json'
 
 function! lsp_settings#utils#load_schemas(name) abort
   let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
+  return extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
+endfunction
+
+function! lsp_settings#utils#load_schemas_map(name) abort
+  let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
   let l:result = {}
   for l:v in extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
     if has_key(l:v, 'fileMatch')
