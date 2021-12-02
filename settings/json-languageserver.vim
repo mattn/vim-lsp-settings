@@ -12,3 +12,19 @@ augroup vim_lsp_settings_json_languageserver
       \ 'semantic_highlight': lsp_settings#get('json-languageserver', 'semantic_highlight', {}),
       \ }
 augroup END
+
+function! s:set_schema(url) abort
+  let l:name = fnamemodify(lsp#utils#get_buffer_uri(), ':t')
+  let l:schema = [{'fileMatch':[l:name], 'url': a:url}]
+  let l:config = lsp_settings#merge('json-languageserver', 'workspace_config', {'json': {'format': {'enable': v:true}, 'schemas': l:schema}})
+  call lsp#update_workspace_config('json-languageserver', l:config)
+endfunction
+
+function! s:on_lsp_buffer_enabled() abort
+  command! -buffer -nargs=1 LspJsonSetSchema call <SID>set_schema(<q-args>)
+endfunction
+
+augroup lsp_install_json
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
