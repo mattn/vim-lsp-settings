@@ -162,6 +162,14 @@ function! lsp_settings#server_config(name) abort
   return {}
 endfunction
 
+function! lsp_settings#merge(name, key, default) abort
+  let l:config = lsp_settings#get(a:name, a:key, {})
+  if type(a:default) ==# v:t_func
+    return extend(l:config, a:default(a:name, a:key))
+  endif
+  return extend(l:config, a:default)
+endfunction
+
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)

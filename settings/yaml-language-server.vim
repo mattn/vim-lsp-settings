@@ -8,7 +8,23 @@ augroup vim_lsp_settings_yaml_language_server
       \ 'allowlist': lsp_settings#get('yaml-language-server', 'allowlist', ['yaml']),
       \ 'blocklist': lsp_settings#get('yaml-language-server', 'blocklist', []),
       \ 'config': lsp_settings#get('yaml-language-server', 'config', lsp_settings#server_config('yaml-language-server')),
-      \ 'workspace_config': lsp_settings#get('yaml-language-server', 'workspace_config', {name, key->{'json': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas('yaml-language-server')}}}),
+      \ 'workspace_config': lsp_settings#merge('yaml-language-server', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas('yaml-language-server')}}),
       \ 'semantic_highlight': lsp_settings#get('yaml-language-server', 'semantic_highlight', {}),
       \ }
+augroup END
+
+function! s:update_schema(url) abort
+  let l:name = fnamemodify(lsp#utils#get_buffer_uri(), ':t')
+  let l:schema = {a:url : l:name}
+  let l:config = lsp_settings#merge('yaml-language-server', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': [l:schema] + lsp_settings#utils#load_schemas('yaml-language-server')}})
+  call lsp#update_workspace_config('yaml-language-server', l:config)
+endfunction
+
+function! s:on_lsp_buffer_enabled() abort
+  command! -buffer -nargs=1 LspYamlSchema call <SID>update_schema(<q-args>)
+endfunction
+
+augroup lsp_install_yaml
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
