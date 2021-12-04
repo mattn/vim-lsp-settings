@@ -217,7 +217,7 @@ If you don't want to use `import_map.json`, you may put `.vim-lsp-settings/setti
 ```
 
 Recommend to add `let g:markdown_fenced_languages = ['ts=typescript']` to your 
-vimrc for hover(preview) Deno's standard library.
+vimrc for hover(preview) Deno's library.
 
 ### flow (JavaScript)
 
