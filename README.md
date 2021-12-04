@@ -216,6 +216,9 @@ If you don't want to use `import_map.json`, you may put `.vim-lsp-settings/setti
 }
 ```
 
+Recommend to add `let g:markdown_fenced_languages = ['ts=typescript']` to your 
+vimrc for hover(preview) Deno's standard library.
+
 ### flow (JavaScript)
 
 To use flow, the `.flowconfig` has to be located on the top of project directory.
