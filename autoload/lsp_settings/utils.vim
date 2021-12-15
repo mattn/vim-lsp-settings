@@ -95,3 +95,62 @@ function! lsp_settings#utils#term_start(cmd, options) abort
         call term_start(a:cmd, l:options)
     endif
 endfunction
+
+function! s:extend(lhs, rhs) abort
+  let [l:lhs, l:rhs] = [a:lhs, a:rhs]
+  if type(l:lhs) ==# 3
+    if type(l:rhs) ==# 3
+      " [1,2,3]+[4,5,6]=[1,2,3,4,5,6]
+      let l:lhs += l:rhs
+    elseif type(l:rhs) ==# 4
+      " [1,2,3]+{'a':1,'b':2}= [1,2,3,{'a':1},{'b':2}]
+      let l:lhs += map(keys(l:rhs), '{v:val : l:rhs[v:val]}')
+    endif
+  elseif type(l:lhs) ==# 4
+    if type(l:rhs) ==# 3
+      " {'a':1,'b':2}+[{'c':3},{'d':4},5]= {'a':1,'b':2,'c':3,'d':4}
+      for l:V in l:rhs
+        if type(l:V) != 4
+          continue
+        endif
+        for l:k in keys(l:V)
+          let l:lhs[l:k] = l:V[l:k]
+        endfor
+      endfor
+    elseif type(l:rhs) ==# 4
+      " {'a':1,'b':2}+{'c':3,'d':4}= {'a':1,'b':2,'c':3,'d':4}
+      for l:key in keys(l:rhs)
+        if type(l:rhs[l:key]) ==# 3
+          " {'a':1,'b':2}+{'c':[1]}={'a':1,'b':2,'c':[1]}
+          if !has_key(l:lhs, l:key)
+            let l:lhs[l:key] = []
+          endif
+          if type(l:lhs[l:key]) == 3
+            " {'a':[1],'b':2}+{'a':[2]}={'a':[1,2],'b':2}
+            let l:lhs[l:key] += l:rhs[l:key]
+          elseif type(l:lhs[l:key]) == 4
+            " {'a':{'aa':1},'b':2}+{'a':[2]}={'a':[2],'b':2}
+            for l:k in keys(l:rhs[l:key])
+              let l:lhs[l:key][l:k] = l:rhs[l:key][l:k]
+            endfor
+          endif
+        elseif type(l:rhs[l:key]) ==# 4
+          " {'a':{'aa':1},'b':2}+{'a':{'ab':2]}={'a':{'aa':1,'ab':2},'b':2}
+          if has_key(l:lhs, l:key)
+            call s:extend(l:lhs[l:key], l:rhs[l:key])
+          else
+            let l:lhs[l:key] = l:rhs[l:key]
+          endif
+        else
+          " {'a':{'aa':1},'b':2}+{'a':1}={'a':1,'b':2}
+          let l:lhs[l:key] = l:rhs[l:key]
+        endif
+      endfor
+    endif
+  endif
+  return l:lhs
+endfunction
+
+function! lsp_settings#utils#extend(lhs, rhs) abort
+  return s:extend(a:lhs, a:rhs)
+endfunction
