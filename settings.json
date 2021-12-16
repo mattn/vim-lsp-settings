@@ -1136,7 +1136,7 @@
         "npm"
       ],
       "config": {
-        "refresh_pattern": "\\([bwtglsav]:\\)\\?\\k*$"
+        "refresh_pattern": "\\%([bwtglsav]:\\k*\\|\\k\\+\\)$"
       },
       "root_uri_patterns": [
         ".vim/",
