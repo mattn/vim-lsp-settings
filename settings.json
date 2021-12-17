@@ -300,6 +300,42 @@
       }
     }
   ],
+  "gohtmltmpl": [
+    {
+      "command": "gopls",
+      "requires": [
+        "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "tmpl",
+          "gotmpl"
+        ],
+        "name": "mattn/vim-gotmpl"
+      }
+    }
+  ],
+  "gotexttmpl": [
+    {
+      "command": "gopls",
+      "requires": [
+        "go"
+      ],
+      "root_uri_patterns": [
+        "go.mod"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "tmpl",
+          "gotmpl"
+        ],
+        "name": "mattn/vim-gotmpl"
+      }
+    }
+  ],
   "graphql": [
     {
       "command": "graphql-language-server",

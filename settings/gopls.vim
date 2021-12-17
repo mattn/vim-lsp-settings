@@ -12,7 +12,7 @@ augroup vim_lsp_settings_gopls
       \         'test': v:true,
       \     },
       \ }),
-      \ 'allowlist': lsp_settings#get('gopls', 'allowlist', ['go', 'gomod']),
+      \ 'allowlist': lsp_settings#get('gopls', 'allowlist', ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']),
       \ 'blocklist': lsp_settings#get('gopls', 'blocklist', []),
       \ 'config': lsp_settings#get('gopls', 'config', lsp_settings#server_config('gopls')),
       \ 'workspace_config': lsp_settings#get('gopls', 'workspace_config', {}),
