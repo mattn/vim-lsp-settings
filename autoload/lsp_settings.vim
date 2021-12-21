@@ -370,6 +370,10 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   call lsp_settings#utils#msg('Installed ' . a:command)
 endfunction
 
+function! lsp_settings#install_server(ft, command) abort
+  call s:vim_lsp_install_server(a:ft, a:command, '!')
+endfunction
+
 function! s:vim_lsp_install_server(ft, command, bang) abort
   if !empty(a:command) && !lsp_settings#utils#valid_name(a:command)
     call lsp_settings#utils#error('Invalid server name')

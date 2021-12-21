@@ -1,12 +1,20 @@
 function! s:install_or_update() abort
-  let l:command = substitute(getline('.'), '\[.\] \(\S\+\).*', '\1', '')
+  let l:line = getline('.')
+  let l:token = matchlist(getline('.'), '\[.\] \(\S\+\)\s\+(\([^)]\+\))')
+  let l:command = l:token[1]
+  let l:languages = split(l:token[2], ',\s*')
   if empty(l:command)
     return
   endif
   if confirm('Install ' . l:command . ' ?', "&OK\n&Cancel") ==# 2
     return
   endif
-  exe 'LspInstallServer' l:command
+  call lsp_settings#install_server(l:languages[0], l:command)
+  let winnum = bufwinnr(bufnr('__LSP_SETTINGS_'))
+  if winnum != -1
+    exe winnum 'wincmd w'
+    call s:update()
+  endif
 endfunction
 
 function! s:uninstall() abort
@@ -18,15 +26,19 @@ function! s:uninstall() abort
     return
   endif
   exe 'LspUninstallServer' l:command
+  let winnum = bufwinnr(bufnr('__LSP_SETTINGS_'))
+  if winnum != -1
+    exe winnum 'wincmd w'
+    call s:update()
+  endif
 endfunction
 
-function! lsp_settings#ui#open() abort
-  silent new __LSP_SETTINGS_
-  only!
+function! s:update() abort
   setlocal buftype=nofile bufhidden=wipe noswapfile
   setlocal cursorline
   setlocal nomodified
   
+  silent! %d _
   let l:names = []
   let l:types = {}
   let l:installer_dir = lsp_settings#installer_dir()
@@ -56,7 +68,12 @@ function! lsp_settings#ui#open() abort
   set modifiable
   cal setline(1, l:names)
   set nomodifiable
+endfunction
 
+function! lsp_settings#ui#open() abort
+  silent new __LSP_SETTINGS_
+  only!
+  call s:update()
   nnoremap <buffer> i :call <SID>install_or_update()<cr>
   nnoremap <buffer> x :call <SID>uninstall()<cr>
   nnoremap q :bw<cr>
