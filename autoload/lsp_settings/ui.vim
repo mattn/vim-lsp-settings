@@ -1,5 +1,5 @@
 function! s:install_or_update() abort
-  let l:command = getline('.')[4:]
+  let l:command = substitute(getline('.'), '\[.\] \(\S\+\).*', '\1', '')
   if empty(l:command)
     return
   endif
@@ -10,7 +10,7 @@ function! s:install_or_update() abort
 endfunction
 
 function! s:uninstall() abort
-  let l:command = getline('.')[4:]
+  let l:command = substitute(getline('.'), '\[.\] \(\S\+\).*', '\1', '')
   if empty(l:command)
     return
   endif
