@@ -9,12 +9,8 @@ function! s:install_or_update() abort
   if confirm('Install ' . l:command . ' ?', "&OK\n&Cancel") ==# 2
     return
   endif
+  bw!
   call lsp_settings#install_server(l:languages[0], l:command)
-  let winnum = bufwinnr(bufnr('__LSP_SETTINGS_'))
-  if winnum != -1
-    exe winnum 'wincmd w'
-    call s:update()
-  endif
 endfunction
 
 function! s:uninstall() abort
@@ -25,12 +21,8 @@ function! s:uninstall() abort
   if confirm('Uninstall ' . l:command . ' ?', "&OK\n&Cancel") ==# 2
     return
   endif
+  bw!
   exe 'LspUninstallServer' l:command
-  let winnum = bufwinnr(bufnr('__LSP_SETTINGS_'))
-  if winnum != -1
-    exe winnum 'wincmd w'
-    call s:update()
-  endif
 endfunction
 
 function! s:update() abort
@@ -71,7 +63,7 @@ function! s:update() abort
 endfunction
 
 function! lsp_settings#ui#open() abort
-  silent new __LSP_SETTINGS_
+  silent new __LSP_SETTINGS__
   only!
   call s:update()
   nnoremap <buffer> i :call <SID>install_or_update()<cr>
