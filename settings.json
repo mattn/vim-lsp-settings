@@ -1048,7 +1048,7 @@
   "r": [
     {
       "command": "r-languageserver",
-      "url":"https://github.com/REditorSupport/languageserver",
+      "url": "https://github.com/REditorSupport/languageserver",
       "description": "An implementation of the Language Server Protocol for R",
       "requires": [
         "R"
