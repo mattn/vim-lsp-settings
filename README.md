@@ -128,6 +128,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | PHP              | intelephense                        | Yes       | Yes           |
 | PHP              | psalm-language-server               | Yes       | Yes           |
 | OCaml            | ocaml-lsp                           | UNIX Only | Yes           |
+| Puppet           | puppet-languageserver               | Yes       | Yes           |
 | Python           | pyls-all (pyls with dependencies)   | Yes       | Yes           |
 | Python           | pyls (pyls without dependencies)    | Yes       | Yes           |
 | Python           | pyls-ms (Microsoft Version)         | Yes       | Yes           |
