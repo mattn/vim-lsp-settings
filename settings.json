@@ -3,6 +3,8 @@
   "_": [
     {
       "command": "efm-langserver",
+      "description": "General purpose Language Server",
+      "url": "https://github.com/mattn/efm-langserver",
       "disabled": true,
       "requires": [
         "go"
@@ -12,6 +14,8 @@
   "apex": [
     {
       "command": "apex-jorje-lsp",
+      "description": "Apex Language Server",
+      "url": "https://developer.salesforce.com/tools/vscode/en/apex/language-server",
       "requires": [
         "java"
       ],
@@ -30,12 +34,16 @@
   "c": [
     {
       "command": "clangd",
+      "url": "https://github.com/clangd/clangd",
+      "description": "clangd language server",
       "requires": []
     }
   ],
   "clojure": [
     {
       "command": "clojure-lsp",
+      "url": "https://github.com/clojure-lsp/clojure-lsp",
+      "description": "Language Server (LSP) for Clojure",
       "requires": [],
       "root_uri_patterns": [
         ".lein/",
@@ -875,7 +883,7 @@
     {
       "command": "racket-lsp",
       "requires": [
-          "raco"
+        "raco"
       ]
     }
   ],
