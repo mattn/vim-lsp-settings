@@ -154,3 +154,8 @@ endfunction
 function! lsp_settings#utils#extend(lhs, rhs) abort
   return s:extend(a:lhs, a:rhs)
 endfunction
+
+function! lsp_settings#utils#shellescape(path) abort
+  let l:quote = &shellxquote == '"' ?  "'" : '"'
+  return l:quote .. a:path .. l:quote
+endfunction
