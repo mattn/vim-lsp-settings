@@ -53,7 +53,7 @@ function! s:help() abort
       if l:conf.command ==# l:command
         echomsg l:conf.url
         echomsg l:conf.description
-        break
+        return
       endif
     endfor
   endfor
