@@ -124,6 +124,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Lisp             | cl-lsp                              | Yes       | No            |
 | Lua              | emmylua-ls                          | Yes       | Yes           |
 | Lua              | sumneko-lua-language-server         | Yes       | Yes           |
+| Markdown         | remark-language-server              | Yes       | Yes           |
 | Nim              | nimls                               | No        | No            |
 | PHP              | intelephense                        | Yes       | Yes           |
 | PHP              | psalm-language-server               | Yes       | Yes           |

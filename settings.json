@@ -644,6 +644,14 @@
       "requires": []
     }
   ],
+  "markdown": [
+    {
+      "command": "remark-language-server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "nim": [
     {
       "command": "nimlsp",
