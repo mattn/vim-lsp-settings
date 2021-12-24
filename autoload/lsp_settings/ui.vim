@@ -71,14 +71,11 @@ function! s:uninstall() abort
   exe 'LspUninstallServer' l:command
 endfunction
 
-function! s:update() abort
-endfunction
-
 function! lsp_settings#ui#open() abort
   silent new __LSP_SETTINGS__
   only!
   setlocal buftype=nofile bufhidden=wipe noswapfile cursorline
-  
+
   silent! %d _
   let l:names = []
   let l:types = {}
@@ -92,7 +89,7 @@ function! lsp_settings#ui#open() abort
           let l:missing = 1
           break
         endif
-      endfor    
+      endfor
       if l:missing ># 0
         continue
       endif
@@ -102,7 +99,7 @@ function! lsp_settings#ui#open() abort
       else
         call add(l:types[l:conf.command], l:ft)
       endif
-    endfor    
+    endfor
   endfor
   let l:names = uniq(sort(l:names))
   call map(l:names, {_, v -> printf('%s %s (%s)', lsp_settings#executable(v) ? '[*]' : '[ ]', v, join(l:types[v], ', '))})
