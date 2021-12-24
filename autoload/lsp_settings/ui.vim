@@ -72,9 +72,12 @@ function! s:uninstall() abort
 endfunction
 
 function! s:update() abort
-  setlocal buftype=nofile bufhidden=wipe noswapfile
-  setlocal cursorline
-  setlocal nomodified
+endfunction
+
+function! lsp_settings#ui#open() abort
+  silent new __LSP_SETTINGS__
+  only!
+  setlocal buftype=nofile bufhidden=wipe noswapfile cursorline
   
   silent! %d _
   let l:names = []
@@ -103,15 +106,8 @@ function! s:update() abort
   endfor
   let l:names = uniq(sort(l:names))
   call map(l:names, {_, v -> printf('%s %s (%s)', lsp_settings#executable(v) ? '[*]' : '[ ]', v, join(l:types[v], ', '))})
-  set modifiable
   cal setline(1, l:names)
-  set nomodifiable
-endfunction
-
-function! lsp_settings#ui#open() abort
-  silent new __LSP_SETTINGS__
-  only!
-  call s:update()
+  setlocal nomodifiable nomodified
   nnoremap <buffer> i :call <SID>install_or_update()<cr>
   nnoremap <buffer> x :call <SID>uninstall()<cr>
   nnoremap <buffer> b :call <SID>open()<cr>
