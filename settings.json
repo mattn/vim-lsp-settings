@@ -187,6 +187,16 @@
       ]
     }
   ],
+  "dot": [
+    {
+      "command": "dot-language-server",
+      "url": "https://github.com/nikeee/dot-language-server",
+      "description": "A language Server for the DOT language/Graphviz.",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "elixir": [
     {
       "command": "elixir-ls",
