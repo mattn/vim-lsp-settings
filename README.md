@@ -47,10 +47,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 ```
 
-#### deoplete.nvim
+#### ddc.vim
 ```viml
-Plug 'Shougo/deoplete.nvim'
-Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'Shougo/ddc.vim'
+Plug 'shun/ddc-vim-lsp'
 ```
 
 ### LSP server download directory
