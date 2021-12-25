@@ -24,7 +24,7 @@ function! s:open() abort
     for l:conf in l:settings[l:ft]
       if l:conf.command ==# l:command
         let l:cmd = ''
-        if exists('openbrowser#open()')
+        if exists('g:loaded_openbrowser') && g:loaded_openbrowser
           call openbrowser#open(l:conf.url)
         elseif has('win32') || has('win64')
           silent! exec printf('!start rundll32 url.dll,FileProtocolHandler %s', l:conf.url)
