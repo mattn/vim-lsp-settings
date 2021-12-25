@@ -131,6 +131,17 @@
   ],
   "css": [
     {
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "css-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
       "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
@@ -481,6 +492,17 @@
   ],
   "html": [
     {
+      "command": "vscode-html-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "html-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-html-languageserver-bin",
       "description": "Binary version published on npm of vscode-html-languageserver extracted from VSCode tree",
@@ -670,6 +692,17 @@
     }
   ],
   "json": [
+    {
+      "command": "vscode-json-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\(\"\\k*\\|\\[\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
     {
       "command": "json-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-json-languageserver-bin",
