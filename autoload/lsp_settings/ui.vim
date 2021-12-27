@@ -111,7 +111,7 @@ function! lsp_settings#ui#open() abort
   nnoremap <buffer> x :call <SID>uninstall()<cr>
   nnoremap <buffer> b :call <SID>open()<cr>
   nnoremap <buffer> ? :call <SID>help()<cr>
-  nnoremap q :bw<cr>
+  nnoremap <buffer> q :bw<cr>
   redraw
   echomsg 'Type i to install, or x to uninstall, b to open browser, ? to show description'
 endfunction
