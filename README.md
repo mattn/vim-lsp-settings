@@ -95,6 +95,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | D                | serve-d                             | Yes       | No            |
 | Dart             | analysis-server-dart-snapshot       | Yes       | Yes           |
 | Dockerfile       | dockerfile-language-server-nodejs   | Yes       | Yes           |
+| Dot              | dot-language-server                 | Yes       | Yes           |
 | Elixir           | elixir-ls                           | Yes       | Yes           |
 | Elm              | elm-language-server                 | Yes       | Yes           |
 | Erlang           | erlang-ls                           | Yes       | Yes           |
@@ -142,6 +143,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Racket           | racket-lsp                          | Yes       | No            |
 | Reason           | reason-language-server              | Yes       | Yes           |
 | Ruby             | solargraph                          | Yes       | Yes           |
+| Ruby             | typeprof                            | Yes       | Yes           |
 | Rust             | rls                                 | Yes       | No            |
 | Rust             | rust-analyzer                       | Yes       | Yes           |
 | Sphinx           | esbonio                             | Yes       | Yes           |
