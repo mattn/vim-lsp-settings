@@ -1139,6 +1139,14 @@
   ],
   "ruby": [
     {
+      "command": "typeprof",
+      "url": "https://github.com/ruby/typeprof",
+      "description": "An experimental type-level Ruby interpreter for testing and understanding Ruby code",
+      "requires": [
+        "gem"
+      ]
+    },
+    {
       "command": "solargraph",
       "url": "https://github.com/castwide/solargraph",
       "description": "A Ruby language server.",
