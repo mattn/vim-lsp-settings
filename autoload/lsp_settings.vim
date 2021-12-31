@@ -404,13 +404,9 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
   call lsp_settings#utils#msg('Installing ' . l:entry[0])
   if has('nvim')
     split new
-    call termopen(lsp_settings#utils#shellescape(l:entry[1]), {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
+    call termopen([l:entry[1]], {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
   else
-    if has('win32')
-      let l:bufnr = term_start(lsp_settings#utils#shellescape(l:entry[1]), {'cwd': l:server_install_dir})
-    else
-      let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
-    endif
+    let l:bufnr = term_start([l:entry[1]], {'cwd': l:server_install_dir})
     let l:job = term_getjob(l:bufnr)
     if l:job != v:null
       call job_setoptions(l:job, {'exit_cb': function('s:vim_lsp_install_server_post', [l:entry[0]])})
