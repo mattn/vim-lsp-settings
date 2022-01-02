@@ -162,15 +162,15 @@ endfunction
 
 function! lsp_settings#utils#open_url(url) abort
     if exists('g:loaded_openbrowser') && g:loaded_openbrowser
-      call openbrowser#open(l:conf.url)
+      call openbrowser#open(a:url)
     elseif has('win32') || has('win64')
-      silent! exec printf('!start rundll32 url.dll,FileProtocolHandler %s', l:conf.url)
+      silent! exec printf('!start rundll32 url.dll,FileProtocolHandler %s', a:url)
     elseif has('mac') || has('macunix') || has('gui_macvim') || system('uname') =~? '^darwin'
-      call system(printf('open "%s"', l:conf.url))
+      call system(printf('open "%s"', a:url))
     elseif executable('xdg-open')
-      call system(printf('xdg-open "%s"', l:conf.url))
+      call system(printf('xdg-open "%s"', a:url))
     elseif executable('firefox')
-      call system(printf('firefox "%s"', l:conf.url))
+      call system(printf('firefox "%s"', a:url))
     else
       return v:false
     endif
