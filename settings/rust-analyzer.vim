@@ -34,6 +34,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspRustFindMatchingBrace call <SID>find_matching_brace()
   nnoremap <buffer> <plug>(lsp-rsut-find-matching-brace) :<c-u>call <SID>find_matching_brace()<cr>
+
+  command! -buffer LspRustOpenDocs call <SID>open_docs()
+  nnoremap <buffer> <plug>(lsp-rust-open-docs) :<c-u>call <SID>open_docs()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -154,6 +157,30 @@ function! s:on_find_matching_brace(x) abort
             \ },
             \ })
     endif
+endfunction
+
+function! s:open_docs() abort
+    echo 'Opening docs...'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/externalDocs',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'position': lsp#get_position(),
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_open_docs(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_open_docs(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to find docs' | endif
+    let l:url = a:x['response']['result']
+    call lsp_settings#utils#open_url(l:url)
+    echo ''
 endfunction
 
 function! s:rust_analyzer_apply_source_change(context) abort

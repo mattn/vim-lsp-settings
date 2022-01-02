@@ -159,3 +159,20 @@ function! lsp_settings#utils#shellescape(path) abort
   let l:quote = &shellxquote ==# '"' ?  "'" : '"'
   return l:quote . a:path . l:quote
 endfunction
+
+function! lsp_settings#utils#open_url(url) abort
+    if exists('g:loaded_openbrowser') && g:loaded_openbrowser
+      call openbrowser#open(l:conf.url)
+    elseif has('win32') || has('win64')
+      silent! exec printf('!start rundll32 url.dll,FileProtocolHandler %s', l:conf.url)
+    elseif has('mac') || has('macunix') || has('gui_macvim') || system('uname') =~? '^darwin'
+      call system(printf('open "%s"', l:conf.url))
+    elseif executable('xdg-open')
+      call system(printf('xdg-open "%s"', l:conf.url))
+    elseif executable('firefox')
+      call system(printf('firefox "%s"', l:conf.url))
+    else
+      return v:false
+    endif
+    return v:true
+endfunction
