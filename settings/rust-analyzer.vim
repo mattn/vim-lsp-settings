@@ -25,6 +25,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspCargoReload call <SID>reload_workspace()
   nnoremap <buffer> <plug>(lsp-cargo-reload) :<c-u>call <SID>reload_workspace()<cr>
+
+  command! -buffer LspRustAnalyzerStatus call <SID>rust_analyzer_status()
+  nnoremap <buffer> <plug>(lsp-rust-analyzer-status) :<c-u>call <SID>rust_analyzer_status()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -52,6 +55,41 @@ function! s:reload_workspace() abort
         \   'error': {e -> lsp_settings#utils#error(e)},
         \ })
         \ )
+endfunction
+
+function! s:rust_analyzer_status() abort
+    echo 'Retrieving rust-analyzer status'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'rust-analyzer/analyzerStatus',
+        \   'params': { 'textDocument': lsp#get_text_document_identifier() }
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_rust_analyzer_status(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_rust_analyzer_status(x) abort
+    let l:contents = a:x['response']['result']
+    let l:lines = lsp#utils#_split_by_eol(l:contents)
+    let l:view = winsaveview()
+    let l:alternate=@#
+    silent! pclose
+    sp LspRustAnalyzerStatusPreview
+    execute 'resize '.min([len(l:lines), &previewheight])
+    set previewwindow
+    setlocal conceallevel=2
+    setlocal bufhidden=hide
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    %d
+    call setline(1, l:lines)
+    execute "normal \<c-w>p"
+    call winrestview(l:view)
+    let @#=l:alternate
 endfunction
 
 function! s:rust_analyzer_apply_source_change(context) abort
