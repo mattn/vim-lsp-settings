@@ -28,6 +28,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspRustAnalyzerStatus call <SID>rust_analyzer_status()
   nnoremap <buffer> <plug>(lsp-rust-analyzer-status) :<c-u>call <SID>rust_analyzer_status()<cr>
+
+  command! -range  LspRustJoinLines call <SID>join_lines()
+  nnoremap -range <plug>(lsp-rust-join_lines) :<c-u>call <SID>join_lines()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -90,6 +93,29 @@ function! s:on_rust_analyzer_status(x) abort
     execute "normal \<c-w>p"
     call winrestview(l:view)
     let @#=l:alternate
+endfunction
+
+function! s:join_lines() abort
+    echo 'Joining lines'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/joinLines',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'ranges': [lsp#utils#range#_get_recent_visual_range()],
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_join_lines(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_join_lines(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to join lines' | endif
+    call lsp#utils#text_edit#apply_text_edits(a:x['request']['params']['textDocument']['uri'], a:x['response']['result'])
+    echo 'Joined lines'
 endfunction
 
 function! s:rust_analyzer_apply_source_change(context) abort
