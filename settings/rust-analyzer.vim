@@ -31,6 +31,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -range  LspRustJoinLines call <SID>join_lines()
   nnoremap -range <plug>(lsp-rust-join_lines) :<c-u>call <SID>join_lines()<cr>
+
+  command! -buffer LspRustFindMatchingBrace call <SID>find_matching_brace()
+  nnoremap <buffer> <plug>(lsp-rsut-find-matching-brace) :<c-u>call <SID>find_matching_brace()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -116,6 +119,41 @@ function! s:on_join_lines(x) abort
     if lsp#client#is_error(a:x['response']) | echom 'Failed to join lines' | endif
     call lsp#utils#text_edit#apply_text_edits(a:x['request']['params']['textDocument']['uri'], a:x['response']['result'])
     echo 'Joined lines'
+endfunction
+
+function! s:find_matching_brace() abort
+    echo 'Finding matching brace'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/matchingBrace',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'positions': [lsp#get_position()],
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_find_matching_brace(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_find_matching_brace(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to find matching brace' | endif
+    let l:positions = a:x['response']['result']
+    if empty(l:positions)
+        echo 'No matching brace found'
+    else
+        " find matching brace returns multiple positions but here we only use
+        " the first one
+        call lsp#utils#location#_open_lsp_location({
+            \ 'uri': a:x['request']['params']['textDocument']['uri'],
+            \ 'range': {
+            \   'start': l:positions[0],
+            \   'end': l:positions[0],
+            \ },
+            \ })
+    endif
 endfunction
 
 function! s:rust_analyzer_apply_source_change(context) abort
