@@ -1,7 +1,7 @@
-let s:settings_dir = expand('<sfile>:h:h') . '/settings'
-let s:checkers_dir = expand('<sfile>:h:h') . '/checkers'
-let s:installer_dir = expand('<sfile>:h:h') . '/installer'
 let s:root_dir = expand('<sfile>:h:h')
+let s:settings_dir = s:root_dir . '/settings'
+let s:checkers_dir = s:root_dir . '/checkers'
+let s:installer_dir = s:root_dir . '/installer'
 
 if has('win32')
   let s:data_dir = expand('$LOCALAPPDATA/vim-lsp-settings')
@@ -12,7 +12,7 @@ else
 endif
 let s:servers_dir = s:data_dir . '/servers'
 
-let s:settings = json_decode(join(readfile(expand('<sfile>:h:h') . '/settings.json'), "\n"))
+let s:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
 call remove(s:settings, '$schema')
 
 let s:ftmap = {}
