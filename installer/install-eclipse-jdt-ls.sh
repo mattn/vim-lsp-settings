@@ -2,7 +2,7 @@
 
 set -e
 
-curl -L "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zx
+curl -L "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zx
 curl -o lombok.jar 'https://projectlombok.org/downloads/lombok.jar'
 
 osType="$(uname -s)"
