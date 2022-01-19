@@ -7,8 +7,9 @@ curl -o lombok.jar 'https://projectlombok.org/downloads/lombok.jar'
 tar xvf jdt-language-server-latest.tar.gz
 rm jdt-language-server-latest.tar.gz
 
-osType="\$(uname -s)"
-case "\${osType}" in
+osType=$(uname -s)
+echo $osType
+case $osType in
     Darwin*)    configDir=config_mac;;
     Linux*)     configDir=config_linux;;
     *)          configDir=config_linux
