@@ -3,7 +3,9 @@
 set -e
 
 git clone --depth=1 https://github.com/kwerle/ruby_language_server .
-bundle install --without development --path vendor/bundle
+bundle config set --local path vendor/bundle
+bundle config set --local without development
+bundle install
 
 cat <<EOF >ruby_language_server
 #!/usr/bin/env bash
