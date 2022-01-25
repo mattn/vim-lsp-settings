@@ -10,5 +10,6 @@ augroup vim_lsp_settings_tailwindcss-intellisense
       \ 'config': lsp_settings#get('tailwindcss-intellisense', 'config', lsp_settings#server_config('tailwindcss-intellisense')),
       \ 'workspace_config': lsp_settings#get('tailwindcss-intellisense', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('tailwindcss-intellisense', 'semantic_highlight', {}),
+      \ 'languageId': {server_info->lsp_settings#get('tailwindcss-intellisense', 'languageId', {x->&filetype})},
       \ }
 augroup END
