@@ -146,6 +146,7 @@ let g:vim_lsp_settings_volar_config = {
 \       'preview': v:false,
 \       'finder': v:false,
 \     },
+\     'autoWrapParentheses': v:true,
 \     'autoCompleteRefs': v:true,
 \     'takeOverMode': {
 \       'enabled': v:false,
