@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if command -v dotnet >/dev/null 2>&1; then
   echo "dotnet installed"
   dotnetcmd=dotnet
@@ -12,17 +10,4 @@ else
   dotnetcmd="\\$DIR/.dotnet/dotnet"
 fi
 
-url="https://github.com/fsharp/FsAutoComplete/releases/latest/download/fsautocomplete.netcore.zip"
-zip=fsautocomplete.zip
-curl -L "$url" -o "$zip"
-unzip -o -d "fsautocomplete.netcore" "$zip"
-rm "$zip"
-
-cat <<EOF >fsautocomplete
-#!/bin/sh
-
-DIR=\$(cd \$(dirname \$0); pwd)
-$dotnetcmd \$DIR/fsautocomplete.netcore/fsautocomplete.dll
-EOF
-
-chmod +x fsautocomplete
+$dotnetcmd tool install --tool-path . fsautocomplete
