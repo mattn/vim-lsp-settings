@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if command -v dotnet >/dev/null 2>&1; then
   echo "dotnet installed"
   dotnetcmd=dotnet
