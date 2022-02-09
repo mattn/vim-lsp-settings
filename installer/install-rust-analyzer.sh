@@ -26,6 +26,20 @@ darwin)
     exit 1
   fi
   ;;
+mingw64_nt*)
+  if [[ $arch == "x86_64" ]]; then
+  	platform="x86_64-pc-windows-msvc"
+  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
+    platform="aarch64-pc-windows-msvc"
+  else
+    echo "unknown architecture: $arch"
+    exit 1
+  fi
+  ;;
+*)
+  echo "unknow platform: $os"
+  exit 1
+  ;;
 esac
 
 curl -L -o "rust-analyzer-$platform.gz" "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-$platform.gz"
