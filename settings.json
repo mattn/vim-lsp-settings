@@ -599,7 +599,7 @@
     },
     {
       "command": "eslint-language-server",
-      "url": "https://www.npmjs.com/package/eslint-language-server",
+      "url": "https://github.com/microsoft/vscode-eslint",
       "description": "eslint language server",
       "requires": [
         "node"
