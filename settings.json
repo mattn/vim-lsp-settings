@@ -1539,7 +1539,7 @@
       }
     },
     {
-      "command": "volar-server",
+      "command": "vue-language-server",
       "url": "https://github.com/johnsoncodehk/volar",
       "description": "Explore high-performance tooling for Vue",
       "config": {
