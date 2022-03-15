@@ -12,13 +12,15 @@ rm -r lsp/test
 OPAMROOT="$(pwd)/.opam"
 export OPAMROOT
 
+export OPAMYES=true
 opam init -a -n
+opam switch create . ocaml-base-compiler.4.13.0
 eval "$(opam env)" 2>/dev/null
-opam switch create . --with-test -y
-opam exec --switch=. dune build
+opam exec make install-test-deps
+opam exec make all
 
 rm -rf .git
 
 cd "$DEFAULT_DIR"
-ln -snf "./ocaml-lsp-files/_build/default/ocaml-lsp-server/src/main.exe" ocaml-lsp
+ln -snf "./ocaml-lsp-files/_build/default/ocaml-lsp-server/bin/main.exe" ocaml-lsp
 chmod +x ocaml-lsp
