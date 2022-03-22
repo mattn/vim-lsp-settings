@@ -1519,26 +1519,6 @@
   ],
   "vue": [
     {
-      "command": "vls",
-      "url": "https://github.com/vuejs/vetur",
-      "description": "Vue tooling for VS Code.",
-      "config": {
-        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
-      },
-      "requires": [
-        "npm"
-      ],
-      "root_uri_patterns": [
-        "package.json"
-      ],
-      "vim_plugin": {
-        "extensions": [
-          "vue"
-        ],
-        "name": "posva/vim-vue"
-      }
-    },
-    {
       "command": "volar-server",
       "url": "https://github.com/johnsoncodehk/volar",
       "description": "Explore high-performance tooling for Vue",
@@ -1556,6 +1536,26 @@
           "vue"
         ],
         "name": "leafOfTree/vim-vue-plugin"
+      }
+    },
+    {
+      "command": "vls",
+      "url": "https://github.com/vuejs/vetur",
+      "description": "Vue tooling for VS Code.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "vue"
+        ],
+        "name": "posva/vim-vue"
       }
     }
   ],
