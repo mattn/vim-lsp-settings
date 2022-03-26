@@ -30,7 +30,7 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <plug>(lsp-rust-analyzer-status) :<c-u>call <SID>rust_analyzer_status()<cr>
 
   command! -range  LspRustJoinLines call <SID>join_lines()
-  nnoremap -range <plug>(lsp-rust-join-lines) :<c-u>call <SID>join_lines()<cr>
+  nnoremap <plug>(lsp-rust-join-lines) :<c-u>call <SID>join_lines()<cr>
 
   command! -buffer LspRustFindMatchingBrace call <SID>find_matching_brace()
   nnoremap <buffer> <plug>(lsp-rsut-find-matching-brace) :<c-u>call <SID>find_matching_brace()<cr>
