@@ -1,9 +1,7 @@
 @echo off
 
-curl -o "jdt-language-server-latest.tar.gz" "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz"
-curl -o "lombok.jar" "https://projectlombok.org/downloads/lombok.jar"
-tar xvf jdt-language-server-latest.tar.gz
-del jdt-language-server-latest.tar.gz
+curl -L "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zx
+curl -o lombok.jar "https://projectlombok.org/downloads/lombok.jar"
 
 echo @echo off ^
 
