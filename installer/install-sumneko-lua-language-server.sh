@@ -41,7 +41,7 @@ mingw64_nt*)
 esac
 
 version="v3.0.0"
-url="https://github.com/sumneko/vscode-lua/releases/download/v$version/vscode-lua-$version-$platform.vsix"
+url="https://github.com/sumneko/vscode-lua/releases/download/$version/vscode-lua-$version-$platform.vsix"
 asset="vscode-lua.vsix"
 
 curl -L "$url" -o "$asset"
