@@ -54,7 +54,7 @@ cat <<EOF >sumneko-lua-language-server
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)/extension/server
-\$DIR/bin/$platform/lua-language-server -E -e LANG=en \$DIR/main.lua \$*
+\$DIR/bin/lua-language-server -E -e LANG=en \$DIR/main.lua \$*
 EOF
 
 chmod +x sumneko-lua-language-server
