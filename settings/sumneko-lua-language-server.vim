@@ -44,7 +44,7 @@ augroup vim_lsp_settings_sumneko_lua_language_server
   au!
   LspRegisterServer {
       \ 'name': 'sumneko-lua-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('sumneko-lua-language-server', 'cmd', [lsp_settings#exec_path('sumneko-lua-language-server')]+lsp_settings#get('sumneko-lua-language-server', 'args', []))},
+      \ 'cmd': {server_info->lsp_settings#get('sumneko-lua-language-server', 'cmd', [lsp_settings#exec_path('lua-language-server')]+lsp_settings#get('sumneko-lua-language-server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('sumneko-lua-language-server', 'root_uri', lsp_settings#root_uri('sumneko-lua-language-server'))},
       \ 'initialization_options': lsp_settings#get('sumneko-lua-language-server', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('sumneko-lua-language-server', 'allowlist', ['lua']),
