@@ -9,6 +9,6 @@ del vscode-lua.vsix
 
 echo @echo off ^
 
-%%~dp0\extension\server\bin\lua-language-server.exe -E -e LANG=en %%~dp0\extension\server\main.lua %%* ^
+%%~dp0\extension\server\bin\lua-language-server.exe %%* ^
 
 > sumneko-lua-language-server.cmd
