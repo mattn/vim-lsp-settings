@@ -9,7 +9,7 @@ case $os in
 linux)
   if [[ $arch == "x86_64" ]]; then
     platform="linux-x64"
-  elif [[ $arch == "aarch64" || $arch == "arm64"]]; then
+  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
     platform="linux-arm64"
   else
     echo "unknown architecture: $arch"
@@ -41,7 +41,7 @@ mingw64_nt*)
 esac
 
 version="v3.0.0"
-url="https://github.com/sumneko/vscode-lua/releases/download/v$version/vscode-lua-$version-$platform.vsix"
+url="https://github.com/sumneko/vscode-lua/releases/download/$version/vscode-lua-$version-$platform.vsix"
 asset="vscode-lua.vsix"
 
 curl -L "$url" -o "$asset"
