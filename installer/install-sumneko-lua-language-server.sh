@@ -9,7 +9,7 @@ case $os in
 linux)
   if [[ $arch == "x86_64" ]]; then
     platform="linux-x64"
-  elif [[ $arch == "aarch64" || $arch == "arm64"]]; then
+  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
     platform="linux-arm64"
   else
     echo "unknown architecture: $arch"
