@@ -48,5 +48,13 @@ curl -L "$url" -o "$asset"
 unzip "$asset"
 rm "$asset"
 
-mv extension/server/bin/lua-language-server lua-language-server
-chmod +x lua-language-server
+chmod +x extension/server/bin/lua-language-server
+
+cat <<EOF >sumneko-lua-language-server
+#!/usr/bin/env bash
+
+DIR=\$(cd \$(dirname \$0); pwd)/extension/server
+\$DIR/bin/lua-language-server -E -e LANG=en \$DIR/main.lua \$*
+EOF
+
+chmod +x sumneko-lua-language-server
