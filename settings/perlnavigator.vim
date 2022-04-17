@@ -2,7 +2,7 @@ augroup vim_lsp_settings_perlnavigator
   au!
   LspRegisterServer {
       \ 'name': 'perlnavigator',
-      \ 'cmd': {server_info->lsp_settings#get('perlnavigator', 'cmd', [lsp_settings#exec_path('perlnavigator')]+lsp_settings#get('perlnavigator', 'args', []))},
+      \ 'cmd': {server_info->lsp_settings#get('perlnavigator', 'cmd', [lsp_settings#exec_path('perlnavigator')]+lsp_settings#get('perlnavigator', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('perlnavigator', 'root_uri', lsp_settings#root_uri('perlnavigator'))},
       \ 'initialization_options': lsp_settings#get('perlnavigator', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('perlnavigator', 'allowlist', ['perl']),
