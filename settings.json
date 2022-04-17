@@ -870,6 +870,9 @@
       "command": "perlnavigator",
       "url": "https://github.com/bscan/PerlNavigator",
       "description": "Perl Language Server that includes syntax checking, perl critic, and code navigation",
+      "config": {
+        "refresh_pattern": "\\(\\$[a-zA-Z0-9_:]*\\|\\k\\+\\|\\k\\+::\\)$"
+      },
       "requires": [
         "npm",
         "perl"
