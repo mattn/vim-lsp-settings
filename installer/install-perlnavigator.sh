@@ -15,5 +15,8 @@ darwin)
   ;;
 esac
 
-url="https://github.com/bscan/PerlNavigator/releases/latest/download/perlnavigator-$os-x86_64.zip"
-curl -L "$url" | tar xzv
+curl -L -o perlnavigator-$os-x86_64.zip "https://github.com/bscan/PerlNavigator/releases/latest/download/perlnavigator-$os-x86_64.zip"
+unzip perlnavigator-$os-x86_64.zip
+mv perlnavigator-os-x86_64/perlnavigator .
+rm -rf perlnavigator-os-x86_64 perlnavigator-os-x86_64.zip
+
