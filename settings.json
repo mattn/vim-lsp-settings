@@ -867,6 +867,15 @@
   ],
   "perl": [
     {
+      "command": "perlnavigator",
+      "url": "https://github.com/bscan/PerlNavigator",
+      "description": "Perl Language Server that includes syntax checking, perl critic, and code navigation",
+      "requires": [
+        "npm",
+        "perl"
+      ]
+    },
+    {
       "command": "slp",
       "url": "https://github.com/cazador481/App-LanguageServer-Perl",
       "description": "A language server for perl",
