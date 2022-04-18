@@ -342,13 +342,13 @@ When the servers are specified in a list, these will all be started.
 
 If you want to configure Language Server to use `flake8` rather than `pycodestyle`,
 the following can be added to your `~/.vimrc` file.
-Note that `pyls-all` was the automatically registered server name. Check with `:LspStatus`.
+Note that `pylsp-all` was the automatically registered server name. Check with `:LspStatus`.
 
 ```vim
 let g:lsp_settings = {
-\   'pyls-all': {
+\   'pylsp-all': {
 \     'workspace_config': {
-\       'pyls': {
+\       'pylsp': {
 \         'configurationSources': ['flake8']
 \       }
 \     }
