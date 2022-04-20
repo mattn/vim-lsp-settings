@@ -31,6 +31,14 @@
       }
     }
   ],
+  "awk": [
+    {
+      "command": "awk-language-server",
+      "url": "https://github.com/Beaglefoot/awk-language-server",
+      "description": "Language Server for AWK and associated VSCode client extension",
+      "requires": []
+    }
+  ],
   "c": [
     {
       "command": "clangd",
