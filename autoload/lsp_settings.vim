@@ -170,7 +170,7 @@ function! lsp_settings#merge(name, key, default) abort
   return lsp_settings#utils#extend(l:config, a:default)
 endfunction
 
-function! lsp_settings#get(name, key, value) abort
+function! lsp_settings#set(name, key, value) abort
   if !has_key(g:, 'lsp_settings')
     let g:lsp_settings = {}
   endif
