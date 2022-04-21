@@ -3,6 +3,6 @@ function! LspCheckCommand() abort
   if !filereadable(l:command)
     return ''
   endif
-  call lsp_settings#set('cl-lsp', 'cmd', l:command)
+  call lsp_settings#set('cl-lsp', 'cmd', ['ros', '-Q', '--', l:command])
   return l:command
 endfunction
