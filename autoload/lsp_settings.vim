@@ -177,7 +177,10 @@ function! lsp_settings#set(name, key, value) abort
   if !has_key(g:lsp_settings, a:name)
      let g:lsp_settings[a:name] = {}
   endif
-  let g:lsp_settings[a:name] = a:value
+  if !has_key(g:lsp_settings[a:name], a:key)
+     let g:lsp_settings[a:name][a:key] = {}
+  endif
+  let g:lsp_settings[a:name][a:key] = a:value
 endfunction
 
 function! lsp_settings#get(name, key, default) abort
