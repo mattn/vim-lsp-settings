@@ -5,7 +5,7 @@ set -e
 curl -Lo ./coursier https://git.io/coursier-cli
 chmod +x ./coursier
 
-version="0.11.3"
+version=$(curl -LsS "https://scalameta.org/metals/latests.json" | grep -o '"release": "[^"]*"' | grep -o '[\.0-9]*')
 java_flags=()
 
 if [[ -n "${https_proxy}" ]]; then
