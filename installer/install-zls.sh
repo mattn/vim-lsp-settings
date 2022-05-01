@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-git clone --recurse-submodules --depth=1 https://github.com/zigtools/zls .
+git clone --recurse-submodules https://github.com/zigtools/zls .
+git checkout "refs/tags/$(git tag | grep "^$(zig version | sed -r 's/\.[0-9]+$//')")"
 zig build
 mv zig-out/bin/zls .
 rm -rf zig-cache zig-out src tests
