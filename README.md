@@ -170,7 +170,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | V                 | vls                                 |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
-| ZIG               | zls                                 |    No     |      No       |
+| ZIG               | zls                                 |    Yes    |      Yes      |
 | \*                | efm-langserver                      |    Yes    |      Yes      |
 
 ## Notes
