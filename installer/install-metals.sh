@@ -24,4 +24,4 @@ if [[ -n "${no_proxy}" ]]; then
   java_flags+=("-Dhttp.nonProxyHosts=${no_proxy}")
 fi
 
-java "${java_flags[@]}" -jar ./coursier bootstrap --ttl Inf "org.scalameta:metals_2.12:${version}" -r "bintray:scalacenter/releases" -r "sonatype:public" -r "sonatype:snapshots" -o ./metals
+java "${java_flags[@]}" -jar ./coursier bootstrap --ttl Inf "org.scalameta:metals_2.13:${version}" -r "bintray:scalacenter/releases" -r "sonatype:public" -r "sonatype:snapshots" -o ./metals
