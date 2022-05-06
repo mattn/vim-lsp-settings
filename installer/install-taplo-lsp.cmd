@@ -7,6 +7,8 @@ curl -L "https://github.com/tamasfe/taplo/releases/download/release-lsp-%LATEST%
 call "%~dp0\run_unzip.cmd" taplo-lsp-windows-x86_64.zip
 del taplo-lsp-windows-x86_64.zip
 
+echo @echo off ^
+
 %%~dp0\taplo-lsp.exe %%* ^
 
 > taplo-lsp.cmd
