@@ -22,7 +22,7 @@ endfunction
 
 function! lsp_settings#profile#load_local() abort
   try
-    let l:dir = expand('%:h')
+    let l:dir = expand('%:p:h')
     let l:root = finddir('.vim-lsp-settings', l:dir . ';')
     if empty(l:root)
       return
