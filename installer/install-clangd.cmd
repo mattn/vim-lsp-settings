@@ -9,7 +9,7 @@ echo Running setup...
 rem Run setup as regular user to avoid a UAC popup
 set __COMPAT_LAYER=RUNASINVOKER
 md tmp
-LLVM-%VERSION%-win64.exe /S /D=%cd%\tmp
+.\LLVM-%VERSION%-win64.exe /S /D=%cd%\tmp
 copy tmp\bin\clangd.exe clangd.exe
 del LLVM-%VERSION%-win64.exe
 rd /Q /S %cd%\tmp
