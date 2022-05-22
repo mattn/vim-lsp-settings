@@ -22,6 +22,11 @@ endfunction
 
 function! s:on_lsp_buffer_enabled() abort
   command! -buffer -nargs=1 LspYamlSetSchema call <SID>set_schema(<q-args>)
+  " Force formatting to be enabled
+  let l:capabilities = lsp#get_server_capabilities('yaml-language-server')
+  if !empty(l:capabilities)
+    let l:capabilities.documentFormattingProvider = v:true
+  endif
 endfunction
 
 augroup lsp_install_yaml
