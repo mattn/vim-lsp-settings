@@ -149,6 +149,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Sphinx            | esbonio                             |    Yes    |      Yes      |
 | SQL               | sql-language-server                 |    Yes    |      Yes      |
 | SQL               | sqls                                |    Yes    |      Yes      |
+| SQL               | plpgsql-server                      | UNIX Only |      Yes      |
 | Scala             | Metals                              |    Yes    |      Yes      |
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
