@@ -143,6 +143,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Racket            | racket-lsp                          |    Yes    |      No       |
 | Reason            | reason-language-server              |    Yes    |      Yes      |
 | Ruby              | solargraph                          |    Yes    |      Yes      |
+| Ruby              | steep                               |    Yes    |      Yes      |
 | Ruby              | typeprof                            |    Yes    |      Yes      |
 | Rust              | rls                                 |    Yes    |      No       |
 | Rust              | rust-analyzer                       |    Yes    |      Yes      |
