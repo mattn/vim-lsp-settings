@@ -1153,6 +1153,14 @@
   ],
   "ruby": [
     {
+      "command": "ruby-lsp",
+      "url": "https://github.com/Shopify/ruby-lsp",
+      "description": "An implementation of the LSP specification for Ruby",
+      "requires": [
+        "gem"
+      ]
+    },
+    {
       "command": "typeprof",
       "url": "https://github.com/ruby/typeprof",
       "description": "An experimental type-level Ruby interpreter for testing and understanding Ruby code",
