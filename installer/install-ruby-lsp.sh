@@ -11,7 +11,7 @@ cat <<EOF >ruby-lsp
 #!/usr/bin/env bash
 
 DIR=\$(cd \$(dirname \$0); pwd)
-BUNDLE_GEMFILE=\$DIR/Gemfile bundle exec ruby \$DIR/bin/ruby-lsp \$*
+BUNDLE_GEMFILE=\$DIR/Gemfile bundle exec ruby \$DIR/exe/ruby-lsp \$*
 EOF
 
 chmod +x ruby-lsp
