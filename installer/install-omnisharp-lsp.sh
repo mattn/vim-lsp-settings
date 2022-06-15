@@ -4,6 +4,8 @@ set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="-x64"
+net6=""
+version=$(dotnet --version)
 
 case $os in
 linux) ;;
@@ -17,7 +19,29 @@ darwin)
   ;;
 esac
 
-url="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-$os$arch.tar.gz"
+case $version in
+  (*"."*)
+    mainVersion=${version%%"."*}
+    ;;
+  (*)
+    mainVersion=$version
+    ;;
+esac
+
+if [ "$mainVersion" -ge "6" ]; then
+  net6="-net6.0"
+
+cat <<EOF >run
+#!/usr/bin/env bash
+
+base_dir="\$(cd "\$(dirname "\$0")" && pwd -P)"
+omnisharp_cmd=\${base_dir}/OmniSharp
+
+"\${omnisharp_cmd}" "\$@"
+EOF
+fi
+
+url="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-$os$arch$net6.tar.gz"
 curl -L "$url" | tar xz
 
 chmod +x run
