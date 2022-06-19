@@ -22,7 +22,7 @@ function! lsp_settings#installer_dir() abort
 endfunction
 
 function! lsp_settings#servers_dir() abort
-  let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
+  let l:path = resolve(fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p'))
   if has('win32')
      let l:path = substitute(l:path, '/', '\', 'g')
   endif
