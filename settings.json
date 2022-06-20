@@ -817,6 +817,15 @@
       "requires": []
     }
   ],
+  "markdown": [
+    {
+      "command": "marksman",
+      "url": "https://github.com/artempyanykh/marksman",
+      "description": "Markdown LSP server providing completion, cross-references, diagnostics, and more.",
+      "requires": [
+      ]
+    }
+  ],
   "nim": [
     {
       "command": "nimlsp",
