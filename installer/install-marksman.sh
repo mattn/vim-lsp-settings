@@ -14,3 +14,4 @@ darwin)
 esac
 
 curl -L -o marksman "https://github.com/artempyanykh/marksman/releases/latest/download/marksman-$platform"
+chmod +x marksman
