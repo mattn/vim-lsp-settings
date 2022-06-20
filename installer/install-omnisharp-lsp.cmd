@@ -1,7 +1,8 @@
 @echo off
 setlocal
 
-for /f "delims=" %%i IN ('dotnet --version') DO set version=%%i
+for /f "delims=" %%i in ('dotnet --version') do set version=%%i
+
 
 set mainVersion=%version:.=&rem %
 
