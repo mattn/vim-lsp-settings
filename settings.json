@@ -1529,7 +1529,7 @@
     },
     {
       "command": "vimscript-language-server",
-      "url": "vimscript-language-server",
+      "url": "https://github.com/google/vimscript-language-server",
       "description": "Vim script Language Server",
       "requires": [
         "cargo"
