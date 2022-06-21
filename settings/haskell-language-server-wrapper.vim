@@ -24,7 +24,7 @@ augroup vim_lsp_settings_haskell_language_server_wrapper
       \ 'allowlist':
       \     lsp_settings#get('haskell-language-server-wrapper', 'allowlist',
       \     lsp_settings#get('haskell-language-server', 'allowlist',
-      \     ['haskell'])),
+      \     ['haskell', 'lhaskell'])),
       \ 'blocklist':
       \     lsp_settings#get('haskell-language-server-wrapper', 'blocklist',
       \     lsp_settings#get('haskell-language-server', 'blocklist',
