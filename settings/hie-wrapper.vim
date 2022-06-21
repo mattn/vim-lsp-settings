@@ -23,7 +23,7 @@ augroup vim_lsp_settings_hie_wrapper
       \ 'allowlist':
       \     lsp_settings#get('hie-wrapper', 'allowlist',
       \     lsp_settings#get('hie', 'allowlist',
-      \     ['haskell'])),
+      \     ['haskell', 'lhaskell'])),
       \ 'blocklist':
       \     lsp_settings#get('hie-wrapper', 'blocklist',
       \     lsp_settings#get('hie', 'blocklist',
