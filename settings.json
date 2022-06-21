@@ -478,7 +478,7 @@
   ],
   "haskell": [
     {
-      "command": "hie",
+      "command": "hie-wrapper",
       "url": "https://github.com/haskell/haskell-ide-engine",
       "description": "The engine for haskell ide-integration. Not an IDE",
       "requires": [
@@ -490,7 +490,7 @@
       ]
     },
     {
-      "command": "haskell-language-server",
+      "command": "haskell-language-server-wrapper",
       "url": "https://github.com/haskell/haskell-language-server",
       "description": "Official haskell ide support via language server (LSP). Successor of ghcide & haskell-ide-engine.",
       "requires": [],
