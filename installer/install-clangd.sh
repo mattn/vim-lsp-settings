@@ -56,6 +56,8 @@ filename() {
     14.04 | 16.04 | 18.04 | 20.04)
       platform="linux-gnu-ubuntu-$ubuntu_version"
       ;;
+    22.04)
+      local platform="linux-gnu-ubuntu-20.04"
     esac
     ;;
   # Check LinuxMint version
