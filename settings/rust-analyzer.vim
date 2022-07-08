@@ -229,6 +229,50 @@ function! s:rust_analyzer_run_single(context) abort
     endif
 endfunction
 
+function! s:rust_analyzer_debug_single(context) abort
+    let l:command = get(a:context, 'command', {})
+    let l:arguments = get(l:command, 'arguments', [])
+	let l:argument = get(l:arguments, 0, {})
+
+    if !has_key(l:argument, 'kind')
+        call lsp_settings#utils#error('unsupported rust-analyzer.debugSingle command. ' . json_encode(l:command))
+        return
+    endif
+
+    if l:argument['kind'] ==# 'cargo'
+        let l:label = get(l:argument, 'label', 'cargo')
+        let l:args = get(l:argument, 'args', {})
+        let l:workspaceRoot = get(l:args, 'workspaceRoot', getcwd())
+        let l:cargoArgs = get(l:args, 'cargoArgs', [])
+        let l:cargoExtraArgs = get(l:args, 'cargoExtraArgs', [])
+        let l:executableArgs = get(l:args, 'executableArgs', [])
+
+        if l:cargoArgs[0] == "test"
+            l:cargoArgs += ["--no-run"]
+        endif
+        l:cargoArgs += ['--message-format=json', '-q']
+        if l:cargoArgs[0] == "run"
+            l:cargoArgs[0] = "build"
+        endif
+
+
+        let l:args = l:cargoExtraArgs + l:cargoExtraArgs
+
+        let l:cmd = ['cargo'] + l:cargoArgs + l:cargoExtraArgs
+
+        call lsp_settings#utils#term_start(l:cmd, {'cwd': l:workspaceRoot})
+
+        if !empty(l:executableArgs)
+            let l:cmd += ['--'] + l:executableArgs
+        endif
+
+        "call lsp_settings#utils#debugger_start(l:cmd, {'cwd': l:workspaceRoot})
+        " `TermdebugCommand ${executable} ${executableArgs}`
+    else
+        call lsp_settings#utils#error('unsupported rust-analyzer.debugSingle command. ' . json_encode(l:command))
+    endif
+endfunction
+
 function! s:register_command() abort
   if get(s:, 'setup') | return | endif
   let s:setup = 1
@@ -238,5 +282,6 @@ function! s:register_command() abort
   if exists('*lsp#register_command')
     call lsp#register_command('rust-analyzer.applySourceChange', function('s:rust_analyzer_apply_source_change'))
     call lsp#register_command('rust-analyzer.runSingle', function('s:rust_analyzer_run_single'))
+    call lsp#register_command('rust-analyzer.debugSingle', function('s:rust_analyzer_debug_single'))
   endif
 endfunction
