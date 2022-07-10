@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -8,7 +8,7 @@ bundle config set --local without development
 bundle install
 
 cat <<EOF >ruby_language_server
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 BUNDLE_GEMFILE=\$DIR/Gemfile bundle exec ruby \$DIR/exe/ruby_language_server \$*

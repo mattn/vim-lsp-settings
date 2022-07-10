@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -8,7 +8,7 @@ rm PowerShellEditorServices.zip
 mkdir session
 
 cat <<EOF >powershell-languageserver
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 PSES_BUNDLE_PATH=\$DIR/PowerShellEditorServices

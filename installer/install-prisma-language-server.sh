@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -10,10 +10,11 @@ if [ ! -f package.json ]; then
 fi
 
 npm install "@prisma/engines"
-pushd "node_modules/@prisma/engines"
+_DIR="$PWD"
+cd "node_modules/@prisma/engines"
 PRISMA_FMT_BASENAME="$(find . -name "prisma-fmt*")"
 test -x "$PRISMA_FMT_BASENAME"
-popd
+cd "$_DIR"
 
 ln -s "./node_modules/@prisma/engines/${PRISMA_FMT_BASENAME}" ./prisma-fmt
 "$(dirname "$0")/npm_install.sh" prisma-language-server @prisma/language-server

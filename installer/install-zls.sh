@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 git clone --recurse-submodules https://github.com/zigtools/zls .
 git checkout "refs/tags/$(git tag | grep "^$(zig version | sed -r 's/\.[0-9]+$//')")"
