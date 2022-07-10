@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Usage
 # $ yarn_install [EXECUTABLE_NAME] [NPM_NAME]
