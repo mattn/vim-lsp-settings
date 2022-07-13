@@ -1011,6 +1011,16 @@
       ]
     }
   ],
+  "purescript": [
+    {
+      "command": "purescript-language-server",
+      "url": "https://github.com/nwolverson/purescript-language-server",
+      "description": "Language server implementation for PureScript",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "python": [
     {
       "command": "pylsp-all",
