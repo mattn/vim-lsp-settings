@@ -51,7 +51,6 @@ filename() {
   case $distributor_id in
   # Check Ubuntu version
   Ubuntu)
-    ubuntu_version
     ubuntu_version=$(lsb_release -a 2>&1 | grep 'Release' | awk '{print $2}')
     case $ubuntu_version in
     14.04 | 16.04 | 18.04 | 20.04)
