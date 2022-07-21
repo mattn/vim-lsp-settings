@@ -2,7 +2,7 @@ augroup vim_lsp_settings_dls
   au!
   LspRegisterServer {
       \ 'name': 'dls',
-      \ 'cmd': {server_info->lsp_settings#get('dls', 'cmd', [lsp_settings#exec_path('dls')]+lsp_settings#get('dls', 'args', []))},
+      \ 'cmd': {server_info->lsp_settings#get('dls', 'cmd', [lsp_settings#exec_path('dls')]+lsp_settings#get('dls', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('dls', 'root_uri', lsp_settings#root_uri('dls'))},
       \ 'initialization_options': lsp_settings#get('dls', 'initialization_options', {'diagnostics': 'true'}),
       \ 'allowlist': lsp_settings#get('dls', 'allowlist', ['d']),

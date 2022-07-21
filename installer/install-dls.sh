@@ -15,7 +15,7 @@ darwin)
   ;;
 esac
 
-version="v0.26.0"
+version="v0.26.2"
 url="https://github.com/d-language-server/dls/releases/download/$version/dls-$version.$os.x86_64.zip"
 curl -LO "$url"
 unzip "dls-$version.$os.x86_64.zip"
