@@ -164,6 +164,16 @@
       ]
     }
   ],
+  "cue": [
+    {
+      "command": "daggerlsp",
+      "url": "https://github.com/dagger/daggerlsp",
+      "description": "Language Server implementation for Dagger.",
+      "requires": [
+        "go"
+      ]
+    }
+  ],
   "d": [
     {
       "command": "serve-d",
@@ -822,8 +832,7 @@
       "command": "marksman",
       "url": "https://github.com/artempyanykh/marksman",
       "description": "Markdown LSP server providing completion, cross-references, diagnostics, and more.",
-      "requires": [
-      ]
+      "requires": []
     }
   ],
   "nim": [
