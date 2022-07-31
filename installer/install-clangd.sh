@@ -94,31 +94,17 @@ filename() {
   echo "clang+llvm-$version-$arch-$platform"
 }
 
-filename_v9="$(filename "$distributor_id" '9.0.0')"
-url_v9="http://releases.llvm.org/9.0.0/$filename_v9.tar.xz"
-filename_v10="$(filename "$distributor_id" '10.0.0')"
-url_v10="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/$filename_v10.tar.xz"
-filename_v11="$(filename "$distributor_id" '11.0.0')"
-url_v11="https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/$filename_v11.tar.xz"
+for llvm_version in 13 12 11 10 9; do
+  filename="$(filename "$distributor_id" "$llvm_version.0.0")"
+  url="https://github.com/llvm/llvm-project/releases/download/llvmorg-$llvm_version.0.0/$filename.tar.xz"
+  response_code=$(curl -sIL "${url}" -o /dev/null -w "%{response_code}")
 
-response_code=$(curl -sIL "${url_v11}" -o /dev/null -w "%{response_code}")
-
-if [ "${response_code}" = "404" ]; then
-  response_code=$(curl -sIL "${url_v10}" -o /dev/null -w "%{response_code}")
-
-  if [ "${response_code}" = "404" ]; then
-    url="${url_v9}"
-    filename="${filename_v9}"
-  else
-    url="${url_v10}"
-    filename="${filename_v10}"
+  if [ "${response_code}" -ne "404" ]; then
+    break
   fi
-else
-  url="${url_v11}"
-  filename="${filename_v11}"
-fi
+done
 
-echo "Downloading clangd and LLVM..."
+echo "Downloading clangd and LLVM $llvm_version..."
 curl -L "$url" | unxz | tar x --strip-components=1 "$filename"/
 ln -sf bin/clangd .
 ./clangd --version
