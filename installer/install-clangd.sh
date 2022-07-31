@@ -94,17 +94,23 @@ filename() {
   echo "clang+llvm-$version-$arch-$platform"
 }
 
+
+# Search for an installable clang+llvm release.
+success=0
 for llvm_version in 13 12 11 10 9; do
   filename="$(filename "$distributor_id" "$llvm_version.0.0")"
   url="https://github.com/llvm/llvm-project/releases/download/llvmorg-$llvm_version.0.0/$filename.tar.xz"
   response_code=$(curl -sIL "${url}" -o /dev/null -w "%{response_code}")
 
+  # If version exists, install it and exit.
   if [ "${response_code}" -ne "404" ]; then
-    break
+    echo "Downloading clangd and LLVM $llvm_version..."
+    curl -L "$url" | unxz | tar x --strip-components=1 "$filename"/
+    ln -sf bin/clangd .
+    ./clangd --version
+    exit 0
   fi
 done
 
-echo "Downloading clangd and LLVM $llvm_version..."
-curl -L "$url" | unxz | tar x --strip-components=1 "$filename"/
-ln -sf bin/clangd .
-./clangd --version
+echo "Could not find an installable clangd release!"
+exit 1
