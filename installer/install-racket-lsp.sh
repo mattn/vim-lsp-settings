@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 raco pkg install racket-langserver
 cat <<EOF >racket-lsp

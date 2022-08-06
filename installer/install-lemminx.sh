@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -9,7 +9,7 @@ lemminx_jar="org.eclipse.lemminx-${version}-uber.jar"
 curl -L "$url" -o "${lemminx_jar}"
 
 cat <<EOF >lemminx
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 java -jar \$DIR/${lemminx_jar}

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -10,7 +10,7 @@ unzip "$asset"
 rm "$asset"
 
 cat <<EOF >eslint-language-server
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 node \$DIR/extension/server/out/eslintServer.js \$*

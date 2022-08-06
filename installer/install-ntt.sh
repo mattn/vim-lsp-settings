@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
-set -o pipefail
+#set -o pipefail
 
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 

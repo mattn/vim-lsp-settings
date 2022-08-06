@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Usage
 # $ go_install [GO_GET_URLPATH]

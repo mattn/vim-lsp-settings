@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -7,7 +7,7 @@ npm install
 npm run build
 
 cat <<EOF >plpgsql-lsp
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 node \$DIR/server/out/server.js \$*

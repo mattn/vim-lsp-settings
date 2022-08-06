@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -32,7 +32,7 @@ if [ "$mainVersion" -ge "6" ]; then
   net6="-net6.0"
 
 cat <<EOF >run
-#!/usr/bin/env bash
+#!/bin/sh
 
 base_dir="\$(cd "\$(dirname "\$0")" && pwd -P)"
 omnisharp_cmd=\${base_dir}/OmniSharp
@@ -47,7 +47,7 @@ curl -L "$url" | tar xz
 chmod +x run
 
 cat <<EOF >omnisharp-lsp
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 \$DIR/run \$*

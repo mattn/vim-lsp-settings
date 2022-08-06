@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -7,9 +7,9 @@ arch="$(uname -m)"
 
 case $os in
 linux)
-  if [[ $arch == "x86_64" ]]; then
+  if [ "$arch" = "x86_64" ]; then
     platform="linux-x64"
-  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
+  elif [ "$arch" = "aarch64" ] || [ "$arch" = "arm64" ]; then
     platform="linux-arm64"
   else
     echo "unknown architecture: $arch"
@@ -17,9 +17,9 @@ linux)
   fi
   ;;
 darwin)
-  if [[ $arch == "x86_64" ]]; then
+  if [ "$arch" = "x86_64" ]; then
     platform="darwin-x64"
-  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
+  elif [ "$arch" = "aarch64" ] || [ "$arch" = "arm64" ]; then
     platform="darwin-arm64"
   else
     echo "unknown architecture: $arch"
@@ -27,7 +27,7 @@ darwin)
   fi
   ;;
 mingw64_nt*)
-  if [[ $arch == "x86_64" ]]; then
+  if [ "$arch" = "x86_64" ]; then
     platform="win32-x64"
   else
     echo "unknown architecture: $arch"
@@ -51,7 +51,7 @@ rm "$asset"
 chmod +x extension/server/bin/lua-language-server
 
 cat <<EOF >sumneko-lua-language-server
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)/extension/server
 \$DIR/bin/lua-language-server -E -e LANG=en \$DIR/main.lua \$*
