@@ -343,7 +343,7 @@
   "dagger_cue_lsp": [
     {
       "command": "dagger",
-      "url": "https://github.com/dagger/dagger/blob/main/README.md",
+      "url": "https://github.com/dagger/dagger/",
       "description": "Dagger CUE LSP",
       "requires": [
         "dagger"
