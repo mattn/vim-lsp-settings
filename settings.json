@@ -340,6 +340,19 @@
       }
     }
   ],
+  "dagger_cue_lsp": [
+    {
+      "command": "dagger",
+      "url": "https://github.com/dagger/dagger/blob/main/README.md",
+      "description": "Dagger CUE LSP",
+      "requires": [
+        "dagger"
+      ],
+      "root_uri_patterns": [
+        "cue.mod"
+      ]
+    }
+  ],
   "go": [
     {
       "command": "gopls",
