@@ -48,11 +48,19 @@ let g:vim_lsp_settings_volar_options = {
 \     'codeLens': { 'showReferencesNotification': v:true },
 \     'semanticTokens': v:true,
 \     'codeAction': v:true,
-\     'inlayHints': v:false,
+\     'inlayHints': v:true,
 \     'diagnostics': v:true,
 \     'schemaRequestService': { 'getDocumentContentRequest': v:true },
 \   },
 \   'documentFeatures': {
+\     'allowedLanguageIds': [
+\       'vue',
+\       'javascript',
+\       'typescript',
+\       'javascriptreact',
+\       'typescriptreact',
+\       'html'
+\     ],
 \     'selectionRange': v:true,
 \     'foldingRange': v:true,
 \     'linkedEditingRange': v:true,
@@ -99,7 +107,7 @@ let g:vim_lsp_settings_volar_second_options = {
 \     'documentLink': v:true,
 \     'codeLens': { 'showReferencesNotification': v:true },
 \     'semanticTokens': v:true,
-\     'inlayHints': v:false,
+\     'inlayHints': v:true,
 \     'diagnostics': v:true,
 \     'schemaRequestService': { 'getDocumentContentRequest': v:true },
 \   }
@@ -111,6 +119,14 @@ let g:vim_lsp_settings_volar_document_options = {
 \     'localizedPath': v:null,
 \   },
 \   'documentFeatures': {
+\     'allowedLanguageIds': [
+\       'vue',
+\       'javascript',
+\       'typescript',
+\       'javascriptreact',
+\       'typescriptreact',
+\       'html'
+\     ],
 \     'selectionRange': v:true,
 \     'foldingRange': v:true,
 \     'linkedEditingRange': v:true,
