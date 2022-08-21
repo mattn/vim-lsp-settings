@@ -819,11 +819,18 @@
   ],
   "markdown": [
     {
+      "command": "vscode-markdown-languageserver",
+      "url": "https://github.com/microsoft/vscode/tree/main/extensions/markdown-language-features/server",
+      "description": "Markdown Language Server",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "marksman",
       "url": "https://github.com/artempyanykh/marksman",
       "description": "Markdown LSP server providing completion, cross-references, diagnostics, and more.",
-      "requires": [
-      ]
+      "requires": []
     }
   ],
   "nim": [
@@ -979,6 +986,16 @@
       "description": "SWI-Prolog offers a comprehensive free Prolog environment.",
       "requires": [
         "swipl"
+      ]
+    }
+  ],
+  "proto": [
+    {
+      "command": "bufls",
+      "url": "https://github.com/bufbuild/buf-language-server",
+      "description": "Prototype for a Protobuf language server compatible with Buf.",
+      "requires": [
+        "go"
       ]
     }
   ],
