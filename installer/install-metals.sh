@@ -6,7 +6,6 @@ curl -Lo ./coursier https://git.io/coursier-cli
 chmod +x ./coursier
 
 version=$(curl -LsS "https://scalameta.org/metals/latests.json" | grep -o '"release": "[^"]*"' | grep -o '[\.0-9]*')
-version=0.11.6 # WORKAROUND
 
 java_flags=
 
