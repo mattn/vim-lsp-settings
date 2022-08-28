@@ -276,6 +276,20 @@ location. See 'Configurations' below.
 If you installed `hie` with stack, you can use hie without configurations.
 But if you have not installed `hie` yet, you can install it by following [these steps](https://github.com/haskell/haskell-ide-engine#installation).
 
+### [golangci-lint-langserver](https://github.com/nametake/golangci-lint-langserver) (Go)
+
+To use older version `golangci-lint-langserver`, please run `:LspSettingsGlobalEdit` and put bellow configuration.
+
+```json5
+"golangci-lint-langserver": {
+    "initialization_options": {
+        "command": [
+            "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json"
+        ]
+    }
+}
+```
+
 ## Extra Configurations
 
 Most of the configurations are not required.
