@@ -278,7 +278,7 @@ But if you have not installed `hie` yet, you can install it by following [these 
 
 ### [golangci-lint-langserver](https://github.com/nametake/golangci-lint-langserver) (Go)
 
-To use older version `golangci-lint-langserver`, please run `:LspSettingsGlobalEdit` and put bellow configuration.
+To use older version `golangci-lint`, please run `:LspSettingsGlobalEdit` and put bellow configuration.
 
 ```json5
 "golangci-lint-langserver": {
