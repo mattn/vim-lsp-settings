@@ -874,6 +874,22 @@
       }
     }
   ],
+  "odin": [
+    {
+      "command": "ols",
+      "url": "https://github.com/DanielGavin/ols",
+      "description": "Language server for Odin",
+      "requires": [
+        "odin"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "odin"
+        ],
+        "name": "https://github.com/Tetralux/odin.vim"
+      }
+    }
+  ],
   "perl": [
     {
       "command": "perlnavigator",
