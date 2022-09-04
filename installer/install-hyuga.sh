@@ -7,5 +7,5 @@ set -e
 # need to add --system-site-package option
 python3 -m venv --system-site-package ./venv
 ./venv/bin/pip3 install -U pip
-./venv/bin/pip3 install ~/git/hyuga
+./venv/bin/pip3 install hyuga
 ln -s "./venv/bin/hyuga" .
