@@ -111,6 +111,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | HTML              | html-languageserver                 |    Yes    |      Yes      |
 | HTML              | angular-language-server             |    Yes    |      Yes      |
 | HTML              | tailwindcss-intellisense            |    Yes    |      Yes      |
+| Hy                | hyuga                               |    Yes    |      Yes      |
 | JSON              | json-languageserver                 |    Yes    |      Yes      |
 | JSON              | rome                                |    Yes    |      Yes      |
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
