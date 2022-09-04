@@ -171,7 +171,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Vala              | vala-language-server                |    No     |      No       |
 | Vue               | volar-server                        |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
-| V                 | vls(vlang-vls)                      |    Yes    |      Yes      |
+| V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
 | ZIG               | zls                                 |    Yes    |      Yes      |
