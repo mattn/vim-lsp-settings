@@ -96,6 +96,19 @@ function! lsp_settings#utils#term_start(cmd, options) abort
     endif
 endfunction
 
+function! lsp_settings#utils#debugger_start(cmd, options) abort
+    let l:options = {}
+    if has_key(a:options, 'cwd')
+        let l:options['cwd'] = a:options['cwd']
+    endif
+    if has('nvim')
+        split new
+        call termopen(a:cmd, l:options)
+    else
+        call TermdebugCommand(a:cmd, a:options)
+    endif
+endfunction
+
 function! s:extend(lhs, rhs) abort
   let [l:lhs, l:rhs] = [a:lhs, a:rhs]
   if type(l:lhs) ==# 3

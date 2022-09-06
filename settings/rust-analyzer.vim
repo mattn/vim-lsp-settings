@@ -187,7 +187,7 @@ function! s:rust_analyzer_apply_source_change(context) abort
     let l:command = get(a:context, 'command', {})
 
     let l:arguments = get(l:command, 'arguments', [])
-	let l:argument = get(l:arguments, 0, {})
+    let l:argument = get(l:arguments, 0, {})
 
     let l:workspace_edit = get(l:argument, 'workspaceEdit', {})
     if !empty(l:workspace_edit)
@@ -203,7 +203,7 @@ endfunction
 function! s:rust_analyzer_run_single(context) abort
     let l:command = get(a:context, 'command', {})
     let l:arguments = get(l:command, 'arguments', [])
-	let l:argument = get(l:arguments, 0, {})
+    let l:argument = get(l:arguments, 0, {})
 
     if !has_key(l:argument, 'kind')
         call lsp_settings#utils#error('unsupported rust-analyzer.runSingle command. ' . json_encode(l:command))
@@ -229,6 +229,74 @@ function! s:rust_analyzer_run_single(context) abort
     endif
 endfunction
 
+function! s:rust_analyzer_debug_single(context) abort
+    let l:command = get(a:context, 'command', {})
+    let l:arguments = get(l:command, 'arguments', [])
+    let l:argument = get(l:arguments, 0, {})
+
+    if !has_key(l:argument, 'kind')
+        call lsp_settings#utils#error('unsupported rust-analyzer.debugSingle command. ' . json_encode(l:command))
+        return
+    endif
+
+    if l:argument['kind'] ==# 'cargo'
+        let l:label = get(l:argument, 'label', 'cargo')
+        let l:args = get(l:argument, 'args', {})
+        let l:workspaceRoot = get(l:args, 'workspaceRoot', getcwd())
+        let l:cargoArgs = get(l:args, 'cargoArgs', [])
+        let l:cargoExtraArgs = get(l:args, 'cargoExtraArgs', [])
+        let l:executableArgs = get(l:args, 'executableArgs', [])
+
+        if l:cargoArgs[0] == "test"
+            let l:cargoArgs += ["--no-run"]
+        endif
+
+        let l:cargoArgs += ['--message-format=json', '-q']
+
+        if l:cargoArgs[0] == "run"
+            let l:cargoArgs[0] = "build"
+        endif
+
+        let l:args = l:cargoExtraArgs + l:cargoExtraArgs
+
+        let l:cmd = ['cargo'] + l:cargoArgs + l:cargoExtraArgs
+        let l:cmd = join(l:cmd, ' ')
+
+        let l:cargoResponse = systemlist(l:cmd)
+        let l:executable = ''
+        for l:cargoMsg in l:cargoResponse
+            let l:cargoMsg = json_decode(l:cargoMsg)
+            let l:cargoReason = get(l:cargoMsg, 'reason', '')
+
+            if l:cargoReason == 'build-finished'
+                if !get(l:cargoMsg, 'success', v:false)
+                    call lsp_settings#utils#error('Cargo build failed')
+                endif
+            elseif l:cargoReason == 'compiler-artifact'
+                let l:executable = get(l:cargoMsg, 'executable', '')
+            endif
+        endfor
+        echo l:executable
+        echo l:executableArgs
+
+        if l:executable != ''
+            " let l:executableArgs = join(l:executableArgs, ' ')
+            let l:settings = {
+                        \ "Executable": l:executable,
+                        \ "Args": l:executableArgs,
+                        \ "name": "launch",
+                        \ }
+            call vimspector#LaunchWithSettings(l:settings)
+            "call Termdebug(l:executable)
+        else
+            call lsp_settings#utils#error('Failed to get find executable')
+        endif
+
+    else
+        call lsp_settings#utils#error('unsupported rust-analyzer.debugSingle command. ' . json_encode(l:command))
+    endif
+endfunction
+
 function! s:register_command() abort
   if get(s:, 'setup') | return | endif
   let s:setup = 1
@@ -238,5 +306,6 @@ function! s:register_command() abort
   if exists('*lsp#register_command')
     call lsp#register_command('rust-analyzer.applySourceChange', function('s:rust_analyzer_apply_source_change'))
     call lsp#register_command('rust-analyzer.runSingle', function('s:rust_analyzer_run_single'))
+    call lsp#register_command('rust-analyzer.debugSingle', function('s:rust_analyzer_debug_single'))
   endif
 endfunction
