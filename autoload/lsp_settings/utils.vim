@@ -96,15 +96,24 @@ function! lsp_settings#utils#term_start(cmd, options) abort
     endif
 endfunction
 
+function! s:add(lhs, rhs) abort
+  for l:V in a:rhs
+    if index(a:lhs, l:V) == -1
+      call add(a:lhs, l:V)
+    endif
+  endfor
+  return a:rhs
+endfunction
+
 function! s:extend(lhs, rhs) abort
   let [l:lhs, l:rhs] = [a:lhs, a:rhs]
   if type(l:lhs) ==# 3
     if type(l:rhs) ==# 3
       " [1,2,3]+[4,5,6]=[1,2,3,4,5,6]
-      let l:lhs += l:rhs
+      call s:add(l:lhs, l:rhs)
     elseif type(l:rhs) ==# 4
       " [1,2,3]+{'a':1,'b':2}= [1,2,3,{'a':1},{'b':2}]
-      let l:lhs += map(keys(l:rhs), '{v:val : l:rhs[v:val]}')
+      call s:add(l:lhs, map(keys(l:rhs), '{v:val : l:rhs[v:val]}'))
     endif
   elseif type(l:lhs) ==# 4
     if type(l:rhs) ==# 3
@@ -127,7 +136,7 @@ function! s:extend(lhs, rhs) abort
           endif
           if type(l:lhs[l:key]) == 3
             " {'a':[1],'b':2}+{'a':[2]}={'a':[1,2],'b':2}
-            let l:lhs[l:key] += l:rhs[l:key]
+            call s:add(l:lhs[l:key], l:rhs[l:key])
           elseif type(l:lhs[l:key]) == 4
             " {'a':{'aa':1},'b':2}+{'a':[2]}={'a':[2],'b':2}
             for l:k in keys(l:rhs[l:key])
