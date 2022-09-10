@@ -19,6 +19,7 @@ augroup vim_lsp_settings_gopls
       \     'codelenses': {
       \         'generate': v:true,
       \         'test': v:true,
+      \         'run_vulncheck_exp': v:true,
       \     },
       \ }),
       \ 'allowlist': lsp_settings#get('gopls', 'allowlist', ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']),
