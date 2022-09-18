@@ -319,9 +319,8 @@ Or put `.vim-lsp-settings/settings.json` in your project root directory.
 
 If you already have the dart analysis server installed but it is not in your
 path, you can still configure the settings to use it. Use the vimscript below
-to change the command to start the server. Note the command has three parts:
-the path to your 'dart' executable, the path to your 'analysis_server.dart.snapshot',
-and the '--lsp' flag.
+to change the command to start the server. Note the command has two parts:
+the path to your 'dart' executable, and a subcommand 'language-server.
 
 ```vimscript
 let g:lsp_settings = {
