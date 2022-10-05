@@ -39,31 +39,17 @@ let g:vim_lsp_settings_taplo_lsp_options = {
 
 augroup vim_lsp_settings_taplo_lsp
   au!
-  if has('win32') || has('win64')
-    LspRegisterServer {
-        \ 'name': 'taplo-lsp',
-        \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')]+lsp_settings#get('taplo-lsp', 'args', ['run']))},
-        \ 'root_uri':{server_info->lsp_settings#get('taplo-lsp', 'root_uri', lsp_settings#root_uri('taplo-lsp'))},
-        \ 'initialization_options': lsp_settings#get('taplo-lsp', 'initialization_options', g:vim_lsp_settings_taplo_lsp_options),
-        \ 'allowlist': lsp_settings#get('taplo-lsp', 'allowlist', ['toml']),
-        \ 'blocklist': lsp_settings#get('taplo-lsp', 'blocklist', []),
-        \ 'config': lsp_settings#get('taplo-lsp', 'config', lsp_settings#server_config('taplo-lsp')),
-        \ 'workspace_config': lsp_settings#get('taplo-lsp', 'workspace_config', {'evenBetterToml': g:vim_lsp_settings_taplo_lsp_options}),
-        \ 'semantic_highlight': lsp_settings#get('taplo-lsp', 'semantic_highlight', {}),
-        \ }
-  else
-    LspRegisterServer {
-        \ 'name': 'taplo-lsp',
-        \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')]+lsp_settings#get('taplo-lsp', 'args', ['lsp', 'stdio']))},
-        \ 'root_uri':{server_info->lsp_settings#get('taplo-lsp', 'root_uri', lsp_settings#root_uri('taplo-lsp'))},
-        \ 'initialization_options': lsp_settings#get('taplo-lsp', 'initialization_options', g:vim_lsp_settings_taplo_lsp_options),
-        \ 'allowlist': lsp_settings#get('taplo-lsp', 'allowlist', ['toml']),
-        \ 'blocklist': lsp_settings#get('taplo-lsp', 'blocklist', []),
-        \ 'config': lsp_settings#get('taplo-lsp', 'config', lsp_settings#server_config('taplo-lsp')),
-        \ 'workspace_config': lsp_settings#get('taplo-lsp', 'workspace_config', {'evenBetterToml': g:vim_lsp_settings_taplo_lsp_options}),
-        \ 'semantic_highlight': lsp_settings#get('taplo-lsp', 'semantic_highlight', {}),
-        \ }
-  endif
+  LspRegisterServer {
+      \ 'name': 'taplo-lsp',
+      \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')]+lsp_settings#get('taplo-lsp', 'args', has('win32') || has('win64') ? ['run'] : ['lsp','stdio']))},
+      \ 'root_uri':{server_info->lsp_settings#get('taplo-lsp', 'root_uri', lsp_settings#root_uri('taplo-lsp'))},
+      \ 'initialization_options': lsp_settings#get('taplo-lsp', 'initialization_options', g:vim_lsp_settings_taplo_lsp_options),
+      \ 'allowlist': lsp_settings#get('taplo-lsp', 'allowlist', ['toml']),
+      \ 'blocklist': lsp_settings#get('taplo-lsp', 'blocklist', []),
+      \ 'config': lsp_settings#get('taplo-lsp', 'config', lsp_settings#server_config('taplo-lsp')),
+      \ 'workspace_config': lsp_settings#get('taplo-lsp', 'workspace_config', {'evenBetterToml': g:vim_lsp_settings_taplo_lsp_options}),
+      \ 'semantic_highlight': lsp_settings#get('taplo-lsp', 'semantic_highlight', {}),
+      \ }
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled() 
 augroup END
 
