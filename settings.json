@@ -1221,6 +1221,14 @@
       ]
     },
     {
+      "command": "rucoa",
+      "url": "https://github.com/r7kamura/rucoa",
+      "description": "Language server for Ruby.",
+      "requires": [
+        "gem"
+      ]
+    },
+    {
       "command": "solargraph",
       "url": "https://github.com/castwide/solargraph",
       "description": "A Ruby language server.",
