@@ -31,6 +31,31 @@
       }
     }
   ],
+  "astro": [
+    {
+      "command": "astro-ls",
+      "url": "https://github.com/withastro/language-tools/tree/main/packages/language-server",
+      "description": "The Astro Language Server, and official extensions which use it",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json",
+        "jsconfig.json",
+        ".git"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "astro"
+        ],
+        "name": "wuelnerdotexe/vim-astro"
+      }
+    }
+  ],
   "c": [
     {
       "command": "clangd",
