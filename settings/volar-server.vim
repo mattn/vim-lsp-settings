@@ -39,3 +39,22 @@ augroup vim_lsp_settings_volar_server
   \ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
   \ }
 augroup END
+
+function! s:on_lsp_buffer_enabled() abort
+  " Force some capabilities to be enabled.
+  " These capabilities are expected to be registered by dynamic registration
+  " by vim-lsp, but are registered statically by volar.
+  " cf. https://github.com/prabirshrestha/vim-lsp/pull/1379
+  let l:capabilities = lsp#get_server_capabilities('volar-server')
+  if !empty(l:capabilities)
+    let l:capabilities.callHierarcyProvider = v:true
+    let l:capabilities.renameProvider = {'prepareProvider': v:true}
+    let l:capabilities.signatureHelpProvider = v:true
+    let l:capabilities.workspaceSymbolProvider = v:true
+  endif
+endfunction
+
+augroup lsp_install_volar_server
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
