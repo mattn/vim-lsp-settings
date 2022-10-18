@@ -42,6 +42,28 @@ augroup vim_lsp_settings_deno
       \       },
       \     },
       \   },
+      \   "inlayHints": {
+      \     "parameterNames": {
+      \       "enabled": "all",
+      \       "suppressWhenArgumentMatchesName": v:true,
+      \     },
+      \     "parameterTypes": {
+      \       "enabled": v:true,
+      \     },
+      \     "variableTypes": {
+      \       "enabled": v:true,
+      \       "suppressWhenTypeMatchesName": v:true,
+      \     },
+      \     "propertyDeclarationTypes": {
+      \       "enabled": v:true,
+      \     },
+      \     "functionLikeReturnTypes": {
+      \       "enabled": v:true,
+      \     },
+      \     "enumMemberValues": {
+      \       "enabled": v:true,
+      \     },
+      \   },
       \   'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
       \   'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
       \ }),
