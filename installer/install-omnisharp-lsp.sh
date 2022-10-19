@@ -31,6 +31,10 @@ esac
 if [ "$mainVersion" -ge "6" ]; then
   net6="-net6.0"
 
+  if [ "$os" = "osx" ]; then
+    arch="-$(uname -m)"
+  fi
+
 cat <<EOF >run
 #!/bin/sh
 
