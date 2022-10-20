@@ -32,7 +32,11 @@ if [ "$mainVersion" -ge "6" ]; then
   net6="-net6.0"
 
   if [ "$os" = "osx" ]; then
-    arch="-$(uname -m)"
+    if [ "$(uname -m)" = "x86_64" ]; then
+      arch="-x64"
+    else
+      arch="-$(uname -m)"
+    fi
   fi
 
 cat <<EOF >run
