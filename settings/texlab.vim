@@ -9,7 +9,12 @@ augroup vim_lsp_settings_texlab
       \ 'blocklist': lsp_settings#get('texlab', 'blocklist', []),
       \ 'config': lsp_settings#get('texlab', 'config', lsp_settings#server_config('texlab')),
       \ 'workspace_config': lsp_settings#get('texlab', 'workspace_config', {
-      \   'latex': {'build': {'args': []}}
+      \   'texlab': {
+      \     'build': {
+      \       'executable': 'latexmk',
+      \       'args': []
+      \     }
+      \   }
       \ }),
       \ 'semantic_highlight': lsp_settings#get('texlab', 'semantic_highlight', {}),
       \ }
