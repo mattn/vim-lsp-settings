@@ -1575,6 +1575,46 @@
       "requires": []
     }
   ],
+  "typescript.tsx": [
+    {
+      "command": "typescript-language-server",
+      "url": "https://github.com/typescript-language-server/typescript-language-server",
+      "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "eslint-language-server",
+      "url": "https://www.npmjs.com/package/eslint-language-server",
+      "description": "eslint language server",
+      "requires": [
+        "node"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "rome",
+      "url": "https://github.com/rome/tools",
+      "description": "The Rome Toolchain. A linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
+      "command": "deno",
+      "url": "https://deno.land/",
+      "description": "A modern runtime for JavaScript and TypeScript.",
+      "requires": []
+    }
+  ],
   "vala": [
     {
       "command": "vala-language-server",
