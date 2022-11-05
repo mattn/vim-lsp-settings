@@ -82,6 +82,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Language          | Language Server                     | Installer | Local Install |
 | ----------------- | ----------------------------------- | :-------: | :-----------: |
 | Apex/VisualForce  | apex-jorje-lsp                      |    Yes    |      Yes      |
+| Astro             | astro-ls                            |    Yes    |      Yes      |
 | Bash              | bash-language-server                |    Yes    |      Yes      |
 | C#                | omnisharp                           |    Yes    |      Yes      |
 | C/C++             | clangd                              |    Yes    |      Yes      |
