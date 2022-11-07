@@ -940,6 +940,21 @@
       }
     }
   ],
+  "openscad": [
+    {
+      "command": "openscad-lsp",
+      "url": "https://github.com/Leathong/openscad-LSP",
+      "description": "A LSP (Language Server Protocol) server for OpenSCAD.",
+      "requires": [
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "scad"
+        ],
+        "name": "https://github.com/sirtaj/vim-openscad"
+      }
+    }
+  ],
   "perl": [
     {
       "command": "perlnavigator",
