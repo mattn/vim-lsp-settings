@@ -13,9 +13,21 @@ darwin)
   ;;
 esac
 
-filename="dartsdk-$platform-x64-release.zip"
+case $(uname -m) in
+  arm64)
+    arch=arm64
+    ;;
+  aarch64)
+    arch=arm64
+    ;;
+  *)
+    arch=x64
+    ;;
+esac
 
-curl -o "$filename" "https://storage.googleapis.com/dart-archive/channels/dev/release/latest/sdk/dartsdk-$platform-x64-release.zip"
+filename="dartsdk-$platform-$arch-release.zip"
+
+curl -o "$filename" "https://storage.googleapis.com/dart-archive/channels/dev/release/latest/sdk/dartsdk-$platform-$arch-release.zip"
 unzip "$filename"
 rm "$filename"
 
