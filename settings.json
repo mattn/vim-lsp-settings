@@ -189,6 +189,14 @@
       ]
     }
   ],
+  "cuda": [
+    {
+      "command": "clangd",
+      "url": "https://github.com/clangd/clangd",
+      "description": "clangd language server",
+      "requires": []
+    }
+  ],
   "d": [
     {
       "command": "serve-d",
