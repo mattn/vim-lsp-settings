@@ -24,18 +24,8 @@ function! s:open() abort
     for l:conf in l:settings[l:ft]
       if l:conf.command ==# l:command
         let l:cmd = ''
-        if exists('g:loaded_openbrowser') && g:loaded_openbrowser
-          call openbrowser#open(l:conf.url)
-        elseif has('win32') || has('win64')
-          silent! exec printf('!start rundll32 url.dll,FileProtocolHandler %s', l:conf.url)
-        elseif has('mac') || has('macunix') || has('gui_macvim') || system('uname') =~? '^darwin'
-          call system(printf('open "%s"', l:conf.url))
-        elseif executable('xdg-open')
-          call system(printf('xdg-open "%s"', l:conf.url))
-        elseif executable('firefox')
-          call system(printf('firefox "%s"', l:conf.url))
-        else
-          return
+        if !lsp_settings#utils#open_url(l:conf.url)
+            return
         endif
         break
       endif

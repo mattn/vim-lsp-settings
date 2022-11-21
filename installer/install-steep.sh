@@ -1,12 +1,14 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
 git clone --depth=1 https://github.com/soutaro/steep.git .
-bundle install --without development --path vendor/bundle
+bundle config set --local path vendor/bundle
+bundle config set --local without development
+bundle install
 
 cat <<EOF >steep
-#!/usr/bin/env bash
+#!/bin/sh
 
 DIR=\$(cd \$(dirname \$0); pwd)
 BUNDLE_GEMFILE=\$DIR/Gemfile bundle exec steep \$*

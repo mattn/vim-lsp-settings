@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -6,7 +6,7 @@ echo 'install.packages("languageserver", repos = "https://cran.r-project.org")' 
 Rscript install.r
 
 cat <<EOF >r-languageserver
-#!/usr/bin/env bash
+#!/bin/sh
 
 R --slave -e 'languageserver::run()'
 EOF

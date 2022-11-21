@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Usage
 # $ npm_install [EXECUTABLE_NAME] [NPM_NAME]

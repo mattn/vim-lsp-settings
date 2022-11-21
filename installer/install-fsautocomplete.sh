@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -12,17 +12,4 @@ else
   dotnetcmd="\\$DIR/.dotnet/dotnet"
 fi
 
-url="https://github.com/fsharp/FsAutoComplete/releases/latest/download/fsautocomplete.netcore.zip"
-zip=fsautocomplete.zip
-curl -L "$url" -o "$zip"
-unzip -o -d "fsautocomplete.netcore" "$zip"
-rm "$zip"
-
-cat <<EOF >fsautocomplete
-#!/bin/sh
-
-DIR=\$(cd \$(dirname \$0); pwd)
-$dotnetcmd \$DIR/fsautocomplete.netcore/fsautocomplete.dll
-EOF
-
-chmod +x fsautocomplete
+$dotnetcmd tool install --tool-path . fsautocomplete

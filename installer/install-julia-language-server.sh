@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
 julia -e 'using Pkg; Pkg.add("LanguageServer")'
 
 cat <<EOF >julia-language-server
-#!/usr/bin/env bash
+#!/bin/sh
 
 julia -e "using LanguageServer, LanguageServer.SymbolServer; runserver()"
 EOF

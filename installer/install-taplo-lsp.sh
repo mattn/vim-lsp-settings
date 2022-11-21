@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -16,6 +16,7 @@ darwin)
   ;;
 esac
 
-curl -L "https://github.com/tamasfe/taplo/releases/download/release-lsp-$latest/taplo-lsp-$platform.tar.gz" | tar xz
+curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-$platform.tar.gz" | tar xz
 
+mv taplo taplo-lsp
 chmod +x taplo-lsp

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -10,7 +10,7 @@ unzip "$filename"
 rm "$filename"
 
 cat <<EOF >./cobol-language-support
-#!/usr/bin/env bash
+#!/bin/sh
 DIR=\$(cd \$(dirname \$0); pwd)
 java "-Dline.speparator=\r\n" -jar "\$DIR/extension/server/lsp-service-cobol-$version.jar" pipeEnabled
 EOF

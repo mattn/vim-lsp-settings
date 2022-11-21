@@ -1,7 +1,7 @@
-let s:settings_dir = expand('<sfile>:h:h') . '/settings'
-let s:checkers_dir = expand('<sfile>:h:h') . '/checkers'
-let s:installer_dir = expand('<sfile>:h:h') . '/installer'
 let s:root_dir = expand('<sfile>:h:h')
+let s:settings_dir = s:root_dir . '/settings'
+let s:checkers_dir = s:root_dir . '/checkers'
+let s:installer_dir = s:root_dir . '/installer'
 
 if has('win32')
   let s:data_dir = expand('$LOCALAPPDATA/vim-lsp-settings')
@@ -12,7 +12,7 @@ else
 endif
 let s:servers_dir = s:data_dir . '/servers'
 
-let s:settings = json_decode(join(readfile(expand('<sfile>:h:h') . '/settings.json'), "\n"))
+let s:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
 call remove(s:settings, '$schema')
 
 let s:ftmap = {}
@@ -22,7 +22,7 @@ function! lsp_settings#installer_dir() abort
 endfunction
 
 function! lsp_settings#servers_dir() abort
-  let l:path = fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p')
+  let l:path = resolve(fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p'))
   if has('win32')
      let l:path = substitute(l:path, '/', '\', 'g')
   endif
@@ -170,6 +170,19 @@ function! lsp_settings#merge(name, key, default) abort
   return lsp_settings#utils#extend(l:config, a:default)
 endfunction
 
+function! lsp_settings#set(name, key, value) abort
+  if !has_key(g:, 'lsp_settings')
+    let g:lsp_settings = {}
+  endif
+  if !has_key(g:lsp_settings, a:name)
+     let g:lsp_settings[a:name] = {}
+  endif
+  if !has_key(g:lsp_settings[a:name], a:key)
+     let g:lsp_settings[a:name][a:key] = {}
+  endif
+  let g:lsp_settings[a:name][a:key] = a:value
+endfunction
+
 function! lsp_settings#get(name, key, default) abort
   let l:config = get(g:, 'lsp_settings', {})
   if !has_key(l:config, a:name)
@@ -295,7 +308,7 @@ function! lsp_settings#complete_uninstall(arglead, cmdline, cursorpos) abort
       call add(l:installers, l:conf.command)
     endfor
   endfor
-  return filter(uniq(l:installers), 'stridx(v:val, a:arglead) == 0')
+  return filter(uniq(sort(l:installers)), 'stridx(v:val, a:arglead) == 0')
 endfunction
 
 function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
@@ -358,9 +371,9 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
     let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
     if filereadable(l:script)
       if has('patch-8.1.1113')
-        command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp#register_server(<args>)
+        command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp_settings#register_server(<args>)
       else
-        command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
+        command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
       endif
       exe 'source' l:script
       delcommand LspRegisterServer
@@ -404,13 +417,9 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
   call lsp_settings#utils#msg('Installing ' . l:entry[0])
   if has('nvim')
     split new
-    call termopen(lsp_settings#utils#shellescape(l:entry[1]), {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
+    call termopen([l:entry[1]], {'cwd': l:server_install_dir, 'on_exit': function('s:vim_lsp_install_server_post', [l:entry[0]])}) | startinsert
   else
-    if has('win32')
-      let l:bufnr = term_start(lsp_settings#utils#shellescape(l:entry[1]), {'cwd': l:server_install_dir})
-    else
-      let l:bufnr = term_start(l:entry[1], {'cwd': l:server_install_dir})
-    endif
+    let l:bufnr = term_start([l:entry[1]], {'cwd': l:server_install_dir})
     let l:job = term_getjob(l:bufnr)
     if l:job != v:null
       call job_setoptions(l:job, {'exit_cb': function('s:vim_lsp_install_server_post', [l:entry[0]])})
@@ -458,6 +467,15 @@ function! s:vim_lsp_suggest_plugin() abort
   endfor
 endfunction
 
+function! lsp_settings#register_server(...) abort
+  let l:name = a:000[0]['name']
+  let l:env = lsp_settings#get(l:name, 'env', {})
+  if !empty(l:env)
+    let a:000[0]['env'] = l:env
+  endif
+  return call('lsp#register_server', a:000)
+endfunction
+
 function! s:vim_lsp_load_or_suggest(ft) abort
   if (a:ft !=# '_' && &filetype !=# a:ft) || !has_key(s:settings, a:ft)
     return
@@ -493,9 +511,9 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   exe 'augroup!' l:group_name
 
   if has('patch-8.1.1113')
-    command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp#register_server(<args>)
+    command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp_settings#register_server(<args>)
   else
-    command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp#register_server(<args>)
+    command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
   endif
 
   let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -7,9 +7,9 @@ arch="$(uname -m)"
 
 case $os in
 linux)
-  if [[ $arch == "x86_64" ]]; then
+  if [ "$arch" = "x86_64" ]; then
     platform="x86_64-unknown-linux-gnu"
-  elif [[ $arch == "aarch64" ]]; then
+  elif [ "$arch" = "aarch64" ]; then
     platform="aarch64-unknown-linux-gnu"
   else
     echo "unknown architecture: $arch"
@@ -17,14 +17,28 @@ linux)
   fi
   ;;
 darwin)
-  if [[ $arch == "x86_64" ]]; then
+  if [ "$arch" = "x86_64" ]; then
     platform="x86_64-apple-darwin"
-  elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
+  elif [ "$arch" = "aarch64" ] || [ "$arch" = "arm64" ]; then
     platform="aarch64-apple-darwin"
   else
     echo "unknown architecture: $arch"
     exit 1
   fi
+  ;;
+mingw64_nt*)
+  if [ "$arch" = "x86_64" ]; then
+  	platform="x86_64-pc-windows-msvc"
+  elif [ "$arch" = "aarch64" ] || [ "$arch" = "arm64" ]; then
+    platform="aarch64-pc-windows-msvc"
+  else
+    echo "unknown architecture: $arch"
+    exit 1
+  fi
+  ;;
+*)
+  echo "unknow platform: $os"
+  exit 1
   ;;
 esac
 

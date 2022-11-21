@@ -25,6 +25,18 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspCargoReload call <SID>reload_workspace()
   nnoremap <buffer> <plug>(lsp-cargo-reload) :<c-u>call <SID>reload_workspace()<cr>
+
+  command! -buffer LspRustAnalyzerStatus call <SID>rust_analyzer_status()
+  nnoremap <buffer> <plug>(lsp-rust-analyzer-status) :<c-u>call <SID>rust_analyzer_status()<cr>
+
+  command! -range  LspRustJoinLines call <SID>join_lines()
+  nnoremap <plug>(lsp-rust-join-lines) :<c-u>call <SID>join_lines()<cr>
+
+  command! -buffer LspRustFindMatchingBrace call <SID>find_matching_brace()
+  nnoremap <buffer> <plug>(lsp-rsut-find-matching-brace) :<c-u>call <SID>find_matching_brace()<cr>
+
+  command! -buffer LspRustOpenDocs call <SID>open_docs()
+  nnoremap <buffer> <plug>(lsp-rust-open-docs) :<c-u>call <SID>open_docs()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -52,6 +64,123 @@ function! s:reload_workspace() abort
         \   'error': {e -> lsp_settings#utils#error(e)},
         \ })
         \ )
+endfunction
+
+function! s:rust_analyzer_status() abort
+    echo 'Retrieving rust-analyzer status'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'rust-analyzer/analyzerStatus',
+        \   'params': { 'textDocument': lsp#get_text_document_identifier() }
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_rust_analyzer_status(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_rust_analyzer_status(x) abort
+    let l:contents = a:x['response']['result']
+    let l:lines = lsp#utils#_split_by_eol(l:contents)
+    let l:view = winsaveview()
+    let l:alternate=@#
+    silent! pclose
+    sp LspRustAnalyzerStatusPreview
+    execute 'resize '.min([len(l:lines), &previewheight])
+    set previewwindow
+    setlocal conceallevel=2
+    setlocal bufhidden=hide
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    %d
+    call setline(1, l:lines)
+    execute "normal \<c-w>p"
+    call winrestview(l:view)
+    let @#=l:alternate
+endfunction
+
+function! s:join_lines() abort
+    echo 'Joining lines'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/joinLines',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'ranges': [lsp#utils#range#_get_recent_visual_range()],
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_join_lines(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_join_lines(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to join lines' | endif
+    call lsp#utils#text_edit#apply_text_edits(a:x['request']['params']['textDocument']['uri'], a:x['response']['result'])
+    echo 'Joined lines'
+endfunction
+
+function! s:find_matching_brace() abort
+    echo 'Finding matching brace'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/matchingBrace',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'positions': [lsp#get_position()],
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_find_matching_brace(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_find_matching_brace(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to find matching brace' | endif
+    let l:positions = a:x['response']['result']
+    if empty(l:positions)
+        echo 'No matching brace found'
+    else
+        " find matching brace returns multiple positions but here we only use
+        " the first one
+        call lsp#utils#location#_open_lsp_location({
+            \ 'uri': a:x['request']['params']['textDocument']['uri'],
+            \ 'range': {
+            \   'start': l:positions[0],
+            \   'end': l:positions[0],
+            \ },
+            \ })
+    endif
+endfunction
+
+function! s:open_docs() abort
+    echo 'Opening docs...'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'experimental/externalDocs',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'position': lsp#get_position(),
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_open_docs(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_open_docs(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to find docs' | endif
+    let l:url = a:x['response']['result']
+    call lsp_settings#utils#open_url(l:url)
+    echo ''
 endfunction
 
 function! s:rust_analyzer_apply_source_change(context) abort

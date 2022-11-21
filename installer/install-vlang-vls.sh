@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 git clone --depth=1 https://github.com/vlang/vls .
 
 echo 'Compiling vlang/vls...'
