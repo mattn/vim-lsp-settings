@@ -18,6 +18,7 @@ case $arch in
 x86_64*) arch=amd64 ;;
 386*) arch=386 ;;
 arm64*) arch=arm64 ;;
+aarch64*) arch=arm64 ;;
 *)
   printf "%s is not supported" "$arch"
   exit 1
