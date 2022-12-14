@@ -1,9 +1,14 @@
+function! s:GetUri(file)
+    return lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:file))
+endfunction
+
+
 function! Vim_lsp_settings_purescript_get_root_uri() abort
-    let d = lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'spago.dhall'))
-    if empty(d)
-        return  lsp_settings#root_uri('purescript-language-server')
-    endif
-    return d
+    let spago = s:GetUri('spago.dhall')
+    if !empty(spago) | return spago | endif
+    let flake = s:GetUri('flake.nix')
+    if !empty(flake) | return flake | endif
+    return lsp_settings#root_uri('purescript-language-server')
 endfunction
 
 augroup vim_lsp_settings_purescript_language_server

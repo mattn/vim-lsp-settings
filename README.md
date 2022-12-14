@@ -82,6 +82,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Language          | Language Server                     | Installer | Local Install |
 | ----------------- | ----------------------------------- | :-------: | :-----------: |
 | Apex/VisualForce  | apex-jorje-lsp                      |    Yes    |      Yes      |
+| Astro             | astro-ls                            |    Yes    |      Yes      |
 | Bash              | bash-language-server                |    Yes    |      Yes      |
 | C#                | omnisharp                           |    Yes    |      Yes      |
 | C/C++             | clangd                              |    Yes    |      Yes      |
@@ -127,10 +128,13 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Lua               | emmylua-ls                          |    Yes    |      Yes      |
 | Lua               | sumneko-lua-language-server         |    Yes    |      Yes      |
 | Markdown (remark) | remark-language-server              |    Yes    |      Yes      |
+| Markdown          | Marksman                            |    Yes    |      Yes      |
 | Nim               | nimls                               |    No     |      No       |
+| Nix               | rnix-lsp                            |    Yes    |      Yes      |
 | PHP               | intelephense                        |    Yes    |      Yes      |
 | PHP               | psalm-language-server               |    Yes    |      Yes      |
 | OCaml             | ocaml-lsp                           | UNIX Only |      Yes      |
+| Protobuf          | bufls                               |    Yes    |      Yes      |
 | Puppet            | puppet-languageserver               |    Yes    |      Yes      |
 | PureScript        | purescript-language-server          |    Yes    |      Yes      |
 | Python            | pyls-all (pyls with dependencies)   |    Yes    |      Yes      |
@@ -171,8 +175,8 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
 | Vue               | volar-server                        |    Yes    |      Yes      |
-| Vue               | vue-language-server                 |    Yes    |      Yes      |
-| V                 | vls                                 |    Yes    |      Yes      |
+| Vue               | vls                                 |    Yes    |      Yes      |
+| V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
 | ZIG               | zls                                 |    Yes    |      Yes      |
@@ -277,6 +281,20 @@ location. See 'Configurations' below.
 If you installed `hie` with stack, you can use hie without configurations.
 But if you have not installed `hie` yet, you can install it by following [these steps](https://github.com/haskell/haskell-ide-engine#installation).
 
+### [golangci-lint-langserver](https://github.com/nametake/golangci-lint-langserver) (Go)
+
+To use older version `golangci-lint`, please run `:LspSettingsGlobalEdit` and put bellow configuration.
+
+```json5
+"golangci-lint-langserver": {
+    "initialization_options": {
+        "command": [
+            "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json"
+        ]
+    }
+}
+```
+
 ## Extra Configurations
 
 Most of the configurations are not required.
@@ -305,9 +323,8 @@ Or put `.vim-lsp-settings/settings.json` in your project root directory.
 
 If you already have the dart analysis server installed but it is not in your
 path, you can still configure the settings to use it. Use the vimscript below
-to change the command to start the server. Note the command has three parts:
-the path to your 'dart' executable, the path to your 'analysis_server.dart.snapshot',
-and the '--lsp' flag.
+to change the command to start the server. Note the command has two parts:
+the path to your 'dart' executable, and a subcommand 'language-server.
 
 ```vimscript
 let g:lsp_settings = {

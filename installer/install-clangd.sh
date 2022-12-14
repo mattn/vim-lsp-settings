@@ -98,7 +98,7 @@ filename() {
 
 
 # Search for an installable clang+llvm release.
-for llvm_version in 13 12 11 10 9; do
+for llvm_version in 15 14 13 12 11 10 9; do
   filename="$(filename "$distributor_id" "$llvm_version.0.0")"
   url="https://github.com/llvm/llvm-project/releases/download/llvmorg-$llvm_version.0.0/$filename.tar.xz"
   response_code=$(curl -sIL "${url}" -o /dev/null -w "%{response_code}")

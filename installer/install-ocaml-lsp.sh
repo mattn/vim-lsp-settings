@@ -14,7 +14,7 @@ export OPAMROOT
 
 export OPAMYES=true
 opam init -a -n
-opam switch create . ocaml-base-compiler.4.13.0
+opam switch create . ocaml-base-compiler.4.14.0
 eval "$(opam env)" 2>/dev/null
 opam exec make install-test-deps
 opam exec make all
