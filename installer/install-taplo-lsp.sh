@@ -9,14 +9,13 @@ latest="0.2.6"
 
 case $os in
 linux)
-  platform="x86_64-unknown-linux-gnu"
+    platform="linux-"$(uname -m)
   ;;
 darwin)
-  platform="x86_64-apple-darwin-gnu"
+    platform="darwin-"$(uname -m)
   ;;
 esac
 
-curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-$platform.tar.gz" | tar xz
+curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-$platform.gz" | gzip -d > taplo-lsp
 
-mv taplo taplo-lsp
 chmod +x taplo-lsp
