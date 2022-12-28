@@ -9,10 +9,10 @@ latest="0.2.6"
 
 case $os in
 linux)
-    platform="linux-"$(uname -m)
+  platform="linux-"$(uname -m)
   ;;
 darwin)
-    platform="darwin-"$(uname -m)
+  platform="darwin-"$(uname -m)
   ;;
 esac
 
