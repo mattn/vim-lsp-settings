@@ -2,7 +2,7 @@ augroup vim_lsp_settings_fsautocomplete
   au!
   LspRegisterServer {
       \ 'name': 'fsautocomplete',
-      \ 'cmd': {server_info->lsp_settings#get('fsautocomplete', 'cmd', [lsp_settings#exec_path('fsautocomplete')]+lsp_settings#get('fsautocomplete', 'args', ['--background-service-enabled']))},
+      \ 'cmd': {server_info->lsp_settings#get('fsautocomplete', 'cmd', [lsp_settings#exec_path('fsautocomplete')]+lsp_settings#get('fsautocomplete', 'args', ['----adaptive-lsp-server-enabled']))},
       \ 'root_uri':{server_info->lsp_settings#get('fsautocomplete', 'root_uri', lsp_settings#root_uri('fsautocomplete'))},
       \ 'initialization_options': lsp_settings#get('fsautocomplete', 'initialization_options', {'AutomaticWorkspaceInit': v:true}),
       \ 'allowlist': lsp_settings#get('fsautocomplete', 'allowlist', ['fsharp']),
