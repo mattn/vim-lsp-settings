@@ -100,6 +100,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Elixir            | elixir-ls                           |    Yes    |      Yes      |
 | Elm               | elm-language-server                 |    Yes    |      Yes      |
 | Erlang            | erlang-ls                           |    Yes    |      Yes      |
+| F#                | fsautocomplete                      |    Yes    |      Yes      |
 | F#                | fsharp-language-server              |    Yes    |      Yes      |
 | Fortran           | fortls                              |    Yes    |      Yes      |
 | Go                | gopls                               |    Yes    |      Yes      |
