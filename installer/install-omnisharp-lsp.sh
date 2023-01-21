@@ -20,12 +20,12 @@ darwin)
 esac
 
 case $version in
-  (*"."*)
-    mainVersion=${version%%"."*}
-    ;;
-  (*)
-    mainVersion=$version
-    ;;
+*.*)
+  mainVersion=${version%%.*}
+  ;;
+*)
+  mainVersion=$version
+  ;;
 esac
 
 if [ "$mainVersion" -ge "6" ]; then
@@ -39,7 +39,7 @@ if [ "$mainVersion" -ge "6" ]; then
     fi
   fi
 
-cat <<EOF >run
+  cat <<EOF >run
 #!/bin/sh
 
 base_dir="\$(cd "\$(dirname "\$0")" && pwd -P)"

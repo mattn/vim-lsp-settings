@@ -9,7 +9,7 @@ linux)
   filename="deno-x86_64-unknown-linux-gnu.zip"
   ;;
 darwin)
-  if [ $(uname -m) = "x86_64" ]; then
+  if [ "$(uname -m)" = "x86_64" ]; then
     filename="deno-x86_64-apple-darwin.zip"
   else
     filename="deno-aarch64-apple-darwin.zip"
