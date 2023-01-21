@@ -18,7 +18,7 @@ if command -v lsb_release 2>/dev/null; then
 elif [ -e /etc/fedora-release ]; then
   distributor_id="Fedora"
 elif [ -e /etc/redhat-release ]; then
-  distributor_id=$(cat /etc/redhat-release | cut -d ' ' -f 1)
+  distributor_id=$(cut -d ' ' -f 1 /etc/redhat-release)
 elif [ -e /etc/arch-release ]; then
   distributor_id="Arch"
 elif [ -e /etc/SuSE-release ]; then
@@ -57,7 +57,8 @@ filename() {
       platform="linux-gnu-ubuntu-$ubuntu_version"
       ;;
     22.04)
-      local platform="linux-gnu-ubuntu-20.04"
+      platform="linux-gnu-ubuntu-20.04"
+      ;;
     esac
     ;;
   # Check LinuxMint version
@@ -95,7 +96,6 @@ filename() {
 
   echo "clang+llvm-$version-$arch-$platform"
 }
-
 
 # Search for an installable clang+llvm release.
 for llvm_version in 15 14 13 12 11 10 9; do
