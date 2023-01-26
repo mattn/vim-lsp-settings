@@ -1589,6 +1589,14 @@
       ]
     }
   ],
+  "veryl": [
+    {
+      "command": "veryl-ls",
+      "url": "https://github.com/dalance/veryl",
+      "description": "Veryl language server",
+      "requires": []
+    }
+  ],
   "vim": [
     {
       "command": "vim-language-server",

@@ -173,6 +173,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
+| Veryl             | veryl-ls                            |    Yes    |      Yes      |
 | Vue               | volar-server                        |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
