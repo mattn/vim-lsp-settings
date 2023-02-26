@@ -1,4 +1,5 @@
 function! Vim_lsp_settings_deno_get_blocklist() abort
+    " Deno project
     if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.json'))
         return []
     endif
@@ -6,6 +7,12 @@ function! Vim_lsp_settings_deno_get_blocklist() abort
         return []
     endif
 
+    " Deno with package.json, create directory 'node_modules/.deno/' and some module under it.
+    if !empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/.deno/'))
+        return []
+    endif
+
+    " Is not non-Deno(=npm) project
     if empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/'))
         return []
     endif
