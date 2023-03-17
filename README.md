@@ -144,6 +144,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | pyright-langserver                  |    Yes    |      Yes      |
 | Python            | pylsp-all (pylsp with dependencies) |    Yes    |      Yes      |
 | Python            | pylsp (pylsp without dependencies)  |    Yes    |      Yes      |
+| Python            | ruff-lsp                            |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
 | Racket            | racket-lsp                          |    Yes    |      No       |
