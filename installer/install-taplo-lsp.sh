@@ -17,6 +17,7 @@ darwin)
     *)
       platform="darwin-$architecture"
       ;;
+  esac
   ;;
 esac
 
