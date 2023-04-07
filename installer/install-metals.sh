@@ -10,7 +10,7 @@ version=$(curl -LsS "https://scalameta.org/metals/latests.json" | grep -o '"rele
 java_flags=
 
 if [ -n "${https_proxy}" ]; then
-  readonly https_proxy_without_protocol="${https_proxy#http://}"
+  https_proxy_without_protocol="${https_proxy#http://}"
   java_flags="$java_flags -J-Dhttps.proxyHost=${https_proxy_without_protocol%:*}"
   java_flags="$java_flags -J-Dhttps.proxyPort=${https_proxy_without_protocol##*:}"
 fi
@@ -25,12 +25,12 @@ if [ -n "${no_proxy}" ]; then
   java_flags="$java_flags -J-Dhttp.nonProxyHosts=${no_proxy}"
 fi
 
-
+# shellcheck disable=SC2086
 ./coursier bootstrap \
   --java-opt -Xss4m \
   --java-opt -Xms100m \
   ${java_flags} \
-  org.scalameta:metals_2.13:${version} \
+  org.scalameta:metals_2.13:"${version}" \
   -r bintray:scalacenter/releases \
   -r sonatype:releases \
   -o metals -f
