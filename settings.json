@@ -189,6 +189,14 @@
       ]
     }
   ],
+  "cuda": [
+    {
+      "command": "clangd",
+      "url": "https://github.com/clangd/clangd",
+      "description": "clangd language server",
+      "requires": []
+    }
+  ],
   "d": [
     {
       "command": "serve-d",
@@ -943,6 +951,21 @@
       }
     }
   ],
+  "openscad": [
+    {
+      "command": "openscad-lsp",
+      "url": "https://github.com/Leathong/openscad-LSP",
+      "description": "A LSP (Language Server Protocol) server for OpenSCAD.",
+      "requires": [
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "scad"
+        ],
+        "name": "https://github.com/sirtaj/vim-openscad"
+      }
+    }
+  ],
   "perl": [
     {
       "command": "perlnavigator",
@@ -1598,6 +1621,14 @@
       "root_uri_patterns": [
         "meson.build"
       ]
+    }
+  ],
+  "veryl": [
+    {
+      "command": "veryl-ls",
+      "url": "https://github.com/dalance/veryl",
+      "description": "Veryl language server",
+      "requires": []
     }
   ],
   "vim": [
