@@ -3,7 +3,7 @@
 curl -LO "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz"
 curl -o lombok.jar "https://projectlombok.org/downloads/lombok.jar"
 tar xvf jdt-language-server-latest.tar.gz
-rm jdt-language-server-latest.tar.gz
+del jdt-language-server-latest.tar.gz
 
 echo @echo off ^
 
