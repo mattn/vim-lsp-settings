@@ -66,7 +66,7 @@ function! lsp_settings#executable(cmd) abort
   endif
   let l:paths .= ',' . lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
-    let l:found = globpath(l:paths, a:cmd, 1)
+    let l:found = filter(split(globpath(l:paths, a:cmd, 1), "\n"), 'executable(v:val)')
     return !empty(l:found)
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
