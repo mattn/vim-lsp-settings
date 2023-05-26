@@ -687,6 +687,17 @@
         "package.json",
         ".flowconfig"
       ]
+    },
+    {
+      "command": "vscode-eslint-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON/ESLint language servers extracted from vscode.",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ]
     }
   ],
   "javascriptreact": [
@@ -744,6 +755,17 @@
       "root_uri_patterns": [
         "package.json",
         ".flowconfig"
+      ]
+    },
+    {
+      "command": "vscode-eslint-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON/ESLint language servers extracted from vscode.",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
       ]
     }
   ],
@@ -1636,6 +1658,17 @@
       "url": "https://deno.land/",
       "description": "A modern runtime for JavaScript and TypeScript.",
       "requires": []
+    },
+    {
+      "command": "vscode-eslint-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON/ESLint language servers extracted from vscode.",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ]
     }
   ],
   "typescriptreact": [
@@ -1676,6 +1709,17 @@
       "url": "https://deno.land/",
       "description": "A modern runtime for JavaScript and TypeScript.",
       "requires": []
+    },
+    {
+      "command": "vscode-eslint-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON/ESLint language servers extracted from vscode.",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json"
+      ]
     }
   ],
   "typ": [
