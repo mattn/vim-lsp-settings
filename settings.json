@@ -1208,6 +1208,22 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "ruff-lsp",
+      "url": "https://github.com/charliermarsh/ruff-lsp",
+      "description": "A Language Server Protocol implementation for Ruff.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "ruff-lsp",
+      "url": "https://github.com/charliermarsh/ruff-lsp",
+      "description": "A Language Server Protocol implementation for Ruff.",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "r": [
