@@ -782,6 +782,16 @@
       }
     }
   ],
+  "jsonnet": [
+    {
+      "command": "jsonnet-language-server",
+      "url": "https://github.com/grafana/jsonnet-language-server",
+      "description": "A Language Server Protocol (LSP) server for Jsonnet",
+      "requires": [
+        "go"
+      ]
+    }
+  ],
   "julia": [
     {
       "command": "julia-language-server",
