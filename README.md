@@ -115,6 +115,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | HTML              | tailwindcss-intellisense            |    Yes    |      Yes      |
 | JSON              | json-languageserver                 |    Yes    |      Yes      |
 | JSON              | rome                                |    Yes    |      Yes      |
+| Jsonnet           | jsonnet-language-server             |    Yes    |      Yes      |
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
 | Java              | java-language-server                |    No     |      Yes      |
 | JavaScript        | typescript-language-server          |    Yes    |      Yes      |
@@ -232,7 +233,7 @@ If you don't want to use `import_map.json`, you may put `.vim-lsp-settings/setti
 }
 ```
 
-Recommend to add `let g:markdown_fenced_languages = ['ts=typescript']` to your 
+Recommend to add `let g:markdown_fenced_languages = ['ts=typescript']` to your
 vimrc for hover(preview) Deno's library.
 
 Note that `deno` language server is specified.
