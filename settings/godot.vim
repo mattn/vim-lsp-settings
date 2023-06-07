@@ -2,7 +2,7 @@ augroup vim_lsp_settings_godot
   au!
   LspRegisterServer {
       \ 'name': 'godot',
-      \ 'tcp': {server_info->lsp_settings#get('godot', 'tcp', '127.0.0.1:6008')},
+      \ 'tcp': {server_info->lsp_settings#get('godot', 'tcp', '127.0.0.1:6005')},
       \ 'root_uri':{server_info->lsp_settings#get('godot', 'root_uri', lsp_settings#root_uri('godot'))},
       \ 'initialization_options': lsp_settings#get('godot', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('godot', 'allowlist', ['gdscript3', 'gdscript']),
