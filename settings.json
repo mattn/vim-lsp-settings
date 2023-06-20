@@ -890,6 +890,14 @@
       "requires": [
         "nix"
       ]
+    },
+    {
+      "command": "nixd",
+      "url": "https://github.com/nix-community/nixd",
+      "description": "Nix language server, based on nix libraries",
+      "requires": [
+        "nix"
+      ]
     }
   ],
   "objc": [
