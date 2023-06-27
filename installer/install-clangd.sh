@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -x
 set -e
 
 # On MacOS, use clangd in Command Line Tools for Xcode.
