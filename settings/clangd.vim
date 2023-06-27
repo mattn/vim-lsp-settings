@@ -5,7 +5,7 @@ augroup vim_lsp_settings_clangd
       \ 'cmd': {server_info->lsp_settings#get('clangd', 'cmd', [lsp_settings#exec_path('clangd')]+lsp_settings#get('clangd', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('clangd', 'root_uri', lsp_settings#root_uri('clangd'))},
       \ 'initialization_options': lsp_settings#get('clangd', 'initialization_options', v:null),
-      \ 'allowlist': lsp_settings#get('clangd', 'allowlist', ['c', 'cpp', 'objc', 'objcpp']),
+      \ 'allowlist': lsp_settings#get('clangd', 'allowlist', ['c', 'cpp', 'objc', 'objcpp', 'cuda']),
       \ 'blocklist': lsp_settings#get('clangd', 'blocklist', []),
       \ 'config': lsp_settings#get('clangd', 'config', lsp_settings#server_config('clangd')),
       \ 'workspace_config': lsp_settings#get('clangd', 'workspace_config', {}),

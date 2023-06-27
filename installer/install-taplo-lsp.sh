@@ -3,19 +3,24 @@
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
-
-# Releases of taplo-lsp have the tag such as 'release-lsp-${version}'
-latest="0.2.6"
+architecture=$(uname -m)
 
 case $os in
 linux)
-  platform="x86_64-unknown-linux-gnu"
+  platform="linux-$architecture"
   ;;
 darwin)
-  platform="x86_64-apple-darwin-gnu"
+  case $architecture in
+    arm64)
+      platform="darwin-aarch64"
+      ;;
+    *)
+      platform="darwin-$architecture"
+      ;;
+  esac
   ;;
 esac
 
-curl -L "https://github.com/tamasfe/taplo/releases/download/release-lsp-$latest/taplo-lsp-$platform.tar.gz" | tar xz
+curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-$platform.gz" | gzip -d >taplo-lsp
 
 chmod +x taplo-lsp

@@ -28,7 +28,7 @@ darwin)
   ;;
 mingw64_nt*)
   if [ "$arch" = "x86_64" ]; then
-  	platform="x86_64-pc-windows-msvc"
+    platform="x86_64-pc-windows-msvc"
   elif [ "$arch" = "aarch64" ] || [ "$arch" = "arm64" ]; then
     platform="aarch64-pc-windows-msvc"
   else

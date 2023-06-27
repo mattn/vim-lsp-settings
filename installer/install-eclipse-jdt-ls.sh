@@ -10,12 +10,12 @@ rm jdt-language-server-latest.tar.gz
 osType="$(uname -s)"
 echo "$osType"
 case "$osType" in
-    Darwin*)    configDir=config_mac;;
-    Linux*)     configDir=config_linux;;
-    *)          configDir=config_linux
+Darwin*) configDir=config_mac ;;
+Linux*) configDir=config_linux ;;
+*) configDir=config_linux ;;
 esac
 
-cat <<EOF > eclipse-jdt-ls
+cat <<EOF >eclipse-jdt-ls
 #!/bin/sh
 DIR=\$(cd \$(dirname \$0); pwd)
 LAUNCHER=\$(ls \$DIR/plugins/org.eclipse.equinox.launcher_*.jar)

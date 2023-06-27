@@ -7,9 +7,19 @@ augroup vim_lsp_settings_gopls
       \ 'initialization_options': lsp_settings#get('gopls', 'initialization_options', {
       \     'completeUnimported': v:true,
       \     'matcher': 'fuzzy',
+      \     'ui.inlayhint.hints': {
+      \         'assignVariableTypes': v:true,
+      \         'compositeLiteralFields': v:true,
+      \         'compositeLiteralTypes': v:true,
+      \         'constantValues': v:true,
+      \         'functionTypeParameters': v:true,
+      \         'parameterNames': v:true,
+      \         'rangeVariableTypes': v:true,
+      \     },
       \     'codelenses': {
       \         'generate': v:true,
       \         'test': v:true,
+      \         'run_vulncheck_exp': v:true,
       \     },
       \ }),
       \ 'allowlist': lsp_settings#get('gopls', 'allowlist', ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']),

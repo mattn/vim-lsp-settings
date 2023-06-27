@@ -20,18 +20,26 @@ darwin)
 esac
 
 case $version in
-  (*"."*)
-    mainVersion=${version%%"."*}
-    ;;
-  (*)
-    mainVersion=$version
-    ;;
+*.*)
+  mainVersion=${version%%.*}
+  ;;
+*)
+  mainVersion=$version
+  ;;
 esac
 
 if [ "$mainVersion" -ge "6" ]; then
   net6="-net6.0"
 
-cat <<EOF >run
+  if [ "$os" = "osx" ]; then
+    if [ "$(uname -m)" = "x86_64" ]; then
+      arch="-x64"
+    else
+      arch="-$(uname -m)"
+    fi
+  fi
+
+  cat <<EOF >run
 #!/bin/sh
 
 base_dir="\$(cd "\$(dirname "\$0")" && pwd -P)"
