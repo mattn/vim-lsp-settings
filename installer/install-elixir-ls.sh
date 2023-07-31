@@ -3,10 +3,10 @@
 set -e
 
 version="v0.15.1"
-url="https://github.com/elixir-lsp/elixir-ls/releases/download/$version/elixir-ls.zip"
+url="https://github.com/elixir-lsp/elixir-ls/releases/download/$version/elixir-ls-$version.zip"
 curl -LO "$url"
-unzip elixir-ls.zip
-rm elixir-ls.zip
+unzip "elixir-ls-$version.zip"
+rm "elixir-ls-$version.zip"
 
 cat <<EOF >elixir-ls
 #!/bin/sh
