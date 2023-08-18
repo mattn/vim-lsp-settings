@@ -1335,6 +1335,17 @@
       "requires": [
         "gem"
       ]
+    },
+    {
+      "command": "rubocop-lsp-mode",
+      "url": "https://github.com/rubocop/rubocop",
+      "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
+      "requires": [
+        "bundle"
+      ],
+      "root_uri_patterns": [
+        "Gemfile"
+      ]
     }
   ],
   "rust": [
