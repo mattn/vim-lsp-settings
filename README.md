@@ -181,6 +181,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Veryl             | veryl-ls                            |    Yes    |      Yes      |
 | Vue               | volar-server                        |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
+| V                 | v-analyzer                          |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
