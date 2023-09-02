@@ -1696,6 +1696,17 @@
   ],
   "vlang": [
     {
+      "command": "v-analyzer",
+      "url": "https://github.com/v-analyzer/v-analyzer",
+      "description": "Bring IDE features for V programming languages in VS Code, Vim and other editors",
+      "requires": [
+        "v"
+      ],
+      "root_uri_patterns": [
+        "v.mod"
+      ]
+    },
+    {
       "command": "vlang-vls",
       "url": "https://github.com/vlang/vls",
       "description": "V language server",
