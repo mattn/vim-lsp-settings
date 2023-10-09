@@ -1471,6 +1471,17 @@
         ],
         "name": "evanleck/vim-svelte"
       }
+    },
+    {
+      "command": "tailwindcss-intellisense",
+      "url": "https://github.com/tailwindlabs/tailwindcss-intellisense",
+      "description": "Intelligent Tailwind CSS tooling for Visual Studio Code",
+      "config": {
+        "refresh_pattern": "\\(@[a-zA-Z0-9_]*\\|[a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "swift": [
