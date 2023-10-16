@@ -2,7 +2,7 @@
 
 set -e
 
-version="1.3.3"
+version="1.3.7"
 curl -L -o server.zip "https://github.com/fwcd/kotlin-language-server/releases/download/$version/server.zip"
 unzip server.zip
 rm server.zip
