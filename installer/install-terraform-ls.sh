@@ -24,10 +24,9 @@ arm64*) arch=arm64 ;;
   ;;
 esac
 
-version=$(basename $(curl -Ls -o /dev/null -w %\{url_effective\} https://github.com/hashicorp/terraform-ls/releases/latest))
-short_version=$(echo "$version" | cut -c2-)
-filename="terraform-ls_${short_version}"
-url="https://github.com/hashicorp/terraform-ls/releases/download/${version}/${filename}_${os}_${arch}.zip"
+version=$(basename $(curl -Ls -o /dev/null -w %\{url_effective\} https://github.com/hashicorp/terraform-ls/releases/latest) | tr -d v)
+filename="terraform-ls_${version}"
+url="https://releases.hashicorp.com/terraform-ls/${version}/${filename}_${os}_${arch}.zip"
 filename="${filename}.zip"
 
 curl -L --progress-bar "$url" -o "$filename"
