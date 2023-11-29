@@ -793,6 +793,16 @@
       }
     }
   ],
+  "jsonnet": [
+    {
+      "command": "jsonnet-language-server",
+      "url": "https://github.com/grafana/jsonnet-language-server",
+      "description": "A Language Server Protocol (LSP) server for Jsonnet",
+      "requires": [
+        "go"
+      ]
+    }
+  ],
   "julia": [
     {
       "command": "julia-language-server",
@@ -898,6 +908,14 @@
       "command": "rnix-lsp",
       "url": "https://github.com/nix-community/rnix-lsp",
       "description": "Language server implementation for Nix",
+      "requires": [
+        "nix"
+      ]
+    },
+    {
+      "command": "nixd",
+      "url": "https://github.com/nix-community/nixd",
+      "description": "Nix language server, based on nix libraries",
       "requires": [
         "nix"
       ]
@@ -1219,6 +1237,22 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "ruff-lsp",
+      "url": "https://github.com/charliermarsh/ruff-lsp",
+      "description": "A Language Server Protocol implementation for Ruff.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "ruff-lsp",
+      "url": "https://github.com/charliermarsh/ruff-lsp",
+      "description": "A Language Server Protocol implementation for Ruff.",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "r": [
@@ -1311,6 +1345,17 @@
       "description": "Static type checker for Ruby",
       "requires": [
         "gem"
+      ]
+    },
+    {
+      "command": "rubocop-lsp-mode",
+      "url": "https://github.com/rubocop/rubocop",
+      "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
+      "requires": [
+        "bundle"
+      ],
+      "root_uri_patterns": [
+        "Gemfile"
       ]
     }
   ],
@@ -1661,6 +1706,17 @@
     }
   ],
   "vlang": [
+    {
+      "command": "v-analyzer",
+      "url": "https://github.com/v-analyzer/v-analyzer",
+      "description": "Bring IDE features for V programming languages in VS Code, Vim and other editors",
+      "requires": [
+        "v"
+      ],
+      "root_uri_patterns": [
+        "v.mod"
+      ]
+    },
     {
       "command": "vlang-vls",
       "url": "https://github.com/vlang/vls",

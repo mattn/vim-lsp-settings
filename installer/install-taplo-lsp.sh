@@ -3,13 +3,21 @@
 set -e
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
+architecture=$(uname -m)
 
 case $os in
 linux)
-  platform="linux-"$(uname -m)
+  platform="linux-$architecture"
   ;;
 darwin)
-  platform="darwin-"$(uname -m)
+  case $architecture in
+    arm64)
+      platform="darwin-aarch64"
+      ;;
+    *)
+      platform="darwin-$architecture"
+      ;;
+  esac
   ;;
 esac
 
