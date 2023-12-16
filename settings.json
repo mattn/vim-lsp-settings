@@ -1346,6 +1346,17 @@
       "root_uri_patterns": [
         "Gemfile"
       ]
+    },
+    {
+      "command": "sorbet",
+      "url": "https://sorbet.org/",
+      "description": "Sorbet is a fast, powerful type checker designed for Ruby.",
+      "requires": [
+        "bundle"
+      ],
+      "root_uri_patterns": [
+        "Gemfile"
+      ]
     }
   ],
   "rust": [

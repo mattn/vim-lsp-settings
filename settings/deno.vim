@@ -18,59 +18,63 @@ augroup vim_lsp_settings_deno
       \ 'name': 'deno',
       \ 'cmd': {server_info->lsp_settings#get('deno', 'cmd', [lsp_settings#exec_path('deno')]+lsp_settings#get('deno', 'args', ['lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('deno', 'root_uri', lsp_settings#root_uri('deno'))},
-      \ 'initialization_options': lsp_settings#get('deno', 'initialization_options', {
-      \   'enable': v:true,
-      \   'lint': v:true,
-      \   'unstable': v:true,
-      \   'importMap': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json'),
-      \   'codeLens': {
-      \     'implementations': v:true,
-      \     'references': v:true,
-      \     'referencesAllFunctions': v:true,
-      \     'test': v:true,
-      \     'testArgs': ['--allow-all'],
-      \   },
-      \   "suggest": {
-      \     "autoImports": v:true,
-      \     "completeFunctionCalls": v:true,
-      \     "names": v:true,
-      \     "paths": v:true,
-      \     "imports": {
-      \       "autoDiscover": v:false,
-      \       "hosts": {
-      \         "https://deno.land/": v:true,
-      \       },
-      \     },
-      \   },
-      \   "inlayHints": {
-      \     "parameterNames": {
-      \       "enabled": "all",
-      \       "suppressWhenArgumentMatchesName": v:true,
-      \     },
-      \     "parameterTypes": {
-      \       "enabled": v:true,
-      \     },
-      \     "variableTypes": {
-      \       "enabled": v:true,
-      \       "suppressWhenTypeMatchesName": v:true,
-      \     },
-      \     "propertyDeclarationTypes": {
-      \       "enabled": v:true,
-      \     },
-      \     "functionLikeReturnTypes": {
-      \       "enabled": v:true,
-      \     },
-      \     "enumMemberValues": {
-      \       "enabled": v:true,
-      \     },
-      \   },
-      \   'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
-      \   'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
-      \ }),
+      \ 'initialization_options': lsp_settings#get('deno', 'initialization_options', {}),
       \ 'allowlist': lsp_settings#get('deno', 'allowlist', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']),
       \ 'blocklist': lsp_settings#get('deno', 'blocklist', Vim_lsp_settings_deno_get_blocklist()),
       \ 'config': lsp_settings#get('deno', 'config', lsp_settings#server_config('deno')),
-      \ 'workspace_config': lsp_settings#get('deno', 'workspace_config', {}),
+      \ 'workspace_config': lsp_settings#get('deno', 'workspace_config', {
+      \   'deno': {
+      \     'enable': v:true,
+      \     'lint': v:true,
+      \     'unstable': v:true,
+      \     'importMap': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'import_map.json'),
+      \     'codeLens': {
+      \       'implementations': v:true,
+      \       'references': v:true,
+      \       'referencesAllFunctions': v:true,
+      \       'test': v:true,
+      \       'testArgs': ['--allow-all'],
+      \     },
+      \     "suggest": {
+      \       "autoImports": v:true,
+      \       "completeFunctionCalls": v:true,
+      \       "names": v:true,
+      \       "paths": v:true,
+      \       "imports": {
+      \         "autoDiscover": v:false,
+      \         "hosts": {
+      \           "https://deno.land/": v:true,
+      \         },
+      \       },
+      \     },
+      \     'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
+      \     'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
+      \   },
+      \   'typescript': {
+      \     'inlayHints': {
+      \       'parameterNames': {
+      \         'enabled': 'all',
+      \         'suppressWhenArgumentMatchesName': v:true,
+      \       },
+      \       'parameterTypes': {
+      \         'enabled': v:true,
+      \       },
+      \       'variableTypes': {
+      \         'enabled': v:true,
+      \         'suppressWhenTypeMatchesName': v:true,
+      \       },
+      \       'propertyDeclarationTypes': {
+      \         'enabled': v:true,
+      \       },
+      \       'functionLikeReturnTypes': {
+      \         'enabled': v:true,
+      \       },
+      \       'enumMemberValues': {
+      \         'enabled': v:true,
+      \       },
+      \     },
+      \   },
+      \ }),
       \ 'semantic_highlight': lsp_settings#get('deno', 'semantic_highlight', {}),
       \ }
 augroup END

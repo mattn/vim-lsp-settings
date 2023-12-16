@@ -156,6 +156,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Ruby              | steep                               |    Yes    |      Yes      |
 | Ruby              | typeprof                            |    Yes    |      Yes      |
 | Ruby              | rubocop (lsp mode)                  |    Yes    |      No       |
+| Ruby              | sorbet                              |    Yes    |      No       |
 | Rust              | rls                                 |    Yes    |      No       |
 | Rust              | rust-analyzer                       |    Yes    |      Yes      |
 | Sphinx            | esbonio                             |    Yes    |      Yes      |
@@ -304,6 +305,12 @@ To use older version `golangci-lint`, please run `:LspSettingsGlobalEdit` and pu
 ### [rubocop lsp mode (Ruby)](https://docs.rubocop.org/rubocop/usage/lsp.html)
 
 To use rubocop-lsp-mode, you need to install rubocop in your Ruby project using bundler.
+
+### [sorbet (Ruby)](https://sorbet.org/docs/vscode)
+
+To use sorbet, you need to install rubocop in your Ruby project using bundler.
+Also, [Watchman](https://facebook.github.io/watchman/) is required to watch file changes.
+For more details, please see [Sorbet](https://sorbet.org/docs/vscode#installing-and-enabling-the-sorbet-extension) and [Watchman](https://facebook.github.io/watchman/docs/install.html) documentations.
 
 ## Extra Configurations
 
