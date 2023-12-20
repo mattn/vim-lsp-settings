@@ -2,7 +2,7 @@ augroup vim_lsp_settings_vala_language_server
   au!
   LspRegisterServer {
       \ 'name': 'vala-language-server',
-      \ 'cmd': {server_info->lsp_settings#get('vala-language-server', 'cmd', [lsp_settings#exec_path('vala-language-server')]+lsp_settings#get('vala-language-server', 'args', ['--stdio']))},
+      \ 'cmd': {server_info->lsp_settings#get('vala-language-server', 'cmd', [lsp_settings#exec_path('vala-language-server')]+lsp_settings#get('vala-language-server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('vala-language-server', 'root_uri', lsp_settings#root_uri('vala-language-server'))},
       \ 'initialization_options': lsp_settings#get('vala-language-server', 'initialization_options', v:null),
       \ 'allowlist': lsp_settings#get('vala-language-server', 'allowlist', ['vala']),
