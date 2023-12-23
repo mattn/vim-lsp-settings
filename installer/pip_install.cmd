@@ -17,7 +17,8 @@ goto :EOF
 
 :python
 rem python is 2 or 3 check(python3 version at python3 grammar)
-call python -c "import sys; from distutils.version import LooseVersion;sys.exit(0 if (LooseVersion(sys.version) > LooseVersion('3')) else 1)" 2>NUL
+rem Do a quick check as distutils has been removed in Python 3.12
+call python -c "import sys; sys.exit(0 if (sys.version_info[0] >= 3) else 1)" 2>NUL
 if errorlevel 1 goto :python_fail
 set PYTHON=python
 goto :create_venv
