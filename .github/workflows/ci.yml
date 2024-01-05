@@ -21,15 +21,15 @@ jobs:
             neovim: true
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - id: vim
         uses: rhysd/action-setup-vim@v1
         with:
           version: ${{ matrix.version }}
           neovim: ${{ matrix.neovim }}
       - name: 'Setup vim-themis'
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: thinca/vim-themis
           path: vim-themis
       - name: Run tests
