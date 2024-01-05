@@ -1678,6 +1678,22 @@
       "requires": []
     }
   ],
+  "typ": [
+    {
+      "command": "typst-lsp",
+      "url": "https://github.com/nvarner/typst-lsp",
+      "description": "Language server for Typst",
+      "requires": []
+    },
+  ],
+  "typst": [
+    {
+      "command": "typst-lsp",
+      "url": "https://github.com/nvarner/typst-lsp",
+      "description": "Language server for Typst",
+      "requires": []
+    },
+  ],
   "vala": [
     {
       "command": "vala-language-server",
