@@ -55,14 +55,14 @@ rem upgrade pip (windows: use `python -m pip`)
 rem and install target package
 echo :"%PYTHON%" -m pip install -U pip
 "%PYTHON%" -m pip install -U pip
-echo :"%PYTHON%" -m pip install %2
-"%PYTHON%" -m pip install %2
+echo :"%PYTHON%" -m pip install hyuga
+"%PYTHON%" -m pip install hyuga
 
 rem exec cmd generate
-echo :generate %1.cmd
+echo :generate hyuga.cmd
 echo @echo off ^
 
-"%BINPATH%%1" %%* ^
+"%BINPATH%hyuga" %%* ^
 
-> %1.cmd
-type %1.cmd
+> hyuga.cmd
+type hyuga.cmd

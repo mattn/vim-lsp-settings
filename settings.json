@@ -584,7 +584,9 @@
       "command": "hyuga",
       "url": "https://github.com/sakuraiyuta/hyuga",
       "description": "Yet another hy language server",
-      "requires": [],
+      "requires": [
+        "python3"
+      ],
       "root_uri_patterns": [
         "__pycache__"
       ]
