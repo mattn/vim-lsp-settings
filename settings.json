@@ -1684,7 +1684,7 @@
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
       "requires": []
-    },
+    }
   ],
   "typst": [
     {
@@ -1692,7 +1692,7 @@
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
       "requires": []
-    },
+    }
   ],
   "vala": [
     {
