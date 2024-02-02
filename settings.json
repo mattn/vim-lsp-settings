@@ -1678,17 +1678,29 @@
       "requires": []
     }
   ],
+  "typ": [
+    {
+      "command": "typst-lsp",
+      "url": "https://github.com/nvarner/typst-lsp",
+      "description": "Language server for Typst",
+      "requires": []
+    }
+  ],
+  "typst": [
+    {
+      "command": "typst-lsp",
+      "url": "https://github.com/nvarner/typst-lsp",
+      "description": "Language server for Typst",
+      "requires": []
+    }
+  ],
   "vala": [
     {
       "command": "vala-language-server",
       "url": "https://github.com/Prince781/vala-language-server",
       "description": "Code Intelligence for Vala & Genie",
       "requires": [
-        "meson",
         "valac"
-      ],
-      "root_uri_patterns": [
-        "meson.build"
       ]
     }
   ],
