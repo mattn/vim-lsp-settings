@@ -1751,7 +1751,7 @@
   "veryl": [
     {
       "command": "veryl-ls",
-      "url": "https://github.com/dalance/veryl",
+      "url": "https://github.com/veryl-lang/veryl",
       "description": "Veryl language server",
       "requires": []
     }

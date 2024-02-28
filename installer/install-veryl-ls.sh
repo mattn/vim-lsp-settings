@@ -17,7 +17,7 @@ darwin)
   ;;
 esac
 
-curl -L -o veryl-x86_64-$os.zip "https://github.com/dalance/veryl/releases/latest/download/veryl-x86_64-$os.zip"
+curl -L -o veryl-x86_64-$os.zip "https://github.com/veryl-lang/veryl/releases/latest/download/veryl-x86_64-$os.zip"
 unzip veryl-x86_64-$os.zip
 rm veryl
 rm veryl-x86_64-$os.zip
