@@ -1872,6 +1872,27 @@
       ]
     }
   ],
+  "yang": [
+    {
+      "command": "yang-lsp",
+      "url": "https://github.com/TypeFox/yang-lsp",
+      "description": "Language Server for YANG Files",
+      "requires": [
+        "java"
+      ],
+      "root_uri_patterns": [
+        ".git",
+        ".git/",
+        "yang.settings"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "yang"
+        ],
+        "name": "nathanalderson/yang.vim"
+      }
+    }
+  ],
   "zig": [
     {
       "command": "zls",
