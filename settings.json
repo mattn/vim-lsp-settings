@@ -601,7 +601,7 @@
         "java"
       ],
       "config": {
-        "refresh_pattern": "\\([.a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
       },
       "root_uri_patterns": [
         "pom.xml",
