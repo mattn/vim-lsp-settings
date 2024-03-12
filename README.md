@@ -183,7 +183,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
 | Veryl             | veryl-ls                            |    Yes    |      Yes      |
-| Vue               | volar-server                        |    Yes    |      Yes      |
+| Vue               | volar-server (Vue Language Tools)   |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
 | V                 | v-analyzer                          |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
@@ -314,6 +314,14 @@ To use rubocop-lsp-mode, you need to install rubocop in your Ruby project using 
 To use sorbet, you need to install rubocop in your Ruby project using bundler.
 Also, [Watchman](https://facebook.github.io/watchman/) is required to watch file changes.
 For more details, please see [Sorbet](https://sorbet.org/docs/vscode#installing-and-enabling-the-sorbet-extension) and [Watchman](https://facebook.github.io/watchman/docs/install.html) documentations.
+
+### [volar (Vue Language Tools)](https://github.com/vuejs/language-tools)
+
+To enable full Vue support, both `typescript-language-server` and `volar-server` should be installed and enabled in `vue` filetype.
+
+```vim
+let g:lsp_settings_filetype_vue = ['typescript-language-server', 'volar-server']
+```
 
 ## Extra Configurations
 
