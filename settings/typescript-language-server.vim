@@ -1,17 +1,6 @@
 function! s:find_vue_plugin() abort
-  let package_json_path = lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'package.json')
-  if empty(package_json_path)
-    return v:null
-  endif
-
-  let package_json = json_decode(join(readfile(package_json_path), ''))
-  if !(has_key(package_json, 'dependencies') && has_key(package_json['dependencies'], 'vue'))
-    return v:null
-  endif
-
   let plugin_location = lsp_settings#servers_dir() .. '/volar-server/node_modules/@vue/typescript-plugin'
   if !isdirectory(plugin_location)
-    call lsp_settings#utils#warning('Please install the latest volar-server to enable Vue support')
     return v:null
   endif
 
