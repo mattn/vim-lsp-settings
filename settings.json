@@ -1832,6 +1832,18 @@
       }
     },
     {
+      "command": "typescript-language-server",
+      "url": "https://github.com/typescript-language-server/typescript-language-server",
+      "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
       "command": "vls",
       "url": "https://github.com/vuejs/vetur",
       "description": "Vue tooling for VS Code.",
