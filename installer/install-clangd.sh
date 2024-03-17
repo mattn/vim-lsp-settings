@@ -97,6 +97,17 @@ filename() {
   echo "clang+llvm-$version-$arch-$platform"
 }
 
+# Search for local clangd in PATH
+for llvm_version in $(seq 30 -1 9); do
+  cmd="clangd-$llvm_version"
+  if which "$cmd" >/dev/null; then
+    echo "Found $(which $cmd)"
+    ln -sf "$(which "$cmd")" clangd
+    ./clangd --version
+    exit 0
+  fi
+done
+
 # Search for an installable clang+llvm release.
 for llvm_version in 15 14 13 12 11 10 9; do
   filename="$(filename "$distributor_id" "$llvm_version.0.0")"
