@@ -111,6 +111,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Groovy            | groovy-language-server              |    Yes    |      Yes      |
 | Haskell           | haskell-ide-engine                  |    No     |      No       |
 | Haskell           | haskell-language-server             |    No     |      No       |
+| Helm              | helm-ls                             |    Yes    |      Yes      |
 | HTML              | html-languageserver                 |    Yes    |      Yes      |
 | HTML              | angular-language-server             |    Yes    |      Yes      |
 | HTML              | tailwindcss-intellisense            |    Yes    |      Yes      |
