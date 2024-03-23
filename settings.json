@@ -533,6 +533,14 @@
       ]
     }
   ],
+  "helm": [
+    {
+      "command": "helm-ls",
+      "url": "https://github.com/mrjosh/helm-ls",
+      "description": "Helm-ls is a helm language server protocol LSP implementation.",
+      "requires": []
+    }
+  ],
   "html": [
     {
       "command": "vscode-html-language-server",
