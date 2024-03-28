@@ -273,37 +273,40 @@ function! s:status(in_preview, ...) abort
 endfunction
 
 function! s:handle_deno_cache(data) abort
-    if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
+    if lsp#client#is_error(a:data['response']) || get(a:data['response'], 'result') != v:true
         redraw!
-        call lsp#utils#error('deno v1.7.5 or later is required to use cache')
+        call lsp#utils#error('deno v1.32.2 or later is required to use cache')
         return
     endif
-    if a:data['response']['result'] == v:true
-        " Cache file would be enabled after reload buffer.
-        let l:curpos = getcurpos()
-        execute 'edit ' . expand('%:p')
-        call setpos('.', l:curpos)
-        echo 'Cache file installed'
-    endif
+    " Cache file would be enabled after reload buffer.
+    let l:curpos = getcurpos()
+    execute 'edit ' . expand('%:p')
+    call setpos('.', l:curpos)
+    echo 'Cache file installed'
 endfunction
 
 function! s:handle_reload_import_registries(data) abort
-    if a:data['response']['result'] == v:true
-        echo 'Import registries reloaded'
+    if lsp#client#is_error(a:data['response']) || get(a:data['response'], 'result') != v:true
+        redraw!
+        call lsp#utils#error('deno v1.37.0 or later is required to use import registries')
+        return
     endif
+    echo 'Import registries reloaded'
 endfunction
 
 function! s:cache() abort
     let l:is_download_cache = input('Download all cache files?(y/n) ', 'y')
     if l:is_download_cache =~# 'y'
+      let l:specifiers = []
+      let l:referrer = lsp#utils#get_buffer_uri()
       call lsp#send_request('deno', {
-         \ 'method': 'deno/cache',
-         \ 'params': {
-         \   'referrer': lsp#get_text_document_identifier(),
-         \   'uris': [],
-         \ },
-         \ 'on_notification': function('s:handle_deno_cache', [])
-         \ })
+          \ 'method': 'workspace/executeCommand',
+          \ 'params': {
+          \   'command': 'deno.cache',
+          \   'arguments': [l:specifiers, l:referrer],
+          \ },
+          \ 'on_notification': function('s:handle_deno_cache', [])
+          \ })
     endif
 endfunction
 
@@ -311,10 +314,9 @@ function! s:reload_import_registries() abort
   let l:is_download_cache = input('Do you reload import registries?(y/n) ', 'y')
   if l:is_download_cache =~# 'y'
     call lsp#send_request('deno', {
-        \ 'method': 'deno/reloadImportRegistries',
+        \ 'method': 'workspace/executeCommand',
         \ 'params': {
-        \   'referrer': lsp#get_text_document_identifier(),
-        \   'uris': [],
+        \   'command': 'deno.reloadImportRegistries',
         \ },
         \ 'on_notification': function('s:handle_reload_import_registries', [])
         \ })
