@@ -1561,6 +1561,12 @@
   ],
   "systemverilog": [
     {
+      "command": "verible-verilog-ls",
+      "url": "https://github.com/chipsalliance/verible/tree/master/verilog/tools/ls",
+      "description": "A (System)Verilog language server",
+      "requires": []
+    },
+    {
       "command": "svls",
       "url": "https://github.com/dalance/svls",
       "description": "SystemVerilog language server",
@@ -1763,6 +1769,14 @@
       "requires": [
         "valac"
       ]
+    }
+  ],
+  "verilog": [
+    {
+      "command": "verible-verilog-ls",
+      "url": "https://github.com/chipsalliance/verible/tree/master/verilog/tools/ls",
+      "description": "A (System)Verilog language server",
+      "requires": []
     }
   ],
   "veryl": [

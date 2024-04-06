@@ -168,6 +168,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
+| SystemVerilog     | verible-verilog-ls                  | UNIX Only |      Yes      |
 | SystemVerilog     | svls                                |    Yes    |      Yes      |
 | TeX               | texlab                              |    Yes    |      Yes      |
 | TeX               | digestif                            |    Yes    |      No       |
@@ -182,6 +183,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Typst             | typst-lsp                           |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
+| Verilog           | verible-verilog-ls                  | UNIX Only |      Yes      |
 | Veryl             | veryl-ls                            |    Yes    |      Yes      |
 | Vue               | volar-server (Vue Language Tools)   |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
