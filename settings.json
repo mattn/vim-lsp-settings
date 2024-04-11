@@ -350,6 +350,23 @@
       "requires": []
     }
   ],
+  "gleam": [
+    {
+      "command": "gleam",
+      "url": "https://gleam.run/",
+      "description": "Gleam is a friendly language for building type-safe systems that scale!",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "gleam"
+        ],
+        "name": "gleam-lang/gleam.vim"
+      },
+      "root_uri_patterns": [
+        "gleam.toml"
+      ]
+    }
+  ],
   "glsl": [
     {
       "command": "glslls",
