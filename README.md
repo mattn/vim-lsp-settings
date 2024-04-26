@@ -83,6 +83,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | ----------------- | ----------------------------------- | :-------: | :-----------: |
 | Apex/VisualForce  | apex-jorje-lsp                      |    Yes    |      Yes      |
 | Astro             | astro-ls                            |    Yes    |      Yes      |
+| Astro             | biome                               |    Yes    |      Yes      |
 | Bash              | bash-language-server                |    Yes    |      Yes      |
 | C#                | omnisharp                           |    Yes    |      Yes      |
 | C/C++             | clangd                              |    Yes    |      Yes      |
@@ -116,6 +117,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Hy                | hyuga                               |    Yes    |      No       |
 | JSON              | json-languageserver                 |    Yes    |      Yes      |
 | JSON              | rome                                |    Yes    |      Yes      |
+| JSON              | biome                               |    Yes    |      Yes      |
 | Jsonnet           | jsonnet-language-server             |    Yes    |      Yes      |
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
 | Java              | java-language-server                |    No     |      Yes      |
@@ -124,6 +126,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JavaScript        | rome                                |    Yes    |      Yes      |
 | JavaScript        | flow                                |    Yes    |      Yes      |
 | JavaScript        | eslint-language-server              |    Yes    |      Yes      |
+| JavaScript        | biome                               |    Yes    |      Yes      |
 | Julia             | LanguageServer.jl                   |    Yes    |      No       |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
 | Lisp              | cl-lsp                              |    Yes    |      No       |
@@ -167,6 +170,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Scala             | Metals                              |    Yes    |      Yes      |
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
+| Svelte            | biome                               |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
 | SystemVerilog     | verible-verilog-ls                  | UNIX Only |      Yes      |
 | SystemVerilog     | svls                                |    Yes    |      Yes      |
@@ -180,6 +184,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TypeScript        | deno                                |    Yes    |      Yes      |
 | TypeScript        | rome                                |    Yes    |      Yes      |
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
+| TypeScript        | biome                               |    Yes    |      Yes      |
 | Typst             | typst-lsp                           |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
@@ -187,6 +192,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Veryl             | veryl-ls                            |    Yes    |      Yes      |
 | Vue               | volar-server (Vue Language Tools)   |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
+| Vue               | biome                               |    Yes    |      Yes      |
 | V                 | v-analyzer                          |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |

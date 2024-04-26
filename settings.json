@@ -54,6 +54,16 @@
         ],
         "name": "wuelnerdotexe/vim-astro"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "c": [
@@ -715,6 +725,16 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "javascriptreact": [
@@ -784,6 +804,16 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "json": [
@@ -816,6 +846,16 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "jsonc": [
@@ -832,6 +872,16 @@
         ],
         "name": "neoclide/jsonc.vim"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "jsonnet": [
@@ -1534,6 +1584,16 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "swift": [
@@ -1692,6 +1752,16 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "typescriptreact": [
@@ -1742,6 +1812,16 @@
       ],
       "root_uri_patterns": [
         "package.json"
+      ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
       ]
     }
   ],
@@ -1893,6 +1973,16 @@
         ],
         "name": "posva/vim-vue"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "xml": [
