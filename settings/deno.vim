@@ -47,7 +47,7 @@ augroup vim_lsp_settings_deno
       \         },
       \       },
       \     },
-      \     'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
+      \     'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? (empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), "deno.json")) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), "deno.json")) : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
       \     'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
       \   },
       \   'typescript': {
