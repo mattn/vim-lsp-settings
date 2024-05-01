@@ -469,6 +469,9 @@ endfunction
 
 function! lsp_settings#register_server(...) abort
   let l:name = a:000[0]['name']
+  if get(a:000[0], 'deprecated', v:false) ==# v:true
+    call lsp_settings#utils#warning(l:name . ' is deprecated')
+  endif
   let l:env = lsp_settings#get(l:name, 'env', {})
   if !empty(l:env)
     let a:000[0]['env'] = l:env

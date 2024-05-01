@@ -15,5 +15,6 @@ augroup vim_lsp_settings_css_languageserver
       \   'scss': {'lint': {'validProperties': []}},
       \ }),
       \ 'semantic_highlight': lsp_settings#get('css-languageserver', 'semantic_highlight', {}),
+      \ 'deprecated': v:true,
       \ }
 augroup END
