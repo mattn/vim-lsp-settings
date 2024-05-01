@@ -177,17 +177,6 @@
       ]
     },
     {
-      "command": "css-languageserver",
-      "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
-      "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
-      "config": {
-        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
-      },
-      "requires": [
-        "npm"
-      ]
-    },
-    {
       "command": "tailwindcss-intellisense",
       "url": "https://github.com/tailwindlabs/tailwindcss-intellisense",
       "description": "Intelligent Tailwind CSS tooling for Visual Studio Code",
@@ -952,9 +941,12 @@
   ],
   "less": [
     {
-      "command": "css-languageserver",
-      "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
-      "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -1507,9 +1499,12 @@
   ],
   "sass": [
     {
-      "command": "css-languageserver",
-      "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
-      "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
@@ -1517,9 +1512,12 @@
   ],
   "scss": [
     {
-      "command": "css-languageserver",
-      "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
-      "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
       "requires": [
         "npm"
       ]
