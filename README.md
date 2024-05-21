@@ -313,6 +313,21 @@ To use older version `golangci-lint`, please run `:LspSettingsGlobalEdit` and pu
 }
 ```
 
+### [kotlin-language-server](https://github.com/fwcd/kotlin-language-server)
+
+To resolve issue about proper '-jvm-target' (INLINE_FROM_HIGHER_PLATFORM) [read
+more](https://github.com/fwcd/kotlin-language-server/issues/72)
+
+```vim
+let g:lsp_settings = {
+\  'kotlin-language-server': {
+\    'workspace_config': {
+\      'kotlin': {'compiler': {'jvm': {'target': '17'}}}
+\    }
+\  }
+\}
+```
+
 ### [rubocop lsp mode (Ruby)](https://docs.rubocop.org/rubocop/usage/lsp.html)
 
 To use rubocop-lsp-mode, you need to install rubocop in your Ruby project using bundler.
