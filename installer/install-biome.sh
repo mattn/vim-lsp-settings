@@ -39,6 +39,6 @@ darwin)
   ;;
 esac
 
-curl -L -o "$filename" "https://github.com/denoland/deno/releases/latest/download/$filename"
+curl -L -o "$filename" "https://github.com/biomejs/biome/releases/latest/download/$filename"
 mv "$filename" biome
 chmod +x biome
