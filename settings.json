@@ -663,6 +663,18 @@
       ]
     },
     {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
       "command": "javascript-typescript-stdio",
       "url": "https://github.com/sourcegraph/javascript-typescript-langserver",
       "description": "JavaScript and TypeScript code intelligence through the Language Server Protocol",
@@ -747,6 +759,18 @@
       ],
       "root_uri_patterns": [
         "package.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
@@ -1717,6 +1741,18 @@
       ]
     },
     {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
       "command": "eslint-language-server",
       "url": "https://www.npmjs.com/package/eslint-language-server",
       "description": "eslint language server",
@@ -1769,6 +1805,18 @@
       "command": "typescript-language-server",
       "url": "https://github.com/typescript-language-server/typescript-language-server",
       "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
       "requires": [
         "npm"
       ],
