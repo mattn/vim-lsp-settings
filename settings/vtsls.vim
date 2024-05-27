@@ -8,6 +8,30 @@ function! Vim_lsp_settings_vtsls_get_blocklist() abort
     return []
 endfunction
 
+function! s:find_vue_plugin() abort
+  let plugin_location = lsp_settings#servers_dir() .. '/volar-server/node_modules/@vue/typescript-plugin'
+  if !isdirectory(plugin_location)
+    return v:null
+  endif
+
+  return {
+  \ 'name': '@vue/typescript-plugin',
+  \ 'location': plugin_location,
+  \ 'languages': ['vue'],
+  \ }
+endfunction
+
+function! Vim_lsp_settings_vtsls_setup_plugins() abort
+  let plugins = []
+
+  let vue_plugin = s:find_vue_plugin()
+  if !empty(vue_plugin)
+    call add(plugins, vue_plugin)
+  endif
+
+  return plugins
+endfunction
+
 augroup vim_lsp_settings_vtsls
   au!
   LspRegisterServer {
@@ -61,6 +85,11 @@ augroup vim_lsp_settings_vtsls
       \       'enumMemberValues': {
       \         'enabled': v:true,
       \       },
+      \     },
+      \   },
+      \   'vtsls': {
+      \     'tsserver': {
+      \       'globalPlugins': Vim_lsp_settings_vtsls_setup_plugins(),
       \     },
       \   },
       \ }),
