@@ -123,6 +123,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
 | Java              | java-language-server                |    No     |      Yes      |
 | JavaScript        | typescript-language-server          |    Yes    |      Yes      |
+| JavaScript        | vtsls                               |    Yes    |      Yes      |
 | JavaScript        | javascript-typescript-stdio         |    Yes    |      Yes      |
 | JavaScript        | rome                                |    Yes    |      Yes      |
 | JavaScript        | flow                                |    Yes    |      Yes      |
@@ -182,6 +183,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TOML              | taplo-lsp                           |    No     |      Yes      |
 | TTCN-3            | ntt                                 |    Yes    |      Yes      |
 | TypeScript        | typescript-language-server          |    Yes    |      Yes      |
+| TypeScript        | vtsls                               |    Yes    |      Yes      |
 | TypeScript        | deno                                |    Yes    |      Yes      |
 | TypeScript        | rome                                |    Yes    |      Yes      |
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
