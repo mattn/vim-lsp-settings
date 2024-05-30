@@ -2013,8 +2013,8 @@
   "vue": [
     {
       "command": "volar-server",
-      "url": "https://github.com/johnsoncodehk/volar",
-      "description": "Explore high-performance tooling for Vue",
+      "url": "https://github.com/vuejs/language-tools",
+      "description": "High-performance Vue language tooling based-on Volar.js",
       "config": {
         "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
       },
@@ -2035,6 +2035,18 @@
       "command": "typescript-language-server",
       "url": "https://github.com/typescript-language-server/typescript-language-server",
       "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
       "requires": [
         "npm"
       ],
