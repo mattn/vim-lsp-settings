@@ -1357,6 +1357,22 @@
       ]
     },
     {
+      "command": "pylyzer",
+      "url": "https://github.com/mtshiba/pylyzer",
+      "description": "`pylyzer` is a static code analyzer / language server for Python, written in Rust.",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
+      "command": "pylyzer",
+      "url": "https://github.com/mtshiba/pylyzer",
+      "description": "`pylyzer` is a static code analyzer / language server for Python, written in Rust.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
       "command": "jedi-language-server",
       "url": "https://github.com/pappasam/jedi-language-server",
       "description": "A Python language server exclusively for Jedi.",
