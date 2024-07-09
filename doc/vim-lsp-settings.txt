@@ -43,7 +43,7 @@ NeoBundle: add below to .vimrc
 
 vim-plug: add below to .vimrc
 >
- Plug 'mattn/vim-lsp-settings' to .vimrc
+ Plug 'mattn/vim-lsp-settings'
 <
  Run :PlugInstall
 
