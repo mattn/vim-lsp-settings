@@ -37,6 +37,9 @@ function! s:on_lsp_buffer_enabled() abort
 
   command! -buffer LspRustOpenDocs call <SID>open_docs()
   nnoremap <buffer> <plug>(lsp-rust-open-docs) :<c-u>call <SID>open_docs()<cr>
+
+  command! -buffer LspRustExpandMacro call <SID>expand_macro()
+  nnoremap <buffer> <plug>(lsp-rust-expand-macro) :<c-u>call <SID>expand_macro()<cr>
 endfunction
 
 function! s:open_cargo_toml() abort
@@ -157,6 +160,48 @@ function! s:on_find_matching_brace(x) abort
             \ },
             \ })
     endif
+endfunction
+
+function! s:expand_macro() abort
+    echo 'Expanding Macros'
+    call lsp#callbag#pipe(
+        \  lsp#request('rust-analyzer', {
+        \   'method': 'rust-analyzer/expandMacro',
+        \   'params': {
+        \       'textDocument': lsp#get_text_document_identifier(),
+        \       'position': lsp#get_position(),
+        \   },
+        \ }),
+        \ lsp#callbag#subscribe({
+        \   'next': {x->s:on_expand_macro(x)},
+        \   'error': {e->lsp_settings#utils#error(e)},
+        \ })
+        \ )
+endfunction
+
+function! s:on_expand_macro(x) abort
+    if lsp#client#is_error(a:x['response']) | echom 'Failed to expand macro' | endif
+    let l:contents = a:x['response']['result']['expansion']
+
+    let l:lines = lsp#utils#_split_by_eol(l:contents)
+    let l:view = winsaveview()
+    let l:alternate=@#
+    silent! pclose
+    sp LspRustExpandMacro
+    execute 'resize '.min([len(l:lines), &previewheight])
+    set previewwindow
+    setlocal conceallevel=2
+    setlocal bufhidden=hide
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    %d
+    call setline(1, l:lines)
+    let l:win_id = win_getid()
+    call win_execute(l:win_id, 'setlocal syntax=rust')
+    execute "normal \<c-w>p"
+    call winrestview(l:view)
+    let @#=l:alternate
 endfunction
 
 function! s:open_docs() abort
