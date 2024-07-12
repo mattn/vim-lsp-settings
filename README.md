@@ -215,6 +215,70 @@ There is a Linux OS/version that does not run the locally installed `clangd` due
 
 If you installed `rls` already, you can use `rls` without configurations. But if you have not installed `rls` yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
 
+### [rust-analyzer](https://rust-analyzer.github.io/)
+
+If you want to configure many of the [`rust-analyzer` configuration
+options](https://rust-analyzer.github.io/manual.html#configuration), you need
+to you insert a `initialization_options` dictionary between `rust-analyzer` and
+subdictionaries (`cargo`, `completion`, `procMacro`, etc.) in your
+`.vim-lsp-settings/settings.json`.
+```json
+{
+    "rust-analyzer": {
+        "initialization_options": {
+            "server.extraEnv": {
+                "RUSTUP_TOOLCHAIN": "nightly"
+            },
+            "cargo": {
+                "target": "aarch64-apple-ios-sim"
+            },
+            "completion": { "autoimport": {"enable": false } },
+            "procMacro": { "enable": true }
+        }
+    }
+}
+```
+
+#### [LSP Extensions Support](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md)
+
+| Extension Name                  | Status |
+| ------------------------------- | ------ |
+| initializationOptions           | ❓     |
+| Snippet TextEdit                | ❌     |
+| CodeAction Groups               | ❌     |
+| Parent Module                   | ❌     |
+| Join Lines                      | ✔️     |
+| On Enter                        | ❌     |
+| Structural Search Replace (SSR) | ❌     |
+| Matching Brace                  | ✔️     |
+| Runnables                       | ❌     |
+| Test explorer                   | ❌     |
+| Open External Documentation     | ✔️     |
+| Analyzer Status                 | ✔️     |
+| Reload Workspace                | ✔️     |
+| Rebuild proc-macros             | ❌     |
+| Unindexed Project               | ❌     |
+| Server Status                   | ❌     |
+| Syntax Tree                     | ❌     |
+| View Hir                        | ❌     |
+| View Mir                        | ❌     |
+| Interpret Function              | ❌     |
+| View File Text                  | ❌     |
+| View ItemTree                   | ❌     |
+| View Crate Graph                | ❌     |
+| Shuffle Crate Graph             | ❌     |
+| Expand Macro                    | ✔️     |
+| Hover Actions                   | ❌     |
+| Open Cargo.toml                 | ✔️     |
+| Related tests                   | ❌     |
+| Hover Range                     | ❌     |
+| Move Item                       | ❌     |
+| Workspace Symbols Filtering     | ❌     |
+| Client Commands                 | ❌     |
+| Colored Diagnostic Output       | ❌     |
+| Dependency Tree                 | ❌     |
+| View Recursive Memory Layout    | ❌     |
+
 ### deno (TypeScript)
 
 To use deno, `deno.json(c)` should located on the project directory or traversing the filesystem upwards.
