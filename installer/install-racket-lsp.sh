@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 raco pkg install racket-langserver
 cat <<EOF >racket-lsp
 #!/bin/sh
