@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 curl -o apex-jorje-lsp.jar -L "https://github.com/forcedotcom/salesforcedx-vscode/blob/develop/packages/salesforcedx-vscode-apex/out/apex-jorje-lsp.jar?raw=true"
 
 cat <<EOF >apex-jorje-lsp

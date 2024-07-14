@@ -1,4 +1,7 @@
 #!/bin/sh
+
+set -e
+
 git clone --depth=1 https://github.com/vlang/vls .
 
 echo 'Compiling vlang/vls...'
