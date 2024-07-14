@@ -49,7 +49,7 @@ vim-plug: add below to .vimrc
 
 
 ==============================================================================
-INSTALL LANGUAGE SERVER                                       *LspInstallServer*
+INSTALL LANGUAGE SERVER                                      *:LspInstallServer*
 
 To install Language Server, you need to open the source file. The filetype
 should be set correctly. Then |:LspInstallServer|. |:LspInstallServer| can be
@@ -60,7 +60,7 @@ taken an argument for the name of Language Server installable.
 If you want to update Language Server, please do |:LspInstallServer| again.
 
 ==============================================================================
-UNINSTALL LANGUAGE SERVER                                   *LspUninstallServer*
+UNINSTALL LANGUAGE SERVER                                  *:LspUninstallServer*
 
 To uninstall Language Server, do |:LspUninstallServer|.
 >
