@@ -256,9 +256,7 @@
       "command": "elixir-ls",
       "url": "https://github.com/elixir-lsp/elixir-ls",
       "description": "A frontend-independent IDE \"smartness\" server for Elixir.",
-      "requires": [
-        "elixir"
-      ],
+      "requires": [],
       "root_uri_patterns": [
         "mix.exs"
       ],
