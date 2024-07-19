@@ -1387,6 +1387,22 @@
       ]
     },
     {
+      "command": "ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "A language server written in Rust and built into Ruff.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "A language server written in Rust and built into Ruff.",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
       "command": "ruff-lsp",
       "url": "https://github.com/charliermarsh/ruff-lsp",
       "description": "A Language Server Protocol implementation for Ruff.",

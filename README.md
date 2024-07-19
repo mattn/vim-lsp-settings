@@ -153,6 +153,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | pylsp-all (pylsp with dependencies) |    Yes    |      Yes      |
 | Python            | pylsp (pylsp without dependencies)  |    Yes    |      Yes      |
 | Python            | pylyzer                             |    Yes    |      Yes      |
+| Python            | ruff                                |    Yes    |      Yes      |
 | Python            | ruff-lsp                            |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
