@@ -948,6 +948,9 @@
       "requires": [
         "java"
       ],
+      "root_uri_patterns": [
+        "pom.xml"
+      ],
       "vim_plugin": {
         "extensions": [
           "kt"
