@@ -12,7 +12,7 @@ export OPAMROOT
 
 export OPAMYES=true
 opam init -a -n
-opam switch create . ocaml-base-compiler.4.14.1
+opam switch create . $(opam switch list | awk '/^→/{print $3}')
 eval "$(opam env)" 2>/dev/null
 opam install ocaml-lsp-server
 
