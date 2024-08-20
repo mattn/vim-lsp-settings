@@ -66,6 +66,14 @@
       ]
     }
   ],
+  "bzl": [
+    {
+      "command": "starpls",
+      "url": "https://github.com/withered-magic/starpls",
+      "description": "An LSP implementation for Starlark, the configuration language used by Bazel and Buck2.",
+      "requires": []
+    }
+  ],
   "c": [
     {
       "command": "clangd",
