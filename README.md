@@ -171,6 +171,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | SQL               | sql-language-server                 |    Yes    |      Yes      |
 | SQL               | sqls                                |    Yes    |      Yes      |
 | SQL               | plpgsql-server                      | UNIX Only |      Yes      |
+| Starlark          | starpls                             |    Yes    |      Yes      |
 | Scala             | Metals                              |    Yes    |      Yes      |
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
