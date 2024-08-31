@@ -161,6 +161,17 @@ g:lsp_settings_deny_local_keys
   This variable is specified name of settings like 'cmd' to drop items in the
   settings.
 
+                                                 *g:lsp_settings_filetype_xxx*
+g:lsp_settings_filetype_xxx
+  xxx is a filetype name like typescript with: >
+    g:lsp_settings_filetype_typescript
+<
+  This variable can specify default language server. If the variable is a
+  |string|, vim-lsp-settings load the langage server name. If the variable is
+  a |list|, all of the language server names are loaded.  If the variable have
+  one element and type of the element is |function|, vim-lsp-settings call it
+  and the result is evaluated lazy.
+
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
   contains the .vim-lsp-settings config directory.

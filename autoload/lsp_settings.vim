@@ -79,18 +79,14 @@ endfunction
 
 function! s:get_filetype_default(ft) abort
   let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
-  if type(l:default) ==# v:t_list
-    for l:i in range(len(l:default))
-      let l:V = l:default[l:i]
-      if type(l:V) ==# v:t_func
-        try
-          let l:default[l:i] = l:V()
-        catch
-          let l:default[l:i] = ''
-        endtry
-      endif
-    endfor
-    let g:['lsp_settings_filetype_' . a:ft] = l:default
+  if type(l:default) ==# v:t_list && len(l:default) == 1 && type(l:default[0]) == v:t_func
+    let l:V = l:default[0]
+    try
+      let l:default = l:V()
+      let g:['lsp_settings_filetype_' . a:ft] = l:default
+    catch
+      let l:default = ''
+    endtry
   endif
   return l:default
 endfunction
