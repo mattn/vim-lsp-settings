@@ -77,6 +77,24 @@ function! lsp_settings#executable(cmd) abort
   return 0
 endfunction
 
+function! s:get_filetype_default(ft) abort
+  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  if type(l:default) ==# v:t_list
+    for l:i in range(len(l:default))
+      let l:V = l:default[l:i]
+      if type(l:V) ==# v:t_func
+        try
+          let l:default[l:i] = l:V()
+        catch
+          let l:default[l:i] = ''
+        endtry
+      endif
+    endfor
+    let g:['lsp_settings_filetype_' . a:ft] = l:default
+  endif
+  return l:default
+endfunction
+
 function! s:vim_lsp_installer(ft, ...) abort
   let l:ft = tolower(get(split(a:ft, '\.'), 0, ''))
   let l:ft = empty(l:ft) ? '_' : l:ft
@@ -91,7 +109,7 @@ function! s:vim_lsp_installer(ft, ...) abort
     let l:servers += s:settings['_']
   endif
 
-  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  let l:default = s:get_filetype_default(a:ft)
 
   let l:name = get(a:000, 0, '')
   for l:conf in l:servers
@@ -519,7 +537,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
   endif
 
-  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  let l:default = s:get_filetype_default(a:ft)
 
   let l:found = 0
   let l:disabled = 0
