@@ -2137,6 +2137,14 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "aws-lsp-yaml",
+      "url": "https://github.com/aws/language-servers",
+      "description": "AWS related Language Servers",
+      "requires": [
+        "npm"
+      ]
     }
   ],
   "zig": [
