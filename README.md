@@ -202,6 +202,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
+| YAML              | aws-lsp-yaml                        |    Yes    |      Yes      |
 | ZIG               | zls                                 |    Yes    |      Yes      |
 | \*                | efm-langserver                      |    Yes    |      Yes      |
 
