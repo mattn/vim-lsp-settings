@@ -1048,6 +1048,14 @@
   ],
   "nix": [
     {
+      "command": "nil",
+      "url": "https://github.com/oxalica/nil",
+      "description": "Nix Language server, an incremental analysis assistant for writing in Nix",
+      "requires": [
+        "nix"
+      ]
+    },
+    {
       "command": "rnix-lsp",
       "url": "https://github.com/nix-community/rnix-lsp",
       "description": "Language server implementation for Nix",
