@@ -172,6 +172,13 @@ g:lsp_settings_filetype_xxx
   one element and type of the element is |function|, vim-lsp-settings call it
   and the result is evaluated lazy.
 
+					  *g:lsp_settings_use_install_file*
+g:lsp_settings_use_install_file
+  Default: 0
+  Set 0 Look for the executable file in the PATH environment variable and
+  execute it first if found.
+  Set 1 vim-lsp-settings installed executable if available
+
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that
   contains the .vim-lsp-settings config directory.

@@ -223,6 +223,35 @@ function! lsp_settings#get(name, key, default) abort
 endfunction
 
 function! lsp_settings#exec_path(cmd) abort
+
+  if get(g:, 'lsp_settings_use_install_file', 0) == 1
+    let l:exec_path = lsp_settings#find_from_install_dir(a:cmd)
+    if l:exec_path != ''
+      return l:exec_path
+    endif
+  endif
+
+  let l:exec_path = lsp_settings#find_from_path(a:cmd)
+  if l:exec_path != ''
+    return l:exec_path
+  endif
+
+  let l:exec_path = lsp_settings#find_from_extra_path(a:cmd)
+  if l:exec_path != ''
+    return l:exec_path
+  endif
+
+  if get(g:, 'lsp_settings_use_install_file', 0) == 0
+    let l:exec_path = lsp_settings#find_from_install_dir(a:cmd)
+    if l:exec_path != ''
+      return l:exec_path
+    endif
+  endif
+
+  return ''
+endfunction
+
+function! lsp_settings#find_from_path(cmd) abort
   let l:paths = []
   if has('win32')
     for l:path in split($PATH, ';')
@@ -249,16 +278,32 @@ function! lsp_settings#exec_path(cmd) abort
       endif
     endfor
   endif
+  return ''
+endfunction
 
+function! lsp_settings#find_from_extra_path(cmd) abort
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',') . ','
   endif
   if !has('win32')
-    let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
     return lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
   endif
-  let l:paths .= lsp_settings#servers_dir() . '\' . a:cmd
+  for l:ext in ['.exe', '.cmd', '.bat']
+    let l:path = globpath(l:paths, a:cmd . l:ext, 1)
+    if !empty(l:path)
+      return lsp_settings#utils#first_one(l:path)
+    endif
+  endfor
+  return ''
+endfunction
+
+function! lsp_settings#find_from_install_dir(cmd) abort
+  if !has('win32')
+    let l:paths = lsp_settings#servers_dir() . '/' . a:cmd
+    return lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
+  endif
+  let l:paths = lsp_settings#servers_dir() . '\' . a:cmd
   for l:ext in ['.exe', '.cmd', '.bat']
     let l:path = globpath(l:paths, a:cmd . l:ext, 1)
     if !empty(l:path)
