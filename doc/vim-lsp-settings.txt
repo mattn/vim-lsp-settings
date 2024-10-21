@@ -131,13 +131,13 @@ and put schemas property like below:
  }
 <
 
-					  *g:lsp_settings_enable_suggestions*
+                                           *g:lsp_settings_enable_suggestions*
 g:lsp_settings_enable_suggestions
   Default: 1
   Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
   Language Server" suggestion messages.
 
-					  *g:lsp_settings_servers_dir*
+                                                  *g:lsp_settings_servers_dir*
 g:lsp_settings_servers_dir
   Default:
       %LOCALAPPDATA%\vim-lsp-settings\servers (Windows)
@@ -145,7 +145,7 @@ g:lsp_settings_servers_dir
       $XDG_DATA_HOME/vim-lsp-settings/servers ($XDG_DATA_HOME defined Non-Windows)
   When value defined, store server file under these directory.
 
-					  *g:lsp_settings_global_settings_dir*
+                                          *g:lsp_settings_global_settings_dir*
 g:lsp_settings_global_settings_dir
   Default:
       %LOCALAPPDATA%\vim-lsp-settings (Windows)
