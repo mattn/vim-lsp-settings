@@ -99,6 +99,7 @@ filename() {
 
 # Search for local clangd in PATH
 if which "clangd" >/dev/null; then
+    clangd --version
     exit 0
 fi
 for llvm_version in $(seq 30 -1 9); do
