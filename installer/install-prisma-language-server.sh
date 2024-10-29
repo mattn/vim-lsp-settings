@@ -13,8 +13,9 @@ npm install "@prisma/engines"
 _DIR="$PWD"
 cd "node_modules/@prisma/engines"
 PRISMA_FMT_BASENAME="$(find . -name "prisma-fmt*")"
-test -x "$PRISMA_FMT_BASENAME"
 cd "$_DIR"
 
-ln -s "./node_modules/@prisma/engines/${PRISMA_FMT_BASENAME}" ./prisma-fmt
+if [ ! -x "$PRISMA_FMT_BASENAME" ]; then
+  ln -s "./node_modules/@prisma/engines/${PRISMA_FMT_BASENAME}" ./prisma-fmt
+fi
 "$(dirname "$0")/npm_install.sh" prisma-language-server @prisma/language-server

@@ -77,6 +77,20 @@ function! lsp_settings#executable(cmd) abort
   return 0
 endfunction
 
+function! s:get_filetype_default(ft) abort
+  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  if type(l:default) ==# v:t_list && len(l:default) == 1 && type(l:default[0]) == v:t_func
+    let l:V = l:default[0]
+    try
+      let l:default = l:V()
+      let g:['lsp_settings_filetype_' . a:ft] = l:default
+    catch
+      let l:default = ''
+    endtry
+  endif
+  return l:default
+endfunction
+
 function! s:vim_lsp_installer(ft, ...) abort
   let l:ft = tolower(get(split(a:ft, '\.'), 0, ''))
   let l:ft = empty(l:ft) ? '_' : l:ft
@@ -91,7 +105,7 @@ function! s:vim_lsp_installer(ft, ...) abort
     let l:servers += s:settings['_']
   endif
 
-  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  let l:default = s:get_filetype_default(a:ft)
 
   let l:name = get(a:000, 0, '')
   for l:conf in l:servers
@@ -469,6 +483,9 @@ endfunction
 
 function! lsp_settings#register_server(...) abort
   let l:name = a:000[0]['name']
+  if get(a:000[0], 'deprecated', v:false) ==# v:true
+    call lsp_settings#utils#warning(l:name . ' is deprecated')
+  endif
   let l:env = lsp_settings#get(l:name, 'env', {})
   if !empty(l:env)
     let a:000[0]['env'] = l:env
@@ -516,7 +533,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
   endif
 
-  let l:default = get(g:, 'lsp_settings_filetype_' . a:ft, '')
+  let l:default = s:get_filetype_default(a:ft)
 
   let l:found = 0
   let l:disabled = 0
