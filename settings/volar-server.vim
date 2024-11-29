@@ -2,9 +2,9 @@ function! s:get_current_ts_path() abort
   let ts_path = '/node_modules/typescript/lib'
 
   let project_dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json')
-  let tsserverlibrary_path = project_dir . ts_path
+  let tsserverlibrary_path = project_dir .. ts_path
 
-  let server_dir = lsp_settings#servers_dir() . '/volar-server'
+  let server_dir = lsp_settings#servers_dir() .. '/volar-server'
   let fallback_path = server_dir . ts_path
 
   let path = filereadable(tsserverlibrary_path) ? tsserverlibrary_path : fallback_path
@@ -51,6 +51,20 @@ function! s:on_lsp_buffer_enabled() abort
     let l:capabilities.renameProvider = {'prepareProvider': v:true}
     let l:capabilities.signatureHelpProvider = v:true
     let l:capabilities.workspaceSymbolProvider = v:true
+  endif
+
+  " check typescript-language-server
+  let ts_server_dir = lsp_settings#servers_dir() .. '/typescript-language-server'
+  let vtsls_server_dir = lsp_settings#servers_dir() .. '/vtsls'
+  if !isdirectory(ts_server_dir) && !isdirectory(vtsls_server_dir)
+    call lsp_settings#utils#warning('Please install typescript-language-server or vtsls to enable Vue support')
+  endif
+
+  if !exists('g:lsp_settings_filetype_vue') ||
+  \ index(g:lsp_settings_filetype_vue, 'volar-server') == -1 ||
+  \ (index(g:lsp_settings_filetype_vue, 'typescript-language-server') == -1 &&
+  \  index(g:lsp_settings_filetype_vue, 'vtsls') == -1)
+    call lsp_settings#utils#warning('''volar-server'' and one of ''typescript-language-server'' and ''vtsls'' should be included in g:lsp_settings_filetype_vue to enable Vue support')
   endif
 endfunction
 

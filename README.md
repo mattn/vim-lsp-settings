@@ -83,6 +83,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | ----------------- | ----------------------------------- | :-------: | :-----------: |
 | Apex/VisualForce  | apex-jorje-lsp                      |    Yes    |      Yes      |
 | Astro             | astro-ls                            |    Yes    |      Yes      |
+| Astro             | biome                               |    Yes    |      Yes      |
 | Bash              | bash-language-server                |    Yes    |      Yes      |
 | C#                | omnisharp                           |    Yes    |      Yes      |
 | C/C++             | clangd                              |    Yes    |      Yes      |
@@ -110,20 +111,24 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Groovy            | groovy-language-server              |    Yes    |      Yes      |
 | Haskell           | haskell-ide-engine                  |    No     |      No       |
 | Haskell           | haskell-language-server             |    No     |      No       |
+| Helm              | helm-ls                             |    Yes    |      Yes      |
 | HTML              | html-languageserver                 |    Yes    |      Yes      |
 | HTML              | angular-language-server             |    Yes    |      Yes      |
 | HTML              | tailwindcss-intellisense            |    Yes    |      Yes      |
 | Hy                | hyuga                               |    Yes    |      No       |
 | JSON              | json-languageserver                 |    Yes    |      Yes      |
 | JSON              | rome                                |    Yes    |      Yes      |
+| JSON              | biome                               |    Yes    |      Yes      |
 | Jsonnet           | jsonnet-language-server             |    Yes    |      Yes      |
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
 | Java              | java-language-server                |    No     |      Yes      |
 | JavaScript        | typescript-language-server          |    Yes    |      Yes      |
+| JavaScript        | vtsls                               |    Yes    |      Yes      |
 | JavaScript        | javascript-typescript-stdio         |    Yes    |      Yes      |
 | JavaScript        | rome                                |    Yes    |      Yes      |
 | JavaScript        | flow                                |    Yes    |      Yes      |
 | JavaScript        | eslint-language-server              |    Yes    |      Yes      |
+| JavaScript        | biome                               |    Yes    |      Yes      |
 | Julia             | LanguageServer.jl                   |    Yes    |      No       |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
 | Lisp              | cl-lsp                              |    Yes    |      No       |
@@ -133,7 +138,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Markdown          | Marksman                            |    Yes    |      Yes      |
 | Nim               | nimls                               |    No     |      No       |
 | Nix               | nixd                                |    Yes    |      Yes      |
-| Nix               | rnix-lsp                            |    Yes    |      Yes      |
+| Nix               | nil                                 |    Yes    |      Yes      |
 | PHP               | intelephense                        |    Yes    |      Yes      |
 | PHP               | psalm-language-server               |    Yes    |      Yes      |
 | OCaml             | ocaml-lsp                           | UNIX Only |      Yes      |
@@ -147,6 +152,8 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | pyright-langserver                  |    Yes    |      Yes      |
 | Python            | pylsp-all (pylsp with dependencies) |    Yes    |      Yes      |
 | Python            | pylsp (pylsp without dependencies)  |    Yes    |      Yes      |
+| Python            | pylyzer                             |    Yes    |      Yes      |
+| Python            | ruff                                |    Yes    |      Yes      |
 | Python            | ruff-lsp                            |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
@@ -164,10 +171,13 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | SQL               | sql-language-server                 |    Yes    |      Yes      |
 | SQL               | sqls                                |    Yes    |      Yes      |
 | SQL               | plpgsql-server                      | UNIX Only |      Yes      |
+| Starlark          | starpls                             |    Yes    |      Yes      |
 | Scala             | Metals                              |    Yes    |      Yes      |
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
+| Svelte            | biome                               |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
+| SystemVerilog     | verible-verilog-ls                  | UNIX Only |      Yes      |
 | SystemVerilog     | svls                                |    Yes    |      Yes      |
 | TeX               | texlab                              |    Yes    |      Yes      |
 | TeX               | digestif                            |    Yes    |      No       |
@@ -176,19 +186,24 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TOML              | taplo-lsp                           |    No     |      Yes      |
 | TTCN-3            | ntt                                 |    Yes    |      Yes      |
 | TypeScript        | typescript-language-server          |    Yes    |      Yes      |
+| TypeScript        | vtsls                               |    Yes    |      Yes      |
 | TypeScript        | deno                                |    Yes    |      Yes      |
 | TypeScript        | rome                                |    Yes    |      Yes      |
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
+| TypeScript        | biome                               |    Yes    |      Yes      |
 | Typst             | typst-lsp                           |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
+| Verilog           | verible-verilog-ls                  | UNIX Only |      Yes      |
 | Veryl             | veryl-ls                            |    Yes    |      Yes      |
-| Vue               | volar-server                        |    Yes    |      Yes      |
+| Vue               | volar-server (Vue Language Tools)   |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
+| Vue               | biome                               |    Yes    |      Yes      |
 | V                 | v-analyzer                          |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
 | YAML              | yaml-language-server                |    Yes    |      Yes      |
+| YAML              | aws-lsp-yaml                        |    Yes    |      Yes      |
 | YANG              | yang-lsp                            |    Yes    |      Yes      |
 | ZIG               | zls                                 |    Yes    |      Yes      |
 | \*                | efm-langserver                      |    Yes    |      Yes      |
@@ -202,6 +217,70 @@ There is a Linux OS/version that does not run the locally installed `clangd` due
 ### rls (Rust)
 
 If you installed `rls` already, you can use `rls` without configurations. But if you have not installed `rls` yet, you can install it by following [these instructions](https://github.com/rust-lang/rls#setup).
+
+### [rust-analyzer](https://rust-analyzer.github.io/)
+
+If you want to configure many of the [`rust-analyzer` configuration
+options](https://rust-analyzer.github.io/manual.html#configuration), you need
+to you insert a `initialization_options` dictionary between `rust-analyzer` and
+subdictionaries (`cargo`, `completion`, `procMacro`, etc.) in your
+`.vim-lsp-settings/settings.json`.
+```json
+{
+    "rust-analyzer": {
+        "initialization_options": {
+            "server.extraEnv": {
+                "RUSTUP_TOOLCHAIN": "nightly"
+            },
+            "cargo": {
+                "target": "aarch64-apple-ios-sim"
+            },
+            "completion": { "autoimport": {"enable": false } },
+            "procMacro": { "enable": true }
+        }
+    }
+}
+```
+
+#### [LSP Extensions Support](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md)
+
+| Extension Name                  | Status |
+| ------------------------------- | ------ |
+| initializationOptions           | ❓     |
+| Snippet TextEdit                | ❌     |
+| CodeAction Groups               | ❌     |
+| Parent Module                   | ❌     |
+| Join Lines                      | ✔️     |
+| On Enter                        | ❌     |
+| Structural Search Replace (SSR) | ❌     |
+| Matching Brace                  | ✔️     |
+| Runnables                       | ❌     |
+| Test explorer                   | ❌     |
+| Open External Documentation     | ✔️     |
+| Analyzer Status                 | ✔️     |
+| Reload Workspace                | ✔️     |
+| Rebuild proc-macros             | ❌     |
+| Unindexed Project               | ❌     |
+| Server Status                   | ❌     |
+| Syntax Tree                     | ❌     |
+| View Hir                        | ❌     |
+| View Mir                        | ❌     |
+| Interpret Function              | ❌     |
+| View File Text                  | ❌     |
+| View ItemTree                   | ❌     |
+| View Crate Graph                | ❌     |
+| Shuffle Crate Graph             | ❌     |
+| Expand Macro                    | ✔️     |
+| Hover Actions                   | ❌     |
+| Open Cargo.toml                 | ✔️     |
+| Related tests                   | ❌     |
+| Hover Range                     | ❌     |
+| Move Item                       | ❌     |
+| Workspace Symbols Filtering     | ❌     |
+| Client Commands                 | ❌     |
+| Colored Diagnostic Output       | ❌     |
+| Dependency Tree                 | ❌     |
+| View Recursive Memory Layout    | ❌     |
 
 ### deno (TypeScript)
 
@@ -306,6 +385,21 @@ To use older version `golangci-lint`, please run `:LspSettingsGlobalEdit` and pu
 }
 ```
 
+### [kotlin-language-server](https://github.com/fwcd/kotlin-language-server)
+
+To resolve issue about proper '-jvm-target' (INLINE_FROM_HIGHER_PLATFORM) [read
+more](https://github.com/fwcd/kotlin-language-server/issues/72)
+
+```vim
+let g:lsp_settings = {
+\  'kotlin-language-server': {
+\    'workspace_config': {
+\      'kotlin': {'compiler': {'jvm': {'target': '17'}}}
+\    }
+\  }
+\}
+```
+
 ### [rubocop lsp mode (Ruby)](https://docs.rubocop.org/rubocop/usage/lsp.html)
 
 To use rubocop-lsp-mode, you need to install rubocop in your Ruby project using bundler.
@@ -315,6 +409,14 @@ To use rubocop-lsp-mode, you need to install rubocop in your Ruby project using 
 To use sorbet, you need to install rubocop in your Ruby project using bundler.
 Also, [Watchman](https://facebook.github.io/watchman/) is required to watch file changes.
 For more details, please see [Sorbet](https://sorbet.org/docs/vscode#installing-and-enabling-the-sorbet-extension) and [Watchman](https://facebook.github.io/watchman/docs/install.html) documentations.
+
+### [volar (Vue Language Tools)](https://github.com/vuejs/language-tools)
+
+To enable full Vue support, both `typescript-language-server` and `volar-server` should be installed and enabled in `vue` filetype.
+
+```vim
+let g:lsp_settings_filetype_vue = ['typescript-language-server', 'volar-server']
+```
 
 ## Extra Configurations
 

@@ -1,4 +1,6 @@
 #!/bin/sh
+
+set -e
 set -o errexit
 
 git clone --depth=1 https://github.com/puppetlabs/puppet-editor-services.git .

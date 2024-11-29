@@ -43,13 +43,13 @@ NeoBundle: add below to .vimrc
 
 vim-plug: add below to .vimrc
 >
- Plug 'mattn/vim-lsp-settings' to .vimrc
+ Plug 'mattn/vim-lsp-settings'
 <
  Run :PlugInstall
 
 
 ==============================================================================
-INSTALL LANGUAGE SERVER                                       *LspInstallServer*
+INSTALL LANGUAGE SERVER                                      *:LspInstallServer*
 
 To install Language Server, you need to open the source file. The filetype
 should be set correctly. Then |:LspInstallServer|. |:LspInstallServer| can be
@@ -60,7 +60,7 @@ taken an argument for the name of Language Server installable.
 If you want to update Language Server, please do |:LspInstallServer| again.
 
 ==============================================================================
-UNINSTALL LANGUAGE SERVER                                   *LspUninstallServer*
+UNINSTALL LANGUAGE SERVER                                  *:LspUninstallServer*
 
 To uninstall Language Server, do |:LspUninstallServer|.
 >
@@ -131,13 +131,13 @@ and put schemas property like below:
  }
 <
 
-					  *g:lsp_settings_enable_suggestions*
+                                           *g:lsp_settings_enable_suggestions*
 g:lsp_settings_enable_suggestions
   Default: 1
   Set 0 only if you'd like to opt-out "Please do :LspInstallServer to enable
   Language Server" suggestion messages.
 
-					  *g:lsp_settings_servers_dir*
+                                                  *g:lsp_settings_servers_dir*
 g:lsp_settings_servers_dir
   Default:
       %LOCALAPPDATA%\vim-lsp-settings\servers (Windows)
@@ -145,7 +145,7 @@ g:lsp_settings_servers_dir
       $XDG_DATA_HOME/vim-lsp-settings/servers ($XDG_DATA_HOME defined Non-Windows)
   When value defined, store server file under these directory.
 
-					  *g:lsp_settings_global_settings_dir*
+                                          *g:lsp_settings_global_settings_dir*
 g:lsp_settings_global_settings_dir
   Default:
       %LOCALAPPDATA%\vim-lsp-settings (Windows)
@@ -160,6 +160,17 @@ g:lsp_settings_deny_local_keys
   dangerous when the git repository contains the directory same named.
   This variable is specified name of settings like 'cmd' to drop items in the
   settings.
+
+                                                 *g:lsp_settings_filetype_xxx*
+g:lsp_settings_filetype_xxx
+  xxx is a filetype name like typescript with: >
+    g:lsp_settings_filetype_typescript
+<
+  This variable can specify default language server. If the variable is a
+  |string|, vim-lsp-settings load the langage server name. If the variable is
+  a |list|, all of the language server names are loaded.  If the variable have
+  one element and type of the element is |function|, vim-lsp-settings call it
+  and the result is evaluated lazy.
 
 :LspSettingsLocalEdit [root]                           *:LspSettingsLocalEdit*
   Edit local settings. Accepts an optional explicit [root] directory that

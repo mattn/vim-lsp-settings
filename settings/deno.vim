@@ -47,7 +47,7 @@ augroup vim_lsp_settings_deno
       \         },
       \       },
       \     },
-      \     'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
+      \     'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), "deno.json")) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), "deno.json") : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
       \     'internalDebug': lsp_settings#get('deno', 'internalDebug', v:false),
       \   },
       \   'typescript': {
@@ -120,6 +120,26 @@ function! s:open_new_buffer(ctx, server, type, data) abort
     execute 'call cursor(' . l:line . ',' . l:col . ')'
 endfunction
 
+function! s:normalize_target_uris(result) abort
+    " When run `:LspDenoDefinition` at Deno's built-in function like `console`
+    " `targetUri` is `deno:/asset/lib.deno.shared_globals.d.ts`.
+    " Run `:LspDenoDefinition` again,
+    " Deno targetUri is `file:///path/to/deno/project/deno%3A/asset/lib.deno.shared_globals.d.ts`
+    " and it contains extra file path before `deno:/`
+    " Remove unecessary path from all targetUri for display the definition.
+    for item in a:result
+        if !has_key(item, 'targetUri')
+            continue
+        endif
+        let l:target_uri = item['targetUri']
+        if match(l:target_uri, '^file:///.*/deno%3A/.*') != -1
+            let l:deno_path = matchstr(l:target_uri, 'deno%3A/.*')
+            let item['targetUri'] = substitute(l:deno_path, 'deno%3A', 'deno:', '')
+        endif
+    endfor
+    return a:result
+endfunction
+
 function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter, list, last_command_id, jump_if_one, mods, in_preview}
     "" Based on vim-lsp/autoload/lsp/ui/vim.vim s:handle_location()
     if a:ctx['last_command_id'] != lsp#_last_command()
@@ -130,7 +150,13 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
     if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
         call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': ' . lsp#client#error_message(a:data['response']))
         return
+    elseif type(a:data['response']['result']) == type(v:null)
+        " e.g.
+        "   `import` response v:null
+        call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': response is null')
+        return
     else
+        let a:data['response']['result'] = s:normalize_target_uris(a:data['response']['result'])
         let a:ctx['list'] = a:ctx['list'] + lsp#utils#location#_lsp_to_vim_list(a:data['response']['result'])
     endif
 
@@ -273,37 +299,40 @@ function! s:status(in_preview, ...) abort
 endfunction
 
 function! s:handle_deno_cache(data) abort
-    if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
+    if lsp#client#is_error(a:data['response']) || get(a:data['response'], 'result') != v:true
         redraw!
-        call lsp#utils#error('deno v1.7.5 or later is required to use cache')
+        call lsp#utils#error('deno v1.32.2 or later is required to use cache')
         return
     endif
-    if a:data['response']['result'] == v:true
-        " Cache file would be enabled after reload buffer.
-        let l:curpos = getcurpos()
-        execute 'edit ' . expand('%:p')
-        call setpos('.', l:curpos)
-        echo 'Cache file installed'
-    endif
+    " Cache file would be enabled after reload buffer.
+    let l:curpos = getcurpos()
+    execute 'edit ' . expand('%:p')
+    call setpos('.', l:curpos)
+    echo 'Cache file installed'
 endfunction
 
 function! s:handle_reload_import_registries(data) abort
-    if a:data['response']['result'] == v:true
-        echo 'Import registries reloaded'
+    if lsp#client#is_error(a:data['response']) || get(a:data['response'], 'result') != v:true
+        redraw!
+        call lsp#utils#error('deno v1.37.0 or later is required to use import registries')
+        return
     endif
+    echo 'Import registries reloaded'
 endfunction
 
 function! s:cache() abort
     let l:is_download_cache = input('Download all cache files?(y/n) ', 'y')
     if l:is_download_cache =~# 'y'
+      let l:specifiers = []
+      let l:referrer = lsp#utils#get_buffer_uri()
       call lsp#send_request('deno', {
-         \ 'method': 'deno/cache',
-         \ 'params': {
-         \   'referrer': lsp#get_text_document_identifier(),
-         \   'uris': [],
-         \ },
-         \ 'on_notification': function('s:handle_deno_cache', [])
-         \ })
+          \ 'method': 'workspace/executeCommand',
+          \ 'params': {
+          \   'command': 'deno.cache',
+          \   'arguments': [l:specifiers, l:referrer],
+          \ },
+          \ 'on_notification': function('s:handle_deno_cache', [])
+          \ })
     endif
 endfunction
 
@@ -311,10 +340,9 @@ function! s:reload_import_registries() abort
   let l:is_download_cache = input('Do you reload import registries?(y/n) ', 'y')
   if l:is_download_cache =~# 'y'
     call lsp#send_request('deno', {
-        \ 'method': 'deno/reloadImportRegistries',
+        \ 'method': 'workspace/executeCommand',
         \ 'params': {
-        \   'referrer': lsp#get_text_document_identifier(),
-        \   'uris': [],
+        \   'command': 'deno.reloadImportRegistries',
         \ },
         \ 'on_notification': function('s:handle_reload_import_registries', [])
         \ })

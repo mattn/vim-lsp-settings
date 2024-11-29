@@ -54,6 +54,24 @@
         ],
         "name": "wuelnerdotexe/vim-astro"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
+    }
+  ],
+  "bzl": [
+    {
+      "command": "starpls",
+      "url": "https://github.com/withered-magic/starpls",
+      "description": "An LSP implementation for Starlark, the configuration language used by Bazel and Buck2.",
+      "requires": []
     }
   ],
   "c": [
@@ -246,9 +264,7 @@
       "command": "elixir-ls",
       "url": "https://github.com/elixir-lsp/elixir-ls",
       "description": "A frontend-independent IDE \"smartness\" server for Elixir.",
-      "requires": [
-        "elixir"
-      ],
+      "requires": [],
       "root_uri_patterns": [
         "mix.exs"
       ],
@@ -348,6 +364,23 @@
       "url": "https://godotengine.org/",
       "description": "Godot Engine – Multi-platform 2D and 3D game engine",
       "requires": []
+    }
+  ],
+  "gleam": [
+    {
+      "command": "gleam",
+      "url": "https://gleam.run/",
+      "description": "Gleam is a friendly language for building type-safe systems that scale!",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "gleam"
+        ],
+        "name": "gleam-lang/gleam.vim"
+      },
+      "root_uri_patterns": [
+        "gleam.toml"
+      ]
     }
   ],
   "glsl": [
@@ -533,6 +566,14 @@
       ]
     }
   ],
+  "helm": [
+    {
+      "command": "helm-ls",
+      "url": "https://github.com/mrjosh/helm-ls",
+      "description": "Helm-ls is a helm language server protocol LSP implementation.",
+      "requires": []
+    }
+  ],
   "html": [
     {
       "command": "vscode-html-language-server",
@@ -601,7 +642,7 @@
         "java"
       ],
       "config": {
-        "refresh_pattern": "\\([.a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
       },
       "root_uri_patterns": [
         "pom.xml",
@@ -627,6 +668,18 @@
       "command": "typescript-language-server",
       "url": "https://github.com/typescript-language-server/typescript-language-server",
       "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
       "requires": [
         "npm"
       ],
@@ -698,6 +751,16 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "javascriptreact": [
@@ -710,6 +773,18 @@
       ],
       "root_uri_patterns": [
         "package.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
       ]
     },
     {
@@ -767,6 +842,16 @@
       "root_uri_patterns": [
         "package.json"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "json": [
@@ -799,6 +884,16 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "jsonc": [
@@ -815,6 +910,16 @@
         ],
         "name": "neoclide/jsonc.vim"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "jsonnet": [
@@ -851,6 +956,9 @@
       "requires": [
         "java"
       ],
+      "root_uri_patterns": [
+        "pom.xml"
+      ],
       "vim_plugin": {
         "extensions": [
           "kt"
@@ -860,6 +968,17 @@
     }
   ],
   "less": [
+    {
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
     {
       "command": "css-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
@@ -928,6 +1047,14 @@
     }
   ],
   "nix": [
+    {
+      "command": "nil",
+      "url": "https://github.com/oxalica/nil",
+      "description": "Nix Language server, an incremental analysis assistant for writing in Nix",
+      "requires": [
+        "nix"
+      ]
+    },
     {
       "command": "rnix-lsp",
       "url": "https://github.com/nix-community/rnix-lsp",
@@ -1247,6 +1374,22 @@
       ]
     },
     {
+      "command": "pylyzer",
+      "url": "https://github.com/mtshiba/pylyzer",
+      "description": "`pylyzer` is a static code analyzer / language server for Python, written in Rust.",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
+      "command": "pylyzer",
+      "url": "https://github.com/mtshiba/pylyzer",
+      "description": "`pylyzer` is a static code analyzer / language server for Python, written in Rust.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
       "command": "jedi-language-server",
       "url": "https://github.com/pappasam/jedi-language-server",
       "description": "A Python language server exclusively for Jedi.",
@@ -1258,6 +1401,22 @@
       "command": "jedi-language-server",
       "url": "https://github.com/pappasam/jedi-language-server",
       "description": "A Python language server exclusively for Jedi.",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
+      "command": "ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "A language server written in Rust and built into Ruff.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "A language server written in Rust and built into Ruff.",
       "requires": [
         "python3"
       ]
@@ -1416,6 +1575,17 @@
   ],
   "sass": [
     {
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
+    {
       "command": "css-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
       "description": "Binary version published on npm of vscode-css-languageserver extracted from VSCode tree",
@@ -1425,6 +1595,17 @@
     }
   ],
   "scss": [
+    {
+      "command": "vscode-css-language-server",
+      "url": "https://github.com/hrsh7th/vscode-langservers-extracted",
+      "description": "HTML/CSS/JSON language servers extracted from vscode.",
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    },
     {
       "command": "css-languageserver",
       "url": "https://github.com/vscode-langservers/vscode-css-languageserver-bin",
@@ -1517,6 +1698,16 @@
       "requires": [
         "npm"
       ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "swift": [
@@ -1543,6 +1734,12 @@
     }
   ],
   "systemverilog": [
+    {
+      "command": "verible-verilog-ls",
+      "url": "https://github.com/chipsalliance/verible/tree/master/verilog/tools/ls",
+      "description": "A (System)Verilog language server",
+      "requires": []
+    },
     {
       "command": "svls",
       "url": "https://github.com/dalance/svls",
@@ -1634,6 +1831,18 @@
       ]
     },
     {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
       "command": "eslint-language-server",
       "url": "https://www.npmjs.com/package/eslint-language-server",
       "description": "eslint language server",
@@ -1668,6 +1877,16 @@
       ],
       "root_uri_patterns": [
         "package.json"
+      ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
       ]
     }
   ],
@@ -1685,6 +1904,18 @@
       ]
     },
     {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
       "command": "eslint-language-server",
       "url": "https://www.npmjs.com/package/eslint-language-server",
       "description": "eslint language server",
@@ -1719,6 +1950,16 @@
       ],
       "root_uri_patterns": [
         "package.json"
+      ]
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
       ]
     }
   ],
@@ -1746,6 +1987,14 @@
       "requires": [
         "valac"
       ]
+    }
+  ],
+  "verilog": [
+    {
+      "command": "verible-verilog-ls",
+      "url": "https://github.com/chipsalliance/verible/tree/master/verilog/tools/ls",
+      "description": "A (System)Verilog language server",
+      "requires": []
     }
   ],
   "veryl": [
@@ -1813,8 +2062,8 @@
   "vue": [
     {
       "command": "volar-server",
-      "url": "https://github.com/johnsoncodehk/volar",
-      "description": "Explore high-performance tooling for Vue",
+      "url": "https://github.com/vuejs/language-tools",
+      "description": "High-performance Vue language tooling based-on Volar.js",
       "config": {
         "refresh_pattern": "\\([a-zA-Z0-9_-]\\+\\|/\\|\\k\\+\\)$"
       },
@@ -1830,6 +2079,30 @@
         ],
         "name": "leafOfTree/vim-vue-plugin"
       }
+    },
+    {
+      "command": "typescript-language-server",
+      "url": "https://github.com/typescript-language-server/typescript-language-server",
+      "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
+    },
+    {
+      "command": "vtsls",
+      "url": "https://github.com/yioneko/vtsls",
+      "description": "LSP wrapper for typescript extension of vscode",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
     },
     {
       "command": "vls",
@@ -1850,6 +2123,16 @@
         ],
         "name": "posva/vim-vue"
       }
+    },
+    {
+      "command": "biome",
+      "url": "https://biomejs.dev",
+      "description": "Toolchain of the Web.",
+      "requires": [],
+      "root_uri_patterns": [
+        "biome.json",
+        "biome.jsonc"
+      ]
     }
   ],
   "xml": [
@@ -1867,6 +2150,14 @@
       "command": "yaml-language-server",
       "url": "https://github.com/redhat-developer/yaml-language-server",
       "description": "Language Server for Yaml Files",
+      "requires": [
+        "npm"
+      ]
+    },
+    {
+      "command": "aws-lsp-yaml",
+      "url": "https://github.com/aws/language-servers",
+      "description": "AWS related Language Servers",
       "requires": [
         "npm"
       ]
