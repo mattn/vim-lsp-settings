@@ -10,5 +10,6 @@ augroup vim_lsp_settings_rnix_lsp
       \ 'config': lsp_settings#get('rnix-lsp', 'config', lsp_settings#server_config('rnix-lsp')),
       \ 'workspace_config': lsp_settings#get('rnix-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('rnix-lsp', 'semantic_highlight', {}),
+      \ 'deprecated': v:true,
       \ }
 augroup END

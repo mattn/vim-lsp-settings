@@ -1048,6 +1048,14 @@
   ],
   "nix": [
     {
+      "command": "nil",
+      "url": "https://github.com/oxalica/nil",
+      "description": "Nix Language server, an incremental analysis assistant for writing in Nix",
+      "requires": [
+        "nix"
+      ]
+    },
+    {
       "command": "rnix-lsp",
       "url": "https://github.com/nix-community/rnix-lsp",
       "description": "Language server implementation for Nix",
@@ -2153,6 +2161,27 @@
       "requires": [
         "npm"
       ]
+    }
+  ],
+  "yang": [
+    {
+      "command": "yang-lsp",
+      "url": "https://github.com/TypeFox/yang-lsp",
+      "description": "Language Server for YANG Files",
+      "requires": [
+        "java"
+      ],
+      "root_uri_patterns": [
+        ".git",
+        ".git/",
+        "yang.settings"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "yang"
+        ],
+        "name": "nathanalderson/yang.vim"
+      }
     }
   ],
   "zig": [

@@ -120,6 +120,26 @@ function! s:open_new_buffer(ctx, server, type, data) abort
     execute 'call cursor(' . l:line . ',' . l:col . ')'
 endfunction
 
+function! s:normalize_target_uris(result) abort
+    " When run `:LspDenoDefinition` at Deno's built-in function like `console`
+    " `targetUri` is `deno:/asset/lib.deno.shared_globals.d.ts`.
+    " Run `:LspDenoDefinition` again,
+    " Deno targetUri is `file:///path/to/deno/project/deno%3A/asset/lib.deno.shared_globals.d.ts`
+    " and it contains extra file path before `deno:/`
+    " Remove unecessary path from all targetUri for display the definition.
+    for item in a:result
+        if !has_key(item, 'targetUri')
+            continue
+        endif
+        let l:target_uri = item['targetUri']
+        if match(l:target_uri, '^file:///.*/deno%3A/.*') != -1
+            let l:deno_path = matchstr(l:target_uri, 'deno%3A/.*')
+            let item['targetUri'] = substitute(l:deno_path, 'deno%3A', 'deno:', '')
+        endif
+    endfor
+    return a:result
+endfunction
+
 function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter, list, last_command_id, jump_if_one, mods, in_preview}
     "" Based on vim-lsp/autoload/lsp/ui/vim.vim s:handle_location()
     if a:ctx['last_command_id'] != lsp#_last_command()
@@ -130,7 +150,13 @@ function! s:handle_deno_location(ctx, server, type, data) abort "ctx = {counter,
     if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
         call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': ' . lsp#client#error_message(a:data['response']))
         return
+    elseif type(a:data['response']['result']) == type(v:null)
+        " e.g.
+        "   `import` response v:null
+        call lsp#utils#error('Failed to retrieve '. a:type . ' for ' . a:server . ': response is null')
+        return
     else
+        let a:data['response']['result'] = s:normalize_target_uris(a:data['response']['result'])
         let a:ctx['list'] = a:ctx['list'] + lsp#utils#location#_lsp_to_vim_list(a:data['response']['result'])
     endif
 
