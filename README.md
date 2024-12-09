@@ -192,6 +192,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
 | TypeScript        | biome                               |    Yes    |      Yes      |
 | Typst             | typst-lsp                           |    Yes    |      Yes      |
+| Typst             | tinymist                            |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
 | Vala              | vala-language-server                |    No     |      No       |
 | Verilog           | verible-verilog-ls                  | UNIX Only |      Yes      |
