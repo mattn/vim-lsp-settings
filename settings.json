@@ -1969,6 +1969,12 @@
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
       "requires": []
+    },
+    {
+      "command": "tinymist",
+      "url": "https://github.com/Myriad-Dreamin/tinymist",
+      "description": "An integrated language service for Typst",
+      "requires": []
     }
   ],
   "typst": [
@@ -1976,6 +1982,12 @@
       "command": "typst-lsp",
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
+      "requires": []
+    },
+    {
+      "command": "tinymist",
+      "url": "https://github.com/Myriad-Dreamin/tinymist",
+      "description": "An integrated language service for Typst",
       "requires": []
     }
   ],
