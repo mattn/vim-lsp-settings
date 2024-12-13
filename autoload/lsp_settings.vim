@@ -328,7 +328,8 @@ endfunction
 function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
   let l:installers = []
 
-  for l:ft in split(&filetype . '.', '\.', 1)
+  let l:filetype = getcmdwintype() !=# '' && getcmdtype() ==# '' ? getbufvar('#', '&filetype') : &filetype
+  for l:ft in split(l:filetype . '.', '\.', 1)
     let l:ft = tolower(empty(l:ft) ? '_' : l:ft)
     if !has_key(s:settings, l:ft)
       continue
