@@ -156,6 +156,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | ruff                                |    Yes    |      Yes      |
 | Python            | ruff-lsp                            |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
+| Qml               | qmlls                               |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
 | Racket            | racket-lsp                          |    Yes    |      No       |
 | Reason            | reason-language-server              |    Yes    |      Yes      |
@@ -400,6 +401,20 @@ let g:lsp_settings = {
 \  }
 \}
 ```
+### [qmlls](https://doc.qt.io/qt-6/qtqml-tooling-qmlls.html)
+
+To use the language server you need a .qmlls.ini, which can be generated
+automatically. Additionally, you have to configure your the qml include
+directories from the qt install root.
+```vim
+ let g:lsp_settings = {
+ \  'qmlls': {
+ \    'args': ['-I', '[QTROOT]/qml'],
+ \  },
+ \}
+
+ By default, the qmlls server will search the QML_IMPORT PATH (-E option).
+ ```
 
 ### [rubocop lsp mode (Ruby)](https://docs.rubocop.org/rubocop/usage/lsp.html)
 
