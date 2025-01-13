@@ -1439,15 +1439,15 @@
     }
   ],
   "qml": [
-      {
-          "command": "qmlls",
-          "url" : "https://github.com/qt/qtdeclarative",
-          "description": "An implementation of the Language Server Protocol for qml/qmljs",
-          "requires": [],
-          "root_uri_patterns": [
-            ".qmlls.ini"
-          ]
-      }
+    {
+      "command": "qmlls",
+      "url" : "https://github.com/qt/qtdeclarative",
+      "description": "An implementation of the Language Server Protocol for qml/qmljs",
+      "requires": [],
+      "root_uri_patterns": [
+        ".qmlls.ini"
+      ]
+    }
   ],
   "r": [
     {
