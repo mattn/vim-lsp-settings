@@ -209,6 +209,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | YANG              | yang-lsp                            |    Yes    |      Yes      |
 | ZIG               | zls                                 |    Yes    |      Yes      |
 | \*                | efm-langserver                      |    Yes    |      Yes      |
+| \*                | typos-lsp                           |    Yes    |      Yes      |
 
 ## Notes
 

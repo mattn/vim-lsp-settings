@@ -9,6 +9,13 @@
       "requires": [
         "go"
       ]
+    },
+    {
+      "command": "typos-lsp",
+      "description": "typos language server",
+      "url": "https://github.com/tekumara/typos-lsp",
+      "disabled": true,
+      "requires": []
     }
   ],
   "apex": [

@@ -6938,6 +6938,12 @@
       "description": "Tab data for a LinUtil",
       "fileMatch": ["**/*linutil*/**/tab_data.toml"],
       "url": "https://json.schemastore.org/linutil-tab-data.json"
+    },
+    {
+      "name": "typos",
+      "description": "typos configuration file",
+      "fileMatch": ["typos.toml", "_typos.toml", ".typos.toml"],
+      "url": "https://raw.githubusercontent.com/crate-ci/typos/master/config.schema.json"
     }
   ]
 }
