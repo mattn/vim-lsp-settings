@@ -1981,6 +1981,16 @@
       ]
     }
   ],
+  "typespec": [
+    {
+      "command": "tsp-server",
+      "url": "https://github.com/microsoft/typespec",
+      "description": "TypeSpec Language Server",
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "typ": [
     {
       "command": "typst-lsp",
