@@ -9,6 +9,13 @@
       "requires": [
         "go"
       ]
+    },
+    {
+      "command": "typos-lsp",
+      "description": "typos language server",
+      "url": "https://github.com/tekumara/typos-lsp",
+      "disabled": true,
+      "requires": []
     }
   ],
   "apex": [
@@ -1438,6 +1445,17 @@
       ]
     }
   ],
+  "qml": [
+    {
+      "command": "qmlls",
+      "url" : "https://github.com/qt/qtdeclarative",
+      "description": "An implementation of the Language Server Protocol for qml/qmljs",
+      "requires": [],
+      "root_uri_patterns": [
+        ".qmlls.ini"
+      ]
+    }
+  ],
   "r": [
     {
       "command": "r-languageserver",
@@ -1969,6 +1987,12 @@
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
       "requires": []
+    },
+    {
+      "command": "tinymist",
+      "url": "https://github.com/Myriad-Dreamin/tinymist",
+      "description": "An integrated language service for Typst",
+      "requires": []
     }
   ],
   "typst": [
@@ -1976,6 +2000,12 @@
       "command": "typst-lsp",
       "url": "https://github.com/nvarner/typst-lsp",
       "description": "Language server for Typst",
+      "requires": []
+    },
+    {
+      "command": "tinymist",
+      "url": "https://github.com/Myriad-Dreamin/tinymist",
+      "description": "An integrated language service for Typst",
       "requires": []
     }
   ],
