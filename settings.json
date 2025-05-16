@@ -1589,6 +1589,18 @@
       "root_uri_patterns": [
         "Cargo.toml"
       ]
+    },
+    {
+      "command": "bacon-ls",
+      "url": "https://github.com/crisidev/bacon-ls",
+      "description": "A Language Server for Rust using Bacon diagnostics",
+      "requires": [
+        "cargo"
+      ],
+      "root_uri_patterns": [
+        "bacon.toml",
+        "Cargo.lock"
+      ]
     }
   ],
   "sass": [
