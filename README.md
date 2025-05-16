@@ -168,6 +168,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Ruby              | sorbet                              |    Yes    |      No       |
 | Rust              | rls                                 |    Yes    |      No       |
 | Rust              | rust-analyzer                       |    Yes    |      Yes      |
+| Rust              | bacon-ls                            |    Yes    |      Yes      |
 | Sphinx            | esbonio                             |    Yes    |      Yes      |
 | SQL               | sql-language-server                 |    Yes    |      Yes      |
 | SQL               | sqls                                |    Yes    |      Yes      |
@@ -284,6 +285,25 @@ subdictionaries (`cargo`, `completion`, `procMacro`, etc.) in your
 | Colored Diagnostic Output       | ❌     |
 | Dependency Tree                 | ❌     |
 | View Recursive Memory Layout    | ❌     |
+
+### [bacon-ls](https://github.com/crisidev/bacon-ls) (Rust)
+
+The `bacon` command is required. If not exists, it will be installed globally.
+
+`bacon-ls` is not a replacement for `rust-analyzer`, they can be used together. The workspace folders feature is required. Therefore, the following configuration is necessary:
+```vim
+let g:lsp_experimental_workspace_folders = 1
+let g:lsp_settings_filetype_rust = ['rust-analyzer', 'bacon-ls']
+let g:lsp_settings = {
+\ 'rust-analyzer': {
+\   'initialization_options': {
+\     'checkOnSave': v:false,
+\     'diagnostics': v:false,
+\   },
+\}
+```
+
+For detailed configuration options, please refer to the [`bacon-ls` configuration documentation](https://github.com/crisidev/bacon-ls/blob/main/README.md#configuration).
 
 ### deno (TypeScript)
 
