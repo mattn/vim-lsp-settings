@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_fennel_ls
   au!
-  if has('windows')
+  if has('win32') || has('win64')
     let Fennel_ls_cmd = {server_info->lsp_settings#get('fennel-ls', 'cmd', ['lua.exe', lsp_settings#servers_dir().'\fennel-ls\fennel-ls']+lsp_settings#get('fennel-ls', 'args', []))}
   else
     let Fennel_ls_cmd = {server_info->lsp_settings#get('fennel-ls', 'cmd', [lsp_settings#exec_path('fennel-ls')]+lsp_settings#get('fennel-ls', 'args', []))}
