@@ -2,7 +2,7 @@
 
 set -e
 
-git clone https://git.sr.ht/~xerool/fennel-ls src
+git clone https://git.sr.ht/~y_sakurai/fennel-ls src
 cd src/
 make
 cp fennel-ls ../

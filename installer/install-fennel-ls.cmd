@@ -2,10 +2,10 @@
 
 :check_bash
 IF EXIST "C:\Program Files\Git\bin\bash.exe" (
-  echo Detected: Git Bash (x64)
+  echo Detected: Git Bash x64
   set BASH="C:\Program Files\Git\bin\bash.exe"
 ) ELSE IF EXIST "C:\Program Files (x86)\Git\bin\bash.exe" (
-  echo Detected: Git Bash (x86)
+  echo Detected: Git Bash x86
   set BASH="C:\Program Files (x86)\Git\bin\bash.exe"
 ) ELSE (
   echo Git Bash not found. Please install Git for Windows.
