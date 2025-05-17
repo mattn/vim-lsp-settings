@@ -323,6 +323,16 @@
       }
     }
   ],
+  "fennel": [
+    {
+      "command": "fennel-ls",
+      "url": "https://git.sr.ht/~xerool/fennel-ls",
+      "description": "Provides intelligent editing features for fennel files.",
+      "requires": [
+        "lua"
+      ]
+    }
+  ],
   "fortran": [
     {
       "command": "fortls",
