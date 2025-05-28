@@ -972,6 +972,23 @@
         ],
         "name": "udalov/kotlin-vim"
       }
+    },
+    {
+      "command": "kotlin-lsp",
+      "url": "https://github.com/Kotlin/kotlin-lsp",
+      "description": "Kotlin Language Server and plugin for Visual Studio Code",
+      "requires": [
+        "java"
+      ],
+      "root_uri_patterns": [
+        "pom.xml"
+      ],
+      "vim_plugin": {
+        "extensions": [
+          "kt"
+        ],
+        "name": "udalov/kotlin-vim"
+      }
     }
   ],
   "less": [
@@ -1572,6 +1589,15 @@
     }
   ],
   "rust": [
+    {
+      "command": "bacon-ls",
+      "url": "https://github.com/crisidev/bacon-ls",
+      "description": "A Language Server for Rust using Bacon diagnostics",
+      "requires": [],
+      "root_uri_patterns": [
+        "Cargo.toml"
+      ]
+    },
     {
       "command": "rust-analyzer",
       "url": "https://github.com/rust-analyzer/rust-analyzer",
