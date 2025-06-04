@@ -103,6 +103,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Erlang            | erlang-ls                           |    Yes    |      Yes      |
 | F#                | fsautocomplete                      |    Yes    |      Yes      |
 | F#                | fsharp-language-server              |    Yes    |      Yes      |
+| Fennel            | fennel-ls                           |    Yes    |      Yes      |
 | Fortran           | fortls                              |    Yes    |      Yes      |
 | Go                | gopls                               |    Yes    |      Yes      |
 | Go                | golangci-lint-langserver            |    Yes    |      Yes      |
