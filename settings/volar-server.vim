@@ -14,10 +14,13 @@ augroup END
 function s:on_tsserver_request(id, data) abort
   let body = a:data['response']['result']['body']
 
-  call lsp#notification('volar-server', {
-  \   'method': 'tsserver/response',
-  \   'params': [a:id, body]
-  \ })
+  call lsp#callbag#pipe(
+    \ lsp#notification('volar-server', {
+    \   'method': 'tsserver/response',
+    \   'params': [[a:id, body]]
+    \ }),
+    \ lsp#callbag#subscribe()
+    \ )
 endfunction
 
 function s:on_notification(server_name, data) abort
