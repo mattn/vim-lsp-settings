@@ -55,18 +55,16 @@ function! s:on_lsp_buffer_enabled() abort
   " cf. https://github.com/vuejs/language-tools/wiki/Neovim
   call lsp#register_notifications('volar-server', function('s:on_notification'))
 
-  " check typescript-language-server
-  let ts_server_dir = lsp_settings#servers_dir() .. '/typescript-language-server'
+  " check vtsls installation
   let vtsls_server_dir = lsp_settings#servers_dir() .. '/vtsls'
-  if !isdirectory(ts_server_dir) && !isdirectory(vtsls_server_dir)
-    call lsp_settings#utils#warning('Please install typescript-language-server or vtsls to enable Vue support')
+  if !isdirectory(vtsls_server_dir)
+    call lsp_settings#utils#warning('Please install vtsls to enable Vue support')
   endif
 
   if !exists('g:lsp_settings_filetype_vue') ||
   \ index(g:lsp_settings_filetype_vue, 'volar-server') == -1 ||
-  \ (index(g:lsp_settings_filetype_vue, 'typescript-language-server') == -1 &&
-  \  index(g:lsp_settings_filetype_vue, 'vtsls') == -1)
-    call lsp_settings#utils#warning('''volar-server'' and one of ''typescript-language-server'' and ''vtsls'' should be included in g:lsp_settings_filetype_vue to enable Vue support')
+  \ index(g:lsp_settings_filetype_vue, 'vtsls') == -1
+    call lsp_settings#utils#warning('Add both ''volar-server'' and ''vtsls'' to g:lsp_settings_filetype_vue to enable Vue support')
   endif
 endfunction
 
