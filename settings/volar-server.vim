@@ -1,44 +1,39 @@
-function! s:get_current_ts_path() abort
-  let ts_path = '/node_modules/typescript/lib'
-
-  let project_dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json')
-  let tsserverlibrary_path = project_dir .. ts_path
-
-  let server_dir = lsp_settings#servers_dir() .. '/volar-server'
-  let fallback_path = server_dir . ts_path
-
-  let path = filereadable(tsserverlibrary_path) ? tsserverlibrary_path : fallback_path
-  return {
-  \   'tsdk': path,
-  \ }
-endfunction
-
-function! Vim_lsp_settings_volar_setup_ts_path(options) abort
-  let initialization_options = deepcopy(a:options)
-  let initialization_options['typescript'] = s:get_current_ts_path()
-  return initialization_options
-endfunction
-
-" cf. https://github.com/johnsoncodehk/volar/blob/master/packages/language-server/src/types.ts#L102
-let g:vim_lsp_settings_volar_options = {
-\   'textDocumentSync': 2,
-\   'typescript': {
-\     'tsdk': '',
-\   },
-\ }
-
 augroup vim_lsp_settings_volar_server
   au!
   LspRegisterServer {
   \ 'name': 'volar-server',
   \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
   \ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
-  \ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', Vim_lsp_settings_volar_setup_ts_path(g:vim_lsp_settings_volar_options)),
+  \ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', v:null),
   \ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue', 'typescript']),
   \ 'blocklist': lsp_settings#get('volar-server', 'blocklist', []),
   \ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
   \ }
 augroup END
+
+function s:on_tsserver_request(id, data) abort
+  let body = a:data['response']['result']['body']
+
+  call lsp#notification('volar-server', {
+  \   'method': 'tsserver/response',
+  \   'params': [a:id, body]
+  \ })
+endfunction
+
+function s:on_notification(server_name, data) abort
+  if a:server_name ==# 'volar-server' && a:data['response']['method'] ==# 'tsserver/request'
+    let [id, command, payload] = a:data['response']['params'][0]
+
+    call lsp#send_request('vtsls', {
+    \ 'method': 'workspace/executeCommand',
+    \ 'params': {
+    \   'command': 'typescript.tsserverRequest',
+    \   'arguments': [command, payload],
+    \  },
+    \ 'on_notification': function('s:on_tsserver_request', [id]),
+    \ })
+  endif
+endfunction
 
 function! s:on_lsp_buffer_enabled() abort
   " Force some capabilities to be enabled.
@@ -52,6 +47,10 @@ function! s:on_lsp_buffer_enabled() abort
     let l:capabilities.signatureHelpProvider = v:true
     let l:capabilities.workspaceSymbolProvider = v:true
   endif
+
+  " Connect to vtsls server
+  " cf. https://github.com/vuejs/language-tools/wiki/Neovim
+  call lsp#register_notifications('volar-server', function('s:on_notification'))
 
   " check typescript-language-server
   let ts_server_dir = lsp_settings#servers_dir() .. '/typescript-language-server'
