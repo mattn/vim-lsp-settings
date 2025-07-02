@@ -450,10 +450,10 @@ For more details, please see [Sorbet](https://sorbet.org/docs/vscode#installing-
 
 ### [volar (Vue Language Tools)](https://github.com/vuejs/language-tools)
 
-To enable full Vue support, both `typescript-language-server` and `volar-server` should be installed and enabled in `vue` filetype.
+To enable Vue support, both `vtsls` and `volar-server` should be installed and enabled in `vue` filetype.
 
 ```vim
-let g:lsp_settings_filetype_vue = ['typescript-language-server', 'volar-server']
+let g:lsp_settings_filetype_vue = ['vtsls', 'volar-server']
 ```
 
 ## Extra Configurations
