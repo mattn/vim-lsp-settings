@@ -18,6 +18,7 @@ function! s:find_vue_plugin() abort
   \ 'name': '@vue/typescript-plugin',
   \ 'location': plugin_location,
   \ 'languages': ['vue'],
+  \ 'configNamespace': 'typescript',
   \ }
 endfunction
 
