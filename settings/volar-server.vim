@@ -66,6 +66,11 @@ function! s:on_lsp_buffer_enabled() abort
   \ index(g:lsp_settings_filetype_vue, 'vtsls') == -1
     call lsp_settings#utils#warning('Add both ''volar-server'' and ''vtsls'' to g:lsp_settings_filetype_vue to enable Vue support')
   endif
+
+  if !exists('g:lsp_settings_filetype_typescript') ||
+  \ index(g:lsp_settings_filetype_vue, 'vtsls') == -1
+    call lsp_settings#utils#warning('Set ''vtsls'' to g:lsp_settings_filetype_typescript to enable Vue support')
+  endif
 endfunction
 
 augroup lsp_install_volar_server
