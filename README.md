@@ -450,10 +450,12 @@ For more details, please see [Sorbet](https://sorbet.org/docs/vscode#installing-
 
 ### [volar (Vue Language Tools)](https://github.com/vuejs/language-tools)
 
-To enable Vue support, both `vtsls` and `volar-server` should be installed and enabled in `vue` filetype.
+Vue Language Tools v3 works only with `vtsls`, which is another TypeScript Language Server implementation.
+So, you need to install both `vtsls` and `volar-server` and specify them to be used with the following code:
 
 ```vim
 let g:lsp_settings_filetype_vue = ['vtsls', 'volar-server']
+let g:lsp_settings_filetype_typescript = ['vtsls']
 ```
 
 ## Extra Configurations
