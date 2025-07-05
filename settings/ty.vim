@@ -1,4 +1,4 @@
-augroup vim_lsp_settings_ruff
+augroup vim_lsp_settings_ty
   au!
   LspRegisterServer {
       \ 'name': 'ty',
