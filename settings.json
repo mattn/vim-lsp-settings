@@ -323,17 +323,6 @@
       }
     }
   ],
-  "fennel": [
-    {
-      "command": "fennel-ls",
-      "url": "https://git.sr.ht/~xerool/fennel-ls",
-      "description": "Provides intelligent editing features for fennel files.",
-      "requires": [
-        "lua",
-        "make"
-      ]
-    }
-  ],
   "fortran": [
     {
       "command": "fortls",
@@ -1457,6 +1446,22 @@
       ]
     },
     {
+      "command": "ty",
+      "url": "https://github.com/astral-sh/ty",
+      "description": "An extremely fast Python type checker and language server.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "ty",
+      "url": "https://github.com/astral-sh/ty",
+      "description": "An extremely fast Python type checker and language server.",
+      "requires": [
+        "python3"
+      ]
+    },
+    {
       "command": "ruff-lsp",
       "url": "https://github.com/charliermarsh/ruff-lsp",
       "description": "A Language Server Protocol implementation for Ruff.",
@@ -1625,18 +1630,6 @@
       "requires": [],
       "root_uri_patterns": [
         "Cargo.toml"
-      ]
-    },
-    {
-      "command": "bacon-ls",
-      "url": "https://github.com/crisidev/bacon-ls",
-      "description": "A Language Server for Rust using Bacon diagnostics",
-      "requires": [
-        "cargo"
-      ],
-      "root_uri_patterns": [
-        "bacon.toml",
-        "Cargo.lock"
       ]
     }
   ],
@@ -2168,6 +2161,18 @@
         ],
         "name": "leafOfTree/vim-vue-plugin"
       }
+    },
+    {
+      "command": "typescript-language-server",
+      "url": "https://github.com/typescript-language-server/typescript-language-server",
+      "description": "TypeScript & JavaScript Language Server",
+      "requires": [
+        "npm"
+      ],
+      "root_uri_patterns": [
+        "package.json",
+        "tsconfig.json"
+      ]
     },
     {
       "command": "vtsls",
