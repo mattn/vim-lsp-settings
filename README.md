@@ -156,6 +156,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | pylyzer                             |    Yes    |      Yes      |
 | Python            | ruff                                |    Yes    |      Yes      |
 | Python            | ruff-lsp                            |    Yes    |      Yes      |
+| Python            | ty                                  |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
 | Qml               | qmlls                               |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
@@ -437,7 +438,7 @@ directories from the qt install root.
  \}
 
  By default, the qmlls server will search the QML_IMPORT PATH (-E option).
- ```
+```
 
 ### [rubocop lsp mode (Ruby)](https://docs.rubocop.org/rubocop/usage/lsp.html)
 
