@@ -4952,6 +4952,12 @@
       "url": "https://raw.githubusercontent.com/rliebz/tusk/main/tusk.schema.json"
     },
     {
+      "name": "Ty",
+      "description": "Ty, An extremely fast Python type checker and language server.",
+      "fileMatch": ["ty.toml", ".ty.toml"],
+      "url": "https://json.schemastore.org/ty.json"
+    },
+    {
       "name": "typewiz.json",
       "description": "Typewiz configuration file",
       "fileMatch": ["typewiz.json"],
