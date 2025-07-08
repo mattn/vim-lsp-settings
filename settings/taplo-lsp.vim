@@ -41,7 +41,7 @@ augroup vim_lsp_settings_taplo_lsp
   au!
   LspRegisterServer {
       \ 'name': 'taplo-lsp',
-      \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo-lsp')]+lsp_settings#get('taplo-lsp', 'args', has('win32') ? ['run'] : ['lsp','stdio']))},
+      \ 'cmd': {server_info->lsp_settings#get('taplo-lsp', 'cmd', [lsp_settings#exec_path('taplo')]+lsp_settings#get('taplo-lsp', 'args', ['lsp','stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('taplo-lsp', 'root_uri', lsp_settings#root_uri('taplo-lsp'))},
       \ 'initialization_options': lsp_settings#get('taplo-lsp', 'initialization_options', g:vim_lsp_settings_taplo_lsp_options),
       \ 'allowlist': lsp_settings#get('taplo-lsp', 'allowlist', ['toml']),
@@ -50,7 +50,7 @@ augroup vim_lsp_settings_taplo_lsp
       \ 'workspace_config': lsp_settings#get('taplo-lsp', 'workspace_config', {'evenBetterToml': g:vim_lsp_settings_taplo_lsp_options}),
       \ 'semantic_highlight': lsp_settings#get('taplo-lsp', 'semantic_highlight', {}),
       \ }
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled() 
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
 
