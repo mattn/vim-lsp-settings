@@ -1800,6 +1800,14 @@
       }
     }
   ],
+  "systemd": [
+    {
+      "command": "systemd-lsp",
+      "url": "https://github.com/JFryy/systemd-lsp",
+      "description": "a language server implementation for systemd unit files made in rust 🦀",
+      "requires": []
+    }
+  ],
   "systemverilog": [
     {
       "command": "verible-verilog-ls",

@@ -180,6 +180,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
 | Svelte            | biome                               |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
+| systemd           | systemd-lsp                         | UNIX Only |      Yes      |
 | SystemVerilog     | verible-verilog-ls                  | UNIX Only |      Yes      |
 | SystemVerilog     | svls                                |    Yes    |      Yes      |
 | TeX               | texlab                              |    Yes    |      Yes      |
