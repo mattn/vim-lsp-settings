@@ -144,6 +144,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | PHP               | psalm-language-server               |    Yes    |      Yes      |
 | OCaml             | ocaml-lsp                           | UNIX Only |      Yes      |
 | Protobuf          | bufls                               |    Yes    |      Yes      |
+| Protobuf          | buf                                 |    Yes    |      Yes      |
 | Puppet            | puppet-languageserver               |    Yes    |      Yes      |
 | PureScript        | purescript-language-server          |    Yes    |      Yes      |
 | Python            | pyls-all (pyls with dependencies)   |    Yes    |      Yes      |

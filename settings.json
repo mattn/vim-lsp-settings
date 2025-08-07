@@ -1286,6 +1286,14 @@
       "requires": [
         "go"
       ]
+    },
+    {
+      "command": "buf",
+      "url": "https://github.com/bufbuild/buf",
+      "description": "Protobuf language server compatible with Buf.",
+      "requires": [
+        "go"
+      ]
     }
   ],
   "ps1": [
