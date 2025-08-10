@@ -10,6 +10,9 @@ x86_64)
   arch="x64"
   ;;
 arm64) ;;
+aarch64)
+  arch="arm64"
+  ;;
 *)
   printf "%s doesn't supported by bash installer" "$os"
   exit 1
