@@ -21,6 +21,6 @@ darwin)
   ;;
 esac
 
-curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-$platform.gz" | gzip -d >taplo-lsp
+curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-$platform.gz" | gzip -d >taplo-lsp
 
 chmod +x taplo-lsp
