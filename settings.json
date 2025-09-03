@@ -16,6 +16,13 @@
       "url": "https://github.com/tekumara/typos-lsp",
       "disabled": true,
       "requires": []
+    },
+    {
+      "command": "copilot-language-server",
+      "description": "copilot language server",
+      "url": "",
+      "disabled": false,
+      "requires": []
     }
   ],
   "apex": [
