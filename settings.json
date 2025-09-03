@@ -20,8 +20,8 @@
     {
       "command": "copilot-language-server",
       "description": "copilot language server",
-      "url": "",
-      "disabled": false,
+      "url": "https://github.com/orgs/github/packages/npm/package/copilot-language-server",
+      "disabled": true,
       "requires": []
     }
   ],
