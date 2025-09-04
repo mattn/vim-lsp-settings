@@ -13,25 +13,29 @@ augroup vim_lsp_settings_copilot_language_server
       \ }
 augroup END
 
-function! s:handle_execute_command(data) abort
-  echom json_encode(a:data)
-  "if lsp#client#is_error(a:data['response'])
-  "  call lsp#utils#error('Execute command failed on ' . a:server_name . ': ' . string(a:command) . ' -> ' . string(a:data))
-  "endif
+function! s:handle_finish(data) abort
+  let l:command = a:data['response']['result']
+  echomsg l:command['status']
 endfunction
 
-function! s:on_lsp_buffer_enabled() abort
-  command! -buffer -nargs=0 CopilotFinishDeviceFlow call lsp#send_request('copilot-language-server', {
+function! s:handle_singin(data) abort
+  let l:command = a:data['response']['result']
+  echomsg printf('Set %s on %s', l:command['userCode'], l:command['verificationUri'])
+  call getchar()
+  call lsp#send_request('copilot-language-server', {
   \   'method': 'workspace/executeCommand',
   \   'params': {'command': 'github.copilot.finishDeviceFlow', 'arguments': []},
   \   'sync': v:false,
-  \   'on_notification': function('s:handle_execute_command'),
+  \   'on_notification': function('s:handle_finish'),
   \ })
+endfunction
+
+function! s:on_lsp_buffer_enabled() abort
   command! -buffer -nargs=0 CopilotSignIn call lsp#send_request('copilot-language-server', {
   \   'method': 'workspace/executeCommand',
   \   'params': {'command': 'github.copilot.signIn', 'arguments': []},
   \   'sync': v:false,
-  \   'on_notification': function('s:handle_execute_command'),
+  \   'on_notification': function('s:handle_signin'),
   \ })
 
 endfunction
