@@ -18,10 +18,11 @@ function! s:handle_finish(data) abort
   echomsg l:command['status']
 endfunction
 
-function! s:handle_singin(data) abort
+function! s:handle_signin(data) abort
   let l:command = a:data['response']['result']
-  echomsg printf('Set %s on %s', l:command['userCode'], l:command['verificationUri'])
-  call getchar()
+  while getchar() !=# 13
+    echomsg printf('Set %s on %s then type ENTER', l:command['userCode'], l:command['verificationUri'])
+  endwhile
   call lsp#send_request('copilot-language-server', {
   \   'method': 'workspace/executeCommand',
   \   'params': {'command': 'github.copilot.finishDeviceFlow', 'arguments': []},
@@ -30,14 +31,24 @@ function! s:handle_singin(data) abort
   \ })
 endfunction
 
+function! s:handle_signout(data) abort
+  let l:command = a:data['response']['result']
+  echomsg l:command['status']
+endfunction
+
 function! s:on_lsp_buffer_enabled() abort
   command! -buffer -nargs=0 CopilotSignIn call lsp#send_request('copilot-language-server', {
   \   'method': 'signIn',
-  \   'params': {'command': 'github.copilot.signin', 'arguments': []},
+  \   'params': {},
   \   'sync': v:false,
   \   'on_notification': function('s:handle_signin'),
   \ })
-
+  command! -buffer -nargs=0 CopilotSignOut call lsp#send_request('copilot-language-server', {
+  \   'method': 'signOut',
+  \   'params': {},
+  \   'sync': v:false,
+  \   'on_notification': function('s:handle_signout'),
+  \ })
 endfunction
 
 augroup lsp_install_copilot
