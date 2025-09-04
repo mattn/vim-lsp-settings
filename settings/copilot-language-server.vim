@@ -32,8 +32,8 @@ endfunction
 
 function! s:on_lsp_buffer_enabled() abort
   command! -buffer -nargs=0 CopilotSignIn call lsp#send_request('copilot-language-server', {
-  \   'method': 'workspace/executeCommand',
-  \   'params': {'command': 'github.copilot.signIn', 'arguments': []},
+  \   'method': 'signIn',
+  \   'params': {'command': 'github.copilot.signin', 'arguments': []},
   \   'sync': v:false,
   \   'on_notification': function('s:handle_signin'),
   \ })
