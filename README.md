@@ -158,6 +158,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Python            | ruff                                |    Yes    |      Yes      |
 | Python            | ruff-lsp                            |    Yes    |      Yes      |
 | Python            | ty                                  |    Yes    |      Yes      |
+| Python            | zuban                               |    Yes    |      Yes      |
 | Prisma            | prisma-language-server              |    Yes    |      Yes      |
 | Qml               | qmlls                               |    Yes    |      Yes      |
 | R                 | languageserver                      |    Yes    |      No       |
