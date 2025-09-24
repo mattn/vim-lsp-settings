@@ -1505,6 +1505,22 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "zuban",
+      "url": "https://zubanls.com",
+      "description": "The Python Language Server for Professionals. A Mypy-compatible Python Language Server built in Rust",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "zuban",
+      "url": "https://zubanls.com",
+      "description": "The Python Language Server for Professionals. A Mypy-compatible Python Language Server built in Rust",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "qml": [
