@@ -20,15 +20,14 @@ endfunction
 
 function! s:handle_signin(data) abort
   let l:command = a:data['response']['result']
-  while getchar() !=# 13
-    echomsg printf('Set %s on %s then type ENTER', l:command['userCode'], l:command['verificationUri'])
-  endwhile
   call lsp#send_request('copilot-language-server', {
   \   'method': 'workspace/executeCommand',
   \   'params': {'command': 'github.copilot.finishDeviceFlow', 'arguments': []},
   \   'sync': v:false,
   \   'on_notification': function('s:handle_finish'),
   \ })
+ redraw
+ echomsg printf('Set %s on %s', l:command['userCode'], l:command['verificationUri'])
 endfunction
 
 function! s:handle_signout(data) abort
