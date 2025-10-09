@@ -145,6 +145,12 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "neocmakelsp",
+      "url": "https://github.com/neocmakelsp/neocmakelsp",
+      "description": "Another cmake lsp",
+      "requires": []
     }
   ],
   "cobol": [
