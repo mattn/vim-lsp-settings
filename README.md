@@ -120,6 +120,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JSON              | json-languageserver                 |    Yes    |      Yes      |
 | JSON              | rome                                |    Yes    |      Yes      |
 | JSON              | biome                               |    Yes    |      Yes      |
+| JSON              | package-version-server              |    Yes    |      Yes      |
 | Jsonnet           | jsonnet-language-server             |    Yes    |      Yes      |
 | Java              | eclipse-jdt-ls                      |    Yes    |      Yes      |
 | Java              | java-language-server                |    No     |      Yes      |

@@ -922,6 +922,18 @@
         "biome.json",
         "biome.jsonc"
       ]
+    },
+    {
+      "command": "package-version-server",
+      "url": "https://github.com/zed-industries/package-version-server",
+      "description": "A language server that handles hover information in package.json files",
+      "requires": [],
+      "root_uri_patterns": [
+        "package.json"
+      ],
+      "config": {
+        "refresh_pattern": "\\([a-zA-Z0-9.-]\\+\\|/\\|\\k\\+\\)$"
+      }
     }
   ],
   "jsonc": [
