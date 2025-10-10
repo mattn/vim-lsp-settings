@@ -1521,6 +1521,22 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "basedpyright-langserver",
+      "url": "https://github.com/detachhead/basedpyright",
+      "description": "Basedpyright is a fork of pyright with various type checking improvements, pylance features and more.",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "basedpyright-langserver",
+      "url": "https://github.com/detachhead/basedpyright",
+      "description": "Basedpyright is a fork of pyright with various type checking improvements, pylance features and more.",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "qml": [
