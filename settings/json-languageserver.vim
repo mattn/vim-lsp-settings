@@ -1,3 +1,11 @@
+function! Vim_lsp_settings_json_languageserver_capabilities() abort
+  let l:capabilities = lsp#default_get_supported_capabilities('json-languageserver')
+  " Override snippetSupport: true for enable completion
+  let l:capabilities.textDocument.completion.completionItem.snippetSupport = v:true
+  return l:capabilities
+endfunction
+
+
 augroup vim_lsp_settings_json_languageserver
   au!
   LspRegisterServer {
@@ -5,6 +13,7 @@ augroup vim_lsp_settings_json_languageserver
       \ 'cmd': {server_info->lsp_settings#get('json-languageserver', 'cmd', [lsp_settings#exec_path('json-languageserver')]+lsp_settings#get('json-languageserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('json-languageserver', 'root_uri', lsp_settings#root_uri('json-languageserver'))},
       \ 'initialization_options': lsp_settings#get('json-languageserver', 'initialization_options', {'provideFormatter': v:true}),
+      \ 'capabilities': lsp_settings#get('json-languageserver', 'capabilities', Vim_lsp_settings_json_languageserver_capabilities()),
       \ 'allowlist': lsp_settings#get('json-languageserver', 'allowlist', ['json', 'jsonc']),
       \ 'blocklist': lsp_settings#get('json-languageserver', 'blocklist', []),
       \ 'config': lsp_settings#get('json-languageserver', 'config', lsp_settings#server_config('json-languageserver')),
