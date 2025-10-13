@@ -26,8 +26,12 @@ function! s:handle_signin(data) abort
   \   'sync': v:false,
   \   'on_notification': function('s:handle_finish'),
   \ })
- redraw
- echomsg printf('Set %s on %s', l:command['userCode'], l:command['verificationUri'])
+  redraw
+  if get(l:command, 'status') ==# 'AlreadySignedIn'
+    echomsg l:command['status']
+    return
+  endif
+  echomsg printf('Set %s on %s', l:command['userCode'], l:command['verificationUri'])
 endfunction
 
 function! s:handle_signout(data) abort
