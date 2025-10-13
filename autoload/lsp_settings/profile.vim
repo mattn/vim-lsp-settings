@@ -50,7 +50,7 @@ endfunction
 function! lsp_settings#profile#edit_global() abort
   let l:root = lsp_settings#global_settings_dir()
   if !isdirectory(l:root)
-    call mkdir(l:root)
+    call mkdir(l:root, 'p')
   endif
   exe 'new' l:root . '/settings.json'
   if !filereadable(l:root . '/settings.json')
@@ -76,7 +76,7 @@ function! lsp_settings#profile#edit_local(...) abort
   endif
   let l:root .= '/.vim-lsp-settings'
   if !isdirectory(l:root)
-    call mkdir(l:root)
+    call mkdir(l:root, 'p')
   endif
   exe 'new' l:root . '/settings.json'
   if !filereadable(l:root . '/settings.json')
@@ -116,5 +116,22 @@ function! lsp_settings#profile#status() abort
       echohl None
     endif
     echo ''
+  endfor
+endfunction
+
+function! lsp_settings#profile#servers() abort
+  let l:settings = lsp_settings#settings()
+  let l:active_servers = lsp#get_allowed_servers()
+
+  let l:servers = {}
+  for l:ft in keys(l:settings)
+    for l:v in l:settings[l:ft]
+      if lsp_settings#executable(l:v.command)
+        let l:servers[l:v.command] = 1
+      endif
+    endfor
+  endfor
+  for l:server in keys(l:servers)
+    echo l:server
   endfor
 endfunction
