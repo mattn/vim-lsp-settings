@@ -22,7 +22,7 @@
       "description": "copilot language server",
       "url": "https://github.com/orgs/github/packages/npm/package/copilot-language-server",
       "config": {
-        "refresh_pattern": "$"
+        "refresh_always": 1
       },
       "disabled": true,
       "requires": []
