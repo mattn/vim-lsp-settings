@@ -517,7 +517,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
         let b:asyncomplete_refresh_pattern = l:refresh_pattern
       endif
       let l:refresh_always = get(l:config, 'refresh_always', 0)
-      if !empty(l:refresh_always)
+      if l:refresh_always
         let b:asyncomplete_refresh_always = l:refresh_always
       endif
     endfor
