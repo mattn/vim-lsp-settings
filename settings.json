@@ -25,7 +25,9 @@
         "refresh_always": 1
       },
       "disabled": true,
-      "requires": []
+      "requires": [
+        "node"
+      ]
     }
   ],
   "apex": [
