@@ -27,6 +27,11 @@ jobs:
         with:
           version: ${{ matrix.version }}
           neovim: ${{ matrix.neovim }}
+      - name: 'Setup vim-lsp'
+        uses: actions/checkout@v4
+        with:
+          repository: prabirshrestha/vim-lsp
+          path: vim-lsp
       - name: 'Setup vim-themis'
         uses: actions/checkout@v4
         with:
