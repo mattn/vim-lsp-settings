@@ -385,11 +385,7 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   if lsp_settings#executable(a:command)
     let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
     if filereadable(l:script)
-      if has('patch-8.1.1113')
-        command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp_settings#register_server(<args>)
-      else
-        command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
-      endif
+      command! -nargs=1 LspRegisterServer call lsp_settings#register_server(<args>)
       exe 'source' l:script
       delcommand LspRegisterServer
       doautocmd <nomodeline> User lsp_setup
@@ -532,11 +528,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   augroup END
   exe 'augroup!' l:group_name
 
-  if has('patch-8.1.1113')
-    command! -nargs=1 LspRegisterServer autocmd User lsp_setup ++once call lsp_settings#register_server(<args>)
-  else
-    command! -nargs=1 LspRegisterServer autocmd User lsp_setup call lsp_settings#register_server(<args>)
-  endif
+  command! -nargs=1 LspRegisterServer call lsp_settings#register_server(<args>)
 
   let l:default = s:get_filetype_default(a:ft)
 
@@ -664,4 +656,12 @@ function! lsp_settings#init() abort
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
   command! -bang -nargs=? -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>, '<bang>')
   call s:vim_lsp_load_or_suggest('_')
+
+  for l:buf in range(1, bufnr('$'))
+    if !bufexists(l:buf) || !bufloaded(l:buf)
+      continue
+    endif
+    call lsp#log_verbose('lsp#ensure_flush_all()', l:buf)
+    call lsp#ensure_flush_all(l:buf, lsp#get_allowed_servers(l:buf))
+  endfor
 endfunction
