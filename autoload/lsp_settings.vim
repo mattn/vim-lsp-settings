@@ -657,6 +657,7 @@ function! lsp_settings#init() abort
   command! -bang -nargs=? -complete=customlist,lsp_settings#complete_install LspInstallServer call s:vim_lsp_install_server(&l:filetype, <q-args>, '<bang>')
   call s:vim_lsp_load_or_suggest('_')
 
+  doautocmd BufNewFile,BufEnter
   for l:buf in range(1, bufnr('$'))
     if !bufexists(l:buf) || !bufloaded(l:buf)
       continue

@@ -16,8 +16,7 @@ command! -nargs=? LspSettingsLocalEdit call lsp_settings#profile#edit_local(<f-a
 command! -nargs=0 LspSettingsGlobalEdit call lsp_settings#profile#edit_global()
 command! -nargs=0 LspManageServers call lsp_settings#ui#open()
 
-"augroup vim_lsp_settings_initialize
-" au!
-" autocmd VimEnter * call lsp_settings#init()
-"augroup END
-call lsp_settings#init()
+augroup vim_lsp_settings_initialize
+ au!
+ autocmd VimEnter * call lsp_settings#init()
+augroup END
