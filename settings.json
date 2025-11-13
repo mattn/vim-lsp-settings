@@ -1094,7 +1094,13 @@
       "command": "moonbit-lsp",
       "url": "https://github.com/moonbitlang/moon",
       "description": "The build system and package manager for MoonBit",
-      "requires": []
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "mbt"
+        ],
+        "name": "https://github.com/mattn/vim-moonbit"
+      }
     }
   ],
   "nim": [
