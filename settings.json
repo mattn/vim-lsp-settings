@@ -1089,6 +1089,14 @@
       "requires": []
     }
   ],
+  "moonbit": [
+    {
+      "command": "moonbit-lsp",
+      "url": "https://github.com/moonbitlang/moon",
+      "description": "The build system and package manager for MoonBit",
+      "requires": []
+    }
+  ],
   "nim": [
     {
       "command": "nimlsp",
