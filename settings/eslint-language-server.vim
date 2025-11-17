@@ -30,6 +30,7 @@ augroup vim_lsp_settings_eslint_language_server
       \   'options': {},
       \   'run': 'onType',
       \   'nodePath': v:null,
+      \   'useFlatConfig': v:true,
       \ }),
       \ 'semantic_highlight': lsp_settings#get('eslint-language-server', 'semantic_highlight', {}),
       \ }
