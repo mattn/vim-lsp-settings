@@ -84,6 +84,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Apex/VisualForce  | apex-jorje-lsp                      |    Yes    |      Yes      |
 | Astro             | astro-ls                            |    Yes    |      Yes      |
 | Astro             | biome                               |    Yes    |      Yes      |
+| Astro             | oxlint                              |    Yes    |      Yes      |
 | Bash              | bash-language-server                |    Yes    |      Yes      |
 | C#                | omnisharp                           |    Yes    |      Yes      |
 | C/C++             | clangd                              |    Yes    |      Yes      |
@@ -131,6 +132,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JavaScript        | flow                                |    Yes    |      Yes      |
 | JavaScript        | eslint-language-server              |    Yes    |      Yes      |
 | JavaScript        | biome                               |    Yes    |      Yes      |
+| JavaScript        | oxlint                              |    Yes    |      Yes      |
 | Julia             | LanguageServer.jl                   |    Yes    |      No       |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
 | Lisp              | cl-lsp                              |    Yes    |      No       |
@@ -184,6 +186,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
 | Svelte            | tailwindcss-intellisense            |    Yes    |      Yes      |
 | Svelte            | biome                               |    Yes    |      Yes      |
+| Svelte            | oxlint                              |    Yes    |      Yes      |
 | Swift             | sourcekit-lsp                       |    Yes    |      No       |
 | systemd           | systemd-lsp                         | UNIX Only |      Yes      |
 | SystemVerilog     | verible-verilog-ls                  | UNIX Only |      Yes      |
@@ -200,6 +203,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TypeScript        | rome                                |    Yes    |      Yes      |
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
 | TypeScript        | biome                               |    Yes    |      Yes      |
+| TypeScript        | oxlint                              |    Yes    |      Yes      |
 | Typst             | typst-lsp                           |    Yes    |      Yes      |
 | Typst             | tinymist                            |    Yes    |      Yes      |
 | Vim               | vim-language-server                 |    Yes    |      Yes      |
@@ -209,6 +213,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Vue               | volar-server (Vue Language Tools)   |    Yes    |      Yes      |
 | Vue               | vls                                 |    Yes    |      Yes      |
 | Vue               | biome                               |    Yes    |      Yes      |
+| Vue               | oxlint                              |    Yes    |      Yes      |
 | V                 | v-analyzer                          |    Yes    |      Yes      |
 | V                 | vlang-vls                           |    Yes    |      Yes      |
 | XML               | lemminx                             |    Yes    |      Yes      |
