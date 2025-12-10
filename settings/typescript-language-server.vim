@@ -3,7 +3,8 @@ function! Vim_lsp_settings_typescript_language_server_get_blocklist() abort
         return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']
     endif
     if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.json'))
-        return lsp_settings#utils#warning('server "typescript-language-server" is disabled since "deno.json" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])
+        call timer_start(0, {->lsp_settings#utils#warning('server "typescript-language-server" is disabled since "deno.json" is found')}, {'repeat': 0})
+        return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']
     endif
     return []
 endfunction
