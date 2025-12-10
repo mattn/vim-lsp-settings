@@ -3,7 +3,8 @@ function! Vim_lsp_settings_vtsls_get_blocklist() abort
         return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue']
     endif
     if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.json'))
-        return lsp_settings#utils#warning('server "vtsls" is disabled since "deno.json" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue'])
+        call timer_start(0, {->lsp_settings#utils#warning('server "vtsls" is disabled since "deno.json" is found')}, {'repeat': 0})
+        return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue']
     endif
     return []
 endfunction
