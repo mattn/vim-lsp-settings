@@ -591,7 +591,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
       let s:ftmap[a:ft] = 1
 
       " If default server is specified as list, continue to look next.
-      if type(l:default) !=# v:t_list
+      if type(l:default) !=# v:t_list && !empty(l:default)
         break
       endif
     endif
