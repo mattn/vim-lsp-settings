@@ -28,6 +28,17 @@
       "requires": [
         "node"
       ]
+    },
+    {
+      "command": "mozuku-lsp",
+      "description": "mozuku language server",
+      "url": "https://github.com/t3tra-dev/MoZuku",
+      "config": {
+        "refresh_always": 1
+      },
+      "packageJson": "https://raw.githubusercontent.com/t3tra-dev/MoZuku/refs/heads/main/vscode-mozuku/package.json",
+      "disabled": true,
+      "requires": []
     }
   ],
   "apex": [
