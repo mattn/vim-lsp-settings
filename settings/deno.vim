@@ -9,7 +9,8 @@ function! Vim_lsp_settings_deno_get_blocklist() abort
     if empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/'))
         return []
     endif
-    return lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])
+    call timer_start(0, {->lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found')}, {'repeat': 0})
+    return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']
 endfunction
 
 augroup vim_lsp_settings_deno
