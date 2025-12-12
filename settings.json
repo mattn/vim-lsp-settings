@@ -36,7 +36,6 @@
       "config": {
         "refresh_always": 1
       },
-      "packageJson": "https://raw.githubusercontent.com/t3tra-dev/MoZuku/refs/heads/main/vscode-mozuku/package.json",
       "disabled": true,
       "requires": []
     }
