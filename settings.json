@@ -193,6 +193,20 @@
       "requires": []
     }
   ],
+  "crystal": [
+    {
+      "command": "crystalline",
+      "url": "https://github.com/elbywan/crystalline",
+      "description": "A Language Server Protocol implementation for Crystal. 🔮",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "cr"
+        ],
+        "name": "vim-crystal/vim-crystal"
+      }
+    }
+  ],
   "cs": [
     {
       "command": "omnisharp-lsp",
