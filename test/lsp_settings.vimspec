@@ -86,19 +86,24 @@ Describe lsp_settings
 
     Describe lsp_settings#init
         It should setup commands and autocmds.
+            if !exists('*lsp#register_server')
+                Skip vim-lsp plugin required
+            endif
+            command! -nargs=1 LspRegisterServer echo 'stub'
             call lsp_settings#clear()
             call lsp_settings#init()
-            let g:vim_lsp_settings_filetype_no_delays = 1
-            autocmd vim_lsp_suggest_python
             Assert exists(':LspInstallServer')
+            let g:vim_lsp_settings_filetype_no_delays = 1
+            autocmd vim_lsp_settings_lazy
             delcommand LspInstallServer
-            Assert !exists('#vim_lsp_suggest_efm_langserver')
+            Assert exists('#vim_lsp_settings_lazy')
             for v in filter(split(execute('augroup'), '\s\+'), 'v:val=~"^vim_lsp_"')
                 exe 'augroup ' . v
                   silent! autocmd!
                 augroup END
                 silent! exe 'augroup! ' . v
             endfor
+            silent! delcommand LspRegisterServer
             bw!
             unlet g:vim_lsp_settings_filetype_no_delays
         End

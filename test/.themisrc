@@ -1,5 +1,6 @@
 set encoding=utf-8
-set rtp+=vim-lsp
+set rtp+=../vim-lsp
+set rtp+=.
 runtime plugin/lsp.vim
 call themis#option('recursive', 1)
 call themis#helper('command').with(themis#helper('assert'))
