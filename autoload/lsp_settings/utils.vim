@@ -66,14 +66,22 @@ function! lsp_settings#utils#dotmerge(d) abort
 endfunction
 
 let s:catalog_path = expand('<sfile>:h:h:h') . '/data/catalog.json'
+let s:catalog_cache = {}
+
+function! s:load_catalog() abort
+  if empty(s:catalog_cache)
+    let s:catalog_cache = json_decode(join(readfile(s:catalog_path), "\n"))
+  endif
+  return s:catalog_cache
+endfunction
 
 function! lsp_settings#utils#load_schemas(name) abort
-  let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
+  let l:schemas = s:load_catalog()['schemas']
   return extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
 endfunction
 
 function! lsp_settings#utils#load_schemas_map(name) abort
-  let l:schemas = json_decode(join(readfile(s:catalog_path), "\n"))['schemas']
+  let l:schemas = s:load_catalog()['schemas']
   let l:result = {}
   for l:v in extend(l:schemas, lsp_settings#get(a:name, 'schemas', []))
     if has_key(l:v, 'fileMatch')

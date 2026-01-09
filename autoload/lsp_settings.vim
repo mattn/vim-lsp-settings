@@ -12,8 +12,17 @@ else
 endif
 let s:servers_dir = s:data_dir . '/servers'
 
-let s:settings = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
-call remove(s:settings, '$schema')
+let s:settings_cache = {}
+
+function! s:load_settings() abort
+  if empty(s:settings_cache)
+    let s:settings_cache = json_decode(join(readfile(s:root_dir . '/settings.json'), "\n"))
+    call remove(s:settings_cache, '$schema')
+  endif
+  return s:settings_cache
+endfunction
+
+let s:settings = s:load_settings()
 
 let s:ftmap = {}
 
@@ -640,17 +649,9 @@ function! lsp_settings#init() abort
     endfor
   endfor
 
-  for l:ft in keys(s:settings)
-    if has_key(g:, 'lsp_settings_allowlist') && index(g:lsp_settings_allowlist, l:ft) == -1 || empty(s:settings[l:ft])
-      continue
-    endif
-    exe 'augroup' lsp_settings#utils#group_name(l:ft)
-      autocmd!
-      exe 'autocmd FileType' l:ft 'call' printf("s:vim_lsp_load_or_suggest('%s')", l:ft)
-    augroup END
-  endfor
-  augroup vim_lsp_suggest
+  augroup vim_lsp_settings_lazy
     autocmd!
+    autocmd FileType * call s:vim_lsp_load_or_suggest(&filetype)
     autocmd BufNewFile,BufRead * call s:vim_lsp_suggest_plugin()
   augroup END
   command! -nargs=? -complete=customlist,lsp_settings#complete_uninstall LspUninstallServer call s:vim_lsp_uninstall_server(<q-args>)
