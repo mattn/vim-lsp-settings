@@ -517,6 +517,11 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   if get(g:, 'lsp_loaded', 0)
     for l:server in s:settings[a:ft]
       let l:config = lsp_settings#server_config(l:server.command)
+      if has_key(g:, 'lsp_settings') &&
+      \  has_key(g:lsp_settings, l:server.command) &&
+      \  has_key(g:lsp_settings[l:server.command], 'config')
+        call extend(l:config, g:lsp_settings[l:server.command]['config'])
+      endif
       let l:refresh_pattern = get(l:config, 'refresh_pattern', '')
       if !empty(l:refresh_pattern)
         let b:asyncomplete_refresh_pattern = l:refresh_pattern
