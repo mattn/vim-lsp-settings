@@ -38,6 +38,15 @@
       },
       "disabled": true,
       "requires": []
+    },
+    {
+      "command": "kakehashi",
+      "description": "language server that bridges the gap between languages, editors, and tooling",
+      "url": "https://github.com/atusy/kakehashi",
+      "config": {
+      },
+      "disabled": true,
+      "requires": []
     }
   ],
   "apex": [
