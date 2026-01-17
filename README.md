@@ -106,6 +106,9 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | F#                | fsharp-language-server              |    Yes    |      Yes      |
 | Fennel            | fennel-ls                           |    Yes    |      Yes      |
 | Fortran           | fortls                              |    Yes    |      Yes      |
+| GDScript          | godot                               |    Yes    |      Yes      |
+| Gleam             | gleam                               |    Yes    |      Yes      |
+| GLSL              | glslls                              |    Yes    |      Yes      |
 | Go                | gopls                               |    Yes    |      Yes      |
 | Go                | golangci-lint-langserver            |    Yes    |      Yes      |
 | GraphQL           | graphql-language-service-cli        |    Yes    |      Yes      |
@@ -134,6 +137,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JavaScript        | biome                               |    Yes    |      Yes      |
 | Julia             | LanguageServer.jl                   |    Yes    |      No       |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
+| Kotlin            | kotlin-lsp                          |    Yes    |      Yes      |
 | Lisp              | cl-lsp                              |    Yes    |      No       |
 | Lua               | emmylua-ls                          |    Yes    |      Yes      |
 | Lua               | sumneko-lua-language-server         |    Yes    |      Yes      |
@@ -143,9 +147,16 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Nim               | nimls                               |    No     |      No       |
 | Nix               | nixd                                |    Yes    |      Yes      |
 | Nix               | nil                                 |    Yes    |      Yes      |
+| Nix               | rnix-lsp                            |    Yes    |      Yes      |
+| Odin              | ols                                 |    Yes    |      Yes      |
+| OpenSCAD          | openscad-lsp                        |    Yes    |      Yes      |
 | PHP               | intelephense                        |    Yes    |      Yes      |
 | PHP               | psalm-language-server               |    Yes    |      Yes      |
 | OCaml             | ocaml-lsp                           | UNIX Only |      Yes      |
+| Perl              | perl-languageserver                 |    Yes    |      Yes      |
+| Perl              | perlnavigator                       |    Yes    |      Yes      |
+| PowerShell        | powershell-languageserver           |    Yes    |      Yes      |
+| Prolog            | prolog-lsp_server                   |    Yes    |      Yes      |
 | Protobuf          | buf                                 |    Yes    |      Yes      |
 | Puppet            | puppet-languageserver               |    Yes    |      Yes      |
 | PureScript        | purescript-language-server          |    Yes    |      Yes      |
@@ -168,6 +179,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Racket            | racket-lsp                          |    Yes    |      No       |
 | Reason            | reason-language-server              |    Yes    |      Yes      |
 | Ruby              | ruby-lsp                            | UNIX Only |      Yes      |
+| Ruby              | ruby_language_server                |    Yes    |      Yes      |
 | Ruby              | solargraph                          |    Yes    |      Yes      |
 | Ruby              | steep                               |    Yes    |      Yes      |
 | Ruby              | typeprof                            |    Yes    |      Yes      |
@@ -180,6 +192,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | SQL               | sql-language-server                 |    Yes    |      Yes      |
 | SQL               | sqls                                |    Yes    |      Yes      |
 | SQL               | plpgsql-server                      | UNIX Only |      Yes      |
+| SQL               | plpgsql-lsp                         | UNIX Only |      Yes      |
 | Starlark          | starpls                             |    Yes    |      Yes      |
 | Scala             | Metals                              |    Yes    |      Yes      |
 | Svelte            | svelte-language-server              |    Yes    |      Yes      |
@@ -197,6 +210,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | TTCN-3            | ntt                                 |    Yes    |      Yes      |
 | TypeScript        | typescript-language-server          |    Yes    |      Yes      |
 | TypeScript        | vtsls                               |    Yes    |      Yes      |
+| TypeScript        | tsp-server                          |    Yes    |      Yes      |
 | TypeScript        | deno                                |    Yes    |      Yes      |
 | TypeScript        | rome                                |    Yes    |      Yes      |
 | TypeScript        | eslint-language-server              |    Yes    |      Yes      |
@@ -220,6 +234,8 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | \*                | efm-langserver                      |    Yes    |      Yes      |
 | \*                | typos-lsp                           |    Yes    |      Yes      |
 | \*                | copilot-language-server             |    Yes    |      Yes      |
+| \*                | kakehashi                           |    Yes    |      Yes      |
+| \*                | monastery                           |    Yes    |      Yes      |
 | \*                | mozuku-lsp                          |    Yes    |      Yes      |
 
 ## Notes
