@@ -1120,6 +1120,15 @@
       "url": "https://github.com/artempyanykh/marksman",
       "description": "Markdown LSP server providing completion, cross-references, diagnostics, and more.",
       "requires": []
+    },
+    {
+      "command": "markdown-oxide",
+      "url": "https://github.com/Feel-ix-343/markdown-oxide",
+      "description": "PKM Markdown Language Server for personal knowledge management.",
+      "config": {
+        "refresh_always": 1
+      },
+      "requires": []
     }
   ],
   "moonbit": [
