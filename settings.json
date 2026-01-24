@@ -2250,6 +2250,16 @@
         ".vim/",
         "vimfiles/"
       ]
+    },
+    {
+      "command": "hjkls",
+      "url": "https://github.com/kawarimidoll/hjkls",
+      "description": "Vim script Language Server, written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".vim/",
+        "vimfiles/"
+      ]
     }
   ],
   "vlang": [
