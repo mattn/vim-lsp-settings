@@ -1,8 +1,14 @@
 @echo off
 
 setlocal
-curl -L -o server.zip "https://download-cdn.jetbrains.com/kotlin-lsp/0.252.17811/kotlin-0.252.17811.zip"
+
+if not %PROCESSOR_ARCHITECTURE%==AMD64 (
+  echo %PROCESSOR_ARCHITECTURE% is not supported
+  exit /b 1
+)
+
+set version=261.13587.0
+
+curl -L -o server.zip "https://download-cdn.jetbrains.com/kotlin-lsp/%version%/kotlin-lsp-%version%-win-x64.zip"
 call "%~dp0\run_unzip.cmd" server.zip
 del server.zip
-
-curl -L -o kotlin-lsp.cmd "https://raw.githubusercontent.com/Kotlin/kotlin-lsp/refs/heads/main/scripts/kotlin-lsp.cmd"
