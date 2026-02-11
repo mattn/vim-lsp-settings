@@ -1592,6 +1592,22 @@
       "requires": [
         "python3"
       ]
+    },
+    {
+      "command": "pyrefly",
+      "url": "https://pyrefly.org/",
+      "description": "A fast type checker and language server for Python with powerful IDE features",
+      "requires": [
+        "py"
+      ]
+    },
+    {
+      "command": "pyrefly",
+      "url": "https://pyrefly.org/",
+      "description": "A fast type checker and language server for Python with powerful IDE features",
+      "requires": [
+        "python3"
+      ]
     }
   ],
   "qml": [
