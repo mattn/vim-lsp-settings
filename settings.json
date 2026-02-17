@@ -102,6 +102,25 @@
         "biome.json",
         "biome.jsonc"
       ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
+      ]
     }
   ],
   "bzl": [
@@ -824,6 +843,25 @@
         "biome.json",
         "biome.jsonc"
       ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
+      ]
     }
   ],
   "javascriptreact": [
@@ -914,6 +952,25 @@
       "root_uri_patterns": [
         "biome.json",
         "biome.jsonc"
+      ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
       ]
     }
   ],
@@ -1896,6 +1953,25 @@
         "biome.json",
         "biome.jsonc"
       ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
+      ]
     }
   ],
   "swift": [
@@ -2084,6 +2160,25 @@
         "biome.json",
         "biome.jsonc"
       ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
+      ]
     }
   ],
   "typescriptreact": [
@@ -2156,6 +2251,25 @@
       "root_uri_patterns": [
         "biome.json",
         "biome.jsonc"
+      ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
       ]
     }
   ],
@@ -2338,6 +2452,25 @@
       "root_uri_patterns": [
         "biome.json",
         "biome.jsonc"
+      ]
+    },
+    {
+      "command": "oxlint",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxlintrc.json"
+      ]
+    },
+    {
+      "command": "oxfmt",
+      "url": "https://oxc.rs",
+      "description": "A collection of JavaScript tools written in Rust",
+      "requires": [],
+      "root_uri_patterns": [
+        ".oxfmtrc.json",
+        ".oxfmtrc.jsonc"
       ]
     }
   ],
