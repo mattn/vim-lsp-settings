@@ -1736,7 +1736,8 @@
       "description": "A Rust compiler front-end for IDEs",
       "requires": [],
       "root_uri_patterns": [
-        "Cargo.toml"
+        "Cargo.toml",
+        "rust-project.json"
       ]
     },
     {
