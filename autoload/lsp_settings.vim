@@ -600,7 +600,8 @@ function! s:vim_lsp_load_or_suggest(ft) abort
       let s:ftmap[a:ft] = 1
 
       " If default server is specified as list, continue to look next.
-      if type(l:default) !=# v:t_list
+      " For '_' (all filetypes), always continue to allow multiple servers.
+      if a:ft !=# '_' && type(l:default) !=# v:t_list
         break
       endif
     endif
