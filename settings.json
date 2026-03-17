@@ -11,6 +11,13 @@
       ]
     },
     {
+      "command": "debian-lsp",
+      "description": "LSP implementation for Debian packaging files",
+      "url": "https://github.com/jelmer/debian-lsp",
+      "disabled": true,
+      "requires": []
+    },
+    {
       "command": "typos-lsp",
       "description": "typos language server",
       "url": "https://github.com/tekumara/typos-lsp",

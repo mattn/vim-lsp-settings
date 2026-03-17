@@ -94,6 +94,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Clojure           | clj-kondo-lsp                       |    Yes    |      Yes      |
 | Cmake             | cmake-language-server               |    Yes    |      Yes      |
 | Crystal           | crystalline                         |    Yes    |      Yes      |
+| Debian            | debian-lsp                          |    No     |      No       |
 | D                 | dls                                 |    Yes    |      No       |
 | D                 | serve-d                             |    Yes    |      No       |
 | Dart              | analysis-server-dart-snapshot       |    Yes    |      Yes      |
