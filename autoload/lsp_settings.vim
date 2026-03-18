@@ -533,7 +533,7 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   endif
   let l:group_name = lsp_settings#utils#group_name(a:ft)
   exe 'augroup' l:group_name
-    autocmd!
+  autocmd!
   augroup END
   exe 'augroup!' l:group_name
 
