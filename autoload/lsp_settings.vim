@@ -32,17 +32,11 @@ endfunction
 
 function! lsp_settings#servers_dir() abort
   let l:path = resolve(fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p'))
-  if has('win32')
-     let l:path = substitute(l:path, '/', '\', 'g')
-  endif
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
 function! lsp_settings#global_settings_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_global_settings_dir', s:data_dir), ':p')
-  if has('win32')
-     let l:path = substitute(l:path, '/', '\', 'g')
-  endif
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
@@ -125,7 +119,7 @@ endfunction
 function! s:installer_path(command) abort
   let l:command = printf('%s/install-%s', s:installer_dir, a:command)
   if has('win32')
-    return substitute(l:command, '/', '\', 'g') . '.cmd'
+    return lsp_settings#utils#normalize_path(l:command) . '.cmd'
   endif
   return l:command . '.sh'
 endfunction
@@ -274,11 +268,10 @@ function! lsp_settings#exec_path(cmd) abort
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',') . ','
   endif
+  let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
-    let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
     return lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
   endif
-  let l:paths .= lsp_settings#servers_dir() . '\' . a:cmd
   for l:ext in ['.exe', '.cmd', '.bat']
     let l:path = globpath(l:paths, a:cmd . l:ext, 1)
     if !empty(l:path)
@@ -373,10 +366,7 @@ function! s:vim_lsp_uninstall_server(command) abort
     return
   endif
   call lsp_settings#utils#msg('Uninstalling ' . a:command)
-  let l:server_install_dir = lsp_settings#servers_dir() . '/' . a:command
-  if has('win32')
-     let l:server_install_dir = substitute(l:server_install_dir, '/', '\', 'g')
-  endif
+  let l:server_install_dir = lsp_settings#utils#normalize_path(lsp_settings#servers_dir() . '/' . a:command)
   if !isdirectory(l:server_install_dir)
     call lsp_settings#utils#error('Server not found')
     return
@@ -424,10 +414,7 @@ function! s:vim_lsp_install_server(ft, command, bang) abort
   if empty(a:bang) && confirm(printf('Install %s ?', l:entry[0]), "&Yes\n&Cancel") !=# 1
     return
   endif
-  let l:server_install_dir = lsp_settings#servers_dir() . '/' . l:entry[0]
-  if has('win32')
-    let l:server_install_dir = substitute(l:server_install_dir, '/', '\', 'g')
-  endif
+  let l:server_install_dir = lsp_settings#utils#normalize_path(lsp_settings#servers_dir() . '/' . l:entry[0])
   if isdirectory(l:server_install_dir)
     call lsp_settings#utils#msg('Uninstalling ' . l:entry[0])
     call delete(l:server_install_dir, 'rf')

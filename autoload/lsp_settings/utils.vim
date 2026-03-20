@@ -22,6 +22,13 @@ function! lsp_settings#utils#error(msg, ...) abort
   return a:0 > 0 ? a:000[0] : v:null
 endfunction
 
+function! lsp_settings#utils#normalize_path(path) abort
+  if has('win32')
+    return substitute(a:path, '/', '\', 'g')
+  endif
+  return a:path
+endfunction
+
 function! lsp_settings#utils#valid_name(command) abort
   return a:command =~# '^[a-zA-Z0-9_-]\+$'
 endfunction
@@ -34,11 +41,7 @@ function! lsp_settings#utils#first_one(lines) abort
   if empty(a:lines)
     return ''
   endif
-  let l:path = fnamemodify(split(a:lines, "\n")[0], ':p')
-  if has('win32')
-     let l:path = substitute(l:path, '/', '\', 'g')
-  endif
-  return l:path
+  return lsp_settings#utils#normalize_path(fnamemodify(split(a:lines, "\n")[0], ':p'))
 endfunction
 
 function! lsp_settings#utils#dotmerge(d) abort
