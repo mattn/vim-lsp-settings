@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=3.14.0
+VERSION=4.4.0
 curl -L -o PowerShellEditorServices.zip "https://github.com/PowerShell/PowerShellEditorServices/releases/download/v$VERSION/PowerShellEditorServices.zip"
 unzip PowerShellEditorServices.zip
 rm PowerShellEditorServices.zip

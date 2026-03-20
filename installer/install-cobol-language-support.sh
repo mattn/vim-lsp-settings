@@ -2,7 +2,7 @@
 
 set -e
 
-version="2.1.1"
+version="2.4.3"
 platform="linux-x64"
 url="https://github.com/eclipse/che-che4z-lsp-for-cobol/releases/download/$version/cobol-language-support-$platform-$version.vsix"
 filename="cobol-language-support-$version.vsix"

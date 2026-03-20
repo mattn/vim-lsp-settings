@@ -4,7 +4,7 @@ set -e
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 url="${url_ubuntu}"
 platform="ubuntu"
-version="0.2"
+version="0.6"
 
 case $os in
 linux)

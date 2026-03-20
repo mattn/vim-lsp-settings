@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-set VERSION=3.0.0
+set VERSION=3.17.1
 curl -L -o "vscode-lua.vsix" "https://github.com/sumneko/vscode-lua/releases/download/v%VERSION%/vscode-lua-v%VERSION%-win32-x64.vsix"
 
 call "%~dp0\run_unzip.cmd" vscode-lua.vsix

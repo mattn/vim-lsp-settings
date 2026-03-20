@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-set VERSION=3.14.0
+set VERSION=4.4.0
 curl -L -o PowerShellEditorServices.zip "https://github.com/PowerShell/PowerShellEditorServices/releases/download/v%VERSION%/PowerShellEditorServices.zip"
 call "%~dp0\run_unzip.cmd" PowerShellEditorServices.zip
 del PowerShellEditorServices.zip

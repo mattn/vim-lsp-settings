@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-set VERSION=6.0.4
+set VERSION=0.83.0
 set HASH=3feaabc7-1786-4012-8e00-d664f00581e9/8d9b529256502637663ddd4048de04dc
 curl -L -o dotnet-runtime-%VERSION%-win-x64.zip "https://download.visualstudio.microsoft.com/download/pr/%HASH%/dotnet-runtime-%VERSION%-win-x64.zip"
 call "%~dp0\run_unzip.cmd" dotnet-runtime-%VERSION%-win-x64.zip

@@ -2,7 +2,7 @@
 
 set -e
 
-version="0.3.6"
+version="0.5.16"
 curl -L -o EmmyLua-LS-all.jar "https://github.com/EmmyLua/EmmyLua-LanguageServer/releases/download/$version/EmmyLua-LS-all.jar"
 
 cat <<EOF >emmylua-ls
