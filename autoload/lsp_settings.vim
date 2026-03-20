@@ -100,6 +100,36 @@ function! s:get_filetype_default(ft) abort
   return l:default
 endfunction
 
+function! s:is_server_disabled(conf) abort
+  return lsp_settings#get(a:conf.command, 'disabled', get(a:conf, 'disabled', 0))
+endfunction
+
+function! s:is_server_filtered_by_default(command, default) abort
+  if type(a:default) ==# v:t_list
+    return len(a:default) ># 0 && index(a:default, a:command) == -1
+  elseif type(a:default) ==# v:t_string
+    return !empty(a:default) && a:default != a:command
+  endif
+  return 1
+endfunction
+
+function! s:has_missing_requires(conf) abort
+  for l:require in a:conf.requires
+    if !executable(l:require)
+      return 1
+    endif
+  endfor
+  return 0
+endfunction
+
+function! s:installer_path(command) abort
+  let l:command = printf('%s/install-%s', s:installer_dir, a:command)
+  if has('win32')
+    return substitute(l:command, '/', '\', 'g') . '.cmd'
+  endif
+  return l:command . '.sh'
+endfunction
+
 function! s:vim_lsp_installer(ft, ...) abort
   let l:ft = tolower(get(split(a:ft, '\.'), 0, ''))
   let l:ft = empty(l:ft) ? '_' : l:ft
@@ -122,40 +152,21 @@ function! s:vim_lsp_installer(ft, ...) abort
       continue
     endif
 
-    if lsp_settings#get(l:conf.command, 'disabled', get(l:conf, 'disabled', 0))
+    if s:is_server_disabled(l:conf)
       if !empty(l:name) && l:conf.command == l:name
         call lsp_settings#utils#warning(l:name . ' requested but is disabled by global or local settings')
       endif
       continue
     endif
 
-    if type(l:default) ==# v:t_list
-      if len(l:default) ># 0 && index(l:default, l:conf.command) == -1
-        if !empty(l:name) && l:conf.command == l:name
-          call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
-        endif
-        continue
-      endif
-    elseif type(l:default) ==# v:t_string
-      if !empty(l:default) && l:default != l:conf.command
-        if !empty(l:name) && l:conf.command == l:name
-          call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
-        endif
-        continue
-      endif
-    else
+    if s:is_server_filtered_by_default(l:conf.command, l:default)
       if !empty(l:name) && l:conf.command == l:name
         call lsp_settings#utils#warning(l:name . ' requested but is disabled by g:lsp_settings_filetype_' . a:ft)
       endif
       continue
     endif
 
-    let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
-    if has('win32')
-      let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
-    else
-      let l:command = l:command . '.sh'
-    endif
+    let l:command = s:installer_path(l:conf.command)
     let l:missing = 0
     for l:require in l:conf.requires
       if !lsp_settings#executable(l:require)
@@ -344,22 +355,10 @@ function! lsp_settings#complete_install(arglead, cmdline, cursorpos) abort
       continue
     endif
     for l:conf in s:settings[l:ft]
-      let l:missing = 0
-      for l:require in l:conf.requires
-        if !executable(l:require)
-          let l:missing = 1
-          break
-        endif
-      endfor
-      if l:missing !=# 0
+      if s:has_missing_requires(l:conf)
         continue
       endif
-      let l:command = printf('%s/install-%s', s:installer_dir, l:conf.command)
-      if has('win32')
-        let l:command = substitute(l:command, '/', '\', 'g') . '.cmd'
-      else
-        let l:command = l:command . '.sh'
-      endif
+      let l:command = s:installer_path(l:conf.command)
       if executable(l:command)
         call add(l:installers, l:conf.command)
       endif
@@ -546,31 +545,16 @@ function! s:vim_lsp_load_or_suggest(ft) abort
   let l:disabled = 0
 
   for l:server in s:settings[a:ft]
-    if lsp_settings#get(l:server.command, 'disabled', get(l:server, 'disabled', 0))
+    if s:is_server_disabled(l:server)
       let l:disabled += 1
       continue
     endif
 
-    if type(l:default) ==# v:t_list
-      if len(l:default) ># 0 && index(l:default, l:server.command) == -1
-        continue
-      endif
-    elseif type(l:default) ==# v:t_string
-      if !empty(l:default) && l:default != l:server.command
-        continue
-      endif
-    else
+    if s:is_server_filtered_by_default(l:server.command, l:default)
       continue
     endif
 
-    let l:missing = 0
-    for l:require in l:server.requires
-      if !executable(l:require)
-        let l:missing = 1
-        break
-      endif
-    endfor
-    if l:missing !=# 0
+    if s:has_missing_requires(l:server)
       continue
     endif
     let l:command = lsp_settings#get(l:server.command, 'cmd', [])
