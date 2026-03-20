@@ -462,6 +462,7 @@ function! s:vim_lsp_settings_suggest(ft) abort
   augroup vim_lsp_settings_suggest
     autocmd!
     exe printf("autocmd VimEnter <buffer> echohl Directory|echomsg 'Please do :LspInstallServer to enable Language Server %s'|echohl None", l:entry[0])
+  augroup END
   redraw!
 endfunction
 

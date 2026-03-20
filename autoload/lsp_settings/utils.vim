@@ -43,7 +43,6 @@ endfunction
 
 function! lsp_settings#utils#dotmerge(d) abort
   let l:ret = {}
-  let l:keys = keys(a:d)
   for l:k in sort(keys(a:d))
     let l:new = {}
     let l:cur = l:new

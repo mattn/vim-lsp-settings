@@ -23,7 +23,6 @@ function! s:open() abort
   for l:ft in sort(keys(l:settings))
     for l:conf in l:settings[l:ft]
       if l:conf.command ==# l:command
-        let l:cmd = ''
         if !lsp_settings#utils#open_url(l:conf.url)
             return
         endif
