@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-set VERSION=0.3.6
+set VERSION=0.5.16
 curl -L -o EmmyLua-LS-all.jar "https://github.com/EmmyLua/EmmyLua-LanguageServer/releases/download/%VERSION%/EmmyLua-LS-all.jar"
 
 echo @echo off ^

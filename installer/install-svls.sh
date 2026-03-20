@@ -17,7 +17,7 @@ darwin)
   ;;
 esac
 
-version="v0.2.11"
+version="v0.2.14"
 curl -L -o svls-$version-x86_64-$os.zip "https://github.com/dalance/svls/releases/download/$version/svls-$version-x86_64-$os.zip"
 unzip svls-$version-x86_64-$os.zip
 rm svls-$version-x86_64-$os.zip

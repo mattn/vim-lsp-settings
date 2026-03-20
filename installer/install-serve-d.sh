@@ -15,7 +15,7 @@ darwin)
   ;;
 esac
 
-version="0.6.0"
+version="0.7.6"
 filename="serve-d_$version-$os-x86_64.tar.xz"
 url="https://github.com/Pure-D/serve-d/releases/download/v$version/$filename"
 curl -L "$url" | unxz | tar x
