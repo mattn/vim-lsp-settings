@@ -32,11 +32,13 @@ endfunction
 
 function! lsp_settings#servers_dir() abort
   let l:path = resolve(fnamemodify(get(g:, 'lsp_settings_servers_dir', s:servers_dir), ':p'))
+  let l:path = lsp_settings#utils#normalize_path(l:path)
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
 function! lsp_settings#global_settings_dir() abort
   let l:path = fnamemodify(get(g:, 'lsp_settings_global_settings_dir', s:data_dir), ':p')
+  let l:path = lsp_settings#utils#normalize_path(l:path)
   return substitute(l:path, '[\/]$', '', '')
 endfunction
 
