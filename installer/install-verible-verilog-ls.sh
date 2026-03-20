@@ -20,10 +20,10 @@ darwin)
 esac
 
 url="https://github.com/chipsalliance/verible/releases/download/$version/verible-$version-$platform.tar.gz"
-archive=$(basename $url)
+archive=$(basename "$url")
 path_to_binary="verible-$version/bin/verible-verilog-ls"
 
-curl -L -o $archive $url
-tar -xzvf $archive $path_to_binary
-mv $path_to_binary .
-rm -r $archive "verible-$version"
+curl -L -o "$archive" "$url"
+tar -xzvf "$archive" "$path_to_binary"
+mv "$path_to_binary" .
+rm -r "$archive" "verible-$version"
