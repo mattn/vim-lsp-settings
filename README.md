@@ -148,6 +148,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Lua               | sumneko-lua-language-server         |    Yes    |      Yes      |
 | Markdown (remark) | remark-language-server              |    Yes    |      Yes      |
 | Markdown          | Marksman                            |    Yes    |      Yes      |
+| Markdown          | markdown-oxide                      |    Yes    |      Yes      |
 | Moonbit           | moonbit-lsp                         |    No     |      No       |
 | Nim               | nimls                               |    No     |      No       |
 | Nix               | nixd                                |    Yes    |      Yes      |
