@@ -394,6 +394,19 @@
       }
     }
   ],
+  "eruby": [
+    {
+      "command": "herb-language-server",
+      "url": "https://github.com/marcoroth/herb",
+      "description": "Powerful and seamless HTML-aware ERB toolchain.",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "fennel": [
     {
       "command": "fennel-ls",
