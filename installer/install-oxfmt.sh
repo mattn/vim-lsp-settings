@@ -18,23 +18,23 @@ linux)
   esac
   if [ "$arch" = "x86_64" ]; then
     if [ "$kernel" = "musl" ]; then
-      platform="linux-x64-musl"
+      platform="x86_64-unknown-linux-musl"
     else
-      platform="linux-x64"
+      platform="x86_64-unknown-linux-gnu"
     fi
   else
     if [ "$kernel" = "musl" ]; then
-      platform="linux-arm64-musl"
+      platform="aarch64-unknown-linux-musl"
     else
-      platform="linux-arm64"
+      platform="aarch64-unknown-linux-gnu"
     fi
   fi
   ;;
 darwin)
   if [ "$arch" = "x86_64" ]; then
-    platform="darwin-x64"
+    platform="x86_64-apple-darwin"
   else
-    platform="darwin-arm64"
+    platform="aarch64-apple-darwin"
   fi
   ;;
 esac
