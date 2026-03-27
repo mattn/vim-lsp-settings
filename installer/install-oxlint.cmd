@@ -5,11 +5,11 @@ setlocal
 set ARCH=%PROCESSOR_ARCHITECTURE%
 
 if /I "%ARCH%"=="ARM64" (
-  set ZIPNAME=oxlint-win32-arm64.zip
-  set EXEFILE=oxlint-win32-arm64.exe
+  set ZIPNAME=oxlint-aarch64-pc-windows-msvc.zip
+  set EXEFILE=oxlint-aarch64-pc-windows-msvc.exe
 ) else (
-  set ZIPNAME=oxlint-win32-x64.zip
-  set EXEFILE=oxlint-win32-x64.exe
+  set ZIPNAME=oxlint-x86_64-pc-windows-msvc.zip
+  set EXEFILE=oxlint-x86_64-pc-windows-msvc.exe
 )
 
 curl -L -o "%ZIPNAME%" "https://github.com/oxc-project/oxc/releases/latest/download/%ZIPNAME%"
