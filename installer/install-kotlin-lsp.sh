@@ -30,7 +30,7 @@ x86_64)
   ;;
 esac
 
-version=261.13587.0
+version=262.2310.0
 
 curl -L -o server.zip "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-${os}-${arch}.zip"
 unzip server.zip
