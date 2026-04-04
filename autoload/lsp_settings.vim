@@ -163,15 +163,10 @@ function! s:vim_lsp_installer(ft, ...) abort
     endif
 
     let l:command = s:installer_path(l:conf.command)
-    let l:missing = 0
-    for l:require in l:conf.requires
-      if !lsp_settings#executable(l:require)
-        call lsp_settings#utils#warning(l:conf.command . ' requires ' . l:require)
-        let l:missing = 1
-        break
+    if s:has_missing_requires(l:conf)
+      if !empty(l:name)
+        call lsp_settings#utils#warning(l:conf.command . ' requires ' . join(l:conf.requires, ', '))
       endif
-    endfor
-    if l:missing !=# 0
       continue
     endif
     if lsp_settings#executable(l:command)
