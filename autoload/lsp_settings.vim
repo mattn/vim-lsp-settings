@@ -13,6 +13,12 @@ endif
 let s:servers_dir = s:data_dir . '/servers'
 
 let s:settings_cache = {}
+let s:server_config_cache = {}
+let s:root_uri_patterns_cache = {}
+let s:global_settings_cache = {}
+let s:applied_global_settings_key = ''
+let s:executable_cache = {}
+let s:exec_path_cache = {}
 
 function! s:load_settings() abort
   if empty(s:settings_cache)
@@ -22,9 +28,72 @@ function! s:load_settings() abort
   return s:settings_cache
 endfunction
 
+function! s:rebuild_settings_index() abort
+  let s:server_config_cache = {}
+  let s:root_uri_patterns_cache = {}
+  for l:ft in keys(s:settings)
+    for l:conf in s:settings[l:ft]
+      if has_key(l:conf, 'config') && !has_key(s:server_config_cache, l:conf.command)
+        let s:server_config_cache[l:conf.command] = l:conf.config
+      endif
+      if has_key(l:conf, 'root_uri_patterns') && !has_key(s:root_uri_patterns_cache, l:conf.command)
+        let s:root_uri_patterns_cache[l:conf.command] = l:conf.root_uri_patterns
+      endif
+    endfor
+  endfor
+endfunction
+
 let s:settings = s:load_settings()
+call s:rebuild_settings_index()
 
 let s:ftmap = {}
+
+function! s:command_cache_key(cmd) abort
+  let l:extra_paths = get(g:, 'lsp_settings_extra_paths', '')
+  let l:server_dir = lsp_settings#servers_dir() . '/' . a:cmd
+  let l:server_command = l:server_dir . '/' . a:cmd
+  return join([
+        \ a:cmd,
+        \ $PATH,
+        \ string(l:extra_paths),
+        \ l:server_dir,
+        \ string(getftime(l:server_dir)),
+        \ string(getftime(l:server_command)),
+        \ string(getftime(l:server_command . '.exe')),
+        \ string(getftime(l:server_command . '.cmd')),
+        \ string(getftime(l:server_command . '.bat')),
+        \ ], "\n")
+endfunction
+
+function! s:clear_command_cache(...) abort
+  if a:0 ==# 0
+    let s:executable_cache = {}
+    let s:exec_path_cache = {}
+    return
+  endif
+
+  let l:key = s:command_cache_key(a:1)
+  call remove(s:executable_cache, l:key)
+  call remove(s:exec_path_cache, l:key)
+endfunction
+
+function! s:load_global_settings() abort
+  let l:path = lsp_settings#global_settings_dir() . '/settings.json'
+  if !filereadable(l:path)
+    return {'key': '', 'settings': {}}
+  endif
+
+  let l:mtime = getftime(l:path)
+  let l:key = l:path . ':' . l:mtime
+  let l:cache = get(s:global_settings_cache, l:path, {})
+  if get(l:cache, 'mtime', -1) ==# l:mtime
+    return {'key': l:key, 'settings': l:cache.settings}
+  endif
+
+  let l:settings = json_decode(join(readfile(l:path), "\n"))
+  let s:global_settings_cache[l:path] = {'mtime': l:mtime, 'settings': l:settings}
+  return {'key': l:key, 'settings': l:settings}
+endfunction
 
 function! lsp_settings#installer_dir() abort
   return s:installer_dir
@@ -65,6 +134,10 @@ function! lsp_settings#executable(cmd) abort
   if executable(a:cmd)
     return 1
   endif
+  let l:key = s:command_cache_key(a:cmd)
+  if has_key(s:executable_cache, l:key)
+    return s:executable_cache[l:key]
+  endif
   let l:paths = get(g:, 'lsp_settings_extra_paths', '')
   if type(l:paths) == type([])
     let l:paths = join(l:paths, ',')
@@ -72,13 +145,16 @@ function! lsp_settings#executable(cmd) abort
   let l:paths .= ',' . lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
     let l:found = filter(split(globpath(l:paths, a:cmd, 1), "\n"), 'executable(v:val)')
-    return !empty(l:found)
+    let s:executable_cache[l:key] = !empty(l:found)
+    return s:executable_cache[l:key]
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
     if !empty(globpath(l:paths, a:cmd . l:ext, 1))
+      let s:executable_cache[l:key] = 1
       return 1
     endif
   endfor
+  let s:executable_cache[l:key] = 0
   return 0
 endfunction
 
@@ -177,14 +253,7 @@ function! s:vim_lsp_installer(ft, ...) abort
 endfunction
 
 function! lsp_settings#server_config(name) abort
-  for l:ft in sort(keys(s:settings))
-    for l:conf in s:settings[l:ft]
-      if l:conf.command ==# a:name && has_key(l:conf, 'config')
-        return l:conf['config']
-      endif
-    endfor
-  endfor
-  return {}
+  return get(s:server_config_cache, a:name, {})
 endfunction
 
 function! lsp_settings#merge(name, key, default) abort
@@ -234,6 +303,10 @@ function! lsp_settings#get(name, key, default) abort
 endfunction
 
 function! lsp_settings#exec_path(cmd) abort
+  let l:key = s:command_cache_key(a:cmd)
+  if has_key(s:exec_path_cache, l:key)
+    return s:exec_path_cache[l:key]
+  endif
   let l:paths = []
   if has('win32')
     for l:path in split($PATH, ';')
@@ -250,13 +323,15 @@ function! lsp_settings#exec_path(cmd) abort
   let l:path = globpath(l:paths, a:cmd, 1)
   if !has('win32')
     if !empty(l:path)
-      return lsp_settings#utils#first_one(l:path)
+      let s:exec_path_cache[l:key] = lsp_settings#utils#first_one(l:path)
+      return s:exec_path_cache[l:key]
     endif
   else
     for l:ext in ['.exe', '.cmd', '.bat']
       let l:path = globpath(l:paths, a:cmd . l:ext, 1)
       if !empty(l:path)
-        return lsp_settings#utils#first_one(l:path)
+        let s:exec_path_cache[l:key] = lsp_settings#utils#first_one(l:path)
+        return s:exec_path_cache[l:key]
       endif
     endfor
   endif
@@ -267,14 +342,17 @@ function! lsp_settings#exec_path(cmd) abort
   endif
   let l:paths .= lsp_settings#servers_dir() . '/' . a:cmd
   if !has('win32')
-    return lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
+    let s:exec_path_cache[l:key] = lsp_settings#utils#first_one(globpath(l:paths, a:cmd, 1))
+    return s:exec_path_cache[l:key]
   endif
   for l:ext in ['.exe', '.cmd', '.bat']
     let l:path = globpath(l:paths, a:cmd . l:ext, 1)
     if !empty(l:path)
-      return lsp_settings#utils#first_one(l:path)
+      let s:exec_path_cache[l:key] = lsp_settings#utils#first_one(l:path)
+      return s:exec_path_cache[l:key]
     endif
   endfor
+  let s:exec_path_cache[l:key] = ''
   return ''
 endfunction
 
@@ -286,14 +364,7 @@ endfunction
 function! lsp_settings#root_uri(name) abort
   let l:patterns = lsp_settings#get(a:name, 'root_uri_patterns', [])
   if empty(l:patterns)
-    for l:ft in sort(keys(s:settings))
-      for l:conf in s:settings[l:ft]
-        if l:conf.command ==# a:name && has_key(l:conf, 'root_uri_patterns')
-          let l:patterns = l:conf['root_uri_patterns']
-          break
-        endif
-      endfor
-    endfor
+    let l:patterns = get(s:root_uri_patterns_cache, a:name, [])
   endif
 
   let l:dir = lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), extend(copy(l:patterns), g:lsp_settings_root_markers))
@@ -369,6 +440,7 @@ function! s:vim_lsp_uninstall_server(command) abort
     return
   endif
   call delete(l:server_install_dir, 'rf')
+  call s:clear_command_cache(a:command)
   call lsp_settings#utils#msg('Uninstalled ' . a:command)
 endfunction
 
@@ -377,6 +449,7 @@ function! s:vim_lsp_install_server_post(command, job, code, ...) abort
   if a:code != 0
     return
   endif
+  call s:clear_command_cache(a:command)
   if lsp_settings#executable(a:command)
     let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
     if filereadable(l:script)
@@ -488,13 +561,14 @@ function! s:vim_lsp_load_or_suggest(ft) abort
     return
   endif
 
-  if filereadable(lsp_settings#global_settings_dir() . '/settings.json')
-    let l:settings = json_decode(join(readfile(lsp_settings#global_settings_dir() . '/settings.json'), "\n"))
-    if  has_key(g:, 'lsp_settings')
-      call extend(g:lsp_settings, l:settings)
+  let l:global_settings = s:load_global_settings()
+  if !empty(l:global_settings.settings) && s:applied_global_settings_key !=# l:global_settings.key
+    if has_key(g:, 'lsp_settings')
+      call extend(g:lsp_settings, l:global_settings.settings)
     else
-      let g:lsp_settings = l:settings
+      let g:lsp_settings = l:global_settings.settings
     endif
+    let s:applied_global_settings_key = l:global_settings.key
   endif
   call lsp_settings#profile#load_local()
 
@@ -591,6 +665,8 @@ endfunction
 
 function! lsp_settings#clear() abort
   let s:ftmap = {}
+  let s:applied_global_settings_key = ''
+  call s:clear_command_cache()
 endfunction
 
 function! lsp_settings#init() abort
@@ -618,6 +694,8 @@ function! lsp_settings#init() abort
       endfor
     endfor
   endfor
+
+  call s:rebuild_settings_index()
 
   augroup vim_lsp_settings_lazy
     autocmd!

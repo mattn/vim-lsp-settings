@@ -1,3 +1,6 @@
+let s:local_settings_cache = {}
+let s:applied_local_settings = {}
+
 function! s:filter_deny_keys(settings) abort
   let l:deny_keys = get(g:, 'lsp_settings_deny_local_keys', ['cmd'])
   if empty(l:deny_keys)
@@ -20,6 +23,19 @@ function! s:filter_deny_keys(settings) abort
   endfor
 endfunction
 
+function! s:load_local_settings(path) abort
+  let l:mtime = getftime(a:path)
+  let l:cache = get(s:local_settings_cache, a:path, {})
+  if get(l:cache, 'mtime', -1) ==# l:mtime
+    return {'key': a:path . ':' . l:mtime, 'settings': l:cache.settings}
+  endif
+
+  let l:settings = json_decode(join(readfile(a:path), "\n"))
+  call s:filter_deny_keys(l:settings)
+  let s:local_settings_cache[a:path] = {'mtime': l:mtime, 'settings': l:settings}
+  return {'key': a:path . ':' . l:mtime, 'settings': l:settings}
+endfunction
+
 function! lsp_settings#profile#load_local() abort
   try
     let l:dir = expand('%:p:h')
@@ -30,8 +46,11 @@ function! lsp_settings#profile#load_local() abort
     if !filereadable(l:root . '/settings.json')
       return
     endif
-    let l:settings = json_decode(join(readfile(l:root . '/settings.json'), "\n"))
-    call s:filter_deny_keys(l:settings)
+    let l:loaded = s:load_local_settings(l:root . '/settings.json')
+    if has_key(s:applied_local_settings, l:loaded.key)
+      return
+    endif
+    let l:settings = l:loaded.settings
     if has_key(g:, 'lsp_settings')
       for [l:k, l:v] in items(l:settings)
         if has_key(g:lsp_settings, l:k)
@@ -43,6 +62,7 @@ function! lsp_settings#profile#load_local() abort
     else
       let g:lsp_settings = l:settings
     endif
+    let s:applied_local_settings[l:loaded.key] = 1
   catch
   endtry
 endfunction
