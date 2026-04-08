@@ -123,7 +123,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -877,7 +879,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -987,7 +991,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -2018,7 +2024,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -2225,7 +2233,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -2317,7 +2327,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
@@ -2518,7 +2530,9 @@
       "command": "oxfmt",
       "url": "https://oxc.rs",
       "description": "A collection of JavaScript tools written in Rust",
-      "requires": [],
+      "requires": [
+        "npm"
+      ],
       "root_uri_patterns": [
         ".oxfmtrc.json",
         ".oxfmtrc.jsonc"
