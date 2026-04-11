@@ -2,7 +2,7 @@
 
 set -e
 
-git clone --depth=1 -b lsp-test https://github.com/ruby/typeprof .
+git clone --depth=1 https://github.com/ruby/typeprof .
 bundle config set --local path vendor/bundle
 bundle config set --local without development
 bundle install
