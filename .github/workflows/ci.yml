@@ -21,19 +21,19 @@ jobs:
             neovim: true
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - id: vim
         uses: rhysd/action-setup-vim@v1
         with:
           version: ${{ matrix.version }}
           neovim: ${{ matrix.neovim }}
       - name: 'Setup vim-lsp'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: prabirshrestha/vim-lsp
           path: vim-lsp
       - name: 'Setup vim-themis'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: thinca/vim-themis
           path: vim-themis
