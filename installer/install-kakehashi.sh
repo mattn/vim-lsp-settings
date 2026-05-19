@@ -33,7 +33,7 @@ darwin)
 esac
 
 # Download latest release
-url="https://github.com/atusy/kakehashi/releases/latest/download/kakehashi-v0.0.10-${platform}.tar.gz"
+url="https://github.com/atusy/kakehashi/releases/latest/download/kakehashi-v0.5.0-${platform}.tar.gz"
 curl -L -o "kakehashi-${platform}.tar.gz" "$url"
 tar xzf "kakehashi-${platform}.tar.gz"
 rm "kakehashi-${platform}.tar.gz"
