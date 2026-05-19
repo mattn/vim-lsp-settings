@@ -3,7 +3,7 @@
 set -e
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 platform="ubuntu"
-version="0.6"
+version="0.7"
 
 case $os in
 linux)

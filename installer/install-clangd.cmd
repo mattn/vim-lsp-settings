@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-set VERSION=22.1.1
+set VERSION=22.1.6
 echo Downloading clang and LLVM...
 curl -L -o LLVM-%VERSION%-win64.exe "https://github.com/llvm/llvm-project/releases/download/llvmorg-%VERSION%/LLVM-%VERSION%-win64.exe"
 echo Running setup...

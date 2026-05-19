@@ -40,7 +40,7 @@ mingw64_nt*)
   ;;
 esac
 
-version="v3.17.1"
+version="v3.18.2"
 url="https://github.com/sumneko/vscode-lua/releases/download/$version/vscode-lua-$version-$platform.vsix"
 asset="vscode-lua.vsix"
 
