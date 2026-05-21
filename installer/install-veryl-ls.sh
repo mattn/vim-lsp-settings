@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.20.0"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 case $os in
@@ -17,7 +19,7 @@ darwin)
   ;;
 esac
 
-curl -L -o veryl-x86_64-$os.zip "https://github.com/veryl-lang/veryl/releases/latest/download/veryl-x86_64-$os.zip"
+curl -L -o veryl-x86_64-$os.zip "https://github.com/veryl-lang/veryl/releases/download/$version/veryl-x86_64-$os.zip"
 unzip veryl-x86_64-$os.zip
 rm veryl
 rm veryl-x86_64-$os.zip

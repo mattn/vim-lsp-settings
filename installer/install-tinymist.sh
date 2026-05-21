@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.14.18"
+
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 arch=$(uname -m)
 
@@ -28,5 +30,5 @@ linux) ;;
   ;;
 esac
 
-curl -L -o tinymist "https://github.com/Myriad-Dreamin/tinymist/releases/latest/download/tinymist-${os}-${arch}"
+curl -L -o tinymist "https://github.com/Myriad-Dreamin/tinymist/releases/download/${version}/tinymist-${os}-${arch}"
 chmod +x tinymist

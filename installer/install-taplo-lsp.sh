@@ -2,6 +2,8 @@
 
 set -e
 
+version="0.10.0"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 architecture=$(uname -m)
 
@@ -21,6 +23,6 @@ darwin)
   ;;
 esac
 
-curl -L "https://github.com/tamasfe/taplo/releases/latest/download/taplo-$platform.gz" | gzip -d >taplo-lsp
+curl -L "https://github.com/tamasfe/taplo/releases/download/$version/taplo-$platform.gz" | gzip -d >taplo-lsp
 
 chmod +x taplo-lsp

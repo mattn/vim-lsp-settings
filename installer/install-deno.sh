@@ -2,6 +2,8 @@
 
 set -e
 
+version="v2.7.14"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 case $os in
@@ -17,5 +19,5 @@ darwin)
   ;;
 esac
 
-curl -L -o "deno-$os.zip" "https://github.com/denoland/deno/releases/latest/download/$filename"
+curl -L -o "deno-$os.zip" "https://github.com/denoland/deno/releases/download/$version/$filename"
 unzip "deno-$os.zip"

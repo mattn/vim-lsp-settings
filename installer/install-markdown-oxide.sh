@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.25.10"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="$(uname -m)"
 
@@ -32,10 +34,9 @@ darwin)
   ;;
 esac
 
-# Download latest release
-url="https://github.com/Feel-ix-343/markdown-oxide/releases/latest/download/markdown-oxide-v0.25.10-${platform}.tar.gz"
+url="https://github.com/Feel-ix-343/markdown-oxide/releases/download/${version}/markdown-oxide-${version}-${platform}.tar.gz"
 curl -L -o "markdown-oxide-${platform}.tar.gz" "$url"
 tar xzf "markdown-oxide-${platform}.tar.gz"
-mv markdown-oxide-v0.25.10-${platform}/markdown-oxide markdown-oxide
-rm "markdown-oxide-${platform}.tar.gz"
+mv "markdown-oxide-${version}-${platform}/markdown-oxide" markdown-oxide
+rm -rf "markdown-oxide-${version}-${platform}" "markdown-oxide-${platform}.tar.gz"
 chmod +x markdown-oxide

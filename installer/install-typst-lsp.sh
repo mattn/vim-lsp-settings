@@ -3,6 +3,8 @@
 set -e
 #set -o pipefail
 
+version="v0.13.0"
+
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 arch=$(uname -m)
 
@@ -19,10 +21,10 @@ esac
 
 case "${os}" in
 darwin)
-  url="https://github.com/nvarner/typst-lsp/releases/latest/download/typst-lsp-${arch}-apple-darwin"
+  url="https://github.com/nvarner/typst-lsp/releases/download/${version}/typst-lsp-${arch}-apple-darwin"
   ;;
 linux)
-  url="https://github.com/nvarner/typst-lsp/releases/latest/download/typst-lsp-${arch}-unknown-linux-gnu"
+  url="https://github.com/nvarner/typst-lsp/releases/download/${version}/typst-lsp-${arch}-unknown-linux-gnu"
   ;;
 *)
   echo >&2 "$os is not supported"

@@ -2,6 +2,8 @@
 
 set -e
 
+version="2026-05-18"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="$(uname -m)"
 
@@ -42,7 +44,7 @@ mingw64_nt*)
   ;;
 esac
 
-curl -L -o "rust-analyzer-$platform.gz" "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-$platform.gz"
+curl -L -o "rust-analyzer-$platform.gz" "https://github.com/rust-analyzer/rust-analyzer/releases/download/$version/rust-analyzer-$platform.gz"
 gzip -d "rust-analyzer-$platform.gz"
 
 mv rust-analyzer-$platform rust-analyzer

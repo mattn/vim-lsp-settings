@@ -2,6 +2,8 @@
 
 set -e
 
+version="v2026.04.21"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="$(uname -m)"
 
@@ -30,6 +32,6 @@ darwin)
   ;;
 esac
 
-curl -L -o "systemd-lsp" "https://github.com/JFryy/systemd-lsp/releases/download/v2025.07.10/$file"
+curl -L -o "systemd-lsp" "https://github.com/JFryy/systemd-lsp/releases/download/$version/$file"
 
 chmod +x systemd-lsp

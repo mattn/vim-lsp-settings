@@ -1,15 +1,17 @@
 @echo off
 setlocal
 
-for /f "delims=" %%i in ('dotnet --version') do set version=%%i
+set VERSION=v1.39.15
+
+for /f "delims=" %%i in ('dotnet --version') do set dotnet_version=%%i
 
 
-set mainVersion=%version:.=&rem %
+set mainVersion=%dotnet_version:.=&rem %
 
 if /i "%mainVersion%" geq "6" (
-	curl -L -o omnisharp.zip "https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-win-x64-net6.0.zip"
+	curl -L -o omnisharp.zip "https://github.com/OmniSharp/omnisharp-roslyn/releases/download/%VERSION%/omnisharp-win-x64-net6.0.zip"
 ) else (
-	curl -L -o omnisharp.zip "https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-win-x64.zip"
+	curl -L -o omnisharp.zip "https://github.com/OmniSharp/omnisharp-roslyn/releases/download/%VERSION%/omnisharp-win-x64.zip"
 )
 
 call "%~dp0\run_unzip.cmd" omnisharp.zip

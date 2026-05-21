@@ -2,10 +2,12 @@
 
 set -e
 
+version="v1.39.15"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="-x64"
 net6=""
-version=$(dotnet --version)
+dotnet_version=$(dotnet --version)
 
 case $os in
 linux) ;;
@@ -19,12 +21,12 @@ darwin)
   ;;
 esac
 
-case $version in
+case $dotnet_version in
 *.*)
-  mainVersion=${version%%.*}
+  mainVersion=${dotnet_version%%.*}
   ;;
 *)
-  mainVersion=$version
+  mainVersion=$dotnet_version
   ;;
 esac
 
@@ -49,7 +51,7 @@ omnisharp_cmd=\${base_dir}/OmniSharp
 EOF
 fi
 
-url="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-$os$arch$net6.tar.gz"
+url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$version/omnisharp-$os$arch$net6.tar.gz"
 curl -L "$url" | tar xz
 
 chmod +x run

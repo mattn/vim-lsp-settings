@@ -1,7 +1,8 @@
 @echo off
 
 setlocal
-curl -L -o server.zip "https://github.com/fwcd/kotlin-language-server/releases/latest/download/server.zip"
+set VERSION=1.3.13
+curl -L -o server.zip "https://github.com/fwcd/kotlin-language-server/releases/download/%VERSION%/server.zip"
 call "%~dp0\run_unzip.cmd" server.zip
 del server.zip
 

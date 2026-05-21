@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.1.22"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="$(uname -m)"
 
@@ -36,6 +38,6 @@ mingw64_nt*)
   ;;
 esac
 
-curl -L -o "starpls" "https://github.com/withered-magic/starpls/releases/latest/download/starpls-$platform"
+curl -L -o "starpls" "https://github.com/withered-magic/starpls/releases/download/$version/starpls-$platform"
 
 chmod +x starpls

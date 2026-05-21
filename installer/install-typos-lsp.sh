@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.1.52"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch=$(uname -m | tr "[:upper:]" "[:lower:]")
 
@@ -38,7 +40,6 @@ darwin)
   ;;
 esac
 
-version=$(basename "$(curl -Ls -o /dev/null -w %\{url_effective\} https://github.com/tekumara/typos-lsp/releases/latest)")
 filename="typos-lsp-$version-$tuple.tar.gz"
 
-curl -L "https://github.com/tekumara/typos-lsp/releases/latest/download/$filename" | tar -xvz
+curl -L "https://github.com/tekumara/typos-lsp/releases/download/$version/$filename" | tar -xvz

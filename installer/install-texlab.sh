@@ -2,6 +2,8 @@
 
 set -e
 
+version="v5.25.1"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch=$(uname -m)
 
@@ -31,5 +33,5 @@ arm64)
   ;;
 esac
 
-url="https://github.com/latex-lsp/texlab/releases/latest/download/texlab-$arch-$os.tar.gz"
+url="https://github.com/latex-lsp/texlab/releases/download/$version/texlab-$arch-$os.tar.gz"
 curl -L "$url" | tar xzv

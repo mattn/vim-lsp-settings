@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.5.4"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 case $os in
@@ -21,5 +23,5 @@ darwin)
   ;;
 esac
 
-curl -L -o helm-ls "https://github.com/mrjosh/helm-ls/releases/latest/download/$filename"
+curl -L -o helm-ls "https://github.com/mrjosh/helm-ls/releases/download/$version/$filename"
 chmod 755 helm-ls

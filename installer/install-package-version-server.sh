@@ -2,6 +2,8 @@
 
 set -e
 
+version="v0.0.10"
+
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
 arch="$(uname -m)"
 ext="tar.gz"
@@ -43,7 +45,7 @@ mingw64_nt*)
   ;;
 esac
 
-curl -L -o "package-version-server.$ext" "https://github.com/zed-industries/package-version-server/releases/latest/download/package-version-server-$platform.$ext"
+curl -L -o "package-version-server.$ext" "https://github.com/zed-industries/package-version-server/releases/download/$version/package-version-server-$platform.$ext"
 if [ "$ext" = "zip" ]; then
   unzip "package-version-server.$ext"
 else
