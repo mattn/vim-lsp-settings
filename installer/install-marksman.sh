@@ -5,7 +5,7 @@ set -e
 version="2026-02-08"
 
 os=$(uname -s | tr "[:upper:]" "[:lower:]")
-if [ $(uname -m) = "x86_64" ];
+if [ "$(uname -m)" = "x86_64" ];
 then
   arch="x64"
 else

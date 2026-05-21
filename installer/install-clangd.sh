@@ -23,7 +23,7 @@ fi
 for llvm_version in $(seq 30 -1 9); do
   cmd="clangd-$llvm_version"
   if which "$cmd" >/dev/null; then
-    echo "Found $(which $cmd)"
+    echo "Found $(which "$cmd")"
     ln -sf "$(which "$cmd")" clangd
     ./clangd --version
     exit 0
