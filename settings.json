@@ -724,6 +724,19 @@
       ]
     }
   ],
+  "htmlangular": [
+    {
+      "command": "angular-language-server",
+      "url": "https://github.com/angular/vscode-ng-language-service",
+      "description": "Angular extension for Visual Studio Code",
+      "config": {
+        "refresh_pattern": "\\(/\\|\\k\\+\\)$"
+      },
+      "requires": [
+        "npm"
+      ]
+    }
+  ],
   "hy": [
     {
       "command": "hyuga",
