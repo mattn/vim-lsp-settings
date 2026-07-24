@@ -142,6 +142,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | JavaScript        | oxlint                              |    Yes    |      Yes      |
 | JavaScript        | oxfmt                               |    Yes    |      Yes      |
 | Julia             | LanguageServer.jl                   |    Yes    |      No       |
+| Just              | just-lsp                            |    Yes    |      Yes      |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
 | Kotlin            | kotlin-lsp                          |    Yes    |      Yes      |
 | Lisp              | cl-lsp                              |    Yes    |      No       |

@@ -1106,6 +1106,18 @@
       }
     }
   ],
+  "just": [
+    {
+      "command": "just-lsp",
+      "url": "https://github.com/terror/just-lsp",
+      "description": "A language server for just",
+      "requires": [],
+      "root_uri_patterns": [
+        "justfile",
+        ".justfile"
+      ]
+    }
+  ],
   "kotlin": [
     {
       "command": "kotlin-language-server",
