@@ -1,5 +1,8 @@
 function! s:get_blocklist() abort
-    if empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/'))
+    if empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/')) &&
+    \  empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'package.json')) &&
+    \  empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'jsconfig.json')) &&
+    \  empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'))
         return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']
     endif
     if !empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'deno.json'))
