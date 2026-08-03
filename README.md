@@ -219,6 +219,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Terraform         | terraform-ls                        |    Yes    |      Yes      |
 | TOML              | taplo-lsp                           |    No     |      Yes      |
 | TTCN-3            | ntt                                 |    Yes    |      Yes      |
+| TypeScript        | tsc(typeScript-go)                  |    Yes    |      Yes      |
 | TypeScript        | typescript-language-server          |    Yes    |      Yes      |
 | TypeScript        | vtsls                               |    Yes    |      Yes      |
 | TypeScript        | tsp-server                          |    Yes    |      Yes      |
