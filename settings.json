@@ -54,6 +54,15 @@
       },
       "disabled": true,
       "requires": []
+    },
+    {
+      "command": "llm-lsp",
+      "description": "Language Server backed by an OpenAI-compatible LLM API",
+      "url": "https://github.com/mattn/llm-lsp",
+      "disabled": true,
+      "requires": [
+        "go"
+      ]
     }
   ],
   "apex": [
