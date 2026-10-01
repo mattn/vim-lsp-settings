@@ -111,9 +111,13 @@ function! s:is_server_filtered_by_default(command, default) abort
   return 1
 endfunction
 
-function! s:has_missing_requires(conf) abort
+function! s:has_missing_requires(conf, ...) abort
+  let l:cache = get(a:000, 0, {})
   for l:require in a:conf.requires
-    if !executable(l:require)
+    if !has_key(l:cache, l:require)
+      let l:cache[l:require] = executable(l:require)
+    endif
+    if !l:cache[l:require]
       return 1
     endif
   endfor
@@ -542,12 +546,15 @@ endfunction
 " the given filetype: disabled servers, servers filtered out by
 " g:lsp_settings_filetype_<ft>, servers with missing requires and servers
 " not installed nor found in $PATH are excluded. Fallback checkers are not
-" taken into account.
-function! lsp_settings#filetype_servers(ft) abort
+" taken into account. An optional dictionary shares executable checks across
+" filetypes in a single scan. Use a new dictionary for each scan so changes to
+" installed commands are detected.
+function! lsp_settings#filetype_servers(ft, ...) abort
   if !has_key(s:settings, a:ft)
     return []
   endif
   let l:default = s:get_filetype_default(a:ft)
+  let l:cache = extend(get(a:000, 0, {}), {'requires': {}, 'servers': {}}, 'keep')
   let l:servers = []
   for l:conf in s:settings[a:ft]
     if index(l:servers, l:conf.command) >= 0
@@ -559,11 +566,16 @@ function! lsp_settings#filetype_servers(ft) abort
     if s:is_server_filtered_by_default(l:conf.command, l:default)
       continue
     endif
-    if s:has_missing_requires(l:conf)
+    if s:has_missing_requires(l:conf, l:cache.requires)
       continue
     endif
-    if empty(lsp_settings#get(l:conf.command, 'cmd', [])) && !lsp_settings#executable(l:conf.command)
-      continue
+    if empty(lsp_settings#get(l:conf.command, 'cmd', []))
+      if !has_key(l:cache.servers, l:conf.command)
+        let l:cache.servers[l:conf.command] = lsp_settings#executable(l:conf.command)
+      endif
+      if !l:cache.servers[l:conf.command]
+        continue
+      endif
     endif
     call add(l:servers, l:conf.command)
     if a:ft !=# '_' && type(l:default) !=# v:t_list
