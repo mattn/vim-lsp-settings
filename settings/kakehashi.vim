@@ -3,11 +3,12 @@
 function! s:initialization_options() abort
   let l:language_servers = {}
   let l:bridge = {}
+  let l:executable_cache = {}
   for l:ft in sort(keys(lsp_settings#settings()))
     if l:ft ==# '_' || l:ft ==# 'markdown'
       continue
     endif
-    for l:name in lsp_settings#filetype_servers(l:ft)
+    for l:name in lsp_settings#filetype_servers(l:ft, l:executable_cache)
       if l:name ==# 'kakehashi'
         continue
       endif

@@ -1,0 +1,107 @@
+function! s:install_command(name) abort
+    let path = s:dir . '/' . a:name
+    if has('win32')
+        let path .= '.cmd'
+        call writefile(['@echo off'], path)
+    else
+        call writefile(['#!/bin/sh'], path)
+        call setfperm(path, 'rwxr-xr-x')
+    endif
+    return path
+endfunction
+
+Describe filetype server executable cache
+    Before each
+        let s:path = $PATH
+        let s:dir = tempname()
+        call mkdir(s:dir, 'p')
+        let $PATH = s:dir
+        let s:saved_globals = {}
+        for name in ['lsp_settings', 'lsp_settings_servers_dir', 'lsp_settings_extra_paths', 'lsp_settings_filetype_cache_a', 'lsp_settings_filetype_cache_b']
+            if has_key(g:, name)
+                let s:saved_globals[name] = g:[name]
+                unlet g:[name]
+            endif
+        endfor
+        let g:lsp_settings = {}
+        let g:lsp_settings_servers_dir = s:dir . '/servers'
+        let s:settings = lsp_settings#settings()
+        let s:settings.cache_a = [{'command': 'cache-server', 'requires': ['cache-require']}]
+        let s:settings.cache_b = deepcopy(s:settings.cache_a)
+    End
+
+    After each
+        let $PATH = s:path
+        call delete(s:dir, 'rf')
+        call remove(s:settings, 'cache_a')
+        call remove(s:settings, 'cache_b')
+        for name in ['lsp_settings', 'lsp_settings_servers_dir', 'lsp_settings_extra_paths', 'lsp_settings_filetype_cache_a', 'lsp_settings_filetype_cache_b']
+            if has_key(g:, name)
+                unlet g:[name]
+            endif
+        endfor
+        call extend(g:, s:saved_globals)
+    End
+
+    It shares successful checks across filetypes only within one scan
+        let requirement = s:install_command('cache-require')
+        let server = s:install_command('cache-server')
+        let cache = {}
+        Assert Equals(lsp_settings#filetype_servers('cache_a', cache), ['cache-server'])
+        call delete(requirement)
+        call delete(server)
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), ['cache-server'])
+        Assert Equals(lsp_settings#filetype_servers('cache_b', {}), [])
+        call s:install_command('cache-require')
+        Assert Equals(lsp_settings#filetype_servers('cache_b', {}), [])
+    End
+
+    It shares missing requirements but detects installation in the next scan
+        let cache = {}
+        Assert Equals(lsp_settings#filetype_servers('cache_a', cache), [])
+        call s:install_command('cache-require')
+        call s:install_command('cache-server')
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), [])
+        Assert Equals(lsp_settings#filetype_servers('cache_b', {}), ['cache-server'])
+    End
+
+    It shares missing servers but detects installation in the next scan
+        call s:install_command('cache-require')
+        let cache = {}
+        Assert Equals(lsp_settings#filetype_servers('cache_a', cache), [])
+        call s:install_command('cache-server')
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), [])
+        Assert Equals(lsp_settings#filetype_servers('cache_b', {}), ['cache-server'])
+    End
+
+    It checks filetype selection and user settings even with cached executables
+        call s:install_command('cache-require')
+        call s:install_command('cache-server')
+        let cache = {}
+        Assert Equals(lsp_settings#filetype_servers('cache_a', cache), ['cache-server'])
+        let g:lsp_settings['cache-server'] = {'disabled': 1}
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), [])
+        let g:lsp_settings['cache-server'].disabled = 0
+        let g:lsp_settings_filetype_cache_b = ['other-server']
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), [])
+        let g:lsp_settings_filetype_cache_b = ['cache-server']
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), ['cache-server'])
+    End
+
+    It respects a command override even after caching an absent server
+        call s:install_command('cache-require')
+        let cache = {}
+        Assert Equals(lsp_settings#filetype_servers('cache_a', cache), [])
+        let g:lsp_settings['cache-server'] = {'cmd': ['custom-server']}
+        Assert Equals(lsp_settings#filetype_servers('cache_b', cache), ['cache-server'])
+    End
+
+    It does not retain cached checks when no cache is supplied
+        Assert Equals(lsp_settings#filetype_servers('cache_a'), [])
+        call s:install_command('cache-require')
+        let server = s:install_command('cache-server')
+        Assert Equals(lsp_settings#filetype_servers('cache_a'), ['cache-server'])
+        call delete(server)
+        Assert Equals(lsp_settings#filetype_servers('cache_a'), [])
+    End
+End
