@@ -24,6 +24,9 @@ endfunction
 
 let s:settings = s:load_settings()
 
+" Map from server name to its config, built on first use.
+let s:server_configs = v:null
+
 let s:ftmap = {}
 
 let s:capture = v:null
@@ -183,14 +186,17 @@ function! s:vim_lsp_installer(ft, ...) abort
 endfunction
 
 function! lsp_settings#server_config(name) abort
-  for l:ft in sort(keys(s:settings))
-    for l:conf in s:settings[l:ft]
-      if l:conf.command ==# a:name && has_key(l:conf, 'config')
-        return l:conf['config']
-      endif
+  if s:server_configs is v:null
+    let s:server_configs = {}
+    for l:ft in sort(keys(s:settings))
+      for l:conf in s:settings[l:ft]
+        if !has_key(s:server_configs, l:conf.command) && has_key(l:conf, 'config')
+          let s:server_configs[l:conf.command] = l:conf['config']
+        endif
+      endfor
     endfor
-  endfor
-  return {}
+  endif
+  return get(s:server_configs, a:name, {})
 endfunction
 
 function! lsp_settings#merge(name, key, default) abort
@@ -719,6 +725,7 @@ function! lsp_settings#init() abort
             continue
           endif
           call add(s:settings[l:ft], l:config)
+          let s:server_configs = v:null
           let l:found = 1
           break
         endfor
