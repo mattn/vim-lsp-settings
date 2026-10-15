@@ -39,7 +39,7 @@ mingw64_nt*)
   fi
   ;;
 *)
-  echo "unknow platform: $os"
+  echo "unknown platform: $os"
   exit 1
   ;;
 esac
