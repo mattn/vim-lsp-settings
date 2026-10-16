@@ -113,6 +113,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | GDScript          | godot                               |    Yes    |      Yes      |
 | Gleam             | gleam                               |    Yes    |      Yes      |
 | GLSL              | glslls                              |    Yes    |      Yes      |
+| GLSL              | glsl_analyzer                       |    Yes    |      Yes      |
 | Go                | gopls                               |    Yes    |      Yes      |
 | Go                | golangci-lint-langserver            |    Yes    |      Yes      |
 | GraphQL           | graphql-language-service-cli        |    Yes    |      Yes      |

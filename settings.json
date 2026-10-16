@@ -531,7 +531,7 @@
           "glsl",
           "geom",
           "frag",
-	  "comp"
+          "comp"
         ],
         "name": "tikhomirov/vim-glsl"
       }
