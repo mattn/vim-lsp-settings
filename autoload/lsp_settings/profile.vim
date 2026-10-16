@@ -107,7 +107,7 @@ function! lsp_settings#profile#status() abort
     endfor
   endfor
 
-  for l:server in uniq(sort(l:servers))
+  for l:server in sort(l:servers)
     if index(l:active_servers, l:server) != -1
       let l:status = lsp#get_server_status(l:server)
       echon l:server . ': '
