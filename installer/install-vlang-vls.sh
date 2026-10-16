@@ -2,9 +2,8 @@
 
 set -e
 
-git clone --depth=1 https://github.com/vlang/vls .
+git clone --depth=1 https://github.com/vlang/vls vls
 
 echo 'Compiling vlang/vls...'
-v -prod cmd/vls
-mv cmd/vls/vls vlang-vls
-rm -rf instructions.png cmd jsonrpc lsp vls tests
+v -prod -o vlang-vls vls
+rm -rf vls
