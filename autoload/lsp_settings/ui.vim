@@ -101,6 +101,7 @@ function! lsp_settings#ui#open() abort
   nnoremap <buffer> b :call <SID>open()<cr>
   nnoremap <buffer> ? :call <SID>help()<cr>
   nnoremap <buffer> q :bw<cr>
+  setlocal filetype=lsp-settings
   redraw
   echomsg 'Type i to install, or x to uninstall, b to open browser, ? to show description'
 endfunction
