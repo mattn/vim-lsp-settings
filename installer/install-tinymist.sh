@@ -2,7 +2,7 @@
 
 set -e
 
-version="v0.14.18"
+version="v0.15.8"
 
 os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 arch=$(uname -m)
