@@ -66,7 +66,7 @@ function! lsp_settings#profile#edit_local(...) abort
     let l:root = a:1
   endif
   if l:root ==# ''
-    let l:root = lsp_settings#root_path(['.vim-lsp-settings'])
+    let l:root = lsp_settings#root_path(['.vim-lsp-settings/'])
   endif
   if empty(l:root)
     let l:root = getcwd()
