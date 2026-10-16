@@ -526,6 +526,8 @@ Or put `.vim-lsp-settings/settings.json` in your project root directory.
 }
 ```
 
+`efm-langserver` is disabled by default, so `:LspInstallServer efm-langserver` reports that it is disabled until you enable it with `'disabled': v:false` (or `"disabled": false` in `settings.json`) as above.
+
 If you already have the dart analysis server installed but it is not in your
 path, you can still configure the settings to use it. Use the vimscript below
 to change the command to start the server. Note the command has two parts:
