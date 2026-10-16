@@ -1693,22 +1693,6 @@
       ]
     },
     {
-      "command": "ruff-lsp",
-      "url": "https://github.com/charliermarsh/ruff-lsp",
-      "description": "A Language Server Protocol implementation for Ruff.",
-      "requires": [
-        "py"
-      ]
-    },
-    {
-      "command": "ruff-lsp",
-      "url": "https://github.com/charliermarsh/ruff-lsp",
-      "description": "A Language Server Protocol implementation for Ruff.",
-      "requires": [
-        "python3"
-      ]
-    },
-    {
       "command": "zuban",
       "url": "https://zubanls.com",
       "description": "The Python Language Server for Professionals. A Mypy-compatible Python Language Server built in Rust",
@@ -2497,18 +2481,6 @@
       "config": {
         "refresh_pattern": "\\%([bwtglsav]:\\k*\\|\\k\\+\\)$"
       },
-      "root_uri_patterns": [
-        ".vim/",
-        "vimfiles/"
-      ]
-    },
-    {
-      "command": "vimscript-language-server",
-      "url": "https://github.com/google/vimscript-language-server",
-      "description": "Vim script Language Server",
-      "requires": [
-        "cargo"
-      ],
       "root_uri_patterns": [
         ".vim/",
         "vimfiles/"
