@@ -1465,8 +1465,8 @@
     },
     {
       "command": "digestif",
-      "url": "https://github.com/latex-lsp/texlab",
-      "description": "An implementation of the Language Server Protocol for LaTeX",
+      "url": "https://github.com/astoff/digestif",
+      "description": "A language server for TeX and friends",
       "requires": [
         "luarocks"
       ]
