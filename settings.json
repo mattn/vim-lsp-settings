@@ -517,6 +517,24 @@
         ],
         "name": "tikhomirov/vim-glsl"
       }
+    },
+    {
+      "command": "glsl_analyzer",
+      "url": "https://github.com/nolanderc/glsl_analyzer",
+      "description": "Language server for GLSL",
+      "requires": [],
+      "vim_plugin": {
+        "extensions": [
+          "vert",
+          "tesc",
+          "tese",
+          "glsl",
+          "geom",
+          "frag",
+	  "comp"
+        ],
+        "name": "tikhomirov/vim-glsl"
+      }
     }
   ],
   "go": [
