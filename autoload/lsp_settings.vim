@@ -146,7 +146,7 @@ function! s:vim_lsp_installer(ft, ...) abort
     return []
   endif
   if l:ft !=# '_'
-    let l:servers += s:settings['_']
+    let l:servers = l:servers + s:settings['_']
   endif
 
   let l:default = s:get_filetype_default(a:ft)
