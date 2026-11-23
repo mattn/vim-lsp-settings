@@ -146,6 +146,7 @@ You can change the directory to install servers by set `g:lsp_settings_servers_d
 | Just              | just-lsp                            |    Yes    |      Yes      |
 | Kotlin            | kotlin-language-server              |    Yes    |      Yes      |
 | Kotlin            | kotlin-lsp                          |    Yes    |      Yes      |
+| Lean              | lake                                |    No     |      No       |
 | Lisp              | cl-lsp                              |    Yes    |      No       |
 | Lua               | emmylua-ls                          |    Yes    |      Yes      |
 | Lua               | sumneko-lua-language-server         |    Yes    |      Yes      |
@@ -465,6 +466,18 @@ let g:lsp_settings = {
 \  }
 \}
 ```
+
+### [lake](https://lean-lang.org/) (Lean 4)
+
+Install Lean 4 with [elan](https://github.com/leanprover/elan); `lake serve` is used as the language server.
+
+The goal state at the cursor can be shown in a side window:
+
+* `:LspLeanGoal` shows the goal at the cursor once.
+* `:LspLeanGoalToggle` toggles following the cursor (updated on `CursorHold`).
+
+`<plug>(lsp-lean-goal)` and `<plug>(lsp-lean-goal-toggle)` are also available. The window width can be changed with `g:lsp_settings_lean_goal_width` (default: 50).
+
 ### [qmlls](https://doc.qt.io/qt-6/qtqml-tooling-qmlls.html)
 
 To use the language server you need a .qmlls.ini, which can be generated
