@@ -1194,6 +1194,19 @@
       }
     }
   ],
+  "lean": [
+    {
+      "command": "lake",
+      "url": "https://lean-lang.org/",
+      "description": "Lean 4 language server (lake serve), installed with elan",
+      "requires": [],
+      "root_uri_patterns": [
+        "lakefile.lean",
+        "lakefile.toml",
+        "lean-toolchain"
+      ]
+    }
+  ],
   "less": [
     {
       "command": "vscode-css-language-server",
